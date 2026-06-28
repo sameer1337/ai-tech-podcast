@@ -4,17 +4,17 @@
     <title>AI Tech Daily</title>
     <description>Your daily 5-minute briefing on the latest in AI and technology.</description>
     <language>en</language>
-    <link />
+    <link>https://sameer1337.github.io/ai-tech-podcast</link>
     <itunes:author>AI Tech Daily</itunes:author>
     <itunes:category text="Technology" />
     <item>
-      <title>AI Tech Daily — June 29, 2026</title>
-      <pubDate>Sun, 28 Jun 2026 23:04:02 +0000</pubDate>
+      <title>AI Tech Daily - June 29, 2026</title>
+      <pubDate>Sun, 28 Jun 2026 23:07:36 +0000</pubDate>
       <guid isPermaLink="false">ep-1-20260628</guid>
-      <description>The AI revolution is underway, and with it, a new wave of security threats is emerging, targeting the very foundations of enterprise AI systems. Prompt injection is exploiting the biggest design flaws in large language models, specifically targeting agents, RAG pipelines, and model routers. This is a significant concern because as businesses increasingly adopt AI technology, they're also creating new vulnerabilities that cybercriminals are eager to exploit. The fact that several independent sour...</description>
+      <description>Your daily briefing on the latest in AI and technology. Today: AI security vulnerabilities, OpenAI new models, and more....</description>
       <itunes:episode>1</itunes:episode>
       <itunes:duration>300</itunes:duration>
-      <enclosure url="ep0001_2026-06-29.mp3" type="audio/mpeg" length="1155456" />
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1155456" />
     </item>
     <itunes:owner>
       <itunes:name>AI Tech Daily</itunes:name>

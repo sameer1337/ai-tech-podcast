@@ -15,7 +15,7 @@ PODCAST_EMAIL       = "hunk1.on11@gmail.com"
 PODCAST_LANGUAGE    = "en"
 PODCAST_CATEGORY    = "Technology"
 PODCAST_IMAGE_URL   = ""   # set after uploading cover art
-PODCAST_WEBSITE_URL = ""   # set after GitHub Pages deploy
+PODCAST_WEBSITE_URL = "https://sameer1337.github.io/ai-tech-podcast"
 
 # ── Edge-TTS voice ────────────────────────────
 # Full list: run `edge-tts --list-voices`
