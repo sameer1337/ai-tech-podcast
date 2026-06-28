@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AI Tech Daily</title>
+    <description>Your daily 5-minute briefing on the latest in AI and technology.</description>
+    <language>en</language>
+    <link />
+    <itunes:author>AI Tech Daily</itunes:author>
+    <itunes:category text="Technology" />
+    <item>
+      <title>AI Tech Daily — June 29, 2026</title>
+      <pubDate>Sun, 28 Jun 2026 23:04:02 +0000</pubDate>
+      <guid isPermaLink="false">ep-1-20260628</guid>
+      <description>The AI revolution is underway, and with it, a new wave of security threats is emerging, targeting the very foundations of enterprise AI systems. Prompt injection is exploiting the biggest design flaws in large language models, specifically targeting agents, RAG pipelines, and model routers. This is a significant concern because as businesses increasingly adopt AI technology, they're also creating new vulnerabilities that cybercriminals are eager to exploit. The fact that several independent sour...</description>
+      <itunes:episode>1</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="ep0001_2026-06-29.mp3" type="audio/mpeg" length="1155456" />
+    </item>
+    <itunes:owner>
+      <itunes:name>AI Tech Daily</itunes:name>
+      <itunes:email>hunk1.on11@gmail.com</itunes:email>
+    </itunes:owner>
+  </channel>
+</rss>
