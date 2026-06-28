@@ -5,17 +5,25 @@
     <description>Your daily 5-minute briefing on the latest in AI and technology.</description>
     <language>en</language>
     <link>https://sameer1337.github.io/ai-tech-podcast</link>
+    <managingEditor>hunk1.on11@gmail.com (AI Tech Daily)</managingEditor>
     <itunes:author>AI Tech Daily</itunes:author>
-    <itunes:category text="Technology" />
     <item>
       <title>AI Tech Daily - June 29, 2026</title>
-      <pubDate>Sun, 28 Jun 2026 23:07:36 +0000</pubDate>
+      <pubDate>Sun, 28 Jun 2026 23:15:06 +0000</pubDate>
       <guid isPermaLink="false">ep-1-20260628</guid>
       <description>Your daily briefing on the latest in AI and technology. Today: AI security vulnerabilities, OpenAI new models, and more....</description>
       <itunes:episode>1</itunes:episode>
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1155456" />
     </item>
+    <itunes:email>hunk1.on11@gmail.com</itunes:email>
+    <itunes:category text="Technology" />
+    <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png" />
+    <image>
+      <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover.png</url>
+      <title>AI Tech Daily</title>
+      <link>https://sameer1337.github.io/ai-tech-podcast</link>
+    </image>
     <itunes:owner>
       <itunes:name>AI Tech Daily</itunes:name>
       <itunes:email>hunk1.on11@gmail.com</itunes:email>

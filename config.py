@@ -14,7 +14,7 @@ PODCAST_AUTHOR      = "AI Tech Daily"
 PODCAST_EMAIL       = "hunk1.on11@gmail.com"
 PODCAST_LANGUAGE    = "en"
 PODCAST_CATEGORY    = "Technology"
-PODCAST_IMAGE_URL   = ""   # set after uploading cover art
+PODCAST_IMAGE_URL   = "https://sameer1337.github.io/ai-tech-podcast/assets/cover.png"
 PODCAST_WEBSITE_URL = "https://sameer1337.github.io/ai-tech-podcast"
 
 # ── Edge-TTS voice ────────────────────────────

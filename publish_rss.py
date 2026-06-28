@@ -51,11 +51,18 @@ def update_feed(episode_title: str, audio_filename: str, audio_path: str,
         ET.SubElement(channel, "description").text = PODCAST_DESCRIPTION
         ET.SubElement(channel, "language").text = PODCAST_LANGUAGE
         ET.SubElement(channel, "link").text = PODCAST_WEBSITE_URL
+        ET.SubElement(channel, "managingEditor").text = f"{PODCAST_EMAIL} ({PODCAST_AUTHOR})"
         ET.SubElement(channel, "itunes:author").text = PODCAST_AUTHOR
+        ET.SubElement(channel, "itunes:email").text = PODCAST_EMAIL
         ET.SubElement(channel, "itunes:category", {"text": PODCAST_CATEGORY})
         if PODCAST_IMAGE_URL:
             img = ET.SubElement(channel, "itunes:image")
             img.set("href", PODCAST_IMAGE_URL)
+            # Standard RSS image block
+            image = ET.SubElement(channel, "image")
+            ET.SubElement(image, "url").text = PODCAST_IMAGE_URL
+            ET.SubElement(image, "title").text = PODCAST_TITLE
+            ET.SubElement(image, "link").text = PODCAST_WEBSITE_URL
 
         owner = ET.SubElement(channel, "itunes:owner")
         ET.SubElement(owner, "itunes:name").text = PODCAST_AUTHOR
