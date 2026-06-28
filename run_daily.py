@@ -95,16 +95,17 @@ def main():
     print(f"  Audio : {audio_path}")
     print(f"  Feed  : feed.xml")
 
-    # Auto-push to GitHub Pages so the episode goes live immediately
-    import subprocess
-    print("\nPushing to GitHub...")
-    subprocess.run(["git", "add", audio_path, "feed.xml", f"logs/{date_str}.json"], check=True)
-    subprocess.run(["git", "commit", "-m", f"Episode {ep_num} - {date_str}"], check=True)
-    result = subprocess.run(["git", "push"], capture_output=True, text=True)
-    if result.returncode == 0:
-        print(f"  Live at: https://sameer1337.github.io/ai-tech-podcast/episodes/{audio_filename}")
-    else:
-        print(f"  Push failed: {result.stderr}")
+    # Push to GitHub (skip if running inside GitHub Actions — workflow handles it)
+    if not os.environ.get("GITHUB_ACTIONS"):
+        import subprocess
+        print("\nPushing to GitHub...")
+        subprocess.run(["git", "add", audio_path, "feed.xml", f"logs/{date_str}.json"], check=True)
+        subprocess.run(["git", "commit", "-m", f"Episode {ep_num} - {date_str}"], check=True)
+        result = subprocess.run(["git", "push"], capture_output=True, text=True)
+        if result.returncode == 0:
+            print(f"  Live at: https://sameer1337.github.io/ai-tech-podcast/episodes/{audio_filename}")
+        else:
+            print(f"  Push failed: {result.stderr}")
 
 
 if __name__ == "__main__":
