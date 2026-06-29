@@ -88,6 +88,18 @@ def run_podcast(niche: dict) -> bool:
         niche          = niche,
     )
 
+    # Generate social media posts
+    try:
+        from generate_social import generate_social_posts
+        social = generate_social_posts(niche, episode_title, script)
+        log_dir = Path("logs") / pid
+        log_dir.mkdir(parents=True, exist_ok=True)
+        with open(log_dir / f"{date_str}_social.txt", "w", encoding="utf-8") as f:
+            f.write(social["text"])
+        print(f"  Social posts saved -> logs/{pid}/{date_str}_social.txt")
+    except Exception as e:
+        print(f"  [social] Warning: {e}")
+
     # Save log
     log_dir = Path("logs") / pid
     log_dir.mkdir(parents=True, exist_ok=True)
