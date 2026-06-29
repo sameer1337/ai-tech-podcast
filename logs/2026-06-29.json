@@ -1,14 +1,14 @@
 {
   "date": "2026-06-29",
-  "episode": 2,
-  "title": "AI Tech Daily \u2014 June 29, 2026",
+  "episode": 3,
+  "title": "AI News Jun 29 \u2014 Prompt injection is exploiting enterprise AI's big",
   "stories": [
     "Prompt injection is exploiting enterprise AI's biggest design flaws by targeting agents, RAG pipelines and model routers",
     "OpenAI unveils GPT-5.6 Sol, Terra and Luna models \u2014 but only accessible to limited preview partners for now, per US Gov",
     "China\u2019s Z.ai claims it can match Mythos on cybersecurity",
     "Claude Code turned every engineer into three. Now companies need more product thinkers",
-    "Show HN: Bash4LLM+ \u2013 A lightweight, dependency-free Bash wrapper for LLM APIs"
+    "Ford rehires \u2018gray beard\u2019 engineers after AI falls short"
   ],
-  "words": 538,
-  "audio": "episodes/ep0002_2026-06-29.mp3"
+  "words": 597,
+  "audio": "episodes/ep0003_2026-06-29.mp3"
 }

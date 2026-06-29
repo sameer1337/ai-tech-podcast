@@ -41,5 +41,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0002_2026-06-29.mp3" type="audio/mpeg" length="1115712" />
     </item>
+    <item>
+      <title>AI News Jun 29 — Prompt injection is exploiting enterprise AI's big</title>
+      <pubDate>Mon, 29 Jun 2026 10:42:23 +0000</pubDate>
+      <guid isPermaLink="false">aitechdaily-ep3-20260629</guid>
+      <description>The dark side of AI adoption is starting to show its face, as businesses are learning the hard way that integrating large language models into their operations isn't as seamless as they thought. In the past two years, companies have been trying to fit these massive models into various aspects of their business, from support and analytics to development and internal automation. But as they're finding out, the disconnect between the assumed capabilities of these models and their actual characteris...</description>
+      <itunes:episode>3</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0003_2026-06-29.mp3" type="audio/mpeg" length="1231056" />
+    </item>
   </channel>
 </rss>
