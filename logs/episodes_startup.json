@@ -1,0 +1,12 @@
+[
+  {
+    "number": 1,
+    "title": "Startup News Jun 29 \u2014 Prompt injection is exploiting enterprise AI'",
+    "pubDate": "Mon, 29 Jun 2026 11:05:22 +0000",
+    "guid": "startup-ep1-20260629",
+    "description": "The AI revolution is in full swing, but with great power comes great vulnerability, and the latest trend in cybercrime is targeting the very foundation of enterprise AI - by exploiting design flaws in large language models, or LLMs, and going after agents, RAG pipelines, and model routers. In the past two years, businesses have been scrambling to integrate LLMs into support, analytics, development, and internal automation, but it's clear that cybercriminals are taking advantage of the disconnect...",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0001_2026-06-29.mp3",
+    "file_size": 1614096,
+    "duration": 300
+  }
+]

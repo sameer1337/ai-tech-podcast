@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>World In 5</title>
+    <description>The world's top news stories in 5 minutes, every morning. Politics, international affairs, climate, and the events shaping our world — clear, fast, free.</description>
+    <language>en</language>
+    <link>https://sameer1337.github.io/ai-tech-podcast</link>
+    <managingEditor>hunk1.on11@gmail.com (World In 5)</managingEditor>
+    <itunes:author>World In 5</itunes:author>
+    <itunes:email>hunk1.on11@gmail.com</itunes:email>
+    <itunes:category text="News" />
+    <itunes:owner>
+      <itunes:name>World In 5</itunes:name>
+      <itunes:email>hunk1.on11@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png" />
+    <image>
+      <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover.png</url>
+      <title>AI Tech Daily</title>
+      <link>https://sameer1337.github.io/ai-tech-podcast</link>
+    </image>
+
+    <item>
+      <title>World News Jun 29 — Pakistani strikes kill dozens in Afghanistan</title>
+      <pubDate>Mon, 29 Jun 2026 11:05:59 +0000</pubDate>
+      <guid isPermaLink="false">world-news-ep1-20260629</guid>
+      <description>Dozens of civilians are dead and many more are injured in Afghanistan after Pakistani airstrikes ripped through the border region, sparking outrage and escalating tensions between the two nations. The Taliban government claims that the strikes targeted innocent people, including women and children, while Pakistan insists that it was targeting militant groups. This is a critical moment in the already fragile relationship between Pakistan and Afghanistan, with both sides accusing each other of vio...</description>
+      <itunes:episode>1</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/world/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1845936" />
+    </item>
+  </channel>
+</rss>

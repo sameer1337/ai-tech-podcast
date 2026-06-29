@@ -24,31 +24,13 @@
     </image>
 
     <item>
-      <title>AI News Jun 29 - Prompt injection exploiting enterprise AI</title>
-      <pubDate>Mon, 29 Jun 2026 00:07:55 +0000</pubDate>
-      <guid isPermaLink="false">aitechdaily-ep1-20260629</guid>
-      <description>AI security vulnerabilities, OpenAI new models, and more top AI stories....</description>
+      <title>AI News Jun 29 — Prompt injection is exploiting enterprise AI'</title>
+      <pubDate>Mon, 29 Jun 2026 11:04:33 +0000</pubDate>
+      <guid isPermaLink="false">ai-tech-ep1-20260629</guid>
+      <description>The AI revolution is in full swing, but a dark cloud is looming over the enterprise AI landscape - hackers have discovered a way to exploit the biggest design flaws in large language models, and it's got everyone on high alert. In the past two years, businesses have been rushing to integrate AI into every aspect of their operations, from support and analytics to development and automation. But as it turns out, this rapid adoption has also created a slew of new vulnerabilities that cybercriminals...</description>
       <itunes:episode>1</itunes:episode>
       <itunes:duration>300</itunes:duration>
-      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1155456" />
-    </item>
-    <item>
-      <title>AI News Jun 29 - Cybercriminals exploiting enterprise AI weaknesses</title>
-      <pubDate>Mon, 29 Jun 2026 00:07:55 +0000</pubDate>
-      <guid isPermaLink="false">aitechdaily-ep2-20260629</guid>
-      <description>Your daily briefing on the latest AI and technology news....</description>
-      <itunes:episode>2</itunes:episode>
-      <itunes:duration>300</itunes:duration>
-      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0002_2026-06-29.mp3" type="audio/mpeg" length="1115712" />
-    </item>
-    <item>
-      <title>AI News Jun 29 — Prompt injection is exploiting enterprise AI's big</title>
-      <pubDate>Mon, 29 Jun 2026 10:42:23 +0000</pubDate>
-      <guid isPermaLink="false">aitechdaily-ep3-20260629</guid>
-      <description>The dark side of AI adoption is starting to show its face, as businesses are learning the hard way that integrating large language models into their operations isn't as seamless as they thought. In the past two years, companies have been trying to fit these massive models into various aspects of their business, from support and analytics to development and internal automation. But as they're finding out, the disconnect between the assumed capabilities of these models and their actual characteris...</description>
-      <itunes:episode>3</itunes:episode>
-      <itunes:duration>300</itunes:duration>
-      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0003_2026-06-29.mp3" type="audio/mpeg" length="1231056" />
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1147824" />
     </item>
   </channel>
 </rss>

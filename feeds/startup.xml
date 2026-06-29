@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Startup Wire Daily</title>
+    <description>Daily 5-minute startup and venture capital news. Funding rounds, founder stories, product launches, and the business ideas changing the world.</description>
+    <language>en</language>
+    <link>https://sameer1337.github.io/ai-tech-podcast</link>
+    <managingEditor>hunk1.on11@gmail.com (Startup Wire Daily)</managingEditor>
+    <itunes:author>Startup Wire Daily</itunes:author>
+    <itunes:email>hunk1.on11@gmail.com</itunes:email>
+    <itunes:category text="Business" />
+    <itunes:owner>
+      <itunes:name>Startup Wire Daily</itunes:name>
+      <itunes:email>hunk1.on11@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png" />
+    <image>
+      <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover.png</url>
+      <title>AI Tech Daily</title>
+      <link>https://sameer1337.github.io/ai-tech-podcast</link>
+    </image>
+
+    <item>
+      <title>Startup News Jun 29 — Prompt injection is exploiting enterprise AI'</title>
+      <pubDate>Mon, 29 Jun 2026 11:05:22 +0000</pubDate>
+      <guid isPermaLink="false">startup-ep1-20260629</guid>
+      <description>The AI revolution is in full swing, but with great power comes great vulnerability, and the latest trend in cybercrime is targeting the very foundation of enterprise AI - by exploiting design flaws in large language models, or LLMs, and going after agents, RAG pipelines, and model routers. In the past two years, businesses have been scrambling to integrate LLMs into support, analytics, development, and internal automation, but it's clear that cybercriminals are taking advantage of the disconnect...</description>
+      <itunes:episode>1</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1614096" />
+    </item>
+  </channel>
+</rss>

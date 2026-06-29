@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>True Crime Digest</title>
+    <description>Daily true crime stories in 5 minutes. Real cases, investigations, courtroom drama, and justice served — every morning. The most gripping podcast on your commute.</description>
+    <language>en</language>
+    <link>https://sameer1337.github.io/ai-tech-podcast</link>
+    <managingEditor>hunk1.on11@gmail.com (True Crime Digest)</managingEditor>
+    <itunes:author>True Crime Digest</itunes:author>
+    <itunes:email>hunk1.on11@gmail.com</itunes:email>
+    <itunes:category text="True Crime" />
+    <itunes:owner>
+      <itunes:name>True Crime Digest</itunes:name>
+      <itunes:email>hunk1.on11@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png" />
+    <image>
+      <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover.png</url>
+      <title>AI Tech Daily</title>
+      <link>https://sameer1337.github.io/ai-tech-podcast</link>
+    </image>
+
+    <item>
+      <title>True News Jun 29 — Akeeley Keshawn Blade Jr Teen Killer</title>
+      <pubDate>Mon, 29 Jun 2026 11:06:14 +0000</pubDate>
+      <guid isPermaLink="false">true-crime-ep1-20260629</guid>
+      <description>A staggering trend is emerging in the world of true crime: teenage killers. It's a phenomenon that's leaving experts and law enforcement officials alike scrambling to understand the motivations and factors that drive these young individuals to commit such heinous acts. One such case is that of Akeeley Keshawn Blade Jr, a teenager who made headlines for his shocking crime. What's particularly disturbing about Blade's case is the sheer brutality and lack of remorse shown by the young perpetrator. ...</description>
+      <itunes:episode>1</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/truecrime/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1024848" />
+    </item>
+  </channel>
+</rss>

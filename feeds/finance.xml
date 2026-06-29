@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Money Minute Daily</title>
+    <description>Your free daily 5-minute finance podcast. Stock market, investing, personal finance, and economic news every morning. The smartest 5 minutes for your money.</description>
+    <language>en</language>
+    <link>https://sameer1337.github.io/ai-tech-podcast</link>
+    <managingEditor>hunk1.on11@gmail.com (Money Minute Daily)</managingEditor>
+    <itunes:author>Money Minute Daily</itunes:author>
+    <itunes:email>hunk1.on11@gmail.com</itunes:email>
+    <itunes:category text="Business" />
+    <itunes:owner>
+      <itunes:name>Money Minute Daily</itunes:name>
+      <itunes:email>hunk1.on11@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png" />
+    <image>
+      <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover.png</url>
+      <title>AI Tech Daily</title>
+      <link>https://sameer1337.github.io/ai-tech-podcast</link>
+    </image>
+
+    <item>
+      <title>Money News Jun 29 — Risks in Focus After US Stocks’ Wild Start to</title>
+      <pubDate>Mon, 29 Jun 2026 11:04:45 +0000</pubDate>
+      <guid isPermaLink="false">finance-ep1-20260629</guid>
+      <description>The first half of 2026 has been nothing short of a wild ride for US stocks, and as we head into the second half of the year, investors are facing a daunting list of risks that could make or break their portfolios. From the rising tide of interest rates to the looming US elections and the unpredictable impact of artificial intelligence, it's a complex web of challenges that's keeping even the most seasoned investors on their toes. The fact that the Federal Reserve is likely to continue raising in...</description>
+      <itunes:episode>1</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1080432" />
+    </item>
+  </channel>
+</rss>

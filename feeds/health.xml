@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Health Edge Daily</title>
+    <description>Daily health and longevity news in 5 minutes. Science-backed health tips, medical breakthroughs, nutrition, fitness, and longevity research every morning.</description>
+    <language>en</language>
+    <link>https://sameer1337.github.io/ai-tech-podcast</link>
+    <managingEditor>hunk1.on11@gmail.com (Health Edge Daily)</managingEditor>
+    <itunes:author>Health Edge Daily</itunes:author>
+    <itunes:email>hunk1.on11@gmail.com</itunes:email>
+    <itunes:category text="Health" />
+    <itunes:owner>
+      <itunes:name>Health Edge Daily</itunes:name>
+      <itunes:email>hunk1.on11@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png" />
+    <image>
+      <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover.png</url>
+      <title>AI Tech Daily</title>
+      <link>https://sameer1337.github.io/ai-tech-podcast</link>
+    </image>
+
+    <item>
+      <title>Health News Jun 29 — Osteopenia is silently weakening bones in mil</title>
+      <pubDate>Mon, 29 Jun 2026 11:05:02 +0000</pubDate>
+      <guid isPermaLink="false">health-ep1-20260629</guid>
+      <description>Breaking news in the world of health: millions of people are silently developing a condition that's weakening their bones, and it's not just about osteoporosis. Osteopenia is a common but often overlooked condition that causes bones to become less dense and more fragile, and because it develops silently, many people only discover they have it after a fracture or bone scan. This is a major concern, especially as we age, because it can lead to a higher risk of fractures and osteoporosis. The good ...</description>
+      <itunes:episode>1</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/health/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1267200" />
+    </item>
+  </channel>
+</rss>

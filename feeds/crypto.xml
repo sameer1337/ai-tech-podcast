@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Crypto Daily Brief</title>
+    <description>Your free daily 5-minute crypto and Web3 news podcast. Bitcoin, Ethereum, DeFi, NFTs, and blockchain news every morning. Stay ahead of the crypto market.</description>
+    <language>en</language>
+    <link>https://sameer1337.github.io/ai-tech-podcast</link>
+    <managingEditor>hunk1.on11@gmail.com (Crypto Daily Brief)</managingEditor>
+    <itunes:author>Crypto Daily Brief</itunes:author>
+    <itunes:email>hunk1.on11@gmail.com</itunes:email>
+    <itunes:category text="Technology" />
+    <itunes:owner>
+      <itunes:name>Crypto Daily Brief</itunes:name>
+      <itunes:email>hunk1.on11@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png" />
+    <image>
+      <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover.png</url>
+      <title>AI Tech Daily</title>
+      <link>https://sameer1337.github.io/ai-tech-podcast</link>
+    </image>
+
+    <item>
+      <title>Crypto News Jun 29 — Institutions dumped Bitcoin and Ethereum ETFs</title>
+      <pubDate>Mon, 29 Jun 2026 11:05:37 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep1-20260629</guid>
+      <description>Institutional investors are sending a clear message to the crypto market: it's time to get selective. According to recent data, institutions have been dumping Bitcoin and Ethereum ETFs, but they're still buying up XRP and HYPE. This trend shows that institutions are separating their broad crypto risk from targeted altcoin exposure, essentially saying that not all cryptocurrencies are created equal. This matters because it indicates a growing maturity in the market, where investors are no longer ...</description>
+      <itunes:episode>1</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1233216" />
+    </item>
+  </channel>
+</rss>
