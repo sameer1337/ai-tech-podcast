@@ -32,5 +32,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1614096" />
     </item>
+    <item>
+      <title>Startup News Jun 29 — Prompt injection is exploiting enterprise AI'</title>
+      <pubDate>Mon, 29 Jun 2026 11:18:40 +0000</pubDate>
+      <guid isPermaLink="false">startup-ep2-20260629</guid>
+      <description>The AI revolution is in full swing, but with great power comes great vulnerability, and we're seeing a whole new wave of cyber threats targeting the enterprise AI's biggest design flaws. In the past two years, businesses have been rapidly adopting large language models, or LLMs, to boost support, analytics, development, and internal automation. However, this trend has also led to a surge in prompt injection attacks, which exploit the disconnect between assumptions about LLMs and their actual cha...</description>
+      <itunes:episode>2</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0002_2026-06-29.mp3" type="audio/mpeg" length="1977408" />
+    </item>
   </channel>
 </rss>

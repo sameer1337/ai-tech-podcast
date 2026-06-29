@@ -32,5 +32,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1233216" />
     </item>
+    <item>
+      <title>Crypto News Jun 29 — Institutions dumped Bitcoin and Ethereum ETFs</title>
+      <pubDate>Mon, 29 Jun 2026 11:18:52 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep2-20260629</guid>
+      <description>Institutions are sending a clear message to the crypto market, and it's time to decode their strategy. According to recent data, institutions have been dumping Bitcoin and Ethereum ETFs at an alarming rate, with outflows dwarfing the inflows of other cryptocurrencies. However, amidst this mass exodus, they're still buying into XRP and HYPE, which suggests that they're not entirely bearish on the crypto market. This selective demand for specific altcoins indicates that institutions are drawing a ...</description>
+      <itunes:episode>2</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0002_2026-06-29.mp3" type="audio/mpeg" length="1191600" />
+    </item>
   </channel>
 </rss>

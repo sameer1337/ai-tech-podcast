@@ -32,5 +32,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1080432" />
     </item>
+    <item>
+      <title>Money News Jun 29 — PBOC’s New Overnight Rate Said Below Forecast</title>
+      <pubDate>Mon, 29 Jun 2026 11:18:07 +0000</pubDate>
+      <guid isPermaLink="false">finance-ep2-20260629</guid>
+      <description>China's central bank just made a surprise move that could have major implications for the global economy, setting the interest rate on its new overnight liquidity tool lower than expected, effectively giving the market a de facto rate cut. This means that market borrowing costs could be pushed down, and some economists are interpreting this as a sign that China is looking to ease its monetary policy. Why does this matter? Well, a rate cut, or in this case, a de facto rate cut, can have a ripple ...</description>
+      <itunes:episode>2</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0002_2026-06-29.mp3" type="audio/mpeg" length="1053504" />
+    </item>
   </channel>
 </rss>

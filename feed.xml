@@ -32,5 +32,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1147824" />
     </item>
+    <item>
+      <title>AI News Jun 29 — Prompt injection is exploiting enterprise AI'</title>
+      <pubDate>Mon, 29 Jun 2026 11:17:58 +0000</pubDate>
+      <guid isPermaLink="false">ai-tech-ep2-20260629</guid>
+      <description>Imagine a world where the most powerful AI systems are being exploited by cybercriminals, targeting the very heart of enterprise AI - that's the reality we're facing today. In the past two years, businesses have been rapidly adopting large language models, or LLMs, to fit into support, analytics, development, and internal automation, but along with this adoption, a new trend has emerged: cybercriminals are taking advantage of the disconnect between assumptions about LLMs and their actual charact...</description>
+      <itunes:episode>2</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0002_2026-06-29.mp3" type="audio/mpeg" length="1350144" />
+    </item>
   </channel>
 </rss>
