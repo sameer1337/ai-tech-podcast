@@ -53,7 +53,11 @@ def _build_item(ep: dict) -> str:
     </item>"""
 
 
-def _build_feed(episodes: list) -> str:
+def _build_feed(episodes: list, title=None, description=None, author=None, category=None) -> str:
+    title       = title       or PODCAST_TITLE
+    description = description or PODCAST_DESCRIPTION
+    author      = author      or PODCAST_AUTHOR
+    category    = category    or PODCAST_CATEGORY
     image_block = ""
     if PODCAST_IMAGE_URL:
         image_block = f"""
@@ -71,16 +75,16 @@ def _build_feed(episodes: list) -> str:
      xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
      xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>{_esc(PODCAST_TITLE)}</title>
-    <description>{_esc(PODCAST_DESCRIPTION)}</description>
+    <title>{_esc(title)}</title>
+    <description>{_esc(description)}</description>
     <language>{PODCAST_LANGUAGE}</language>
     <link>{_esc(PODCAST_WEBSITE_URL)}</link>
-    <managingEditor>{_esc(PODCAST_EMAIL)} ({_esc(PODCAST_AUTHOR)})</managingEditor>
-    <itunes:author>{_esc(PODCAST_AUTHOR)}</itunes:author>
+    <managingEditor>{_esc(PODCAST_EMAIL)} ({_esc(author)})</managingEditor>
+    <itunes:author>{_esc(author)}</itunes:author>
     <itunes:email>{_esc(PODCAST_EMAIL)}</itunes:email>
-    <itunes:category text="{_esc(PODCAST_CATEGORY)}" />
+    <itunes:category text="{_esc(category)}" />
     <itunes:owner>
-      <itunes:name>{_esc(PODCAST_AUTHOR)}</itunes:name>
+      <itunes:name>{_esc(author)}</itunes:name>
       <itunes:email>{_esc(PODCAST_EMAIL)}</itunes:email>
     </itunes:owner>
     <itunes:explicit>false</itunes:explicit>{image_block}
@@ -90,38 +94,64 @@ def _build_feed(episodes: list) -> str:
 
 
 def update_feed(episode_title: str, audio_filename: str, audio_path: str,
-                episode_number: int, script_excerpt: str) -> None:
-    episodes = _load_episodes()
-    now = datetime.now(timezone.utc)
-    audio_url = f"{AUDIO_BASE_URL}/{audio_filename}" if AUDIO_BASE_URL else audio_filename
+                episode_number: int, script_excerpt: str,
+                rss_file: str = None, audio_base_url: str = None,
+                niche: dict = None) -> None:
+    # Support per-niche overrides
+    _rss_file  = rss_file or RSS_FILE
+    _audio_url = f"{audio_base_url}/{audio_filename}" if audio_base_url else f"{AUDIO_BASE_URL}/{audio_filename}"
+    _niche_id  = niche["id"] if niche else "ai-tech"
+    _db_file   = f"logs/episodes_{_niche_id}.json"
 
-    # Avoid duplicate episodes
+    # Load per-niche episode DB
+    episodes = []
+    if os.path.exists(_db_file):
+        with open(_db_file) as f:
+            episodes = json.load(f)
+
+    now = datetime.now(timezone.utc)
+
     if any(ep["number"] == episode_number for ep in episodes):
-        print(f"[rss] Episode #{episode_number} already in feed, skipping")
+        print(f"[rss] Episode #{episode_number} already in feed for {_niche_id}, skipping")
         return
 
     episodes.append({
         "number":      episode_number,
         "title":       episode_title,
         "pubDate":     _rfc822(now),
-        "guid":        f"aitechdaily-ep{episode_number}-{now.strftime('%Y%m%d')}",
+        "guid":        f"{_niche_id}-ep{episode_number}-{now.strftime('%Y%m%d')}",
         "description": script_excerpt[:500] + "...",
-        "audio_url":   audio_url,
+        "audio_url":   _audio_url,
         "file_size":   os.path.getsize(audio_path) if os.path.exists(audio_path) else 0,
         "duration":    300,
     })
-
-    # Sort newest first
     episodes.sort(key=lambda x: x["number"], reverse=True)
 
-    _save_episodes(episodes)
+    os.makedirs("logs", exist_ok=True)
+    with open(_db_file, "w") as f:
+        json.dump(episodes, f, indent=2)
 
-    with open(RSS_FILE, "w", encoding="utf-8") as f:
-        f.write(_build_feed(episodes))
+    # Build niche-specific feed metadata
+    feed_title  = niche["title"]       if niche else PODCAST_TITLE
+    feed_desc   = niche["description"] if niche else PODCAST_DESCRIPTION
+    feed_author = niche["author"]      if niche else PODCAST_AUTHOR
+    feed_cat    = niche["category"]    if niche else PODCAST_CATEGORY
 
-    print(f"[rss] Feed updated -> {RSS_FILE}  (episode #{episode_number})")
+    os.makedirs(os.path.dirname(_rss_file) if os.path.dirname(_rss_file) else ".", exist_ok=True)
+    with open(_rss_file, "w", encoding="utf-8") as f:
+        f.write(_build_feed(episodes, feed_title, feed_desc, feed_author, feed_cat))
+
+    print(f"[rss] Feed updated -> {_rss_file}  (episode #{episode_number})")
 
 
-def get_next_episode_number() -> int:
-    episodes = _load_episodes()
+def get_next_episode_number(rss_file: str = None) -> int:
+    niche_id = "ai-tech"
+    if rss_file and rss_file != RSS_FILE:
+        # derive niche id from rss path e.g. feeds/crypto.xml -> crypto
+        niche_id = os.path.splitext(os.path.basename(rss_file))[0]
+    db = f"logs/episodes_{niche_id}.json"
+    if not os.path.exists(db):
+        return 1
+    with open(db) as f:
+        episodes = json.load(f)
     return max((ep["number"] for ep in episodes), default=0) + 1

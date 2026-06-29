@@ -1,0 +1,39 @@
+[master 46b7841] Episode 3 - 2026-06-29
+ 3 files changed, 15 insertions(+), 6 deletions(-)
+ create mode 100644 episodes/ep0003_2026-06-29.mp3
+
+============================================================
+  AI Tech Daily - Episode #3 - 2026-06-29
+============================================================
+
+>> Step 1/4: Fetching top stories...
+[fetch] Selected 5 stories from 25 fetched
+  1. Prompt injection is exploiting enterprise AI's biggest design flaws by targeting agents, RAG pipelines and model routers [VentureBeat]
+  2. OpenAI unveils GPT-5.6 Sol, Terra and Luna models — but only accessible to limited preview partners for now, per US Gov [VentureBeat]
+  3. China’s Z.ai claims it can match Mythos on cybersecurity [The Verge]
+  4. Claude Code turned every engineer into three. Now companies need more product thinkers [VentureBeat]
+  5. Ford rehires ‘gray beard’ engineers after AI falls short [TechCrunch]
+
+>> Step 2/4: Generating podcast script with Claude...
+[script] Generated 776 words
+
+>> Step 3/4: Synthesizing voice with Edge TTS...
+[tts] Synthesizing voice → episodes\ep0003_2026-06-29_raw.mp3
+[tts] No music assets found — using voice-only audio
+[tts] Final audio → episodes\ep0003_2026-06-29.mp3
+
+>> Step 4/4: Updating RSS feed...
+[rss] Feed updated -> feed.xml  (episode #3)
+[log] Episode log saved → logs\2026-06-29.json
+
+DONE: Episode #3 complete!
+  Audio : episodes\ep0003_2026-06-29.mp3
+  Feed  : feed.xml
+
+Pushing to GitHub...
+  Push failed: fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+bash: line 1: /dev/tty: No such device or address
+error: failed to execute prompt script (exit code 1)
+fatal: could not read Username for 'https://github.com': No such file or directory
+

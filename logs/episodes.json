@@ -1,5 +1,15 @@
 [
   {
+    "number": 3,
+    "title": "AI News Jun 29 \u2014 Prompt injection is exploiting enterprise AI's big",
+    "pubDate": "Mon, 29 Jun 2026 10:29:33 +0000",
+    "guid": "aitechdaily-ep3-20260629",
+    "description": "The AI revolution is getting a wake-up call, as hackers are exploiting the biggest design flaws in enterprise AI systems, targeting the very agents, pipelines, and routers that make them tick. This is a huge concern, because in the past two years, businesses have been rushing to integrate large language models into every aspect of their operations, from support and analytics to development and automation. But as it turns out, cybercriminals have been taking note of the disconnect between the ass...",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0003_2026-06-29.mp3",
+    "file_size": 1469376,
+    "duration": 300
+  },
+  {
     "number": 2,
     "title": "AI News Jun 29 - Cybercriminals exploiting enterprise AI weaknesses",
     "pubDate": "Mon, 29 Jun 2026 00:07:55 +0000",

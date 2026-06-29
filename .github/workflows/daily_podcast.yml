@@ -24,16 +24,16 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Generate podcast episode
+      - name: Generate all podcast episodes
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           PYTHONUTF8: "1"
-        run: python run_daily.py
+        run: python run_all.py
 
-      - name: Push new episode to GitHub
+      - name: Push all episodes to GitHub
         run: |
-          git config user.name "AI Tech Daily Bot"
+          git config user.name "Podcast Bot"
           git config user.email "hunk1.on11@gmail.com"
-          git add episodes/ feed.xml logs/
-          git diff --staged --quiet || git commit -m "Auto episode $(date +%Y-%m-%d)"
+          git add episodes/ feeds/ feed.xml logs/
+          git diff --staged --quiet || git commit -m "All episodes $(date +%Y-%m-%d)"
           git push

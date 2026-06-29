@@ -51,6 +51,42 @@ Write the script now:"""
     return script
 
 
+def generate_script_for_niche(stories: list[dict], niche: dict) -> str:
+    """Generate a script for a specific niche."""
+    today = datetime.now().strftime("%A, %B %d, %Y")
+    stories_block = "\n\n".join(
+        f"Story {i}: {s['title']}\nSource: {s['source']}\nSummary: {s['summary'][:600]}"
+        for i, s in enumerate(stories, 1)
+    )
+    prompt = f"""You are the host of "{niche['title']}", a daily 5-minute podcast about {niche['hook']}.
+Today is {today}.
+
+Write a complete, natural-sounding podcast script using the stories below.
+
+Rules:
+- Target {EPISODE_TARGET_WORDS} words (roughly 5 minutes)
+- Open with a punchy hook — do NOT start with "Welcome back" or "Hello listeners"
+- Cover each story in 1-2 paragraphs — explain WHY it matters
+- Use conversational language
+- Add brief transitions between stories
+- Close with a one-sentence teaser and sign-off
+- Do NOT include stage directions, brackets, or URLs — pure spoken text only
+
+Today's top stories:
+{stories_block}
+
+Write the script now:"""
+
+    message = CLIENT.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        max_tokens=2000,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    script = message.choices[0].message.content.strip()
+    print(f"[script] Generated {len(script.split())} words for {niche['title']}")
+    return script
+
+
 if __name__ == "__main__":
     from fetch_news import fetch_stories
     stories = fetch_stories()
