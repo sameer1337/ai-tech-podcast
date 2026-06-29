@@ -9,7 +9,7 @@ GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "YOUR_GROQ_KEY_HERE")
 
 # ── Podcast identity ───────────────────────────
 PODCAST_TITLE       = "AI Tech Daily"
-PODCAST_DESCRIPTION = "Your daily 5-minute briefing on the latest in AI and technology."
+PODCAST_DESCRIPTION = "AI Tech Daily is your free daily AI news podcast — 5 minutes of the biggest artificial intelligence and tech news every morning. Stay ahead of AI, machine learning, ChatGPT, OpenAI, Google, and the tech industry. New episode every day, completely free."
 PODCAST_AUTHOR      = "AI Tech Daily"
 PODCAST_EMAIL       = "hunk1.on11@gmail.com"
 PODCAST_LANGUAGE    = "en"

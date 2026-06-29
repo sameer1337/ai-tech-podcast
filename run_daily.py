@@ -56,7 +56,7 @@ def main():
     print("\n>> Step 2/4: Generating podcast script with Claude...")
     script = generate_script(stories)
 
-    episode_title = f"AI Tech Daily — {today.strftime('%B %d, %Y')}"
+    episode_title = f"AI News {today.strftime('%b %d')} — {stories[0]['title'][:50] if stories else 'Top AI Stories'}"
 
     if TEST_MODE:
         print("\n[TEST MODE] Script preview:\n")
