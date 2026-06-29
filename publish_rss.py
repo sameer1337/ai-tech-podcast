@@ -1,105 +1,127 @@
 """
 Step 4 — Maintain the RSS 2.0 feed XML file.
-This feed is hosted on GitHub Pages and submitted once to each podcast platform.
-Platforms poll it daily to pick up new episodes automatically.
+Uses string-based XML building to avoid Python ElementTree namespace issues.
 """
 
 import os
-import xml.etree.ElementTree as ET
+import json
 from datetime import datetime, timezone
-from pathlib import Path
 from config import (
     PODCAST_TITLE, PODCAST_DESCRIPTION, PODCAST_AUTHOR,
     PODCAST_EMAIL, PODCAST_LANGUAGE, PODCAST_CATEGORY,
     PODCAST_IMAGE_URL, PODCAST_WEBSITE_URL, RSS_FILE,
 )
 
-# GitHub Pages base URL for audio files — set this after deploying
-# e.g. "https://yourusername.github.io/ai-tech-podcast/episodes"
 AUDIO_BASE_URL = PODCAST_WEBSITE_URL.rstrip("/") + "/episodes" if PODCAST_WEBSITE_URL else ""
-
-
-def _get_file_size_mb(path: str) -> int:
-    try:
-        return os.path.getsize(path)
-    except FileNotFoundError:
-        return 0
+EPISODES_DB    = "logs/episodes.json"
 
 
 def _rfc822(dt: datetime) -> str:
     return dt.strftime("%a, %d %b %Y %H:%M:%S +0000")
 
 
+def _esc(text: str) -> str:
+    return (text.replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+                .replace('"', "&quot;"))
+
+
+def _load_episodes() -> list:
+    if os.path.exists(EPISODES_DB):
+        with open(EPISODES_DB) as f:
+            return json.load(f)
+    return []
+
+
+def _save_episodes(episodes: list) -> None:
+    os.makedirs("logs", exist_ok=True)
+    with open(EPISODES_DB, "w") as f:
+        json.dump(episodes, f, indent=2)
+
+
+def _build_item(ep: dict) -> str:
+    return f"""
+    <item>
+      <title>{_esc(ep['title'])}</title>
+      <pubDate>{ep['pubDate']}</pubDate>
+      <guid isPermaLink="false">{_esc(ep['guid'])}</guid>
+      <description>{_esc(ep['description'])}</description>
+      <itunes:episode>{ep['number']}</itunes:episode>
+      <itunes:duration>{ep['duration']}</itunes:duration>
+      <enclosure url="{_esc(ep['audio_url'])}" type="audio/mpeg" length="{ep['file_size']}" />
+    </item>"""
+
+
+def _build_feed(episodes: list) -> str:
+    image_block = ""
+    if PODCAST_IMAGE_URL:
+        image_block = f"""
+    <itunes:image href="{_esc(PODCAST_IMAGE_URL)}" />
+    <image>
+      <url>{_esc(PODCAST_IMAGE_URL)}</url>
+      <title>{_esc(PODCAST_TITLE)}</title>
+      <link>{_esc(PODCAST_WEBSITE_URL)}</link>
+    </image>"""
+
+    items = "".join(_build_item(ep) for ep in reversed(episodes))
+
+    return f"""<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>{_esc(PODCAST_TITLE)}</title>
+    <description>{_esc(PODCAST_DESCRIPTION)}</description>
+    <language>{PODCAST_LANGUAGE}</language>
+    <link>{_esc(PODCAST_WEBSITE_URL)}</link>
+    <managingEditor>{_esc(PODCAST_EMAIL)} ({_esc(PODCAST_AUTHOR)})</managingEditor>
+    <itunes:author>{_esc(PODCAST_AUTHOR)}</itunes:author>
+    <itunes:email>{_esc(PODCAST_EMAIL)}</itunes:email>
+    <itunes:category text="{_esc(PODCAST_CATEGORY)}" />
+    <itunes:owner>
+      <itunes:name>{_esc(PODCAST_AUTHOR)}</itunes:name>
+      <itunes:email>{_esc(PODCAST_EMAIL)}</itunes:email>
+    </itunes:owner>
+    <itunes:explicit>false</itunes:explicit>{image_block}
+{items}
+  </channel>
+</rss>"""
+
+
 def update_feed(episode_title: str, audio_filename: str, audio_path: str,
                 episode_number: int, script_excerpt: str) -> None:
-    """Add a new episode to the RSS feed XML."""
-
-    # Load existing feed or create fresh
-    if os.path.exists(RSS_FILE):
-        tree = ET.parse(RSS_FILE)
-        root = tree.getroot()
-        channel = root.find("channel")
-    else:
-        root = ET.Element("rss", {
-            "version": "2.0",
-            "xmlns:itunes": "http://www.itunes.com/dtds/podcast-1.0.dtd",
-            "xmlns:content": "http://purl.org/rss/1.0/modules/content/",
-        })
-        channel = ET.SubElement(root, "channel")
-
-        ET.SubElement(channel, "title").text = PODCAST_TITLE
-        ET.SubElement(channel, "description").text = PODCAST_DESCRIPTION
-        ET.SubElement(channel, "language").text = PODCAST_LANGUAGE
-        ET.SubElement(channel, "link").text = PODCAST_WEBSITE_URL
-        ET.SubElement(channel, "managingEditor").text = f"{PODCAST_EMAIL} ({PODCAST_AUTHOR})"
-        ET.SubElement(channel, "itunes:author").text = PODCAST_AUTHOR
-        ET.SubElement(channel, "itunes:email").text = PODCAST_EMAIL
-        ET.SubElement(channel, "itunes:category", {"text": PODCAST_CATEGORY})
-        if PODCAST_IMAGE_URL:
-            img = ET.SubElement(channel, "itunes:image")
-            img.set("href", PODCAST_IMAGE_URL)
-            # Standard RSS image block
-            image = ET.SubElement(channel, "image")
-            ET.SubElement(image, "url").text = PODCAST_IMAGE_URL
-            ET.SubElement(image, "title").text = PODCAST_TITLE
-            ET.SubElement(image, "link").text = PODCAST_WEBSITE_URL
-
-        owner = ET.SubElement(channel, "itunes:owner")
-        ET.SubElement(owner, "itunes:name").text = PODCAST_AUTHOR
-        ET.SubElement(owner, "itunes:email").text = PODCAST_EMAIL
-
-        tree = ET.ElementTree(root)
-
-    # Build new <item>
+    episodes = _load_episodes()
     now = datetime.now(timezone.utc)
     audio_url = f"{AUDIO_BASE_URL}/{audio_filename}" if AUDIO_BASE_URL else audio_filename
-    file_size = _get_file_size_mb(audio_path)
-    duration_secs = 300  # approximate 5 min; update if you have actual duration
 
-    item = ET.Element("item")
-    ET.SubElement(item, "title").text = episode_title
-    ET.SubElement(item, "pubDate").text = _rfc822(now)
-    ET.SubElement(item, "guid", {"isPermaLink": "false"}).text = f"ep-{episode_number}-{now.strftime('%Y%m%d')}"
-    ET.SubElement(item, "description").text = script_excerpt[:500] + "..."
-    ET.SubElement(item, "itunes:episode").text = str(episode_number)
-    ET.SubElement(item, "itunes:duration").text = str(duration_secs)
-    ET.SubElement(item, "enclosure", {
-        "url":    audio_url,
-        "type":   "audio/mpeg",
-        "length": str(file_size),
+    # Avoid duplicate episodes
+    if any(ep["number"] == episode_number for ep in episodes):
+        print(f"[rss] Episode #{episode_number} already in feed, skipping")
+        return
+
+    episodes.append({
+        "number":      episode_number,
+        "title":       episode_title,
+        "pubDate":     _rfc822(now),
+        "guid":        f"aitechdaily-ep{episode_number}-{now.strftime('%Y%m%d')}",
+        "description": script_excerpt[:500] + "...",
+        "audio_url":   audio_url,
+        "file_size":   os.path.getsize(audio_path) if os.path.exists(audio_path) else 0,
+        "duration":    300,
     })
 
-    # Insert at top (most recent first)
-    channel.insert(list(channel).index(channel.find("title")) + 6, item)
+    # Sort newest first
+    episodes.sort(key=lambda x: x["number"], reverse=True)
 
-    ET.indent(root, space="  ")
-    tree.write(RSS_FILE, encoding="unicode", xml_declaration=True)
-    print(f"[rss] Feed updated → {RSS_FILE}  (episode #{episode_number})")
+    _save_episodes(episodes)
+
+    with open(RSS_FILE, "w", encoding="utf-8") as f:
+        f.write(_build_feed(episodes))
+
+    print(f"[rss] Feed updated -> {RSS_FILE}  (episode #{episode_number})")
 
 
 def get_next_episode_number() -> int:
-    if not os.path.exists(RSS_FILE):
-        return 1
-    tree = ET.parse(RSS_FILE)
-    items = tree.getroot().findall(".//item")
-    return len(items) + 1
+    episodes = _load_episodes()
+    return max((ep["number"] for ep in episodes), default=0) + 1

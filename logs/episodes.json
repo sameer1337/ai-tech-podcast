@@ -1,0 +1,22 @@
+[
+  {
+    "number": 2,
+    "title": "AI News Jun 29 - Cybercriminals exploiting enterprise AI weaknesses",
+    "pubDate": "Mon, 29 Jun 2026 00:07:55 +0000",
+    "guid": "aitechdaily-ep2-20260629",
+    "description": "Your daily briefing on the latest AI and technology news....",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0002_2026-06-29.mp3",
+    "file_size": 1115712,
+    "duration": 300
+  },
+  {
+    "number": 1,
+    "title": "AI News Jun 29 - Prompt injection exploiting enterprise AI",
+    "pubDate": "Mon, 29 Jun 2026 00:07:55 +0000",
+    "guid": "aitechdaily-ep1-20260629",
+    "description": "AI security vulnerabilities, OpenAI new models, and more top AI stories....",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0001_2026-06-29.mp3",
+    "file_size": 1155456,
+    "duration": 300
+  }
+]

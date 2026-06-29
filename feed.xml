@@ -1,41 +1,45 @@
-<?xml version='1.0' encoding='utf-8'?>
-<rss xmlns:ns0="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>AI Tech Daily</title>
-    <description>Your daily 5-minute briefing on the latest in AI and technology.</description>
+    <description>AI Tech Daily is your free daily AI news podcast — 5 minutes of the biggest artificial intelligence and tech news every morning. Stay ahead of AI, machine learning, ChatGPT, OpenAI, Google, and the tech industry. New episode every day, completely free.</description>
     <language>en</language>
     <link>https://sameer1337.github.io/ai-tech-podcast</link>
     <managingEditor>hunk1.on11@gmail.com (AI Tech Daily)</managingEditor>
-    <ns0:author>AI Tech Daily</ns0:author>
-    <item>
-      <title>AI Tech Daily — June 29, 2026</title>
-      <pubDate>Mon, 29 Jun 2026 00:00:38 +0000</pubDate>
-      <guid isPermaLink="false">ep-2-20260629</guid>
-      <description>Cybercriminals have found a way to exploit the weaknesses of enterprise AI, and it's got everyone on high alert. In the past two years, businesses have been rapidly adopting large language models, or LLMs, to boost support, analytics, development, and internal automation. But as it turns out, this rush to integrate AI has created a disconnect between the assumptions about LLMs and their actual characteristics, leaving them vulnerable to attack. This is where prompt injection comes in, a techniqu...</description>
-      <itunes:episode>2</itunes:episode>
-      <itunes:duration>300</itunes:duration>
-      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0002_2026-06-29.mp3" type="audio/mpeg" length="1115712" />
-    </item>
-    <item>
-      <title>AI Tech Daily - June 29, 2026</title>
-      <pubDate>Sun, 28 Jun 2026 23:15:06 +0000</pubDate>
-      <guid isPermaLink="false">ep-1-20260628</guid>
-      <description>Your daily briefing on the latest in AI and technology. Today: AI security vulnerabilities, OpenAI new models, and more....</description>
-      <ns0:episode>1</ns0:episode>
-      <ns0:duration>300</ns0:duration>
-      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1155456" />
-    </item>
-    <ns0:email>hunk1.on11@gmail.com</ns0:email>
-    <ns0:category text="Technology" />
-    <ns0:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png" />
+    <itunes:author>AI Tech Daily</itunes:author>
+    <itunes:email>hunk1.on11@gmail.com</itunes:email>
+    <itunes:category text="Technology" />
+    <itunes:owner>
+      <itunes:name>AI Tech Daily</itunes:name>
+      <itunes:email>hunk1.on11@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png" />
     <image>
       <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover.png</url>
       <title>AI Tech Daily</title>
       <link>https://sameer1337.github.io/ai-tech-podcast</link>
     </image>
-    <ns0:owner>
-      <ns0:name>AI Tech Daily</ns0:name>
-      <ns0:email>hunk1.on11@gmail.com</ns0:email>
-    </ns0:owner>
+
+    <item>
+      <title>AI News Jun 29 - Prompt injection exploiting enterprise AI</title>
+      <pubDate>Mon, 29 Jun 2026 00:07:55 +0000</pubDate>
+      <guid isPermaLink="false">aitechdaily-ep1-20260629</guid>
+      <description>AI security vulnerabilities, OpenAI new models, and more top AI stories....</description>
+      <itunes:episode>1</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1155456" />
+    </item>
+    <item>
+      <title>AI News Jun 29 - Cybercriminals exploiting enterprise AI weaknesses</title>
+      <pubDate>Mon, 29 Jun 2026 00:07:55 +0000</pubDate>
+      <guid isPermaLink="false">aitechdaily-ep2-20260629</guid>
+      <description>Your daily briefing on the latest AI and technology news....</description>
+      <itunes:episode>2</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0002_2026-06-29.mp3" type="audio/mpeg" length="1115712" />
+    </item>
   </channel>
 </rss>
