@@ -155,11 +155,13 @@ def update_feed(episode_title: str, audio_filename: str, audio_path: str,
     print(f"[rss] Feed updated -> {_rss_file}  (episode #{episode_number})")
 
 
-def get_next_episode_number(rss_file: str = None) -> int:
-    niche_id = "ai-tech"
-    if rss_file and rss_file != RSS_FILE:
-        # derive niche id from rss path e.g. feeds/crypto.xml -> crypto
+def get_next_episode_number(rss_file: str = None, niche: dict = None) -> int:
+    if niche:
+        niche_id = niche["id"]
+    elif rss_file and rss_file != RSS_FILE:
         niche_id = os.path.splitext(os.path.basename(rss_file))[0]
+    else:
+        niche_id = "ai-tech"
     db = f"logs/episodes_{niche_id}.json"
     if not os.path.exists(db):
         return 1

@@ -34,7 +34,7 @@ def run_podcast(niche: dict) -> bool:
     date_str = today.strftime("%Y-%m-%d")
 
     # Episode number tracked per-niche
-    ep_num = get_next_episode_number(niche["rss_file"])
+    ep_num = get_next_episode_number(niche["rss_file"], niche=niche)
     audio_dir = niche["output_dir"]
     Path(audio_dir).mkdir(parents=True, exist_ok=True)
 
