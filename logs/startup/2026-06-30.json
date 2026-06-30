@@ -1,0 +1,12 @@
+{
+  "date": "2026-06-30",
+  "episode": 3,
+  "title": "Startup News Jun 30 \u2014 Meituan open sources LongCat-2.0, the 1.6T, n",
+  "stories": [
+    "Meituan open sources LongCat-2.0, the 1.6T, near-frontier agentic coding model that's been leading OpenRouter \u2014 trained entirely on Chinese chips",
+    "DeepSeek open sources DSpark, a new framework to speed up LLM inference by up to 85%",
+    "Chamath Palihapitiya raises $135M Series A for his AI coding startup, takes CEO role",
+    "The attack that hijacked Claude Code came through Sentry. Datadog, PagerDuty, and Jira have the same exposure.",
+    "Arena, the AI leaderboard everyone uses, is now a $100M business"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "date": "2026-06-30",
+  "episode": 3,
+  "title": "AI News Jun 30 \u2014 Meituan open sources LongCat-2.0, the 1.6T, n",
+  "stories": [
+    "Meituan open sources LongCat-2.0, the 1.6T, near-frontier agentic coding model that's been leading OpenRouter \u2014 trained entirely on Chinese chips",
+    "DeepSeek open sources DSpark, a new framework to speed up LLM inference by up to 85%",
+    "Vibe coding platform Base44 launches own model as AI startups seek defensibility",
+    "South Korea to spend $1T on more memory chip production and humanoid robots",
+    "The attack that hijacked Claude Code came through Sentry. Datadog, PagerDuty, and Jira have the same exposure."
+  ]
+}

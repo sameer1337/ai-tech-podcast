@@ -41,5 +41,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0002_2026-06-29.mp3" type="audio/mpeg" length="1191600" />
     </item>
+    <item>
+      <title>Crypto News Jun 30 — Here’s what happened in crypto today</title>
+      <pubDate>Tue, 30 Jun 2026 09:56:46 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep3-20260630</guid>
+      <description>Bitcoin is on the move, and today was no exception, with the crypto market seeing a flurry of activity that's got everyone talking. If you're like most of us, you're probably wondering what happened in crypto today, and the truth is, it's been a wild ride. From daily trends and events impacting Bitcoin price, to the latest developments in blockchain, DeFi, Web3, and crypto regulation, there's been no shortage of news to keep up with. The good news is that despite the volatility, the crypto space...</description>
+      <itunes:episode>3</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0003_2026-06-30.mp3" type="audio/mpeg" length="1127376" />
+    </item>
   </channel>
 </rss>

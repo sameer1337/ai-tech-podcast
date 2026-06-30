@@ -41,5 +41,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0002_2026-06-29.mp3" type="audio/mpeg" length="1053504" />
     </item>
+    <item>
+      <title>Money News Jun 30 — Quant funds just suffered their most cripplin</title>
+      <pubDate>Tue, 30 Jun 2026 09:55:41 +0000</pubDate>
+      <guid isPermaLink="false">finance-ep3-20260630</guid>
+      <description>Quant funds are reeling after their worst trading rout of the year, with momentum stocks taking a beating in the last week, but before you hit the panic button, it's essential to take a step back and look at the bigger picture. Although the recent slump has been painful for quant funds, asset allocators are reminding investors that it's crucial to assess returns over a wider timeframe, and so far in 2026, the sector is still significantly ahead of the S&amp;P 500 and U.S. Treasurys. This is why it m...</description>
+      <itunes:episode>3</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0003_2026-06-30.mp3" type="audio/mpeg" length="1084464" />
+    </item>
   </channel>
 </rss>
