@@ -59,5 +59,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0004_2026-06-30.mp3" type="audio/mpeg" length="1469808" />
     </item>
+    <item>
+      <title>AI Tech Daily | Jun 30 — Meituan open sources LongCat-2.0, the 1.6T, near-f</title>
+      <pubDate>Tue, 30 Jun 2026 21:16:22 +0000</pubDate>
+      <guid isPermaLink="false">ai-tech-ep5-20260630</guid>
+      <description>Imagine a world where coding is no longer a tedious task, but rather a collaborative effort between humans and machines, and a major step towards that reality just happened with Meituan's open-sourcing of LongCat-2.0, a 1.6 trillion parameter agentic coding model that's been leading the charge on OpenRouter. What's significant about LongCat-2.0 is that it was trained entirely on Chinese chips, marking a significant milestone in the country's quest for technological independence. This matters bec...</description>
+      <itunes:episode>5</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0005_2026-06-30.mp3" type="audio/mpeg" length="1263600" />
+    </item>
   </channel>
 </rss>

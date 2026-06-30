@@ -41,5 +41,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/world/ep0002_2026-06-30.mp3" type="audio/mpeg" length="973008" />
     </item>
+    <item>
+      <title>World In 5 | Jun 30 — Police units deployed across South Africa before a</title>
+      <pubDate>Tue, 30 Jun 2026 21:17:37 +0000</pubDate>
+      <guid isPermaLink="false">world-news-ep3-20260630</guid>
+      <description>Racial tensions are simmering in South Africa, where police units have been deployed across the country ahead of anti-immigration marches, sparking fears of a repeat of the deadly violence that erupted in 2008. The authorities are taking no chances, with security personnel patrolling the streets of major cities like Johannesburg, where many shopkeepers have chosen to stay closed today. The marches are planned in response to the presence of undocumented foreign nationals, and the government is ke...</description>
+      <itunes:episode>3</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/world/ep0003_2026-06-30.mp3" type="audio/mpeg" length="1152000" />
+    </item>
   </channel>
 </rss>

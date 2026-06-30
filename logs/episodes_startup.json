@@ -1,5 +1,15 @@
 [
   {
+    "number": 5,
+    "title": "Startup Wire Daily | Jun 30 \u2014 Anthropic launches Claude Sonnet 5 at a steep disc",
+    "pubDate": "Tue, 30 Jun 2026 21:17:10 +0000",
+    "guid": "startup-ep5-20260630",
+    "description": "Anthropic is taking a bold step as it hurtles towards a highly anticipated IPO, and it's doing so with a strategic price cut that could shake up the AI landscape. The company just launched Claude Sonnet 5, a new AI model that boasts near-flagship performance at a significantly lower price point, making it more accessible to cost-conscious enterprise developers. This move is a clear attempt to expand Anthropic's user base and boost revenue as it prepares to face public scrutiny over its valuation...",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0005_2026-06-30.mp3",
+    "file_size": 1145376,
+    "duration": 300
+  },
+  {
     "number": 4,
     "title": "Startup Wire Daily | Jun 30 \u2014 Meituan open sources LongCat-2.0, the 1.6T, near-f",
     "pubDate": "Tue, 30 Jun 2026 11:16:34 +0000",

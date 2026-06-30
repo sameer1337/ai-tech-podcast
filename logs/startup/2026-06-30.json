@@ -1,12 +1,12 @@
 {
   "date": "2026-06-30",
-  "episode": 4,
-  "title": "Startup Wire Daily | Jun 30 \u2014 Meituan open sources LongCat-2.0, the 1.6T, near-f",
+  "episode": 5,
+  "title": "Startup Wire Daily | Jun 30 \u2014 Anthropic launches Claude Sonnet 5 at a steep disc",
   "stories": [
+    "Anthropic launches Claude Sonnet 5 at a steep discount to its top model as the company races toward a blockbuster IPO",
     "Meituan open sources LongCat-2.0, the 1.6T, near-frontier agentic coding model that's been leading OpenRouter \u2014 trained entirely on Chinese chips",
-    "DeepSeek open sources DSpark, a new framework to speed up LLM inference by up to 85%",
-    "Chamath Palihapitiya raises $135M Series A for his AI coding startup, takes CEO role",
-    "The attack that hijacked Claude Code came through Sentry. Datadog, PagerDuty, and Jira have the same exposure.",
-    "Arena, the AI leaderboard everyone uses, is now a $100M business"
+    "Google's Gemini Omni Flash hits the API, turning enterprise video production into a conversation",
+    "Google unveils Nano Banana 2 Lite aka Gemini 3.1 Flash-Lite for low cost, 4-second fast enterprise image generations",
+    "Nvidia competitor Etched hits $5B valuation, $1B in sales for AI chip"
   ]
 }

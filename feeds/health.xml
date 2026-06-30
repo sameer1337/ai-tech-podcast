@@ -59,5 +59,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0004_2026-06-30.mp3" type="audio/mpeg" length="1100448" />
     </item>
+    <item>
+      <title>Health Edge Daily | Jun 30 — Scientists may have finally found how Alzheimer's </title>
+      <pubDate>Tue, 30 Jun 2026 21:16:55 +0000</pubDate>
+      <guid isPermaLink="false">health-ep5-20260630</guid>
+      <description>Imagine waking up one day to find that your memories are fading away, and there's nothing you can do to stop it - that's the harsh reality for millions of people suffering from Alzheimer's disease. But what if scientists have finally cracked the code on how this devastating disease spreads through the brain? A groundbreaking study has revealed that a common brain protein may be the key to unlocking the mystery of Alzheimer's progression. It's believed that this protein carries toxic Tau proteins...</description>
+      <itunes:episode>5</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0005_2026-06-30.mp3" type="audio/mpeg" length="1403568" />
+    </item>
   </channel>
 </rss>

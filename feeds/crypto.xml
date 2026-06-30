@@ -59,5 +59,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0004_2026-06-30.mp3" type="audio/mpeg" length="1165104" />
     </item>
+    <item>
+      <title>Crypto Daily Brief | Jun 30 — Here’s what happened in crypto today</title>
+      <pubDate>Tue, 30 Jun 2026 21:17:25 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep5-20260630</guid>
+      <description>Crypto markets are on high alert today as Bitcoin price volatility reaches a fever pitch, and if you're struggling to keep up with the latest trends and events, you're not alone - the crypto space is moving at lightning speed, with daily trends and events impacting blockchain, DeFi, Web3, and crypto regulation. To get up to speed, let's take a look at the latest news, where we see a mixed bag of developments that are shaping the future of crypto. From Bitcoin price fluctuations to regulatory upd...</description>
+      <itunes:episode>5</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0005_2026-06-30.mp3" type="audio/mpeg" length="1075824" />
+    </item>
   </channel>
 </rss>
