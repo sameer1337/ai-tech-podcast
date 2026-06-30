@@ -62,18 +62,19 @@ def _build_item(ep: dict) -> str:
     </item>"""
 
 
-def _build_feed(episodes: list, title=None, description=None, author=None, category=None) -> str:
+def _build_feed(episodes: list, title=None, description=None, author=None, category=None, image_url=None) -> str:
     title       = title       or PODCAST_TITLE
     description = description or PODCAST_DESCRIPTION
     author      = author      or PODCAST_AUTHOR
     category    = category    or PODCAST_CATEGORY
+    image_url   = image_url   or PODCAST_IMAGE_URL
     image_block = ""
-    if PODCAST_IMAGE_URL:
+    if image_url:
         image_block = f"""
-    <itunes:image href="{_esc(PODCAST_IMAGE_URL)}" />
+    <itunes:image href="{_esc(image_url)}" />
     <image>
-      <url>{_esc(PODCAST_IMAGE_URL)}</url>
-      <title>{_esc(PODCAST_TITLE)}</title>
+      <url>{_esc(image_url)}</url>
+      <title>{_esc(title)}</title>
       <link>{_esc(PODCAST_WEBSITE_URL)}</link>
     </image>"""
 
@@ -145,10 +146,11 @@ def update_feed(episode_title: str, audio_filename: str, audio_path: str,
     feed_desc   = niche["description"] if niche else PODCAST_DESCRIPTION
     feed_author = niche["author"]      if niche else PODCAST_AUTHOR
     feed_cat    = niche["category"]    if niche else PODCAST_CATEGORY
+    feed_image  = niche.get("cover_url", PODCAST_IMAGE_URL) if niche else PODCAST_IMAGE_URL
 
     os.makedirs(os.path.dirname(_rss_file) if os.path.dirname(_rss_file) else ".", exist_ok=True)
     with open(_rss_file, "w", encoding="utf-8") as f:
-        f.write(_build_feed(episodes, feed_title, feed_desc, feed_author, feed_cat))
+        f.write(_build_feed(episodes, feed_title, feed_desc, feed_author, feed_cat, feed_image))
 
     print(f"[rss] Feed updated -> {_rss_file}  (episode #{episode_number})")
 

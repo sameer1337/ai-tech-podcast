@@ -1,13 +1,14 @@
-# ─────────────────────────────────────────────────────────────
-#  All podcast niches — add/remove as needed
+﻿# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+#  All podcast niches â€” add/remove as needed
 #  Each podcast gets its own RSS feed, episode folder, cover art
-# ─────────────────────────────────────────────────────────────
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 PODCASTS = [
     {
+        "cover_url":   "https://sameer1337.github.io/ai-tech-podcast/assets/cover.png",
         "id":          "ai-tech",
         "title":       "AI Tech Daily",
-        "description": "AI Tech Daily is your free daily AI news podcast — 5 minutes of the biggest artificial intelligence and tech news every morning. Stay ahead of AI, machine learning, ChatGPT, OpenAI, Google, and the tech industry. New episode every day, completely free.",
+        "description": "AI Tech Daily is your free daily AI news podcast â€” 5 minutes of the biggest artificial intelligence and tech news every morning. Stay ahead of AI, machine learning, ChatGPT, OpenAI, Google, and the tech industry. New episode every day, completely free.",
         "author":      "AI Tech Daily",
         "category":    "Technology",
         "voice":       "en-US-GuyNeural",
@@ -25,6 +26,7 @@ PODCASTS = [
                      "nvidia", "robot", "automation", "startup", "chip", "model"],
     },
     {
+        "cover_url":   "https://sameer1337.github.io/ai-tech-podcast/assets/cover_finance.png",
         "id":          "finance",
         "title":       "Money Minute Daily",
         "description": "Your free daily 5-minute finance podcast. Stock market, investing, personal finance, and economic news every morning. The smartest 5 minutes for your money.",
@@ -45,6 +47,7 @@ PODCASTS = [
                      "earnings", "profit", "gdp", "dollar", "finance", "fund", "crypto"],
     },
     {
+        "cover_url":   "https://sameer1337.github.io/ai-tech-podcast/assets/cover_health.png",
         "id":          "health",
         "title":       "Health Edge Daily",
         "description": "Daily health and longevity news in 5 minutes. Science-backed health tips, medical breakthroughs, nutrition, fitness, and longevity research every morning.",
@@ -65,6 +68,7 @@ PODCASTS = [
                      "longevity", "brain", "heart", "mental", "vitamin", "disease", "cure"],
     },
     {
+        "cover_url":   "https://sameer1337.github.io/ai-tech-podcast/assets/cover_startup.png",
         "id":          "startup",
         "title":       "Startup Wire Daily",
         "description": "Daily 5-minute startup and venture capital news. Funding rounds, founder stories, product launches, and the business ideas changing the world.",
@@ -85,6 +89,7 @@ PODCASTS = [
                      "ipo", "acquisition", "valuation", "seed", "product", "saas", "billion"],
     },
     {
+        "cover_url":   "https://sameer1337.github.io/ai-tech-podcast/assets/cover_crypto.png",
         "id":          "crypto",
         "title":       "Crypto Daily Brief",
         "description": "Your free daily 5-minute crypto and Web3 news podcast. Bitcoin, Ethereum, DeFi, NFTs, and blockchain news every morning. Stay ahead of the crypto market.",
@@ -105,9 +110,10 @@ PODCASTS = [
                      "token", "wallet", "exchange", "btc", "eth", "solana", "binance"],
     },
     {
+        "cover_url":   "https://sameer1337.github.io/ai-tech-podcast/assets/cover_world.png",
         "id":          "world-news",
         "title":       "World In 5",
-        "description": "The world's top news stories in 5 minutes, every morning. Politics, international affairs, climate, and the events shaping our world — clear, fast, free.",
+        "description": "The world's top news stories in 5 minutes, every morning. Politics, international affairs, climate, and the events shaping our world â€” clear, fast, free.",
         "author":      "World In 5",
         "category":    "News",
         "voice":       "en-GB-SoniaNeural",
@@ -125,9 +131,10 @@ PODCASTS = [
                      "crisis", "treaty", "summit", "sanctions", "protest", "leader"],
     },
     {
+        "cover_url":   "https://sameer1337.github.io/ai-tech-podcast/assets/cover_truecrime.png",
         "id":          "true-crime",
         "title":       "True Crime Digest",
-        "description": "Daily true crime stories in 5 minutes. Real cases, investigations, courtroom drama, and justice served — every morning. The most gripping podcast on your commute.",
+        "description": "Daily true crime stories in 5 minutes. Real cases, investigations, courtroom drama, and justice served â€” every morning. The most gripping podcast on your commute.",
         "author":      "True Crime Digest",
         "category":    "True Crime",
         "voice":       "en-US-JennyNeural",
@@ -148,3 +155,4 @@ PODCASTS = [
 
 # Quick lookup by id
 PODCAST_MAP = {p["id"]: p for p in PODCASTS}
+

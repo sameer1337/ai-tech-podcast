@@ -4,7 +4,7 @@
      xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>True Crime Digest</title>
-    <description>Daily true crime stories in 5 minutes. Real cases, investigations, courtroom drama, and justice served — every morning. The most gripping podcast on your commute.</description>
+    <description>Daily true crime stories in 5 minutes. Real cases, investigations, courtroom drama, and justice served â€” every morning. The most gripping podcast on your commute.</description>
     <language>en</language>
     <link>https://sameer1337.github.io/ai-tech-podcast</link>
     <managingEditor>hunk1.on11@gmail.com (True Crime Digest)</managingEditor>
@@ -19,7 +19,7 @@
     <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png" />
     <image>
       <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover.png</url>
-      <title>AI Tech Daily</title>
+      <title>True Crime Digest</title>
       <link>https://sameer1337.github.io/ai-tech-podcast</link>
     </image>
 

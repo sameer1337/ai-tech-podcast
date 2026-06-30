@@ -30,15 +30,15 @@ def _score(entry) -> float:
     return score
 
 
-# Regional/local news to filter out globally
+# Only filter hyper-local Pakistani city/provincial news — not country-level world news
 REGIONAL_FILTER = {
-    "pakistan", "karachi", "lahore", "islamabad", "punjab", "sindh",
-    "india", "bangladesh", "sri lanka", "nepal",
-    "afghan", "taliban",
-    "nigerian", "kenyan", "ethiopian",
+    "karachi", "lahore", "islamabad", "rawalpindi", "peshawar",
+    "punjab cm", "sindh cm", "pti rally", "imran khan arrested",
+    "pakistan rupee", "pakistan cricket",
 }
 
-def _fetch(feeds: list, keywords: list, max_per_feed: int = 5, top_n: int = 5) -> list[dict]:
+def _fetch(feeds: list, keywords: list, max_per_feed: int = 8, top_n: int = 5,
+           regional_filter: bool = True) -> list[dict]:
     kw_set = set(keywords)
     stories = []
 
@@ -51,8 +51,8 @@ def _fetch(feeds: list, keywords: list, max_per_feed: int = 5, top_n: int = 5) -
                 summary = (entry.get("summary") or entry.get("description") or "").lower()
                 text    = title + " " + summary
 
-                # Skip regional/local news not relevant to global audience
-                if any(region in text for region in REGIONAL_FILTER):
+                # Only filter very local Pakistani news
+                if regional_filter and any(region in text for region in REGIONAL_FILTER):
                     continue
 
                 score   = sum(1 for kw in kw_set if kw in text)
@@ -100,7 +100,8 @@ def fetch_stories() -> list[dict]:
 
 def fetch_stories_for_niche(niche: dict) -> list[dict]:
     """Fetch stories for a specific niche config from niches.py."""
-    return _fetch(niche["feeds"], niche.get("keywords", []), MAX_ITEMS_PER_FEED, TOP_STORIES)
+    return _fetch(niche["feeds"], niche.get("keywords", []),
+                  max_per_feed=10, top_n=TOP_STORIES, regional_filter=True)
 
 
 AI_KEYWORDS = {

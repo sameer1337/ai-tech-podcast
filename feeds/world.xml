@@ -4,7 +4,7 @@
      xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>World In 5</title>
-    <description>The world's top news stories in 5 minutes, every morning. Politics, international affairs, climate, and the events shaping our world — clear, fast, free.</description>
+    <description>The world's top news stories in 5 minutes, every morning. Politics, international affairs, climate, and the events shaping our world â€” clear, fast, free.</description>
     <language>en</language>
     <link>https://sameer1337.github.io/ai-tech-podcast</link>
     <managingEditor>hunk1.on11@gmail.com (World In 5)</managingEditor>
@@ -19,7 +19,7 @@
     <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png" />
     <image>
       <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover.png</url>
-      <title>AI Tech Daily</title>
+      <title>World In 5</title>
       <link>https://sameer1337.github.io/ai-tech-podcast</link>
     </image>
 
