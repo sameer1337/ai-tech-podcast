@@ -16,9 +16,9 @@
       <itunes:email>hunk1.on11@gmail.com</itunes:email>
     </itunes:owner>
     <itunes:explicit>false</itunes:explicit>
-    <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png" />
+    <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover_crypto.png" />
     <image>
-      <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover.png</url>
+      <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover_crypto.png</url>
       <title>Crypto Daily Brief</title>
       <link>https://sameer1337.github.io/ai-tech-podcast</link>
     </image>
@@ -49,6 +49,15 @@
       <itunes:episode>3</itunes:episode>
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0003_2026-06-30.mp3" type="audio/mpeg" length="1127376" />
+    </item>
+    <item>
+      <title>Crypto Daily Brief | Jun 30 — Here’s what happened in crypto today</title>
+      <pubDate>Tue, 30 Jun 2026 11:16:46 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep4-20260630</guid>
+      <description>A wild ride in the world of crypto today, with markets taking a hit and major players making moves that will have significant implications for the future of this space. To keep you up to speed, let's dive into the latest news and trends that are making waves. The top story today is all about the current state of crypto, with Bitcoin price, blockchain, DeFi, Web3, and crypto regulation all being impacted by daily trends and events. It's essential to stay informed about these developments, as they...</description>
+      <itunes:episode>4</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0004_2026-06-30.mp3" type="audio/mpeg" length="1165104" />
     </item>
   </channel>
 </rss>

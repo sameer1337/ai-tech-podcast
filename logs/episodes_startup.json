@@ -1,5 +1,15 @@
 [
   {
+    "number": 4,
+    "title": "Startup Wire Daily | Jun 30 \u2014 Meituan open sources LongCat-2.0, the 1.6T, near-f",
+    "pubDate": "Tue, 30 Jun 2026 11:16:34 +0000",
+    "guid": "startup-ep4-20260630",
+    "description": "In a stunning move that's set to democratize access to cutting-edge AI technology, Meituan has just open-sourced LongCat-2.0, its 1.6T near-frontier agentic coding model that's been leading the charge on OpenRouter. This is huge, because LongCat-2.0 has been trained entirely on Chinese chips, marking a significant milestone in the country's efforts to reduce its dependence on foreign technology. By open-sourcing this model, Meituan is essentially handing over the keys to a powerful tool that can...",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0004_2026-06-30.mp3",
+    "file_size": 1312704,
+    "duration": 300
+  },
+  {
     "number": 3,
     "title": "Startup News Jun 30 \u2014 Meituan open sources LongCat-2.0, the 1.6T, n",
     "pubDate": "Tue, 30 Jun 2026 09:56:31 +0000",

@@ -16,9 +16,9 @@
       <itunes:email>hunk1.on11@gmail.com</itunes:email>
     </itunes:owner>
     <itunes:explicit>false</itunes:explicit>
-    <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png" />
+    <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover_health.png" />
     <image>
-      <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover.png</url>
+      <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover_health.png</url>
       <title>Health Edge Daily</title>
       <link>https://sameer1337.github.io/ai-tech-podcast</link>
     </image>
@@ -49,6 +49,15 @@
       <itunes:episode>3</itunes:episode>
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/health/ep0003_2026-06-30.mp3" type="audio/mpeg" length="1652688" />
+    </item>
+    <item>
+      <title>Health Edge Daily | Jun 30 — Scientists may have finally found how Alzheimer's </title>
+      <pubDate>Tue, 30 Jun 2026 11:16:12 +0000</pubDate>
+      <guid isPermaLink="false">health-ep4-20260630</guid>
+      <description>Imagine waking up one day to find that your memories are fading away, like sand slipping through your fingers, and there's nothing you can do to stop it - that's the harsh reality of Alzheimer's disease, a condition that affects millions of people worldwide. But what if scientists have finally found a way to slow down its relentless progression? Researchers have made a groundbreaking discovery that a common brain protein may be giving Alzheimer's an unexpected way to spread, carrying toxic Tau p...</description>
+      <itunes:episode>4</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/health/ep0004_2026-06-30.mp3" type="audio/mpeg" length="1100448" />
     </item>
   </channel>
 </rss>

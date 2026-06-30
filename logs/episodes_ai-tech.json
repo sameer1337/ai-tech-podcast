@@ -1,5 +1,15 @@
 [
   {
+    "number": 4,
+    "title": "AI Tech Daily | Jun 30 \u2014 Meituan open sources LongCat-2.0, the 1.6T, near-f",
+    "pubDate": "Tue, 30 Jun 2026 11:15:48 +0000",
+    "guid": "ai-tech-ep4-20260630",
+    "description": "Imagine a world where artificial intelligence is no longer controlled by a select few, but is open to everyone, and a major player in the Chinese tech scene just made a huge step towards making that a reality. Meituan, the company behind the popular Chinese delivery app, has just open-sourced its LongCat-2.0 model, a 1.6 trillion parameter agentic coding model that's been leading the OpenRouter platform. This is a massive deal, not just because of the model's impressive capabilities, but also be...",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0004_2026-06-30.mp3",
+    "file_size": 1469808,
+    "duration": 300
+  },
+  {
     "number": 3,
     "title": "AI News Jun 30 \u2014 Meituan open sources LongCat-2.0, the 1.6T, n",
     "pubDate": "Tue, 30 Jun 2026 09:55:27 +0000",

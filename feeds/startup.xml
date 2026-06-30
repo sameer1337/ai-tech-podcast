@@ -16,9 +16,9 @@
       <itunes:email>hunk1.on11@gmail.com</itunes:email>
     </itunes:owner>
     <itunes:explicit>false</itunes:explicit>
-    <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png" />
+    <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover_startup.png" />
     <image>
-      <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover.png</url>
+      <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover_startup.png</url>
       <title>Startup Wire Daily</title>
       <link>https://sameer1337.github.io/ai-tech-podcast</link>
     </image>
@@ -49,6 +49,15 @@
       <itunes:episode>3</itunes:episode>
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0003_2026-06-30.mp3" type="audio/mpeg" length="1304208" />
+    </item>
+    <item>
+      <title>Startup Wire Daily | Jun 30 — Meituan open sources LongCat-2.0, the 1.6T, near-f</title>
+      <pubDate>Tue, 30 Jun 2026 11:16:34 +0000</pubDate>
+      <guid isPermaLink="false">startup-ep4-20260630</guid>
+      <description>In a stunning move that's set to democratize access to cutting-edge AI technology, Meituan has just open-sourced LongCat-2.0, its 1.6T near-frontier agentic coding model that's been leading the charge on OpenRouter. This is huge, because LongCat-2.0 has been trained entirely on Chinese chips, marking a significant milestone in the country's efforts to reduce its dependence on foreign technology. By open-sourcing this model, Meituan is essentially handing over the keys to a powerful tool that can...</description>
+      <itunes:episode>4</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0004_2026-06-30.mp3" type="audio/mpeg" length="1312704" />
     </item>
   </channel>
 </rss>
