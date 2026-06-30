@@ -28,7 +28,8 @@ for niche in PODCASTS:
     rss = niche["rss_file"]
     os.makedirs(os.path.dirname(rss) if os.path.dirname(rss) else ".", exist_ok=True)
 
+    cover = f"{BASE}/{COVERS.get(pid, 'assets/cover.png')}"
     with open(rss, "w", encoding="utf-8") as f:
         f.write(_build_feed(episodes, niche["title"], niche["description"],
-                            niche["author"], niche["category"]))
+                            niche["author"], niche["category"], cover))
     print(f"[rss] Rebuilt {rss} for {pid}")
