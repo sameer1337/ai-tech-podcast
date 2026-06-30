@@ -30,7 +30,7 @@
       <description>The AI revolution is in full swing, but a dark cloud is looming over the enterprise AI landscape - hackers have discovered a way to exploit the biggest design flaws in large language models, and it's got everyone on high alert. In the past two years, businesses have been rushing to integrate AI into every aspect of their operations, from support and analytics to development and automation. But as it turns out, this rapid adoption has also created a slew of new vulnerabilities that cybercriminals...</description>
       <itunes:episode>1</itunes:episode>
       <itunes:duration>300</itunes:duration>
-      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1147824" />
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1147824" />
     </item>
     <item>
       <title>AI News Jun 29 — Prompt injection is exploiting enterprise AI'</title>
@@ -39,7 +39,7 @@
       <description>Imagine a world where the most powerful AI systems are being exploited by cybercriminals, targeting the very heart of enterprise AI - that's the reality we're facing today. In the past two years, businesses have been rapidly adopting large language models, or LLMs, to fit into support, analytics, development, and internal automation, but along with this adoption, a new trend has emerged: cybercriminals are taking advantage of the disconnect between assumptions about LLMs and their actual charact...</description>
       <itunes:episode>2</itunes:episode>
       <itunes:duration>300</itunes:duration>
-      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0002_2026-06-29.mp3" type="audio/mpeg" length="1350144" />
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0002_2026-06-29.mp3" type="audio/mpeg" length="1350144" />
     </item>
     <item>
       <title>AI News Jun 30 — Meituan open sources LongCat-2.0, the 1.6T, n</title>
@@ -48,7 +48,7 @@
       <description>Imagine a world where AI models are no longer controlled by a select few, but are free for anyone to use and improve. That world just got a whole lot closer, thanks to Chinese delivery app company Meituan, which has just open-sourced its LongCat-2.0 model. This 1.6T near-frontier agentic coding model has been leading the way on OpenRouter, and the fact that it was trained entirely on Chinese chips is a significant milestone. It shows that countries like China are making strides in AI development...</description>
       <itunes:episode>3</itunes:episode>
       <itunes:duration>300</itunes:duration>
-      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0003_2026-06-30.mp3" type="audio/mpeg" length="1183536" />
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0003_2026-06-30.mp3" type="audio/mpeg" length="1183536" />
     </item>
     <item>
       <title>AI Tech Daily | Jun 30 — Meituan open sources LongCat-2.0, the 1.6T, near-f</title>
@@ -57,7 +57,7 @@
       <description>Imagine a world where artificial intelligence is no longer controlled by a select few, but is open to everyone, and a major player in the Chinese tech scene just made a huge step towards making that a reality. Meituan, the company behind the popular Chinese delivery app, has just open-sourced its LongCat-2.0 model, a 1.6 trillion parameter agentic coding model that's been leading the OpenRouter platform. This is a massive deal, not just because of the model's impressive capabilities, but also be...</description>
       <itunes:episode>4</itunes:episode>
       <itunes:duration>300</itunes:duration>
-      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/ep0004_2026-06-30.mp3" type="audio/mpeg" length="1469808" />
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0004_2026-06-30.mp3" type="audio/mpeg" length="1469808" />
     </item>
   </channel>
 </rss>

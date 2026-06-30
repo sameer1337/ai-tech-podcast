@@ -30,7 +30,7 @@
       <description>The AI revolution is in full swing, but with great power comes great vulnerability, and the latest trend in cybercrime is targeting the very foundation of enterprise AI - by exploiting design flaws in large language models, or LLMs, and going after agents, RAG pipelines, and model routers. In the past two years, businesses have been scrambling to integrate LLMs into support, analytics, development, and internal automation, but it's clear that cybercriminals are taking advantage of the disconnect...</description>
       <itunes:episode>1</itunes:episode>
       <itunes:duration>300</itunes:duration>
-      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1614096" />
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0001_2026-06-29.mp3" type="audio/mpeg" length="1614096" />
     </item>
     <item>
       <title>Startup News Jun 29 — Prompt injection is exploiting enterprise AI'</title>
@@ -39,7 +39,7 @@
       <description>The AI revolution is in full swing, but with great power comes great vulnerability, and we're seeing a whole new wave of cyber threats targeting the enterprise AI's biggest design flaws. In the past two years, businesses have been rapidly adopting large language models, or LLMs, to boost support, analytics, development, and internal automation. However, this trend has also led to a surge in prompt injection attacks, which exploit the disconnect between assumptions about LLMs and their actual cha...</description>
       <itunes:episode>2</itunes:episode>
       <itunes:duration>300</itunes:duration>
-      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0002_2026-06-29.mp3" type="audio/mpeg" length="1977408" />
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0002_2026-06-29.mp3" type="audio/mpeg" length="1977408" />
     </item>
     <item>
       <title>Startup News Jun 30 — Meituan open sources LongCat-2.0, the 1.6T, n</title>
@@ -48,7 +48,7 @@
       <description>In a shocking move that's sending shockwaves through the tech world, Chinese delivery app company Meituan just open-sourced its groundbreaking model, LongCat-2.0, a 1.6T, near-frontier agentic coding model that's been leading OpenRouter. This is huge, because LongCat-2.0 has been trained entirely on Chinese chips, a clear indication that China is rapidly closing the gap with the US in the AI race. By open-sourcing this model, Meituan is not only disrupting the closed-source enterprise dominance ...</description>
       <itunes:episode>3</itunes:episode>
       <itunes:duration>300</itunes:duration>
-      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0003_2026-06-30.mp3" type="audio/mpeg" length="1304208" />
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0003_2026-06-30.mp3" type="audio/mpeg" length="1304208" />
     </item>
     <item>
       <title>Startup Wire Daily | Jun 30 — Meituan open sources LongCat-2.0, the 1.6T, near-f</title>
@@ -57,7 +57,7 @@
       <description>In a stunning move that's set to democratize access to cutting-edge AI technology, Meituan has just open-sourced LongCat-2.0, its 1.6T near-frontier agentic coding model that's been leading the charge on OpenRouter. This is huge, because LongCat-2.0 has been trained entirely on Chinese chips, marking a significant milestone in the country's efforts to reduce its dependence on foreign technology. By open-sourcing this model, Meituan is essentially handing over the keys to a powerful tool that can...</description>
       <itunes:episode>4</itunes:episode>
       <itunes:duration>300</itunes:duration>
-      <enclosure url="https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0004_2026-06-30.mp3" type="audio/mpeg" length="1312704" />
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0004_2026-06-30.mp3" type="audio/mpeg" length="1312704" />
     </item>
   </channel>
 </rss>

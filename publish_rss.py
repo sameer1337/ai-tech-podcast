@@ -12,8 +12,18 @@ from config import (
     PODCAST_IMAGE_URL, PODCAST_WEBSITE_URL, RSS_FILE,
 )
 
-AUDIO_BASE_URL = PODCAST_WEBSITE_URL.rstrip("/") + "/episodes" if PODCAST_WEBSITE_URL else ""
-EPISODES_DB    = "logs/episodes.json"
+AUDIO_BASE_URL  = PODCAST_WEBSITE_URL.rstrip("/") + "/episodes" if PODCAST_WEBSITE_URL else ""
+EPISODES_DB     = "logs/episodes.json"
+PODTRAC_PREFIX  = "https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes"
+
+
+def _podtrac_url(audio_url: str) -> str:
+    """Wrap a GitHub Pages audio URL with Podtrac redirect for analytics."""
+    marker = "github.io/ai-tech-podcast/episodes"
+    if marker in audio_url:
+        path = audio_url.split(marker)[1]
+        return f"https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes{path}"
+    return audio_url
 
 
 def _rfc822(dt: datetime) -> str:
@@ -50,6 +60,7 @@ def _save_episodes(episodes: list, rss_file: str = None) -> None:
 
 
 def _build_item(ep: dict) -> str:
+    tracked_url = _podtrac_url(ep['audio_url'])
     return f"""
     <item>
       <title>{_esc(ep['title'])}</title>
@@ -58,7 +69,7 @@ def _build_item(ep: dict) -> str:
       <description>{_esc(ep['description'])}</description>
       <itunes:episode>{ep['number']}</itunes:episode>
       <itunes:duration>{ep['duration']}</itunes:duration>
-      <enclosure url="{_esc(ep['audio_url'])}" type="audio/mpeg" length="{ep['file_size']}" />
+      <enclosure url="{_esc(tracked_url)}" type="audio/mpeg" length="{ep['file_size']}" />
     </item>"""
 
 
