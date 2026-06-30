@@ -36,4 +36,5 @@ jobs:
           git config user.email "hunk1.on11@gmail.com"
           git add episodes/ feeds/ feed.xml logs/
           git diff --staged --quiet || git commit -m "All episodes $(date +%Y-%m-%d)"
+          git pull --rebase origin master
           git push
