@@ -30,6 +30,14 @@ def _score(entry) -> float:
     return score
 
 
+# Regional/local news to filter out globally
+REGIONAL_FILTER = {
+    "pakistan", "karachi", "lahore", "islamabad", "punjab", "sindh",
+    "india", "bangladesh", "sri lanka", "nepal",
+    "afghan", "taliban",
+    "nigerian", "kenyan", "ethiopian",
+}
+
 def _fetch(feeds: list, keywords: list, max_per_feed: int = 5, top_n: int = 5) -> list[dict]:
     kw_set = set(keywords)
     stories = []
@@ -42,6 +50,11 @@ def _fetch(feeds: list, keywords: list, max_per_feed: int = 5, top_n: int = 5) -
                 title   = (entry.get("title") or "").lower()
                 summary = (entry.get("summary") or entry.get("description") or "").lower()
                 text    = title + " " + summary
+
+                # Skip regional/local news not relevant to global audience
+                if any(region in text for region in REGIONAL_FILTER):
+                    continue
+
                 score   = sum(1 for kw in kw_set if kw in text)
 
                 published = entry.get("published_parsed")

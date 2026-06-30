@@ -53,7 +53,8 @@ def run_podcast(niche: dict) -> bool:
     print(">> Step 2/4: Generating script...")
     script = generate_script_for_niche(stories, niche)
 
-    episode_title = f"{niche['title'].split()[0]} News {today.strftime('%b %d')} — {stories[0]['title'][:45]}"
+    top_story = stories[0]['title'][:50] if stories else "Top Stories"
+    episode_title = f"{niche['title']} | {today.strftime('%b %d')} — {top_story}"
 
     if TEST_MODE:
         print(f"\n[TEST] {episode_title}")

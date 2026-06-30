@@ -27,16 +27,25 @@ def _esc(text: str) -> str:
                 .replace('"', "&quot;"))
 
 
-def _load_episodes() -> list:
-    if os.path.exists(EPISODES_DB):
-        with open(EPISODES_DB) as f:
+def _db_path(rss_file: str = None) -> str:
+    """Each niche gets its own episode DB derived from its RSS filename."""
+    if rss_file and rss_file != RSS_FILE:
+        base = os.path.splitext(os.path.basename(rss_file))[0]
+        return f"logs/episodes_{base}.json"
+    return EPISODES_DB
+
+
+def _load_episodes(rss_file: str = None) -> list:
+    path = _db_path(rss_file)
+    if os.path.exists(path):
+        with open(path) as f:
             return json.load(f)
     return []
 
 
-def _save_episodes(episodes: list) -> None:
+def _save_episodes(episodes: list, rss_file: str = None) -> None:
     os.makedirs("logs", exist_ok=True)
-    with open(EPISODES_DB, "w") as f:
+    with open(_db_path(rss_file), "w") as f:
         json.dump(episodes, f, indent=2)
 
 
