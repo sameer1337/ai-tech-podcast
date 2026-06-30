@@ -3,101 +3,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Tech Daily — Free Daily AI News Podcast</title>
-  <meta name="description" content="AI Tech Daily: your free 5-minute daily AI news podcast. The biggest artificial intelligence, machine learning, and tech news every morning. Listen on Spotify, Apple Podcasts & more.">
-  <meta name="keywords" content="AI news podcast, artificial intelligence podcast, daily tech news, AI podcast 2026, machine learning news, ChatGPT news, OpenAI news, free AI podcast">
-
-  <!-- Open Graph (for sharing on social media) -->
-  <meta property="og:title" content="AI Tech Daily — Free Daily AI News Podcast">
-  <meta property="og:description" content="5 minutes of the biggest AI and tech news, every morning. Free. Automated. Always fresh.">
+  <title>Daily Podcast Network — 7 Free Podcasts, Updated Every Day</title>
+  <meta name="description" content="7 free daily podcasts covering AI, finance, health, crypto, startups, world news, and true crime. 5 minutes every morning. Free forever.">
+  <meta property="og:title" content="Daily Podcast Network">
+  <meta property="og:description" content="7 free daily podcasts. 5 minutes every morning.">
   <meta property="og:image" content="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png">
   <meta property="og:url" content="https://sameer1337.github.io/ai-tech-podcast/">
-  <meta property="og:type" content="website">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AI Tech Daily Podcast">
-  <meta name="twitter:description" content="Free daily AI news in 5 minutes. New episode every morning.">
-  <meta name="twitter:image" content="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png">
-
-  <!-- Podcast Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "PodcastSeries",
-    "name": "AI Tech Daily",
-    "description": "Your free daily 5-minute AI and technology news podcast.",
-    "url": "https://sameer1337.github.io/ai-tech-podcast/",
-    "image": "https://sameer1337.github.io/ai-tech-podcast/assets/cover.png",
-    "author": {"@type": "Person", "name": "AI Tech Daily"},
-    "inLanguage": "en",
-    "genre": "Technology",
-    "webFeed": "https://sameer1337.github.io/ai-tech-podcast/feed.xml"
-  }
-  </script>
-
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0f; color: #fff; }
-    .hero { text-align: center; padding: 80px 20px 60px; background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2e 100%); }
-    .cover { width: 200px; height: 200px; border-radius: 16px; box-shadow: 0 20px 60px rgba(100,50,255,0.4); margin-bottom: 30px; }
-    h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 16px; background: linear-gradient(135deg, #fff, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .tagline { font-size: 1.2rem; color: #a0a0b0; margin-bottom: 40px; }
-    .badges { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; }
-    .badge { display: inline-flex; align-items: center; gap: 8px; background: #1e1e2e; border: 1px solid #333; padding: 12px 24px; border-radius: 50px; font-weight: 600; text-decoration: none; color: #fff; transition: all 0.2s; }
-    .badge:hover { background: #2e2e4e; border-color: #7c3aed; transform: translateY(-2px); }
-    .badge.spotify { border-color: #1DB954; }
-    .badge.rss { border-color: #f97316; }
-    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; max-width: 800px; margin: 0 auto; padding: 0 20px 80px; }
-    .feature { background: #1e1e2e; border: 1px solid #2e2e4e; border-radius: 12px; padding: 24px; text-align: center; }
-    .feature .icon { font-size: 2rem; margin-bottom: 12px; }
-    .feature h3 { font-size: 1rem; margin-bottom: 8px; }
-    .feature p { font-size: 0.85rem; color: #a0a0b0; }
-    footer { text-align: center; padding: 20px; color: #555; font-size: 0.8rem; border-top: 1px solid #1e1e2e; }
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    body{ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:#080810; color:#fff; }
+    a{ color:inherit; text-decoration:none; }
+
+    header{
+      text-align:center; padding:60px 20px 50px;
+      background:linear-gradient(180deg, #0f0520 0%, #080810 100%);
+      border-bottom:1px solid #ffffff10;
+    }
+    header h1{ font-size:2.8rem; font-weight:900; margin-bottom:14px;
+      background:linear-gradient(135deg,#fff 0%,#a78bfa 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    header p{ color:#888; font-size:1.1rem; max-width:500px; margin:0 auto 30px; line-height:1.6; }
+    .header-stats{ display:flex; gap:32px; justify-content:center; flex-wrap:wrap; }
+    .hstat{ text-align:center; }
+    .hstat-num{ font-size:1.8rem; font-weight:800; color:#a78bfa; }
+    .hstat-label{ font-size:0.8rem; color:#666; margin-top:2px; }
+
+    .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:24px; max-width:1100px; margin:50px auto; padding:0 24px; }
+
+    .card{
+      background:#0f0f1f; border:1px solid #ffffff10; border-radius:16px;
+      overflow:hidden; transition:all 0.25s; display:flex; flex-direction:column;
+    }
+    .card:hover{ border-color:var(--accent); transform:translateY(-4px); box-shadow:0 16px 40px var(--accent)22; }
+    .card-cover{ width:100%; height:180px; object-fit:cover; }
+    .card-body{ padding:20px; flex:1; display:flex; flex-direction:column; }
+    .card-icon{ font-size:1.6rem; margin-bottom:8px; }
+    .card-body h3{ font-size:1.1rem; font-weight:700; margin-bottom:8px; color:#fff; }
+    .card-body p{ font-size:0.85rem; color:#888; line-height:1.6; flex:1; }
+    .card-meta{ display:flex; align-items:center; justify-content:space-between; margin-top:16px; }
+    .ep-count{ font-size:0.8rem; color:#555; }
+    .daily-badge{ font-size:0.75rem; color:var(--text); font-weight:600; }
+
+    footer{ text-align:center; padding:30px; color:#333; font-size:0.8rem; border-top:1px solid #ffffff08; margin-top:40px; }
+
+    @media(max-width:500px){ header h1{ font-size:1.8rem; } }
   </style>
 </head>
 <body>
 
-<div class="hero">
-  <img src="assets/cover.png" alt="AI Tech Daily Podcast Cover Art" class="cover">
-  <h1>AI Tech Daily</h1>
-  <p class="tagline">5 minutes of the biggest AI & tech news — every morning, completely free.</p>
+<header>
+  <h1>🎙️ Daily Podcast Network</h1>
+  <p>7 free daily podcasts. 5 minutes every morning.<br>AI-generated. Always fresh. Always free.</p>
+  <div class="header-stats">
+    <div class="hstat"><div class="hstat-num">7</div><div class="hstat-label">Podcasts</div></div>
+    <div class="hstat"><div class="hstat-num">Daily</div><div class="hstat-label">New Episodes</div></div>
+    <div class="hstat"><div class="hstat-num">5 min</div><div class="hstat-label">Per Episode</div></div>
+    <div class="hstat"><div class="hstat-num">Free</div><div class="hstat-label">Forever</div></div>
+  </div>
+</header>
 
-  <div class="badges">
-    <a href="https://open.spotify.com/show/" class="badge spotify">
-      🎵 Listen on Spotify
-    </a>
-    <a href="feed.xml" class="badge rss">
-      📡 RSS Feed
-    </a>
-  </div>
-</div>
-
-<div class="features">
-  <div class="feature">
-    <div class="icon">🤖</div>
-    <h3>AI-Powered</h3>
-    <p>Script written by AI from the top tech news sources daily</p>
-  </div>
-  <div class="feature">
-    <div class="icon">⏱️</div>
-    <h3>5 Minutes</h3>
-    <p>Concise daily briefing — everything that matters, nothing that doesn't</p>
-  </div>
-  <div class="feature">
-    <div class="icon">📅</div>
-    <h3>Every Day</h3>
-    <p>New episode published automatically every morning</p>
-  </div>
-  <div class="feature">
-    <div class="icon">🆓</div>
-    <h3>Always Free</h3>
-    <p>No subscription, no paywalls, no ads (yet)</p>
-  </div>
+<div class="grid">
+  
+      <a href="podcasts/ai-tech/" class="card" style="--accent:#7c3aed;--text:#a78bfa;">
+        <img src="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png" alt="AI Tech Daily" class="card-cover">
+        <div class="card-body">
+          <div class="card-icon">🤖</div>
+          <h3>AI Tech Daily</h3>
+          <p>AI Tech Daily is your free daily AI news podcast â€” 5 minutes of the biggest artificial intelligenc...</p>
+          <div class="card-meta">
+            <span class="ep-count">4 episodes</span>
+            <span class="daily-badge">● Daily</span>
+          </div>
+        </div>
+      </a>
+      <a href="podcasts/finance/" class="card" style="--accent:#16a34a;--text:#4ade80;">
+        <img src="https://sameer1337.github.io/ai-tech-podcast/assets/cover_finance.png" alt="Money Minute Daily" class="card-cover">
+        <div class="card-body">
+          <div class="card-icon">💰</div>
+          <h3>Money Minute Daily</h3>
+          <p>Your free daily 5-minute finance podcast. Stock market, investing, personal finance, and economic ne...</p>
+          <div class="card-meta">
+            <span class="ep-count">4 episodes</span>
+            <span class="daily-badge">● Daily</span>
+          </div>
+        </div>
+      </a>
+      <a href="podcasts/health/" class="card" style="--accent:#0891b2;--text:#22d3ee;">
+        <img src="https://sameer1337.github.io/ai-tech-podcast/assets/cover_health.png" alt="Health Edge Daily" class="card-cover">
+        <div class="card-body">
+          <div class="card-icon">🧬</div>
+          <h3>Health Edge Daily</h3>
+          <p>Daily health and longevity news in 5 minutes. Science-backed health tips, medical breakthroughs, nut...</p>
+          <div class="card-meta">
+            <span class="ep-count">4 episodes</span>
+            <span class="daily-badge">● Daily</span>
+          </div>
+        </div>
+      </a>
+      <a href="podcasts/startup/" class="card" style="--accent:#9333ea;--text:#c084fc;">
+        <img src="https://sameer1337.github.io/ai-tech-podcast/assets/cover_startup.png" alt="Startup Wire Daily" class="card-cover">
+        <div class="card-body">
+          <div class="card-icon">🚀</div>
+          <h3>Startup Wire Daily</h3>
+          <p>Daily 5-minute startup and venture capital news. Funding rounds, founder stories, product launches, ...</p>
+          <div class="card-meta">
+            <span class="ep-count">4 episodes</span>
+            <span class="daily-badge">● Daily</span>
+          </div>
+        </div>
+      </a>
+      <a href="podcasts/crypto/" class="card" style="--accent:#d97706;--text:#fbbf24;">
+        <img src="https://sameer1337.github.io/ai-tech-podcast/assets/cover_crypto.png" alt="Crypto Daily Brief" class="card-cover">
+        <div class="card-body">
+          <div class="card-icon">₿</div>
+          <h3>Crypto Daily Brief</h3>
+          <p>Your free daily 5-minute crypto and Web3 news podcast. Bitcoin, Ethereum, DeFi, NFTs, and blockchain...</p>
+          <div class="card-meta">
+            <span class="ep-count">4 episodes</span>
+            <span class="daily-badge">● Daily</span>
+          </div>
+        </div>
+      </a>
+      <a href="podcasts/world-news/" class="card" style="--accent:#1d4ed8;--text:#60a5fa;">
+        <img src="https://sameer1337.github.io/ai-tech-podcast/assets/cover_world.png" alt="World In 5" class="card-cover">
+        <div class="card-body">
+          <div class="card-icon">🌍</div>
+          <h3>World In 5</h3>
+          <p>The world's top news stories in 5 minutes, every morning. Politics, international affairs, climate, ...</p>
+          <div class="card-meta">
+            <span class="ep-count">2 episodes</span>
+            <span class="daily-badge">● Daily</span>
+          </div>
+        </div>
+      </a>
+      <a href="podcasts/true-crime/" class="card" style="--accent:#dc2626;--text:#f87171;">
+        <img src="https://sameer1337.github.io/ai-tech-podcast/assets/cover_truecrime.png" alt="True Crime Digest" class="card-cover">
+        <div class="card-body">
+          <div class="card-icon">🔍</div>
+          <h3>True Crime Digest</h3>
+          <p>Daily true crime stories in 5 minutes. Real cases, investigations, courtroom drama, and justice serv...</p>
+          <div class="card-meta">
+            <span class="ep-count">2 episodes</span>
+            <span class="daily-badge">● Daily</span>
+          </div>
+        </div>
+      </a>
 </div>
 
 <footer>
-  <p>© 2026 AI Tech Daily · <a href="feed.xml" style="color:#7c3aed">RSS Feed</a></p>
+  © 2026 Daily Podcast Network · Built with AI · Updated every morning
 </footer>
 
 </body>

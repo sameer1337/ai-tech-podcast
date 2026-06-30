@@ -30,11 +30,16 @@ jobs:
           PYTHONUTF8: "1"
         run: python run_all.py
 
+      - name: Generate podcast pages
+        env:
+          PYTHONUTF8: "1"
+        run: python generate_pages.py
+
       - name: Push all episodes to GitHub
         run: |
           git config user.name "Podcast Bot"
           git config user.email "hunk1.on11@gmail.com"
-          git add episodes/ feeds/ feed.xml logs/
-          git diff --staged --quiet || git commit -m "All episodes $(date +%Y-%m-%d)"
+          git add episodes/ feeds/ feed.xml logs/ index.html podcasts/
+          git diff --staged --quiet || git commit -m "All episodes + pages $(date +%Y-%m-%d)"
           git pull --rebase origin master
           git push
