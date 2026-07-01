@@ -68,5 +68,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0005_2026-06-30.mp3" type="audio/mpeg" length="1075824" />
     </item>
+    <item>
+      <title>Crypto Daily Brief | Jul 01 — Here’s what happened in crypto today</title>
+      <pubDate>Wed, 01 Jul 2026 10:05:22 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep6-20260701</guid>
+      <description>Crypto prices are on a wild ride, with Bitcoin plummeting to new lows and Ethereum struggling to regain its footing, leaving investors wondering if this is the bottom of the market or just the beginning of a long downturn. But that's not all that's happening in the world of crypto today - we've got a slew of new developments that are changing the game for investors and traders. Let's dive into the latest news and trends impacting Bitcoin price, blockchain, DeFi, Web3, and crypto regulation. From...</description>
+      <itunes:episode>6</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0006_2026-07-01.mp3" type="audio/mpeg" length="873360" />
+    </item>
   </channel>
 </rss>

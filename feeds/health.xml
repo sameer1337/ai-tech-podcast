@@ -68,5 +68,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0005_2026-06-30.mp3" type="audio/mpeg" length="1403568" />
     </item>
+    <item>
+      <title>Health Edge Daily | Jul 01 — Scientists may have finally found how Alzheimer's </title>
+      <pubDate>Wed, 01 Jul 2026 10:04:54 +0000</pubDate>
+      <guid isPermaLink="false">health-ep6-20260701</guid>
+      <description>Imagine waking up one day to find your memories slipping away, like grains of sand between your fingers, and being powerless to stop it - this is the harsh reality for millions of people living with Alzheimer's disease, a condition that has long baffled scientists, but a groundbreaking discovery may have finally shed light on how it spreads through the brain. Researchers believe they've found that a common brain protein is giving Alzheimer's an unexpected way to spread, carrying toxic Tau protei...</description>
+      <itunes:episode>6</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0006_2026-07-01.mp3" type="audio/mpeg" length="1194048" />
+    </item>
   </channel>
 </rss>

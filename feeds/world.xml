@@ -50,5 +50,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/world/ep0003_2026-06-30.mp3" type="audio/mpeg" length="1152000" />
     </item>
+    <item>
+      <title>World In 5 | Jul 01 — Police units deployed across South Africa before a</title>
+      <pubDate>Wed, 01 Jul 2026 10:05:36 +0000</pubDate>
+      <guid isPermaLink="false">world-news-ep4-20260701</guid>
+      <description>Riots, earthquakes, and a president's crypto windfall - it's a wild day in global news, and we're just getting started. In South Africa, police units are flooding the streets ahead of planned anti-immigration marches, and the government is bracing for the worst. You might remember the devastating anti-migrant violence back in 2008, which left 62 people dead and a trail of destruction in its wake. Authorities are determined to avoid a repeat of that chaos, deploying security personnel to key area...</description>
+      <itunes:episode>4</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/world/ep0004_2026-07-01.mp3" type="audio/mpeg" length="1076976" />
+    </item>
   </channel>
 </rss>
