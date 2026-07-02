@@ -77,5 +77,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0006_2026-07-01.mp3" type="audio/mpeg" length="1194048" />
     </item>
+    <item>
+      <title>Health Edge Daily | Jul 02 — Scientists discover a surprising link between vita</title>
+      <pubDate>Thu, 02 Jul 2026 09:27:39 +0000</pubDate>
+      <guid isPermaLink="false">health-ep7-20260702</guid>
+      <description>Imagine being able to support a healthier aging brain with just a simple vitamin - that's what a recent study out of Japan is suggesting, and it's got a lot of people in the medical community talking. Researchers looked at over 2,000 older adults and found that people with lower vitamin C levels in their blood tended to have less gray matter and weaker connections in a key brain network involved in memory, attention, and other cognitive functions. This is a big deal because it suggests that some...</description>
+      <itunes:episode>7</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0007_2026-07-02.mp3" type="audio/mpeg" length="1133424" />
+    </item>
   </channel>
 </rss>

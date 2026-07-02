@@ -77,5 +77,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0006_2026-07-01.mp3" type="audio/mpeg" length="873360" />
     </item>
+    <item>
+      <title>Crypto Daily Brief | Jul 02 — Here’s what happened in crypto today</title>
+      <pubDate>Thu, 02 Jul 2026 09:28:05 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep7-20260702</guid>
+      <description>Bitcoin just blasted past $60,000, and the entire crypto market is feeling the heat, but what's driving this surge and how will it impact your portfolio? To answer that, let's dive into the latest news and trends shaping the crypto and Web3 world. Today, we saw a significant uptick in crypto prices, with Ether, Solana, and Dogecoin all seeing green after comments from former Fed governor Kevin Warsh pushed Bitcoin above the $60,000 mark. This is a huge deal, as it shows that even the slightest h...</description>
+      <itunes:episode>7</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0007_2026-07-02.mp3" type="audio/mpeg" length="1249920" />
+    </item>
   </channel>
 </rss>

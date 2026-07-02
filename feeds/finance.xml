@@ -77,5 +77,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0006_2026-07-01.mp3" type="audio/mpeg" length="1130544" />
     </item>
+    <item>
+      <title>Money Minute Daily | Jul 02 — Tech Stocks Retreat Deepens Ahead of US Payrolls: </title>
+      <pubDate>Thu, 02 Jul 2026 09:27:25 +0000</pubDate>
+      <guid isPermaLink="false">finance-ep7-20260702</guid>
+      <description>Tech stocks are taking a beating, and it's not just a minor blip on the radar - the latest bout of volatility has entered its second day, with chipmakers in South Korea feeling the worst of it. This matters because the tech sector has been a major driver of market growth in recent years, so when it stumbles, investors take notice. The selling spree has also had a ripple effect on other assets, with the dollar falling and Treasuries wavering ahead of the highly anticipated June US payrolls report...</description>
+      <itunes:episode>7</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0007_2026-07-02.mp3" type="audio/mpeg" length="1155168" />
+    </item>
   </channel>
 </rss>

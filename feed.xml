@@ -77,5 +77,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0006_2026-07-01.mp3" type="audio/mpeg" length="1482048" />
     </item>
+    <item>
+      <title>AI Tech Daily | Jul 02 — Anthropic is bringing back Claude Fable 5 globally</title>
+      <pubDate>Thu, 02 Jul 2026 09:27:13 +0000</pubDate>
+      <guid isPermaLink="false">ai-tech-ep7-20260702</guid>
+      <description>In a stunning turnaround, Anthropic is bringing back its powerful AI model, Claude Fable 5, globally, after the US Department of Commerce lifted its export control order, and this move is going to be a game-changer for enterprises around the world. Just a few weeks ago, Anthropic was forced to suspend all global access to Fable 5 due to the export control order, which was issued on June 12, 2026. But now, with the order withdrawn, Anthropic is restoring access to this highly advanced AI model, a...</description>
+      <itunes:episode>7</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0007_2026-07-02.mp3" type="audio/mpeg" length="1770336" />
+    </item>
   </channel>
 </rss>
