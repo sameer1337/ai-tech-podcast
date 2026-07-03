@@ -86,5 +86,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0007_2026-07-02.mp3" type="audio/mpeg" length="1133424" />
     </item>
+    <item>
+      <title>Health Edge Daily | Jul 03 — Scientists discover a surprising link between vita</title>
+      <pubDate>Fri, 03 Jul 2026 09:31:25 +0000</pubDate>
+      <guid isPermaLink="false">health-ep8-20260703</guid>
+      <description>Imagine being able to safeguard your brain health with something as simple as a daily dose of vitamin C. Sounds too good to be true, but new research suggests it's not just a pipe dream. In a study of over 2,000 older adults in Japan, scientists discovered a surprising link between vitamin C and brain health. It turns out that people with lower vitamin C levels in their blood also tended to have less gray matter and weaker connections in a key brain network involved in memory, attention, and oth...</description>
+      <itunes:episode>8</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0008_2026-07-03.mp3" type="audio/mpeg" length="1209600" />
+    </item>
   </channel>
 </rss>

@@ -86,5 +86,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0007_2026-07-02.mp3" type="audio/mpeg" length="1770336" />
     </item>
+    <item>
+      <title>AI Tech Daily | Jul 03 — Enterprises lost Claude Fable 5 for a few weeks. N</title>
+      <pubDate>Fri, 03 Jul 2026 09:30:56 +0000</pubDate>
+      <guid isPermaLink="false">ai-tech-ep8-20260703</guid>
+      <description>Imagine waking up one morning to find that the most powerful AI model you rely on is suddenly gone, with no warning and no timeline for its return - that's exactly what happened to enterprises that use Anthropic's Claude Fable 5 model just a few weeks ago. The model, which is considered the most capable on the market, was taken offline for every customer due to a US export-control order, leaving many businesses scrambling to find alternative solutions. However, new data shows that two-thirds of ...</description>
+      <itunes:episode>8</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0008_2026-07-03.mp3" type="audio/mpeg" length="1261584" />
+    </item>
   </channel>
 </rss>
