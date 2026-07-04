@@ -71,8 +71,17 @@ def get_youtube_client(refresh_token: str):
     return build("youtube", "v3", credentials=creds)
 
 
-def create_video(audio_path: str, cover_path: str, out_path: str) -> bool:
-    """Use FFmpeg to combine static cover image + audio into MP4."""
+def create_video(audio_path: str, cover_path: str, out_path: str,
+                 niche_id: str = "", episode_title: str = "") -> bool:
+    """Create animated video: cartoon AI image + Ken Burns zoom + waveform overlay."""
+    if niche_id:
+        try:
+            from generate_video import create_animated_video
+            return create_animated_video(niche_id, audio_path, episode_title, out_path)
+        except Exception as e:
+            print(f"[animated video] Failed ({e}), falling back to static image")
+
+    # Fallback: static cover + audio (original behaviour)
     cmd = [
         "ffmpeg", "-y",
         "-loop", "1",
@@ -178,8 +187,10 @@ def main():
     # Create video in temp dir
     with tempfile.TemporaryDirectory() as tmpdir:
         video_path = os.path.join(tmpdir, "episode.mp4")
-        print(f"[ffmpeg] Creating video from {args.episode} + {cover_path}")
-        if not create_video(args.episode, cover_path, video_path):
+        print(f"[ffmpeg] Creating animated video for {args.niche}")
+        ep_title = args.excerpt[:80] if args.excerpt else build_title(niche, args.number)
+        if not create_video(args.episode, cover_path, video_path,
+                            niche_id=args.niche, episode_title=ep_title):
             print("[error] FFmpeg failed")
             sys.exit(1)
 

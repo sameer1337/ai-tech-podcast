@@ -38,21 +38,40 @@ jobs:
           PYTHONUTF8: "1"
         run: python generate_pages.py
 
-      - name: Upload AI Tech Daily to YouTube
+      - name: Upload all podcasts to YouTube
         env:
-          GOOGLE_CLIENT_ID:     ${{ secrets.GOOGLE_CLIENT_ID }}
-          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-          YT_REFRESH_TOKEN_AI_TECH: ${{ secrets.YT_REFRESH_TOKEN_AI_TECH }}
+          GOOGLE_CLIENT_ID:              ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET:          ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN_AI_TECH:      ${{ secrets.YT_REFRESH_TOKEN_AI_TECH }}
+          YT_REFRESH_TOKEN_FINANCE:      ${{ secrets.YT_REFRESH_TOKEN_FINANCE }}
+          YT_REFRESH_TOKEN_HEALTH:       ${{ secrets.YT_REFRESH_TOKEN_HEALTH }}
+          YT_REFRESH_TOKEN_STARTUP:      ${{ secrets.YT_REFRESH_TOKEN_STARTUP }}
+          YT_REFRESH_TOKEN_CRYPTO:       ${{ secrets.YT_REFRESH_TOKEN_CRYPTO }}
+          YT_REFRESH_TOKEN_WORLD:        ${{ secrets.YT_REFRESH_TOKEN_WORLD }}
+          YT_REFRESH_TOKEN_TRUECRIME:    ${{ secrets.YT_REFRESH_TOKEN_TRUECRIME }}
           PYTHONUTF8: "1"
         run: |
-          # Find today's latest episode
-          EPISODE=$(ls episodes/ep*_$(date +%Y-%m-%d).mp3 2>/dev/null | tail -1)
-          if [ -n "$EPISODE" ]; then
-            EP_NUM=$(echo "$EPISODE" | grep -o 'ep[0-9]*' | grep -o '[0-9]*' | sed 's/^0*//')
-            python upload_youtube.py --niche ai-tech --episode "$EPISODE" --number "$EP_NUM"
-          else
-            echo "No new episode today, skipping YouTube upload"
-          fi
+          TODAY=$(date +%Y-%m-%d)
+          declare -A EPISODE_DIRS
+          EPISODE_DIRS["ai-tech"]="episodes"
+          EPISODE_DIRS["finance"]="episodes/finance"
+          EPISODE_DIRS["health"]="episodes/health"
+          EPISODE_DIRS["startup"]="episodes/startup"
+          EPISODE_DIRS["crypto"]="episodes/crypto"
+          EPISODE_DIRS["world-news"]="episodes/world"
+          EPISODE_DIRS["true-crime"]="episodes/truecrime"
+
+          for NICHE in ai-tech finance health startup crypto world-news true-crime; do
+            DIR="${EPISODE_DIRS[$NICHE]}"
+            EPISODE=$(ls "${DIR}"/ep*_${TODAY}.mp3 2>/dev/null | tail -1)
+            if [ -n "$EPISODE" ]; then
+              EP_NUM=$(basename "$EPISODE" | grep -o 'ep[0-9]*' | grep -o '[0-9]*' | sed 's/^0*//')
+              echo "==> Uploading $NICHE episode $EP_NUM: $EPISODE"
+              python upload_youtube.py --niche "$NICHE" --episode "$EPISODE" --number "$EP_NUM" || echo "[warn] Upload failed for $NICHE"
+            else
+              echo "[skip] No episode today for $NICHE"
+            fi
+          done
 
       - name: Push all episodes to GitHub
         run: |
