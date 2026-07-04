@@ -104,9 +104,16 @@ def run_podcast(niche: dict) -> bool:
     # Save log
     log_dir = Path("logs") / pid
     log_dir.mkdir(parents=True, exist_ok=True)
+    story_titles = [s["title"] for s in stories]
     with open(log_dir / f"{date_str}.json", "w") as f:
         json.dump({"date": date_str, "episode": ep_num, "title": episode_title,
-                   "stories": [s["title"] for s in stories]}, f, indent=2)
+                   "stories": story_titles}, f, indent=2)
+    # Write story headlines for YouTube video generation (|| separated)
+    with open(log_dir / f"{date_str}_stories.txt", "w", encoding="utf-8") as f:
+        f.write("||".join(story_titles[:4]))
+    # Write full script for subtitle generation
+    with open(log_dir / f"{date_str}_script.txt", "w", encoding="utf-8") as f:
+        f.write(script)
 
     print(f"  Done: {audio_path}")
     return True

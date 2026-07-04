@@ -66,8 +66,20 @@ jobs:
             EPISODE=$(ls "${DIR}"/ep*_${TODAY}.mp3 2>/dev/null | tail -1)
             if [ -n "$EPISODE" ]; then
               EP_NUM=$(basename "$EPISODE" | grep -o 'ep[0-9]*' | grep -o '[0-9]*' | sed 's/^0*//')
-              echo "==> Uploading $NICHE episode $EP_NUM: $EPISODE"
-              python upload_youtube.py --niche "$NICHE" --episode "$EPISODE" --number "$EP_NUM" || echo "[warn] Upload failed for $NICHE"
+              # Read story headlines saved by run_all.py
+              NICHE_LOG_ID="${NICHE//-/_}"
+              STORIES_FILE="logs/${NICHE}/${TODAY}_stories.txt"
+              STORIES=""
+              [ -f "$STORIES_FILE" ] && STORIES=$(cat "$STORIES_FILE")
+              echo "==> Uploading $NICHE episode $EP_NUM ($(echo $STORIES | cut -c1-60)...)"
+              SCRIPT_FILE="logs/${NICHE}/${TODAY}_script.txt"
+              python upload_youtube.py \
+                --niche "$NICHE" \
+                --episode "$EPISODE" \
+                --number "$EP_NUM" \
+                --stories "$STORIES" \
+                --script-file "$SCRIPT_FILE" \
+                || echo "[warn] Upload failed for $NICHE"
             else
               echo "[skip] No episode today for $NICHE"
             fi

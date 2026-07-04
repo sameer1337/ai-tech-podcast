@@ -72,12 +72,14 @@ def get_youtube_client(refresh_token: str):
 
 
 def create_video(audio_path: str, cover_path: str, out_path: str,
-                 niche_id: str = "", episode_title: str = "") -> bool:
-    """Create animated video: cartoon AI image + Ken Burns zoom + waveform overlay."""
+                 niche_id: str = "", episode_title: str = "",
+                 stories: list = None, script: str = "") -> bool:
+    """Create animated video: per-story cartoon images + xfade transitions + waveform + subtitles."""
     if niche_id:
         try:
             from generate_video import create_animated_video
-            return create_animated_video(niche_id, audio_path, episode_title, out_path)
+            return create_animated_video(niche_id, audio_path, episode_title, out_path,
+                                         stories=stories or [], script=script)
         except Exception as e:
             print(f"[animated video] Failed ({e}), falling back to static image")
 
@@ -164,6 +166,8 @@ def main():
     parser.add_argument("--episode", required=True, help="Path to MP3 file")
     parser.add_argument("--number",  type=int, default=1, help="Episode number")
     parser.add_argument("--excerpt", default="", help="Script excerpt for description")
+    parser.add_argument("--stories",     default="", help="Story headlines separated by ||")
+    parser.add_argument("--script-file", default="", help="Path to script .txt file for subtitles")
     args = parser.parse_args()
 
     niche = PODCAST_MAP.get(args.niche)
@@ -194,8 +198,14 @@ def main():
         video_path = os.path.join(tmpdir, "episode.mp4")
         print(f"[ffmpeg] Creating animated video for {args.niche}")
         ep_title = args.excerpt[:80] if args.excerpt else build_title(niche, args.number)
+        story_list = [s.strip() for s in args.stories.split("||") if s.strip()] if args.stories else []
+        script_text = ""
+        if args.script_file and os.path.exists(args.script_file):
+            with open(args.script_file, encoding="utf-8") as f:
+                script_text = f.read()
         if not create_video(args.episode, cover_path, video_path,
-                            niche_id=args.niche, episode_title=ep_title):
+                            niche_id=args.niche, episode_title=ep_title,
+                            stories=story_list, script=script_text):
             print("[error] FFmpeg failed")
             sys.exit(1)
 
