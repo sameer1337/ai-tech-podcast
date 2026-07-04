@@ -82,8 +82,13 @@ def create_video(audio_path: str, cover_path: str, out_path: str,
             print(f"[animated video] Failed ({e}), falling back to static image")
 
     # Fallback: static cover + audio (original behaviour)
+    try:
+        import imageio_ffmpeg
+        ffmpeg_bin = imageio_ffmpeg.get_ffmpeg_exe()
+    except Exception:
+        ffmpeg_bin = "ffmpeg"
     cmd = [
-        "ffmpeg", "-y",
+        ffmpeg_bin, "-y",
         "-loop", "1",
         "-i", cover_path,
         "-i", audio_path,

@@ -21,6 +21,15 @@ import urllib.request
 import urllib.parse
 import time
 
+
+def get_ffmpeg() -> str:
+    """Return path to ffmpeg — prefers imageio_ffmpeg bundle (always present), falls back to system."""
+    try:
+        import imageio_ffmpeg
+        return imageio_ffmpeg.get_ffmpeg_exe()
+    except Exception:
+        return "ffmpeg"
+
 # Per-niche cartoon image prompts for Pollinations.ai
 NICHE_VISUAL_PROMPTS = {
     "ai-tech":    "futuristic robot reading holographic news feed, glowing circuits, cartoon illustration, vibrant blues and purples, tech aesthetic, no text",
@@ -73,48 +82,29 @@ def fetch_cartoon_image(niche_id: str, episode_title: str, out_path: str) -> boo
     return False
 
 
-def make_animated_loop(image_path: str, loop_path: str, duration: int = 30) -> bool:
-    """Create a short Ken Burns animated MP4 clip from a single image."""
+def create_video_with_waveform(image_path: str, audio_path: str, out_path: str) -> bool:
+    """Single-pass FFmpeg: cartoon image + animated waveform overlay + audio → MP4."""
     cmd = [
-        "ffmpeg", "-y",
+        get_ffmpeg(), "-y",
         "-loop", "1",
-        "-t", str(duration),
         "-i", image_path,
-        "-vf",
-        # Slow zoom from 1.0x to 1.25x over `duration` seconds, centre-anchored
-        f"zoompan=z='min(zoom+{0.25/duration/25:.6f},1.25)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={duration*25}:s=1920x1080:fps=25",
-        "-c:v", "libx264",
-        "-preset", "ultrafast",
-        "-pix_fmt", "yuv420p",
-        loop_path,
-    ]
-    result = subprocess.run(cmd, capture_output=True)
-    if result.returncode != 0:
-        print("[ffmpeg zoompan error]", result.stderr.decode()[-600:])
-        return False
-    return True
-
-
-def make_final_video(loop_path: str, audio_path: str, out_path: str) -> bool:
-    """Loop the animated clip to match audio duration, overlay waveform, mux audio."""
-    cmd = [
-        "ffmpeg", "-y",
-        "-stream_loop", "-1",
-        "-i", loop_path,
         "-i", audio_path,
         "-filter_complex",
-        # Waveform: white bars at bottom 200px strip, cline mode looks like oscilloscope
-        "[1:a]showwaves=s=1920x200:mode=cline:colors=0xffffff@0.75:scale=sqrt[waves];"
+        # Resize image to exactly 1920x1080 (letterbox if needed)
+        "[0:v]scale=1920:1080:force_original_aspect_ratio=decrease,"
+        "pad=1920:1080:(ow-iw)/2:(oh-ih)/2:color=black[img];"
+        # Colourful waveform bars — splits into 3 colour bands for visual pop
+        "[1:a]showwaves=s=1920x180:mode=cline:colors=0x00e5ff@0.9|0xff6b35@0.9|0x7fff00@0.9:scale=sqrt[waves];"
         "[waves]format=rgba[wavesrgba];"
-        # Dark gradient strip behind waveform so it's readable on any background
-        "color=c=black@0.55:s=1920x220[bg];"
-        "[0:v][bg]overlay=0:860[base];"
-        "[base][wavesrgba]overlay=0:860[v]",
+        # Semi-transparent dark strip behind waveform for readability
+        "color=c=0x000000@0.6:s=1920x200[bgstrip];"
+        "[img][bgstrip]overlay=0:880[base];"
+        "[base][wavesrgba]overlay=0:890[v]",
         "-map", "[v]",
         "-map", "1:a",
         "-c:v", "libx264",
         "-preset", "fast",
-        "-crf", "22",
+        "-crf", "23",
         "-c:a", "aac",
         "-b:a", "192k",
         "-pix_fmt", "yuv420p",
@@ -123,16 +113,15 @@ def make_final_video(loop_path: str, audio_path: str, out_path: str) -> bool:
     ]
     result = subprocess.run(cmd, capture_output=True)
     if result.returncode != 0:
-        print("[ffmpeg final error]", result.stderr.decode()[-800:])
+        print("[ffmpeg error]", result.stderr.decode()[-800:])
         return False
     return True
 
 
 def create_animated_video(niche_id: str, audio_path: str, episode_title: str, out_path: str) -> bool:
-    """Full pipeline: image → animated loop → final video with waveform."""
+    """Full pipeline: fetch cartoon image → overlay animated waveform → MP4."""
     with tempfile.TemporaryDirectory() as tmpdir:
-        img_path  = os.path.join(tmpdir, "cartoon.jpg")
-        loop_path = os.path.join(tmpdir, "loop.mp4")
+        img_path = os.path.join(tmpdir, "cartoon.jpg")
 
         # Step 1: get cartoon image (fallback to static cover on failure)
         success = fetch_cartoon_image(niche_id, episode_title, img_path)
@@ -145,14 +134,9 @@ def create_animated_video(niche_id: str, audio_path: str, episode_title: str, ou
                 print(f"  [error] No fallback cover found at {fallback}")
                 return False
 
-        # Step 2: build 30-second Ken Burns loop
-        print("  [ffmpeg] Building Ken Burns animation loop...")
-        if not make_animated_loop(img_path, loop_path, duration=30):
-            return False
-
-        # Step 3: loop + waveform + audio → final MP4
-        print("  [ffmpeg] Rendering final video with waveform...")
-        if not make_final_video(loop_path, audio_path, out_path):
+        # Step 2: image + waveform + audio → final MP4 (single pass)
+        print("  [ffmpeg] Rendering video with animated waveform...")
+        if not create_video_with_waveform(img_path, audio_path, out_path):
             return False
 
     size_mb = os.path.getsize(out_path) / (1024 * 1024)
