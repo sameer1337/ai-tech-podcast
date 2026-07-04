@@ -95,5 +95,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0008_2026-07-03.mp3" type="audio/mpeg" length="1149696" />
     </item>
+    <item>
+      <title>Crypto Daily Brief | Jul 04 — Tim Draper denies moving Bitcoin, reiterates $250,</title>
+      <pubDate>Sat, 04 Jul 2026 08:48:49 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep9-20260704</guid>
+      <description>Billionaire investor Tim Draper is back in the headlines, and this time it's not just about his bold predictions for Bitcoin. Yesterday, blockchain analysts linked him to a wallet that transferred a whopping 1,000 BTC to Coinbase Prime, sparking speculation that he was moving his Bitcoin stash. But Draper has come out swinging, denying any involvement in the transfer and reiterating his infamous $250,000 Bitcoin price prediction. This matters because Draper's comments have a significant impact o...</description>
+      <itunes:episode>9</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0009_2026-07-04.mp3" type="audio/mpeg" length="1143360" />
+    </item>
   </channel>
 </rss>

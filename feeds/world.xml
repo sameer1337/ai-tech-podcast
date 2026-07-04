@@ -77,5 +77,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/world/ep0006_2026-07-03.mp3" type="audio/mpeg" length="1285920" />
     </item>
+    <item>
+      <title>World In 5 | Jul 04 — New pipeline in Canada to proceed after C$150bn pl</title>
+      <pubDate>Sat, 04 Jul 2026 08:49:00 +0000</pubDate>
+      <guid isPermaLink="false">world-news-ep7-20260704</guid>
+      <description>In a move that's set to send shockwaves through the global energy landscape, Canada has just greenlit a massive new oil pipeline, thanks to a whopping C$150 billion pledge aimed at silencing concerns from British Columbia and First Nations groups. This is huge, because the project promises to boost Canada's presence on the world stage, while also addressing some of the environmental and social worries that had been threatening to derail it. The plan includes a major port expansion and measures t...</description>
+      <itunes:episode>7</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/world/ep0007_2026-07-04.mp3" type="audio/mpeg" length="1264464" />
+    </item>
   </channel>
 </rss>
