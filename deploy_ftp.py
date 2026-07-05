@@ -26,13 +26,13 @@ RDIR = os.environ.get("FTP_DIR", "daily")   # relative to the FTP login home (/p
 
 # What to publish (files + directories), relative to the repo root.
 FILES = ["index.html", "mapt.html", "vita.html", "about.html", "privacy.html",
-         "sitemap.xml", "robots.txt"]
+         "sitemap.xml", "robots.txt", "subscribe.php"]
 DIRS  = ["static", "blog", "podcasts"]
 
 
 def connect() -> ftplib.FTP:
     ftp = ftplib.FTP()
-    ftp.connect(HOST, 21, timeout=30)
+    ftp.connect(HOST, 21, timeout=90)
     ftp.login(USER, PASS)
     ftp.set_pasv(True)
     ftp.home = ftp.pwd()   # login directory (e.g. /public_html); paths are relative to this

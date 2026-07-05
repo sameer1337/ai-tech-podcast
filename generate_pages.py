@@ -10,6 +10,7 @@ import html
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from niches import PODCASTS
+from site_header import header_html, HEADER_CSS, HEADER_JS
 
 SITE_URL  = "https://daily.mapt.cloud"
 FEED_BASE = "https://sameer1337.github.io/ai-tech-podcast"
@@ -112,28 +113,17 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="
          'family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">')
 
 
-def _header(breaking):
-    cats = "".join(f'<a class="item" href="/blog/{n["id"]}/">{LABEL[n["id"]]}</a>' for n in PODCASTS)
-    socials = "".join(f'<a href="#" aria-label="{p}">{p[0]}</a>' for p,_c,_u,_n,_l in SOCIALS)
-    ticks = "".join(f'<span class="tk" data-i="{i}"{"" if i==0 else " hidden"}>{html.escape(t)}</span>'
-                    for i,t in enumerate(breaking))
-    today = datetime.now().strftime("%A, %d %B %Y")
-    return f"""<header>
-<div class="topbar"><div class="in"><span class="hidem">✨ New: Mapt Daily now updates twice a day</span>
-<a class="btn-mini" href="/mapt.html">Built by Mapt →</a></div></div>
-<div class="subbar"><div class="in"><span class="date">{today}</span>
-<div class="brk"><span class="lbl">Breaking</span><span class="tick" data-ticker>{ticks}</span></div>
-<div class="socials">{socials}</div></div></div>
-<div class="masthead"><div class="in"><a class="logo" href="/">Mapt<b>Daily</b> <span>news</span></a>
-<a class="leaderboard" href="/mapt.html"><span class="adtag">Sponsored</span>
-<h4>Need a site like this? Mapt builds websites, brands &amp; growth engines.</h4>
-<span class="cta">Get Mapt →</span></a></div></div>
-<nav class="mainnav"><div class="in"><a class="item home" href="/">Home</a>{cats}
-<div class="right"><span class="wx">☀ 24°</span>
-<button class="icobtn" data-theme aria-label="Toggle theme">◐</button>
-<input class="search-in" placeholder="Search…" aria-label="Search">
-<button class="icobtn nav-toggle" aria-label="Menu">☰</button></div></div></nav>
-</header>"""
+def _header(all_posts, active="home"):
+    """Shared mega-menu header (same on every page). all_posts = list of post dicts."""
+    ca = {}
+    for n in PODCASTS:
+        nid = n["id"]
+        ps = sorted([p for p in all_posts if p["nid"] == nid], key=lambda x: x["pubDate"], reverse=True)[:4]
+        ca[nid] = [{"title": p["headline"], "href": p["href"],
+                    "img": img(nid, p["seed"], 400, 240), "date": p["date"]} for p in ps]
+    breaking = [p["headline"] for p in sorted(all_posts, key=lambda x: x["pubDate"], reverse=True)[:5]] \
+        or ["Mapt Daily — fresh news every day"]
+    return header_html(ca, active=active, breaking=breaking)
 
 
 def _footer(posts):
@@ -162,7 +152,7 @@ def _footer(posts):
 <div class="foot-copy"><div class="in"><span>© {datetime.now().year} {BRAND} — a project of
 <a href="{MAPT_URL}" style="margin:0">Mapt</a>. AI-assisted summaries from public news sources.</span>
 <span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/mapt.html">Mapt</a><a href="/vita.html">Vita</a></span></div></div>
-</footer><script defer src="/static/site.js"></script></body></html>"""
+</footer><script defer src="/static/site.js"></script>{HEADER_JS}</body></html>"""
 
 
 def _head(title, desc, canonical, extra="", accent="#2b6cff"):
@@ -172,7 +162,7 @@ def _head(title, desc, canonical, extra="", accent="#2b6cff"):
 <meta property="og:type" content="website"><meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{canonical}">
 <meta property="og:site_name" content="{BRAND}"><meta name="twitter:card" content="summary_large_image">
-{FONTS}<link rel="stylesheet" href="/static/site.css"><style>:root{{--accent:{accent}}}</style>{extra}</head><body>"""
+{FONTS}<link rel="stylesheet" href="/static/site.css"><style>:root{{--accent:{accent}}}</style>{HEADER_CSS}{extra}</head><body>"""
 
 
 # ─────────── component builders ───────────
@@ -240,7 +230,7 @@ def sidebar(posts, counts):
 <div data-wp="rec"><div class="tlist">{rec}</div></div><div data-wp="pop" hidden><div class="tlist">{pop}</div></div></div>
 <div class="widget newsletter"><div class="wh" style="color:#fff">Subscribe</div>
 <p>Get the day's top stories in your inbox.</p>
-<form onsubmit="return false"><input type="email" placeholder="Your email" required><button class="sub">Subscribe</button></form></div>
+<form class="mh-subform" data-source="sidebar"><input type="email" placeholder="Your email" required><button class="sub">Subscribe</button></form></div>
 <div class="widget"><div class="wh">Categories</div><div class="catlist">{cats}</div></div>
 <div class="adbox">Advertisement</div>
 </aside>"""
@@ -311,7 +301,7 @@ def home_page(all_posts, per_niche, counts):
     return (_head(f"{BRAND} — Daily News on AI, Finance, Health, Crypto, Startups & More",
                   "Mapt Daily: daily news and analysis across AI, finance, health, startups, crypto, world "
                   "and true crime — read the story, hear the five-minute brief.", f"{SITE_URL}/")
-            + _header(breaking) + body + _footer(all_posts))
+            + _header(all_posts) + body + _footer(all_posts))
 
 
 def category_page(niche, posts, all_posts, counts):
@@ -323,7 +313,7 @@ def category_page(niche, posts, all_posts, counts):
 {sidebar(all_posts, counts)}</div></div>"""
     return (_head(f"{niche['title']} — {LABEL[nid]} News | {BRAND}", niche["description"][:155],
                   f"{SITE_URL}/blog/{nid}/", accent=COLORS[nid])
-            + _header([p["headline"] for p in sorted(all_posts,key=lambda x:x['pubDate'],reverse=True)[:6]])
+            + _header(all_posts, active=nid)
             + body + _footer(all_posts))
 
 
@@ -355,7 +345,7 @@ def post_page(p, all_posts, counts):
 <a class="btn" href="/mapt.html">Explore →</a></div>{tx}</article></div>
 {sidebar(all_posts, counts)}</div></div>"""
     return (_head(f"{p['headline']} — {BRAND}", p["meta"], p["url"], schema, COLORS[nid])
-            + _header([q["headline"] for q in sorted(all_posts,key=lambda x:x['pubDate'],reverse=True)[:6]])
+            + _header(all_posts, active=nid)
             + art + _footer(all_posts))
 
 
@@ -375,7 +365,7 @@ def landing(kind, all_posts):
                 f'<div class="features">{fh}</div></div>')
         return (_head("Mapt — Websites, Branding, Marketing & AI Automation",
                       "Mapt is a full-service digital agency building websites, brands and AI automation, fast and text-first.",
-                      f"{SITE_URL}/mapt.html") + _header([p["headline"] for p in all_posts[:6]]) + body + _footer(all_posts))
+                      f"{SITE_URL}/mapt.html") + _header(all_posts) + body + _footer(all_posts))
     feats = [("🧘","Daily Wellbeing","Check in on mood, energy and habits in seconds."),
              ("🤖","AI Insights","Personalized nudges powered by AI, tuned to you."),
              ("🔥","Habit Streaks","Build routines that stick with gentle reminders."),
@@ -389,12 +379,12 @@ def landing(kind, all_posts):
             f'<a class="btn-lg green" href="{VITA_URL}">Discover Vita →</a></section><div class="features">{fh}</div></div>')
     return (_head("Vita — Your AI Wellness Companion",
                   "Vita is an AI wellness app to track habits and mood and get personalized insights. Free to start.",
-                  f"{SITE_URL}/vita.html") + _header([p["headline"] for p in all_posts[:6]]) + body + _footer(all_posts))
+                  f"{SITE_URL}/vita.html") + _header(all_posts) + body + _footer(all_posts))
 
 
 def static_page(title, canonical, inner, all_posts):
     body = f'<div class="container"><div class="layout"><div class="maincol"><article class="post"><h1>{title}</h1><div class="body">{inner}</div></article></div>{sidebar(all_posts, {})}</div></div>'
-    return _head(f"{title} — {BRAND}", f"{title} — {BRAND}", canonical) + _header([p["headline"] for p in all_posts[:6]]) + body + _footer(all_posts)
+    return _head(f"{title} — {BRAND}", f"{title} — {BRAND}", canonical) + _header(all_posts) + body + _footer(all_posts)
 
 
 def redirect_page(target):

@@ -8,6 +8,7 @@ Self-contained: CSS comes from home_style.html; article data is parsed from
 blog/<cat>/ep*.html (title / dek / date / image / link).
 """
 import re, glob, os
+from site_header import header_html, HEADER_CSS, HEADER_JS
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 BLOG = os.path.join(ROOT, "blog")
@@ -225,6 +226,10 @@ def breaking():
     return lis+lis
 
 # ---------- assemble ----------
+_CATARTS = {c:[{"title":a["title"],"href":a["link"],"img":a["img"],"date":fdate(a["date"])}
+               for a in recent(c,4)] for c in CATS}
+HEADER = header_html(_CATARTS, active="home", breaking=[a["title"] for a in ALL[:5]])
+
 HTML = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -240,41 +245,11 @@ HTML = f'''<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet" />
 {STYLE}
+{HEADER_CSS}
 </head>
 <body>
 
-<!-- sub -->
-<div class="sub"><div class="wrap">
-  <div class="date" id="today">Monday, 22 June 2026</div>
-  <div class="breaking"><span class="tag">Breaking</span>
-    <div class="ticker"><ul>{breaking()}</ul></div></div>
-  <div class="tools">
-    <div class="arrows"><span class="ico">‹</span><span class="ico">›</span></div>
-    <div class="socials"><a>f</a><a>𝕏</a><a>◎</a><a>▶</a><a>in</a><a>♪</a></div>
-  </div>
-</div></div>
-
-<!-- brand -->
-<div class="brand"><div class="wrap">
-  <a href="/" class="logo-main"><span class="mk">M</span>Mapt<small>daily</small></a>
-  <a class="adbox" href="https://mapt.cloud">
-    <div class="lbl"><b>ADS</b><span>Sponsored</span></div>
-    <div class="vr"></div>
-    <div class="txt">Need a site like this? Mapt builds websites,<br>brands &amp; growth engines — over text.</div>
-    <span class="btn">Get Mapt →</span>
-  </a>
-</div></div>
-
-<!-- navbar -->
-<header class="navbar"><div class="wrap">
-  <button class="burger" id="burger">☰</button>
-  <ul class="menu" id="menu">{menu()}<li><a class="dots">•••</a></li></ul>
-  <div class="navtools">
-    <div class="weather"><span class="sun">☀</span> Sydney 24<sup>°C</sup></div>
-    <button class="ni" id="darkToggle">☾</button>
-    <div class="searchbox"><input placeholder="Search Mapt Daily…" /><button>⚲</button></div>
-  </div>
-</div></header>
+{HEADER}
 
 <div class="container">
   {hero()}
@@ -340,13 +315,19 @@ HTML = f'''<!DOCTYPE html>
 
 <script>
   document.getElementById('yr').textContent=new Date().getFullYear();
-  document.getElementById('today').textContent=new Date().toLocaleDateString('en-AU',{{weekday:'long',day:'numeric',month:'long',year:'numeric'}});
-  const menu=document.getElementById('menu');
-  document.getElementById('burger').addEventListener('click',()=>menu.classList.toggle('open'));
-  menu.querySelectorAll('li').forEach(li=>{{const a=li.querySelector('a');if(li.querySelector('.mega')){{a.addEventListener('click',e=>{{if(window.innerWidth<=900){{e.preventDefault();li.classList.toggle('expand');}}}});}}}});
-  document.getElementById('darkToggle').addEventListener('click',()=>document.body.classList.toggle('dark'));
-  ['subForm','subForm2'].forEach(id=>{{const f=document.getElementById(id);if(!f)return;f.addEventListener('submit',ev=>{{ev.preventDefault();const email=f.querySelector('input').value;window.location.href='mailto:hello@mapt.cloud?subject='+encodeURIComponent('Subscribe: Mapt Daily')+'&body='+encodeURIComponent('Please subscribe: '+email);}});}});
+  ['subForm','subForm2'].forEach(function(id){{
+    var f=document.getElementById(id); if(!f) return;
+    f.addEventListener('submit',function(ev){{
+      ev.preventDefault();
+      var email=f.querySelector('input').value;
+      fetch('/subscribe.php',{{method:'POST',headers:{{'Content-Type':'application/x-www-form-urlencoded'}},body:'email='+encodeURIComponent(email)+'&source=home'}})
+        .then(function(r){{return r.ok?r.text():Promise.reject();}})
+        .then(function(){{f.innerHTML='<p style="color:#16a34a;font-weight:700;margin:0">✓ Thanks — you are subscribed!</p>';}})
+        .catch(function(){{window.location.href='mailto:hello@mapt.cloud?subject='+encodeURIComponent('Subscribe: Mapt Daily')+'&body='+encodeURIComponent('Please subscribe: '+email);}});
+    }});
+  }});
 </script>
+{HEADER_JS}
 </body>
 </html>'''
 
