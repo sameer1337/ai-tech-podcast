@@ -2,8 +2,8 @@ name: Daily Podcast Generator
 
 on:
   schedule:
-    - cron: '0 6 * * *'   # runs every day at 6:00 AM UTC
-  workflow_dispatch:        # allows manual trigger from GitHub UI
+    - cron: '0 6,18 * * *'   # twice a day — 6:00 AM & 6:00 PM UTC
+  workflow_dispatch:          # allows manual trigger from GitHub UI
 
 jobs:
   generate-episode:
@@ -37,6 +37,20 @@ jobs:
         env:
           PYTHONUTF8: "1"
         run: python generate_pages.py
+
+      - name: Build mega-menu homepage (latest blogs + slider)
+        env:
+          PYTHONUTF8: "1"
+        run: python generate_home.py
+
+      - name: Deploy site to Hostinger (FTP)
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASS: ${{ secrets.FTP_PASS }}
+          FTP_DIR:  ${{ secrets.FTP_DIR }}
+          PYTHONUTF8: "1"
+        run: python deploy_ftp.py
 
       - name: Upload all podcasts to YouTube
         env:
