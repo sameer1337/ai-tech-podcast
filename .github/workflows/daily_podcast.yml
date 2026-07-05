@@ -2,8 +2,9 @@ name: Daily Podcast Generator
 
 on:
   schedule:
-    - cron: '0 6,18 * * *'   # twice a day — 6:00 AM & 6:00 PM UTC
-  workflow_dispatch:          # allows manual trigger from GitHub UI
+    - cron: '0 6 * * *'    # MORNING (full): podcast + blog + video + deploy
+    - cron: '0 18 * * *'   # EVENING (light): rebuild pages + homepage + deploy only
+  workflow_dispatch:        # manual trigger = full run
 
 jobs:
   generate-episode:
@@ -24,13 +25,15 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Generate all podcast episodes
+      - name: Generate all podcast episodes (morning only)
+        if: github.event.schedule != '0 18 * * *'
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           PYTHONUTF8: "1"
         run: python run_all.py
 
-      - name: Install FFmpeg
+      - name: Install FFmpeg (morning only)
+        if: github.event.schedule != '0 18 * * *'
         run: sudo apt-get install -y ffmpeg
 
       - name: Generate podcast pages
@@ -52,7 +55,8 @@ jobs:
           PYTHONUTF8: "1"
         run: python deploy_ftp.py
 
-      - name: Upload all podcasts to YouTube
+      - name: Upload all podcasts to YouTube (morning only)
+        if: github.event.schedule != '0 18 * * *'
         env:
           GOOGLE_CLIENT_ID:              ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET:          ${{ secrets.GOOGLE_CLIENT_SECRET }}
