@@ -22,6 +22,23 @@ SINGLE_ID  = next((sys.argv[sys.argv.index("--id") + 1] for i, a in enumerate(sy
 TARGET_PODCASTS = [PODCAST_MAP[SINGLE_ID]] if SINGLE_ID else PODCASTS
 
 
+def _clean_headline(raw: str, limit: int = 60) -> str:
+    """Trim a source headline for use in an episode title.
+
+    Cuts on a word boundary (never mid-word) and strips trailing
+    punctuation/quotes so titles don't end with stray characters like " AI'".
+    """
+    title = " ".join((raw or "").split())            # collapse whitespace
+    # Drop a trailing source tag like " - TechCrunch" or " | Reuters"
+    for sep in (" - ", " | ", " — "):
+        if sep in title:
+            title = title.split(sep)[0].strip()
+            break
+    if len(title) > limit:
+        title = title[:limit].rsplit(" ", 1)[0]      # back off to last full word
+    return title.rstrip(" \"'’‘“”-—–,.:;")
+
+
 def run_podcast(niche: dict) -> bool:
     """Run the full pipeline for one niche. Returns True on success."""
     from fetch_news   import fetch_stories_for_niche
@@ -53,7 +70,7 @@ def run_podcast(niche: dict) -> bool:
     print(">> Step 2/4: Generating script...")
     script = generate_script_for_niche(stories, niche)
 
-    top_story = stories[0]['title'][:50] if stories else "Top Stories"
+    top_story = _clean_headline(stories[0]['title']) if stories else "Top Stories"
     episode_title = f"{niche['title']} | {today.strftime('%b %d')} — {top_story}"
 
     if TEST_MODE:
@@ -140,6 +157,13 @@ def main():
     for pid, status in results.items():
         icon = "OK" if status == "OK" else "!!"
         print(f"  [{icon}] {pid}: {status}")
+
+    # Refresh Alexa Flash Briefing feeds from the updated episode DBs
+    try:
+        from generate_flash_briefing import build_all as build_flash
+        build_flash()
+    except Exception as e:
+        print(f"[flash] Warning: {e}")
 
     # Push to GitHub (skipped inside GitHub Actions — workflow handles it)
     if not os.environ.get("GITHUB_ACTIONS") and not TEST_MODE:
