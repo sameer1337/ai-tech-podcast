@@ -70,8 +70,10 @@ def run_podcast(niche: dict) -> bool:
     print(">> Step 2/4: Generating script...")
     script = generate_script_for_niche(stories, niche)
 
+    # Topic-first title: the searchable keyword leads, brand trails (podcast-app
+    # search and Google weight the front of the title most heavily).
     top_story = _clean_headline(stories[0]['title']) if stories else "Top Stories"
-    episode_title = f"{niche['title']} | {today.strftime('%b %d')} — {top_story}"
+    episode_title = f"{top_story} — {niche['title']} | {today.strftime('%b %d')}"
 
     if TEST_MODE:
         print(f"\n[TEST] {episode_title}")
@@ -105,6 +107,18 @@ def run_podcast(niche: dict) -> bool:
         audio_base_url = f"{base}/{audio_dir}",
         niche          = niche,
     )
+
+    # Generate the expanded blog article (website text layer + SEO)
+    try:
+        from generate_blog import generate_article
+        article = generate_article(stories, niche)
+        art_dir = Path("logs") / pid
+        art_dir.mkdir(parents=True, exist_ok=True)
+        with open(art_dir / f"{date_str}_article.json", "w", encoding="utf-8") as f:
+            json.dump(article, f, indent=2)
+        print(f"  Blog article saved -> logs/{pid}/{date_str}_article.json")
+    except Exception as e:
+        print(f"  [blog] Warning: {e}")
 
     # Generate social media posts
     try:

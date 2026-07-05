@@ -1,351 +1,425 @@
 """
-Generate static HTML pages for all podcasts:
-  - index.html           → hub page with all 7 podcasts
-  - podcasts/<id>/index.html → individual podcast page with episodes
+Generate the full Mapt Daily blog site from episode data + generated articles.
+
+Structure produced:
+  index.html                       -> Mapt Daily home (latest posts, all niches)
+  blog/<id>/index.html             -> category page (one niche, all posts)
+  blog/<id>/<slug>.html            -> post: article + audio player + transcript
+  about.html, privacy.html         -> required for AdSense / trust
+  sitemap.xml, robots.txt          -> indexing
+  CNAME                            -> custom domain
+  podcasts/<id>/index.html         -> 301-style redirect to /blog/<id>/ (legacy)
+
+Each post derives its article (logs/<id>/<date>_article.json) and transcript
+(logs/<id>/<date>_script.txt) from files written by the daily run, matched to
+the episode by the date embedded in its audio filename.
 """
 
 import os
+import re
 import json
+import html
+from datetime import datetime, timezone
 from niches import PODCASTS
 
-BASE_URL = "https://sameer1337.github.io/ai-tech-podcast"
-
-SPOTIFY_URLS = {
-    "ai-tech":    "",
-    "finance":    "",
-    "health":     "",
-    "startup":    "",
-    "crypto":     "",
-    "world-news": "",
-    "true-crime": "",
-}
-
-AMAZON_URLS = {
-    "ai-tech":    "",
-    "finance":    "",
-    "health":     "",
-    "startup":    "",
-    "crypto":     "",
-    "world-news": "",
-    "true-crime": "",
-}
+SITE_URL = "https://daily.mapt.cloud"
+BRAND    = "Mapt Daily"
+AUDIO_BASE_FALLBACK = "https://sameer1337.github.io/ai-tech-podcast"
 
 COLORS = {
-    "ai-tech":    {"bg": "#0a0a1f", "grad": "#1a0a2e", "accent": "#7c3aed", "text": "#a78bfa"},
-    "finance":    {"bg": "#0a1a0a", "grad": "#0a2e0a", "accent": "#16a34a", "text": "#4ade80"},
-    "health":     {"bg": "#0a1a1f", "grad": "#0a2a2e", "accent": "#0891b2", "text": "#22d3ee"},
-    "startup":    {"bg": "#1a0a2e", "grad": "#2e0a4e", "accent": "#9333ea", "text": "#c084fc"},
-    "crypto":     {"bg": "#1a0f00", "grad": "#2e1a00", "accent": "#d97706", "text": "#fbbf24"},
-    "world-news": {"bg": "#0a0f1a", "grad": "#0a1a2e", "accent": "#1d4ed8", "text": "#60a5fa"},
-    "true-crime": {"bg": "#1a0000", "grad": "#2e0000", "accent": "#dc2626", "text": "#f87171"},
+    "ai-tech":    "#7c3aed", "finance": "#16a34a", "health": "#0891b2",
+    "startup":    "#9333ea", "crypto":  "#d97706", "world-news": "#2563eb",
+    "true-crime": "#dc2626",
 }
-
 ICONS = {
-    "ai-tech":    "🤖",
-    "finance":    "💰",
-    "health":     "🧬",
-    "startup":    "🚀",
-    "crypto":     "₿",
-    "world-news": "🌍",
-    "true-crime": "🔍",
+    "ai-tech": "🤖", "finance": "💰", "health": "🧬", "startup": "🚀",
+    "crypto": "₿", "world-news": "🌍", "true-crime": "🔍",
+}
+CATEGORY_LABEL = {
+    "ai-tech": "AI & Tech", "finance": "Finance", "health": "Health",
+    "startup": "Startups", "crypto": "Crypto", "world-news": "World",
+    "true-crime": "True Crime",
 }
 
-
-def load_episodes(niche_id):
-    path = f"logs/episodes_{niche_id}.json"
-    if os.path.exists(path):
-        with open(path) as f:
-            data = json.load(f)
-            return sorted(data, key=lambda x: x["number"], reverse=True)
-    return []
+DATE_RE = re.compile(r"(\d{4}-\d{2}-\d{2})")
 
 
-def podcast_page(niche, episodes):
-    pid     = niche["id"]
-    c       = COLORS[pid]
-    icon    = ICONS[pid]
-    spotify = SPOTIFY_URLS.get(pid, "")
-    amazon  = AMAZON_URLS.get(pid, "")
-    feed    = f"{BASE_URL}/{niche['rss_file']}"
-    cover   = niche["cover_url"]
+# ─────────────────────────── data loading ───────────────────────────
+def load_episodes(nid):
+    path = f"logs/episodes_{nid}.json"
+    if not os.path.exists(path):
+        return []
+    with open(path, encoding="utf-8") as f:
+        return sorted(json.load(f), key=lambda x: x["number"], reverse=True)
 
-    spotify_btn = f'<a href="{spotify}" class="badge spotify" target="_blank">🎵 Spotify</a>' if spotify else ""
-    amazon_btn  = f'<a href="{amazon}" class="badge amazon" target="_blank">🎶 Amazon Music</a>' if amazon else ""
 
-    ep_html = ""
-    for ep in episodes[:20]:
-        audio_url = ep.get("audio_url", "")
-        ep_html += f"""
-        <div class="episode">
-          <div class="ep-meta">
-            <span class="ep-num">EP {ep['number']}</span>
-            <span class="ep-date">{ep['pubDate'][:16]}</span>
-          </div>
-          <div class="ep-title">{ep['title']}</div>
-          <div class="ep-desc">{ep['description'][:200]}...</div>
-          {"<audio controls src='" + audio_url + "'></audio>" if audio_url else ""}
-        </div>"""
+def _episode_date(ep):
+    m = DATE_RE.search(ep.get("audio_url", "")) or DATE_RE.search(ep.get("guid", ""))
+    return m.group(1) if m else None
 
-    if not ep_html:
-        ep_html = '<div class="no-eps">Episodes coming soon — check back tomorrow!</div>'
 
+def _load_article(nid, date):
+    if not date:
+        return None
+    p = f"logs/{nid}/{date}_article.json"
+    if os.path.exists(p):
+        with open(p, encoding="utf-8") as f:
+            return json.load(f)
+    return None
+
+
+def _load_transcript(nid, date):
+    if not date:
+        return ""
+    p = f"logs/{nid}/{date}_script.txt"
+    if os.path.exists(p):
+        with open(p, encoding="utf-8") as f:
+            return f.read().strip()
+    return ""
+
+
+def slugify(text, maxlen=60):
+    s = re.sub(r"[^a-z0-9]+", "-", (text or "").lower()).strip("-")
+    return (s[:maxlen].rstrip("-")) or "episode"
+
+
+def _topic_from_ep(title, niche):
+    """Extract the specific story headline from an episode title, stripping the
+    brand and date chrome. Works for both title formats (brand-first and
+    topic-first). This is stable per episode, so it makes a durable URL slug."""
+    t = (title or "").replace(niche["title"], " ")
+    t = re.sub(r"\|\s*[A-Z][a-z]{2}\s*\d{1,2}", " ", t)   # drop "| Jul 05"
+    t = re.sub(r"\s{2,}", " ", t).strip(" -—|·")
+    return t or niche["title"]
+
+
+def build_posts(niche):
+    """Return a list of post dicts for a niche, newest first."""
+    nid = niche["id"]
+    posts = []
+    for ep in load_episodes(nid):
+        date = _episode_date(ep)
+        article = _load_article(nid, date)
+        transcript = _load_transcript(nid, date)
+        # Headline/slug come from the episode's specific story (stable URL);
+        # the article supplies dek, body, meta and tags.
+        headline = _topic_from_ep(ep["title"], niche)
+        slug = f"ep{ep['number']}-{slugify(headline)}"
+        posts.append({
+            "niche": niche,
+            "number": ep["number"],
+            "date": date or ep.get("pubDate", "")[:16],
+            "pubDate": ep.get("pubDate", ""),
+            "audio_url": ep.get("audio_url", ""),
+            "duration": ep.get("duration", 300),
+            "headline": headline,
+            "dek": (article or {}).get("dek") or ep.get("description", "")[:150],
+            "meta": (article or {}).get("meta_description") or niche["description"][:155],
+            "body_html": (article or {}).get("body_html", ""),
+            "tags": (article or {}).get("tags", []),
+            "transcript": transcript,
+            "excerpt": ((article or {}).get("dek") or ep.get("description", "")[:180]),
+            "url": f"{SITE_URL}/blog/{nid}/{slug}.html",
+            "path": f"blog/{nid}/{slug}.html",
+        })
+    return posts
+
+
+# ─────────────────────────── shared chrome ───────────────────────────
+CSS = """
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#14161a;--soft:#5b6470;--line:#e6e8ec;--bg:#ffffff;--wash:#f7f8fa;--accent:#7c3aed}
+body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.7}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:760px;margin:0 auto;padding:0 22px}
+.wide{max-width:1100px}
+header.site{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);z-index:10}
+.site-inner{max-width:1100px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{font-family:-apple-system,'Segoe UI',sans-serif;font-weight:800;font-size:1.25rem;color:var(--ink);letter-spacing:-.5px}
+.brand span{color:var(--accent)}
+.catnav{display:flex;gap:14px;flex-wrap:wrap;font-family:-apple-system,'Segoe UI',sans-serif;font-size:.82rem;font-weight:600}
+.catnav a{color:var(--soft)}
+.catnav a:hover{color:var(--ink);text-decoration:none}
+.hero{padding:54px 0 30px;text-align:center;border-bottom:1px solid var(--line)}
+.hero h1{font-family:-apple-system,'Segoe UI',sans-serif;font-size:2.4rem;font-weight:900;letter-spacing:-1px;margin-bottom:12px}
+.hero p{color:var(--soft);font-size:1.05rem;max-width:560px;margin:0 auto}
+.eyebrow{font-family:-apple-system,'Segoe UI',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;font-weight:700;color:var(--accent)}
+.feed{padding:34px 0}
+.post-card{padding:24px 0;border-bottom:1px solid var(--line)}
+.post-card .eyebrow{color:var(--soft)}
+.post-card .tag{color:var(--accent)}
+.post-card h2{font-size:1.5rem;line-height:1.25;margin:6px 0 8px;font-weight:800}
+.post-card h2 a{color:var(--ink)}
+.post-card p{color:var(--soft);font-size:1rem}
+.meta{font-family:-apple-system,'Segoe UI',sans-serif;font-size:.78rem;color:var(--soft);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+article.post{padding:36px 0 10px}
+article.post h1{font-family:-apple-system,'Segoe UI',sans-serif;font-size:2.15rem;line-height:1.2;font-weight:900;letter-spacing:-.6px;margin:10px 0 12px}
+article.post .dek{font-size:1.2rem;color:var(--soft);margin-bottom:20px;font-style:italic}
+.player{background:var(--wash);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:22px 0}
+.player .plabel{font-family:-apple-system,'Segoe UI',sans-serif;font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:10px}
+audio{width:100%;height:40px}
+.body h2{font-family:-apple-system,'Segoe UI',sans-serif;font-size:1.4rem;font-weight:800;margin:30px 0 10px}
+.body p{margin:0 0 16px;font-size:1.12rem}
+.body ul{margin:0 0 16px 22px}.body li{margin-bottom:8px;font-size:1.1rem}
+.tags{margin:26px 0;font-family:-apple-system,'Segoe UI',sans-serif;font-size:.8rem}
+.tags a{display:inline-block;background:var(--wash);border:1px solid var(--line);color:var(--soft);padding:4px 12px;border-radius:30px;margin:0 6px 8px 0}
+details.transcript{border-top:1px solid var(--line);margin-top:30px;padding-top:8px}
+details.transcript summary{font-family:-apple-system,'Segoe UI',sans-serif;font-weight:700;cursor:pointer;padding:12px 0;font-size:.95rem}
+details.transcript p{color:#333;font-size:1.02rem;margin:0 0 14px}
+.subscribe{background:var(--wash);border:1px solid var(--line);border-radius:12px;padding:20px;margin:34px 0;font-family:-apple-system,'Segoe UI',sans-serif}
+.subscribe h3{font-size:1rem;margin-bottom:12px}
+.subscribe a{display:inline-block;border:1px solid var(--line);background:#fff;border-radius:30px;padding:8px 16px;margin:0 8px 8px 0;font-size:.85rem;font-weight:600}
+.breadcrumb{font-family:-apple-system,'Segoe UI',sans-serif;font-size:.78rem;color:var(--soft);padding:20px 0 0}
+.cat-hero{padding:44px 0 20px;border-bottom:1px solid var(--line)}
+.cat-hero .icon{font-size:2.4rem}
+.cat-hero h1{font-family:-apple-system,'Segoe UI',sans-serif;font-size:2rem;font-weight:900;margin:6px 0}
+footer.site{border-top:1px solid var(--line);margin-top:40px;padding:30px 0;font-family:-apple-system,'Segoe UI',sans-serif;font-size:.82rem;color:var(--soft)}
+footer.site .wrap{max-width:1100px}
+footer.site a{color:var(--soft)}
+.disc{font-size:.78rem;color:#8a929c;margin-top:8px}
+@media(max-width:600px){.hero h1{font-size:1.8rem}article.post h1{font-size:1.6rem}.catnav{font-size:.76rem;gap:10px}}
+"""
+
+
+def _catnav():
+    links = " ".join(
+        f'<a href="{SITE_URL}/blog/{n["id"]}/">{ICONS[n["id"]]} {CATEGORY_LABEL[n["id"]]}</a>'
+        for n in PODCASTS
+    )
+    return f'<nav class="catnav">{links}</nav>'
+
+
+def _head(title, desc, canonical, accent="#7c3aed", extra=""):
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{niche['title']} — Free Daily Podcast</title>
-  <meta name="description" content="{niche['description'][:160]}">
-  <meta property="og:title" content="{niche['title']}">
-  <meta property="og:description" content="{niche['description'][:160]}">
-  <meta property="og:image" content="{cover}">
-  <meta property="og:url" content="{BASE_URL}/podcasts/{pid}/">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="{cover}">
-  <style>
-    *{{ margin:0; padding:0; box-sizing:border-box; }}
-    body{{ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:{c['bg']}; color:#fff; }}
-    a{{ color:inherit; text-decoration:none; }}
-
-    /* NAV */
-    nav{{ background:rgba(0,0,0,0.4); padding:14px 24px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #ffffff15; }}
-    .nav-logo{{ font-weight:700; font-size:1rem; color:{c['text']}; }}
-    .nav-back{{ font-size:0.85rem; color:#aaa; }}
-    .nav-back:hover{{ color:#fff; }}
-
-    /* BANNER */
-    .banner{{
-      width:100%; height:220px;
-      background:linear-gradient(135deg, {c['bg']} 0%, {c['grad']} 60%, {c['accent']}33 100%);
-      display:flex; align-items:center; justify-content:center;
-      position:relative; overflow:hidden; border-bottom:2px solid {c['accent']}44;
-    }}
-    .banner-bg{{
-      position:absolute; inset:0;
-      background:repeating-linear-gradient(45deg, transparent, transparent 40px, {c['accent']}08 40px, {c['accent']}08 41px);
-    }}
-    .banner-content{{ position:relative; text-align:center; padding:20px; }}
-    .banner-icon{{ font-size:3.5rem; margin-bottom:10px; display:block; }}
-    .banner-title{{ font-size:2.2rem; font-weight:900; color:#fff; letter-spacing:-0.5px; }}
-    .banner-sub{{ font-size:1rem; color:{c['text']}; margin-top:6px; }}
-
-    /* HERO */
-    .hero{{ display:flex; gap:32px; align-items:flex-start; max-width:900px; margin:40px auto; padding:0 24px; }}
-    .cover{{ width:180px; height:180px; border-radius:16px; flex-shrink:0; box-shadow:0 12px 40px {c['accent']}55; }}
-    .hero-info h1{{ font-size:1.8rem; font-weight:800; margin-bottom:10px; }}
-    .hero-info p{{ color:#b0b0c0; line-height:1.7; font-size:0.95rem; margin-bottom:20px; }}
-    .badges{{ display:flex; gap:12px; flex-wrap:wrap; }}
-    .badge{{ display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border-radius:50px; font-weight:600; font-size:0.9rem; border:1px solid #333; background:#ffffff10; transition:all 0.2s; }}
-    .badge:hover{{ transform:translateY(-2px); background:#ffffff20; }}
-    .badge.spotify{{ border-color:#1DB954; }}
-    .badge.amazon{{ border-color:#FF9900; }}
-    .badge.rss{{ border-color:{c['accent']}; }}
-
-    /* STATS */
-    .stats{{ display:flex; gap:24px; max-width:900px; margin:0 auto 40px; padding:0 24px; }}
-    .stat{{ background:#ffffff08; border:1px solid #ffffff10; border-radius:12px; padding:16px 24px; flex:1; text-align:center; }}
-    .stat-num{{ font-size:2rem; font-weight:800; color:{c['text']}; }}
-    .stat-label{{ font-size:0.8rem; color:#777; margin-top:4px; }}
-
-    /* EPISODES */
-    .section{{ max-width:900px; margin:0 auto 60px; padding:0 24px; }}
-    .section h2{{ font-size:1.3rem; font-weight:700; margin-bottom:20px; color:{c['text']}; border-left:3px solid {c['accent']}; padding-left:12px; }}
-    .episode{{ background:#ffffff06; border:1px solid #ffffff0f; border-radius:12px; padding:20px; margin-bottom:16px; transition:border-color 0.2s; }}
-    .episode:hover{{ border-color:{c['accent']}44; }}
-    .ep-meta{{ display:flex; gap:12px; margin-bottom:8px; }}
-    .ep-num{{ background:{c['accent']}22; color:{c['text']}; font-size:0.75rem; font-weight:700; padding:2px 10px; border-radius:20px; }}
-    .ep-date{{ color:#666; font-size:0.8rem; }}
-    .ep-title{{ font-weight:600; font-size:1rem; margin-bottom:6px; }}
-    .ep-desc{{ color:#888; font-size:0.85rem; line-height:1.6; margin-bottom:12px; }}
-    audio{{ width:100%; height:36px; margin-top:8px; }}
-    .no-eps{{ text-align:center; color:#555; padding:40px; }}
-
-    footer{{ text-align:center; padding:24px; color:#444; font-size:0.8rem; border-top:1px solid #ffffff10; }}
-    footer a{{ color:{c['accent']}; }}
-
-    @media(max-width:600px){{
-      .hero{{ flex-direction:column; }}
-      .cover{{ width:140px; height:140px; }}
-      .banner-title{{ font-size:1.6rem; }}
-      .stats{{ flex-wrap:wrap; }}
-    }}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{html.escape(title)}</title>
+<meta name="description" content="{html.escape(desc)}">
+<link rel="canonical" href="{canonical}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{html.escape(title)}">
+<meta property="og:description" content="{html.escape(desc)}">
+<meta property="og:url" content="{canonical}">
+<meta property="og:site_name" content="{BRAND}">
+<meta name="twitter:card" content="summary_large_image">
+<style>{CSS}:root{{--accent:{accent}}}</style>
+{extra}
 </head>
 <body>
+<header class="site"><div class="site-inner">
+<a class="brand" href="{SITE_URL}/">Mapt<span>Daily</span></a>
+{_catnav()}
+</div></header>"""
 
-<nav>
-  <span class="nav-logo">{icon} {niche['title']}</span>
-  <a href="{BASE_URL}/" class="nav-back">← All Podcasts</a>
-</nav>
 
-<div class="banner">
-  <div class="banner-bg"></div>
-  <div class="banner-content">
-    <span class="banner-icon">{icon}</span>
-    <div class="banner-title">{niche['title']}</div>
-    <div class="banner-sub">5 Minutes · Every Morning · Free</div>
-  </div>
+def _footer():
+    return f"""<footer class="site"><div class="wrap">
+<p><a href="{SITE_URL}/">Home</a> · <a href="{SITE_URL}/about.html">About</a> · <a href="{SITE_URL}/privacy.html">Privacy</a></p>
+<p class="disc">© {datetime.now().year} {BRAND}. Daily news across AI, finance, health, startups, crypto, world &amp; true crime. Audio and article summaries are AI-assisted and compiled from public news sources; verify before relying on any detail.</p>
+</div></footer>
+</body></html>"""
+
+
+# ─────────────────────────── page builders ───────────────────────────
+def post_page(post):
+    n = post["niche"]; nid = n["id"]; accent = COLORS[nid]
+    audio = post["audio_url"] or ""
+    body = post["body_html"] or f"<p>{html.escape(post['dek'])}</p>"
+
+    transcript_html = ""
+    if post["transcript"]:
+        paras = "".join(f"<p>{html.escape(p.strip())}</p>"
+                        for p in re.split(r"\n\s*\n", post["transcript"]) if p.strip())
+        transcript_html = f"""<details class="transcript"><summary>📄 Full episode transcript</summary>{paras}</details>"""
+
+    tags_html = ""
+    if post["tags"]:
+        tags_html = '<div class="tags">' + "".join(
+            f'<a href="{SITE_URL}/blog/{nid}/">#{html.escape(t)}</a>' for t in post["tags"]
+        ) + "</div>"
+
+    subscribe = f"""<div class="subscribe"><h3>🎧 Listen to {html.escape(n['title'])} daily</h3>
+<a href="{SITE_URL}/{n['rss_file']}">📡 RSS</a>
+<a href="{SITE_URL}/blog/{nid}/">More {CATEGORY_LABEL[nid]} stories</a></div>"""
+
+    ld = {
+        "@context": "https://schema.org", "@type": "NewsArticle",
+        "headline": post["headline"][:110],
+        "description": post["meta"],
+        "datePublished": _iso(post["pubDate"]),
+        "dateModified": _iso(post["pubDate"]),
+        "author": {"@type": "Organization", "name": n["title"]},
+        "publisher": {"@type": "Organization", "name": BRAND},
+        "mainEntityOfPage": post["url"],
+        "articleSection": CATEGORY_LABEL[nid],
+    }
+    schema = f'<script type="application/ld+json">{json.dumps(ld)}</script>'
+
+    player = ""
+    if audio:
+        player = f"""<div class="player"><div class="plabel">▶ Listen · 5 min</div>
+<audio controls preload="none" src="{html.escape(audio)}"></audio></div>"""
+
+    return _head(f"{post['headline']} — {BRAND}", post["meta"], post["url"], accent, schema) + f"""
+<div class="wrap">
+<div class="breadcrumb"><a href="{SITE_URL}/">Home</a> › <a href="{SITE_URL}/blog/{nid}/">{CATEGORY_LABEL[nid]}</a></div>
+<article class="post">
+<div class="eyebrow" style="color:{accent}">{ICONS[nid]} {CATEGORY_LABEL[nid]}</div>
+<h1>{html.escape(post['headline'])}</h1>
+<div class="dek">{html.escape(post['dek'])}</div>
+<div class="meta"><span>{post['date']}</span><span>·</span><span>{n['title']}</span></div>
+{player}
+<div class="body">{body}</div>
+{tags_html}
+{subscribe}
+{transcript_html}
+</article>
 </div>
-
-<div class="hero">
-  <img src="{cover}" alt="{niche['title']} cover" class="cover">
-  <div class="hero-info">
-    <h1>{niche['title']}</h1>
-    <p>{niche['description']}</p>
-    <div class="badges">
-      {spotify_btn}
-      {amazon_btn}
-      <a href="{feed}" class="badge rss" target="_blank">📡 RSS Feed</a>
-    </div>
-  </div>
-</div>
-
-<div class="stats">
-  <div class="stat">
-    <div class="stat-num">{len(episodes)}</div>
-    <div class="stat-label">Episodes</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">5 min</div>
-    <div class="stat-label">Per Episode</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">Daily</div>
-    <div class="stat-label">New Episodes</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">Free</div>
-    <div class="stat-label">Always</div>
-  </div>
-</div>
-
-<div class="section">
-  <h2>Latest Episodes</h2>
-  {ep_html}
-</div>
-
-<footer>
-  <p>© 2026 {niche['title']} · <a href="{feed}">RSS Feed</a> · <a href="{BASE_URL}/">All Shows</a></p>
-</footer>
-
-</body>
-</html>"""
+{_footer()}"""
 
 
-def hub_page(podcasts_with_counts):
+def category_page(niche, posts):
+    nid = niche["id"]; accent = COLORS[nid]
     cards = ""
-    for niche, count in podcasts_with_counts:
-        pid    = niche["id"]
-        c      = COLORS[pid]
-        icon   = ICONS[pid]
-        cover  = niche["cover_url"]
-        cards += f"""
-      <a href="podcasts/{pid}/" class="card" style="--accent:{c['accent']};--text:{c['text']};">
-        <img src="{cover}" alt="{niche['title']}" class="card-cover">
-        <div class="card-body">
-          <div class="card-icon">{icon}</div>
-          <h3>{niche['title']}</h3>
-          <p>{niche['description'][:100]}...</p>
-          <div class="card-meta">
-            <span class="ep-count">{count} episodes</span>
-            <span class="daily-badge">● Daily</span>
-          </div>
-        </div>
-      </a>"""
+    for p in posts:
+        cards += f"""<div class="post-card">
+<div class="meta"><span>{p['date']}</span></div>
+<h2><a href="{p['url']}">{html.escape(p['headline'])}</a></h2>
+<p>{html.escape(p['excerpt'])}</p>
+</div>"""
+    if not cards:
+        cards = "<p style='padding:30px 0;color:#888'>New stories coming soon.</p>"
 
-    return f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daily Podcast Network — 7 Free Podcasts, Updated Every Day</title>
-  <meta name="description" content="7 free daily podcasts covering AI, finance, health, crypto, startups, world news, and true crime. 5 minutes every morning. Free forever.">
-  <meta property="og:title" content="Daily Podcast Network">
-  <meta property="og:description" content="7 free daily podcasts. 5 minutes every morning.">
-  <meta property="og:image" content="{BASE_URL}/assets/cover.png">
-  <meta property="og:url" content="{BASE_URL}/">
-  <style>
-    *{{ margin:0; padding:0; box-sizing:border-box; }}
-    body{{ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:#080810; color:#fff; }}
-    a{{ color:inherit; text-decoration:none; }}
+    canonical = f"{SITE_URL}/blog/{nid}/"
+    return _head(f"{niche['title']} — {CATEGORY_LABEL[nid]} News | {BRAND}",
+                 niche["description"][:155], canonical, accent) + f"""
+<div class="cat-hero"><div class="wrap">
+<div class="icon">{ICONS[nid]}</div>
+<h1>{html.escape(niche['title'])}</h1>
+<p style="color:var(--soft)">{html.escape(niche['description'])}</p>
+<div class="subscribe" style="margin-top:18px"><h3>Subscribe</h3>
+<a href="{SITE_URL}/{niche['rss_file']}">📡 RSS Feed</a></div>
+</div></div>
+<div class="wrap feed">{cards}</div>
+{_footer()}"""
 
-    header{{
-      text-align:center; padding:60px 20px 50px;
-      background:linear-gradient(180deg, #0f0520 0%, #080810 100%);
-      border-bottom:1px solid #ffffff10;
-    }}
-    header h1{{ font-size:2.8rem; font-weight:900; margin-bottom:14px;
-      background:linear-gradient(135deg,#fff 0%,#a78bfa 100%);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent; }}
-    header p{{ color:#888; font-size:1.1rem; max-width:500px; margin:0 auto 30px; line-height:1.6; }}
-    .header-stats{{ display:flex; gap:32px; justify-content:center; flex-wrap:wrap; }}
-    .hstat{{ text-align:center; }}
-    .hstat-num{{ font-size:1.8rem; font-weight:800; color:#a78bfa; }}
-    .hstat-label{{ font-size:0.8rem; color:#666; margin-top:2px; }}
 
-    .grid{{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:24px; max-width:1100px; margin:50px auto; padding:0 24px; }}
+def home_page(all_posts):
+    latest = sorted(all_posts, key=lambda p: p["pubDate"], reverse=True)[:24]
+    cards = ""
+    for p in latest:
+        nid = p["niche"]["id"]
+        cards += f"""<div class="post-card">
+<div class="eyebrow tag" style="color:{COLORS[nid]}">{ICONS[nid]} {CATEGORY_LABEL[nid]}</div>
+<h2><a href="{p['url']}">{html.escape(p['headline'])}</a></h2>
+<p>{html.escape(p['excerpt'])}</p>
+<div class="meta"><span>{p['date']}</span></div>
+</div>"""
 
-    .card{{
-      background:#0f0f1f; border:1px solid #ffffff10; border-radius:16px;
-      overflow:hidden; transition:all 0.25s; display:flex; flex-direction:column;
-    }}
-    .card:hover{{ border-color:var(--accent); transform:translateY(-4px); box-shadow:0 16px 40px var(--accent)22; }}
-    .card-cover{{ width:100%; height:180px; object-fit:cover; }}
-    .card-body{{ padding:20px; flex:1; display:flex; flex-direction:column; }}
-    .card-icon{{ font-size:1.6rem; margin-bottom:8px; }}
-    .card-body h3{{ font-size:1.1rem; font-weight:700; margin-bottom:8px; color:#fff; }}
-    .card-body p{{ font-size:0.85rem; color:#888; line-height:1.6; flex:1; }}
-    .card-meta{{ display:flex; align-items:center; justify-content:space-between; margin-top:16px; }}
-    .ep-count{{ font-size:0.8rem; color:#555; }}
-    .daily-badge{{ font-size:0.75rem; color:var(--text); font-weight:600; }}
+    return _head(f"{BRAND} — Daily News on AI, Finance, Health, Crypto, Startups & More",
+                 "Mapt Daily: concise daily news and analysis across AI, finance, health, startups, crypto, world affairs and true crime. Read the article, hear the 5-minute brief.",
+                 f"{SITE_URL}/") + f"""
+<div class="hero"><div class="wrap">
+<div class="eyebrow">Updated every morning</div>
+<h1>Mapt Daily</h1>
+<p>Concise daily news and analysis across seven beats. Read the story, then hear the five-minute brief.</p>
+</div></div>
+<div class="wrap feed">{cards}</div>
+{_footer()}"""
 
-    footer{{ text-align:center; padding:30px; color:#333; font-size:0.8rem; border-top:1px solid #ffffff08; margin-top:40px; }}
 
-    @media(max-width:500px){{ header h1{{ font-size:1.8rem; }} }}
-  </style>
-</head>
-<body>
+def static_page(title, canonical, body_html):
+    return _head(f"{title} — {BRAND}", f"{title} — {BRAND}", canonical) + f"""
+<div class="wrap"><article class="post"><h1>{title}</h1><div class="body">{body_html}</div></article></div>
+{_footer()}"""
 
-<header>
-  <h1>🎙️ Daily Podcast Network</h1>
-  <p>7 free daily podcasts. 5 minutes every morning.<br>AI-generated. Always fresh. Always free.</p>
-  <div class="header-stats">
-    <div class="hstat"><div class="hstat-num">7</div><div class="hstat-label">Podcasts</div></div>
-    <div class="hstat"><div class="hstat-num">Daily</div><div class="hstat-label">New Episodes</div></div>
-    <div class="hstat"><div class="hstat-num">5 min</div><div class="hstat-label">Per Episode</div></div>
-    <div class="hstat"><div class="hstat-num">Free</div><div class="hstat-label">Forever</div></div>
-  </div>
-</header>
 
-<div class="grid">
-  {cards}
-</div>
+def redirect_page(target):
+    return f"""<!DOCTYPE html><html><head><meta charset="UTF-8">
+<meta http-equiv="refresh" content="0; url={target}">
+<link rel="canonical" href="{target}"><title>Moved</title></head>
+<body><p>This page has moved to <a href="{target}">{target}</a>.</p></body></html>"""
 
-<footer>
-  © 2026 Daily Podcast Network · Built with AI · Updated every morning
-</footer>
 
-</body>
-</html>"""
+# ─────────────────────────── helpers + sitemap ───────────────────────────
+def _iso(pubdate):
+    try:
+        from email.utils import parsedate_to_datetime
+        return parsedate_to_datetime(pubdate).strftime("%Y-%m-%dT%H:%M:%SZ")
+    except Exception:
+        return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def sitemap(urls):
+    body = "".join(
+        f"\n  <url><loc>{u}</loc><changefreq>daily</changefreq></url>" for u in urls
+    )
+    return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{body}\n</urlset>'
+
+
+# ─────────────────────────── main ───────────────────────────
+def _write(path, content):
+    d = os.path.dirname(path)
+    if d:
+        os.makedirs(d, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(content)
 
 
 def main():
-    podcasts_with_counts = []
+    all_posts = []
+    urls = [f"{SITE_URL}/", f"{SITE_URL}/about.html", f"{SITE_URL}/privacy.html"]
+
     for niche in PODCASTS:
-        pid      = niche["id"]
-        episodes = load_episodes(pid)
-        podcasts_with_counts.append((niche, len(episodes)))
+        nid = niche["id"]
+        posts = build_posts(niche)
+        all_posts.extend(posts)
 
-        out_dir = f"podcasts/{pid}"
-        os.makedirs(out_dir, exist_ok=True)
-        html = podcast_page(niche, episodes)
-        with open(f"{out_dir}/index.html", "w", encoding="utf-8") as f:
-            f.write(html)
-        print(f"[page] podcasts/{pid}/index.html  ({len(episodes)} episodes)")
+        # Clear stale post HTML so a changed slug never leaves an orphan/duplicate
+        blog_dir = f"blog/{nid}"
+        if os.path.isdir(blog_dir):
+            for old in os.listdir(blog_dir):
+                if old.endswith(".html"):
+                    os.remove(os.path.join(blog_dir, old))
 
-    with open("index.html", "w", encoding="utf-8") as f:
-        f.write(hub_page(podcasts_with_counts))
-    print("[page] index.html (hub)")
+        _write(f"blog/{nid}/index.html", category_page(niche, posts))
+        urls.append(f"{SITE_URL}/blog/{nid}/")
+
+        for p in posts:
+            _write(p["path"], post_page(p))
+            urls.append(p["url"])
+
+        # legacy podcast page -> redirect to new category
+        _write(f"podcasts/{nid}/index.html", redirect_page(f"{SITE_URL}/blog/{nid}/"))
+        print(f"[page] blog/{nid}/ ({len(posts)} posts)")
+
+    _write("index.html", home_page(all_posts))
+
+    about = ("<p><strong>Mapt Daily</strong> publishes concise daily news and analysis across seven beats: "
+             "AI &amp; technology, finance, health, startups, crypto, world affairs and true crime. Each story is "
+             "paired with a five-minute audio brief you can listen to anywhere.</p>"
+             "<p>Our summaries are compiled from reputable public news sources and produced with AI assistance, "
+             "then published every morning. We aim for accuracy and neutrality; if you spot an error, contact us at "
+             "hunk1.on11@gmail.com.</p>")
+    privacy = ("<p>This site is operated by Mapt Daily. We do not collect personal information directly. "
+               "Standard server logs and third-party services (such as analytics and, where present, advertising "
+               "partners like Google) may set cookies and collect usage data in accordance with their own policies.</p>"
+               "<p>Third-party vendors, including Google, use cookies to serve ads based on prior visits to this or "
+               "other websites. You can opt out of personalized advertising via Google Ads Settings. For questions "
+               "about this policy, contact hunk1.on11@gmail.com.</p>")
+    _write("about.html", static_page("About Mapt Daily", f"{SITE_URL}/about.html", about))
+    _write("privacy.html", static_page("Privacy Policy", f"{SITE_URL}/privacy.html", privacy))
+
+    _write("sitemap.xml", sitemap(urls))
+    _write("robots.txt", f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n")
+    # NOTE: CNAME is intentionally NOT written here. Set the custom domain via
+    # GitHub repo Settings > Pages (which creates CNAME) only AFTER the DNS
+    # record for daily.mapt.cloud exists, or the live site will break.
+
+    print(f"[page] home + about + privacy + sitemap ({len(urls)} urls) + robots")
 
 
 if __name__ == "__main__":

@@ -1,158 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daily Podcast Network — 7 Free Podcasts, Updated Every Day</title>
-  <meta name="description" content="7 free daily podcasts covering AI, finance, health, crypto, startups, world news, and true crime. 5 minutes every morning. Free forever.">
-  <meta property="og:title" content="Daily Podcast Network">
-  <meta property="og:description" content="7 free daily podcasts. 5 minutes every morning.">
-  <meta property="og:image" content="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png">
-  <meta property="og:url" content="https://sameer1337.github.io/ai-tech-podcast/">
-  <style>
-    *{ margin:0; padding:0; box-sizing:border-box; }
-    body{ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:#080810; color:#fff; }
-    a{ color:inherit; text-decoration:none; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapt Daily — Daily News on AI, Finance, Health, Crypto, Startups &amp; More</title>
+<meta name="description" content="Mapt Daily: concise daily news and analysis across AI, finance, health, startups, crypto, world affairs and true crime. Read the article, hear the 5-minute brief.">
+<link rel="canonical" href="https://daily.mapt.cloud/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mapt Daily — Daily News on AI, Finance, Health, Crypto, Startups &amp; More">
+<meta property="og:description" content="Mapt Daily: concise daily news and analysis across AI, finance, health, startups, crypto, world affairs and true crime. Read the article, hear the 5-minute brief.">
+<meta property="og:url" content="https://daily.mapt.cloud/">
+<meta property="og:site_name" content="Mapt Daily">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#14161a;--soft:#5b6470;--line:#e6e8ec;--bg:#ffffff;--wash:#f7f8fa;--accent:#7c3aed}
+body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.7}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:760px;margin:0 auto;padding:0 22px}
+.wide{max-width:1100px}
+header.site{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);z-index:10}
+.site-inner{max-width:1100px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{font-family:-apple-system,'Segoe UI',sans-serif;font-weight:800;font-size:1.25rem;color:var(--ink);letter-spacing:-.5px}
+.brand span{color:var(--accent)}
+.catnav{display:flex;gap:14px;flex-wrap:wrap;font-family:-apple-system,'Segoe UI',sans-serif;font-size:.82rem;font-weight:600}
+.catnav a{color:var(--soft)}
+.catnav a:hover{color:var(--ink);text-decoration:none}
+.hero{padding:54px 0 30px;text-align:center;border-bottom:1px solid var(--line)}
+.hero h1{font-family:-apple-system,'Segoe UI',sans-serif;font-size:2.4rem;font-weight:900;letter-spacing:-1px;margin-bottom:12px}
+.hero p{color:var(--soft);font-size:1.05rem;max-width:560px;margin:0 auto}
+.eyebrow{font-family:-apple-system,'Segoe UI',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;font-weight:700;color:var(--accent)}
+.feed{padding:34px 0}
+.post-card{padding:24px 0;border-bottom:1px solid var(--line)}
+.post-card .eyebrow{color:var(--soft)}
+.post-card .tag{color:var(--accent)}
+.post-card h2{font-size:1.5rem;line-height:1.25;margin:6px 0 8px;font-weight:800}
+.post-card h2 a{color:var(--ink)}
+.post-card p{color:var(--soft);font-size:1rem}
+.meta{font-family:-apple-system,'Segoe UI',sans-serif;font-size:.78rem;color:var(--soft);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+article.post{padding:36px 0 10px}
+article.post h1{font-family:-apple-system,'Segoe UI',sans-serif;font-size:2.15rem;line-height:1.2;font-weight:900;letter-spacing:-.6px;margin:10px 0 12px}
+article.post .dek{font-size:1.2rem;color:var(--soft);margin-bottom:20px;font-style:italic}
+.player{background:var(--wash);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:22px 0}
+.player .plabel{font-family:-apple-system,'Segoe UI',sans-serif;font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:10px}
+audio{width:100%;height:40px}
+.body h2{font-family:-apple-system,'Segoe UI',sans-serif;font-size:1.4rem;font-weight:800;margin:30px 0 10px}
+.body p{margin:0 0 16px;font-size:1.12rem}
+.body ul{margin:0 0 16px 22px}.body li{margin-bottom:8px;font-size:1.1rem}
+.tags{margin:26px 0;font-family:-apple-system,'Segoe UI',sans-serif;font-size:.8rem}
+.tags a{display:inline-block;background:var(--wash);border:1px solid var(--line);color:var(--soft);padding:4px 12px;border-radius:30px;margin:0 6px 8px 0}
+details.transcript{border-top:1px solid var(--line);margin-top:30px;padding-top:8px}
+details.transcript summary{font-family:-apple-system,'Segoe UI',sans-serif;font-weight:700;cursor:pointer;padding:12px 0;font-size:.95rem}
+details.transcript p{color:#333;font-size:1.02rem;margin:0 0 14px}
+.subscribe{background:var(--wash);border:1px solid var(--line);border-radius:12px;padding:20px;margin:34px 0;font-family:-apple-system,'Segoe UI',sans-serif}
+.subscribe h3{font-size:1rem;margin-bottom:12px}
+.subscribe a{display:inline-block;border:1px solid var(--line);background:#fff;border-radius:30px;padding:8px 16px;margin:0 8px 8px 0;font-size:.85rem;font-weight:600}
+.breadcrumb{font-family:-apple-system,'Segoe UI',sans-serif;font-size:.78rem;color:var(--soft);padding:20px 0 0}
+.cat-hero{padding:44px 0 20px;border-bottom:1px solid var(--line)}
+.cat-hero .icon{font-size:2.4rem}
+.cat-hero h1{font-family:-apple-system,'Segoe UI',sans-serif;font-size:2rem;font-weight:900;margin:6px 0}
+footer.site{border-top:1px solid var(--line);margin-top:40px;padding:30px 0;font-family:-apple-system,'Segoe UI',sans-serif;font-size:.82rem;color:var(--soft)}
+footer.site .wrap{max-width:1100px}
+footer.site a{color:var(--soft)}
+.disc{font-size:.78rem;color:#8a929c;margin-top:8px}
+@media(max-width:600px){.hero h1{font-size:1.8rem}article.post h1{font-size:1.6rem}.catnav{font-size:.76rem;gap:10px}}
+:root{--accent:#7c3aed}</style>
 
-    header{
-      text-align:center; padding:60px 20px 50px;
-      background:linear-gradient(180deg, #0f0520 0%, #080810 100%);
-      border-bottom:1px solid #ffffff10;
-    }
-    header h1{ font-size:2.8rem; font-weight:900; margin-bottom:14px;
-      background:linear-gradient(135deg,#fff 0%,#a78bfa 100%);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    header p{ color:#888; font-size:1.1rem; max-width:500px; margin:0 auto 30px; line-height:1.6; }
-    .header-stats{ display:flex; gap:32px; justify-content:center; flex-wrap:wrap; }
-    .hstat{ text-align:center; }
-    .hstat-num{ font-size:1.8rem; font-weight:800; color:#a78bfa; }
-    .hstat-label{ font-size:0.8rem; color:#666; margin-top:2px; }
-
-    .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:24px; max-width:1100px; margin:50px auto; padding:0 24px; }
-
-    .card{
-      background:#0f0f1f; border:1px solid #ffffff10; border-radius:16px;
-      overflow:hidden; transition:all 0.25s; display:flex; flex-direction:column;
-    }
-    .card:hover{ border-color:var(--accent); transform:translateY(-4px); box-shadow:0 16px 40px var(--accent)22; }
-    .card-cover{ width:100%; height:180px; object-fit:cover; }
-    .card-body{ padding:20px; flex:1; display:flex; flex-direction:column; }
-    .card-icon{ font-size:1.6rem; margin-bottom:8px; }
-    .card-body h3{ font-size:1.1rem; font-weight:700; margin-bottom:8px; color:#fff; }
-    .card-body p{ font-size:0.85rem; color:#888; line-height:1.6; flex:1; }
-    .card-meta{ display:flex; align-items:center; justify-content:space-between; margin-top:16px; }
-    .ep-count{ font-size:0.8rem; color:#555; }
-    .daily-badge{ font-size:0.75rem; color:var(--text); font-weight:600; }
-
-    footer{ text-align:center; padding:30px; color:#333; font-size:0.8rem; border-top:1px solid #ffffff08; margin-top:40px; }
-
-    @media(max-width:500px){ header h1{ font-size:1.8rem; } }
-  </style>
 </head>
 <body>
-
-<header>
-  <h1>🎙️ Daily Podcast Network</h1>
-  <p>7 free daily podcasts. 5 minutes every morning.<br>AI-generated. Always fresh. Always free.</p>
-  <div class="header-stats">
-    <div class="hstat"><div class="hstat-num">7</div><div class="hstat-label">Podcasts</div></div>
-    <div class="hstat"><div class="hstat-num">Daily</div><div class="hstat-label">New Episodes</div></div>
-    <div class="hstat"><div class="hstat-num">5 min</div><div class="hstat-label">Per Episode</div></div>
-    <div class="hstat"><div class="hstat-num">Free</div><div class="hstat-label">Forever</div></div>
-  </div>
-</header>
-
-<div class="grid">
-  
-      <a href="podcasts/ai-tech/" class="card" style="--accent:#7c3aed;--text:#a78bfa;">
-        <img src="https://sameer1337.github.io/ai-tech-podcast/assets/cover.png" alt="AI Tech Daily" class="card-cover">
-        <div class="card-body">
-          <div class="card-icon">🤖</div>
-          <h3>AI Tech Daily</h3>
-          <p>AI Tech Daily is your free daily AI news podcast â€” 5 minutes of the biggest artificial intelligenc...</p>
-          <div class="card-meta">
-            <span class="ep-count">10 episodes</span>
-            <span class="daily-badge">● Daily</span>
-          </div>
-        </div>
-      </a>
-      <a href="podcasts/finance/" class="card" style="--accent:#16a34a;--text:#4ade80;">
-        <img src="https://sameer1337.github.io/ai-tech-podcast/assets/cover_finance.png" alt="Money Minute Daily" class="card-cover">
-        <div class="card-body">
-          <div class="card-icon">💰</div>
-          <h3>Money Minute Daily</h3>
-          <p>Your free daily 5-minute finance podcast. Stock market, investing, personal finance, and economic ne...</p>
-          <div class="card-meta">
-            <span class="ep-count">10 episodes</span>
-            <span class="daily-badge">● Daily</span>
-          </div>
-        </div>
-      </a>
-      <a href="podcasts/health/" class="card" style="--accent:#0891b2;--text:#22d3ee;">
-        <img src="https://sameer1337.github.io/ai-tech-podcast/assets/cover_health.png" alt="Health Edge Daily" class="card-cover">
-        <div class="card-body">
-          <div class="card-icon">🧬</div>
-          <h3>Health Edge Daily</h3>
-          <p>Daily health and longevity news in 5 minutes. Science-backed health tips, medical breakthroughs, nut...</p>
-          <div class="card-meta">
-            <span class="ep-count">10 episodes</span>
-            <span class="daily-badge">● Daily</span>
-          </div>
-        </div>
-      </a>
-      <a href="podcasts/startup/" class="card" style="--accent:#9333ea;--text:#c084fc;">
-        <img src="https://sameer1337.github.io/ai-tech-podcast/assets/cover_startup.png" alt="Startup Wire Daily" class="card-cover">
-        <div class="card-body">
-          <div class="card-icon">🚀</div>
-          <h3>Startup Wire Daily</h3>
-          <p>Daily 5-minute startup and venture capital news. Funding rounds, founder stories, product launches, ...</p>
-          <div class="card-meta">
-            <span class="ep-count">10 episodes</span>
-            <span class="daily-badge">● Daily</span>
-          </div>
-        </div>
-      </a>
-      <a href="podcasts/crypto/" class="card" style="--accent:#d97706;--text:#fbbf24;">
-        <img src="https://sameer1337.github.io/ai-tech-podcast/assets/cover_crypto.png" alt="Crypto Daily Brief" class="card-cover">
-        <div class="card-body">
-          <div class="card-icon">₿</div>
-          <h3>Crypto Daily Brief</h3>
-          <p>Your free daily 5-minute crypto and Web3 news podcast. Bitcoin, Ethereum, DeFi, NFTs, and blockchain...</p>
-          <div class="card-meta">
-            <span class="ep-count">10 episodes</span>
-            <span class="daily-badge">● Daily</span>
-          </div>
-        </div>
-      </a>
-      <a href="podcasts/world-news/" class="card" style="--accent:#1d4ed8;--text:#60a5fa;">
-        <img src="https://sameer1337.github.io/ai-tech-podcast/assets/cover_world.png" alt="World In 5" class="card-cover">
-        <div class="card-body">
-          <div class="card-icon">🌍</div>
-          <h3>World In 5</h3>
-          <p>The world's top news stories in 5 minutes, every morning. Politics, international affairs, climate, ...</p>
-          <div class="card-meta">
-            <span class="ep-count">8 episodes</span>
-            <span class="daily-badge">● Daily</span>
-          </div>
-        </div>
-      </a>
-      <a href="podcasts/true-crime/" class="card" style="--accent:#dc2626;--text:#f87171;">
-        <img src="https://sameer1337.github.io/ai-tech-podcast/assets/cover_truecrime.png" alt="True Crime Digest" class="card-cover">
-        <div class="card-body">
-          <div class="card-icon">🔍</div>
-          <h3>True Crime Digest</h3>
-          <p>Daily true crime stories in 5 minutes. Real cases, investigations, courtroom drama, and justice serv...</p>
-          <div class="card-meta">
-            <span class="ep-count">8 episodes</span>
-            <span class="daily-badge">● Daily</span>
-          </div>
-        </div>
-      </a>
-</div>
-
-<footer>
-  © 2026 Daily Podcast Network · Built with AI · Updated every morning
-</footer>
-
-</body>
-</html>
+<header class="site"><div class="site-inner">
+<a class="brand" href="https://daily.mapt.cloud/">Mapt<span>Daily</span></a>
+<nav class="catnav"><a href="https://daily.mapt.cloud/blog/ai-tech/">🤖 AI & Tech</a> <a href="https://daily.mapt.cloud/blog/finance/">💰 Finance</a> <a href="https://daily.mapt.cloud/blog/health/">🧬 Health</a> <a href="https://daily.mapt.cloud/blog/startup/">🚀 Startups</a> <a href="https://daily.mapt.cloud/blog/crypto/">₿ Crypto</a> <a href="https://daily.mapt.cloud/blog/world-news/">🌍 World</a> <a href="https://daily.mapt.cloud/blog/true-crime/">🔍 True Crime</a></nav>
+</div></header>
+<div class="hero"><div class="wrap">
+<div class="eyebrow">Updated every morning</div>
+<h1>Mapt Daily</h1>
+<p>Concise daily news and analysis across seven beats. Read the story, then hear the five-minute brief.</p>
+</div></div>
+<div class="wrap feed"><div class="post-card">
+<div class="eyebrow tag" style="color:#dc2626">🔍 True Crime</div>
+<h2><a href="https://daily.mapt.cloud/blog/true-crime/ep4-akeeley-keshawn-blade-jr-teen-killer.html">Akeeley Keshawn Blade Jr Teen Killer</a></h2>
+<p>Imagine being just 13 years old and taking someone&#x27;s life - it&#x27;s a harsh reality that&#x27;s all too common in the world of true crime. Today, we&#x27;re diving into the disturbing cases of </p>
+<div class="meta"><span>2026-07-01</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#2563eb">🌍 World</div>
+<h2><a href="https://daily.mapt.cloud/blog/world-news/ep4-police-units-deployed-across-south-africa-before-a.html">Police units deployed across South Africa before a</a></h2>
+<p>Riots, earthquakes, and a president&#x27;s crypto windfall - it&#x27;s a wild day in global news, and we&#x27;re just getting started. In South Africa, police units are flooding the streets ahead</p>
+<div class="meta"><span>2026-07-01</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#d97706">₿ Crypto</div>
+<h2><a href="https://daily.mapt.cloud/blog/crypto/ep6-here-s-what-happened-in-crypto-today.html">Here’s what happened in crypto today</a></h2>
+<p>Crypto prices are on a wild ride, with Bitcoin plummeting to new lows and Ethereum struggling to regain its footing, leaving investors wondering if this is the bottom of the market</p>
+<div class="meta"><span>2026-07-01</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#9333ea">🚀 Startups</div>
+<h2><a href="https://daily.mapt.cloud/blog/startup/ep6-anthropic-launches-claude-sonnet-5-at-a-steep-disc.html">Anthropic launches Claude Sonnet 5 at a steep disc</a></h2>
+<p>The AI arms race just got a whole lot more interesting, as Anthropic launches its latest powerhouse, Claude Sonnet 5, at a steep discount to its top model, in a bold move to captur</p>
+<div class="meta"><span>2026-07-01</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#0891b2">🧬 Health</div>
+<h2><a href="https://daily.mapt.cloud/blog/health/ep6-scientists-may-have-finally-found-how-alzheimer-s.html">Scientists may have finally found how Alzheimer&#x27;s</a></h2>
+<p>Imagine waking up one day to find your memories slipping away, like grains of sand between your fingers, and being powerless to stop it - this is the harsh reality for millions of </p>
+<div class="meta"><span>2026-07-01</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#16a34a">💰 Finance</div>
+<h2><a href="https://daily.mapt.cloud/blog/finance/ep6-traders-boost-fed-funds-shorts-in-risky-july-rate.html">Traders Boost Fed Funds Shorts in Risky July Rate</a></h2>
+<p>Get ready for a potential market shake-up, as traders are placing a high-stakes wager that the Federal Reserve will start raising interest rates as soon as July. This move, once co</p>
+<div class="meta"><span>2026-07-01</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#7c3aed">🤖 AI & Tech</div>
+<h2><a href="https://daily.mapt.cloud/blog/ai-tech/ep6-anthropic-launches-claude-sonnet-5-at-a-steep-disc.html">Anthropic launches Claude Sonnet 5 at a steep disc</a></h2>
+<p>Imagine having access to cutting-edge AI technology without breaking the bank - that&#x27;s exactly what Anthropic is offering with the launch of Claude Sonnet 5, a new AI model that de</p>
+<div class="meta"><span>2026-07-01</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#dc2626">🔍 True Crime</div>
+<h2><a href="https://daily.mapt.cloud/blog/true-crime/ep3-akeeley-keshawn-blade-jr-teen-killer.html">Akeeley Keshawn Blade Jr Teen Killer</a></h2>
+<p>The staggering reality of juvenile justice is that some of the most heinous crimes are committed by teenagers, leaving us to wonder what drives someone so young to commit such atro</p>
+<div class="meta"><span>2026-06-30</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#2563eb">🌍 World</div>
+<h2><a href="https://daily.mapt.cloud/blog/world-news/ep3-police-units-deployed-across-south-africa-before-a.html">Police units deployed across South Africa before a</a></h2>
+<p>Racial tensions are simmering in South Africa, where police units have been deployed across the country ahead of anti-immigration marches, sparking fears of a repeat of the deadly </p>
+<div class="meta"><span>2026-06-30</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#d97706">₿ Crypto</div>
+<h2><a href="https://daily.mapt.cloud/blog/crypto/ep5-here-s-what-happened-in-crypto-today.html">Here’s what happened in crypto today</a></h2>
+<p>Crypto markets are on high alert today as Bitcoin price volatility reaches a fever pitch, and if you&#x27;re struggling to keep up with the latest trends and events, you&#x27;re not alone - </p>
+<div class="meta"><span>2026-06-30</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#9333ea">🚀 Startups</div>
+<h2><a href="https://daily.mapt.cloud/blog/startup/ep5-anthropic-launches-claude-sonnet-5-at-a-steep-disc.html">Anthropic launches Claude Sonnet 5 at a steep disc</a></h2>
+<p>Anthropic is taking a bold step as it hurtles towards a highly anticipated IPO, and it&#x27;s doing so with a strategic price cut that could shake up the AI landscape. The company just </p>
+<div class="meta"><span>2026-06-30</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#0891b2">🧬 Health</div>
+<h2><a href="https://daily.mapt.cloud/blog/health/ep5-scientists-may-have-finally-found-how-alzheimer-s.html">Scientists may have finally found how Alzheimer&#x27;s</a></h2>
+<p>Imagine waking up one day to find that your memories are fading away, and there&#x27;s nothing you can do to stop it - that&#x27;s the harsh reality for millions of people suffering from Alz</p>
+<div class="meta"><span>2026-06-30</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#16a34a">💰 Finance</div>
+<h2><a href="https://daily.mapt.cloud/blog/finance/ep5-brazil-real-becomes-collateral-damage-as-dollar.html">Brazil Real Becomes ‘Collateral Damage’ as Dollar</a></h2>
+<p>The dollar is back and it&#x27;s taking no prisoners, with the Brazilian real just becoming the latest casualty in its resurgence, recording its worst month this year as investors scram</p>
+<div class="meta"><span>2026-06-30</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#7c3aed">🤖 AI & Tech</div>
+<h2><a href="https://daily.mapt.cloud/blog/ai-tech/ep5-meituan-open-sources-longcat-2-0-the-1-6t-near-f.html">Meituan open sources LongCat-2.0, the 1.6T, near-f</a></h2>
+<p>Imagine a world where coding is no longer a tedious task, but rather a collaborative effort between humans and machines, and a major step towards that reality just happened with Me</p>
+<div class="meta"><span>2026-06-30</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#2563eb">🌍 World</div>
+<h2><a href="https://daily.mapt.cloud/blog/world-news/ep2-police-units-deployed-across-south-africa-before-a.html">Police units deployed across South Africa before a</a></h2>
+<p>Tensions are running high in South Africa today as police units have been deployed across the country in anticipation of anti-immigration marches, sparking fears of a repeat of the</p>
+<div class="meta"><span>2026-06-30</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#dc2626">🔍 True Crime</div>
+<h2><a href="https://daily.mapt.cloud/blog/true-crime/ep2-akeeley-keshawn-blade-jr-teen-killer.html">Akeeley Keshawn Blade Jr Teen Killer</a></h2>
+<p>Imagine being just 13 years old and taking a life, a decision that will haunt you forever, and a reminder that the lines between childhood and adulthood can become disturbingly blu</p>
+<div class="meta"><span>2026-06-30</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#d97706">₿ Crypto</div>
+<h2><a href="https://daily.mapt.cloud/blog/crypto/ep4-here-s-what-happened-in-crypto-today.html">Here’s what happened in crypto today</a></h2>
+<p>A wild ride in the world of crypto today, with markets taking a hit and major players making moves that will have significant implications for the future of this space. To keep you</p>
+<div class="meta"><span>2026-06-30</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#9333ea">🚀 Startups</div>
+<h2><a href="https://daily.mapt.cloud/blog/startup/ep4-meituan-open-sources-longcat-2-0-the-1-6t-near-f.html">Meituan open sources LongCat-2.0, the 1.6T, near-f</a></h2>
+<p>In a stunning move that&#x27;s set to democratize access to cutting-edge AI technology, Meituan has just open-sourced LongCat-2.0, its 1.6T near-frontier agentic coding model that&#x27;s bee</p>
+<div class="meta"><span>2026-06-30</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#0891b2">🧬 Health</div>
+<h2><a href="https://daily.mapt.cloud/blog/health/ep4-scientists-may-have-finally-found-how-alzheimer-s.html">Scientists may have finally found how Alzheimer&#x27;s</a></h2>
+<p>Imagine waking up one day to find that your memories are fading away, like sand slipping through your fingers, and there&#x27;s nothing you can do to stop it - that&#x27;s the harsh reality </p>
+<div class="meta"><span>2026-06-30</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#16a34a">💰 Finance</div>
+<h2><a href="https://daily.mapt.cloud/blog/finance/ep4-blackrock-downgrades-emerging-market-equities-over.html">BlackRock Downgrades Emerging-Market Equities Over</a></h2>
+<p>Emerging markets, once the darling of investors, are taking a backseat as one of the world&#x27;s largest asset managers sounds the alarm on AI risks. BlackRock Inc.&#x27;s research arm has </p>
+<div class="meta"><span>2026-06-30</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#7c3aed">🤖 AI & Tech</div>
+<h2><a href="https://daily.mapt.cloud/blog/ai-tech/ep4-meituan-open-sources-longcat-2-0-the-1-6t-near-f.html">Meituan open sources LongCat-2.0, the 1.6T, near-f</a></h2>
+<p>Imagine a world where artificial intelligence is no longer controlled by a select few, but is open to everyone, and a major player in the Chinese tech scene just made a huge step t</p>
+<div class="meta"><span>2026-06-30</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#d97706">₿ Crypto</div>
+<h2><a href="https://daily.mapt.cloud/blog/crypto/ep3-crypto-news-jun-30-here-s-what-happened-in-crypto-today.html">Crypto News Jun 30 — Here’s what happened in crypto today</a></h2>
+<p>Bitcoin is on the move, and today was no exception, with the crypto market seeing a flurry of activity that&#x27;s got everyone talking. If you&#x27;re like most of us, you&#x27;re probably wonde</p>
+<div class="meta"><span>2026-06-30</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#9333ea">🚀 Startups</div>
+<h2><a href="https://daily.mapt.cloud/blog/startup/ep3-startup-news-jun-30-meituan-open-sources-longcat-2-0-the-1-6.html">Startup News Jun 30 — Meituan open sources LongCat-2.0, the 1.6T, n</a></h2>
+<p>In a shocking move that&#x27;s sending shockwaves through the tech world, Chinese delivery app company Meituan just open-sourced its groundbreaking model, LongCat-2.0, a 1.6T, near-fron</p>
+<div class="meta"><span>2026-06-30</span></div>
+</div><div class="post-card">
+<div class="eyebrow tag" style="color:#0891b2">🧬 Health</div>
+<h2><a href="https://daily.mapt.cloud/blog/health/ep3-health-news-jun-30-scientists-may-have-finally-found-how-alz.html">Health News Jun 30 — Scientists may have finally found how Alzheim</a></h2>
+<p>Imagine waking up one day to find that your memory is fading, and no matter how hard you try, you just can&#x27;t seem to recall the simplest things - that&#x27;s the harsh reality of Alzhei</p>
+<div class="meta"><span>2026-06-30</span></div>
+</div></div>
+<footer class="site"><div class="wrap">
+<p><a href="https://daily.mapt.cloud/">Home</a> · <a href="https://daily.mapt.cloud/about.html">About</a> · <a href="https://daily.mapt.cloud/privacy.html">Privacy</a></p>
+<p class="disc">© 2026 Mapt Daily. Daily news across AI, finance, health, startups, crypto, world &amp; true crime. Audio and article summaries are AI-assisted and compiled from public news sources; verify before relying on any detail.</p>
+</div></footer>
+</body></html>
