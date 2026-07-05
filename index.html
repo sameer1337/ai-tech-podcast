@@ -288,19 +288,38 @@
   .copy .fmenu{display:flex;gap:16px}.copy .fmenu a:hover{color:#fff}
   .copy .fsoc2{display:flex;gap:12px}.copy .fsoc2 a:hover{color:#fff}
 
+  html,body{overflow-x:hidden;max-width:100%}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
   @media(max-width:1080px){.adbox{display:none}}
   @media(max-width:900px){
-    .hero,.grid-main,.two,.fbanner,.wn-grid,.fgrid{grid-template-columns:1fr}
+    .hero,.grid-main,.two,.fbanner,.wn-grid,.fgrid,.split{grid-template-columns:1fr}
     .darkblk .body{grid-template-columns:1fr}
     .vid-row{grid-template-columns:1fr}
-    .menu{display:none;position:fixed;inset:0 auto 0 0;width:270px;background:var(--dark);flex-direction:column;padding:16px 0;overflow-y:auto;z-index:300}
+    .menu{display:none;position:fixed;inset:0 auto 0 0;width:270px;max-width:82vw;background:var(--dark);flex-direction:column;padding:16px 0;overflow-y:auto;z-index:300}
     .menu.open{display:flex}
     .menu>li{width:100%}.menu>li>a{width:100%;padding:13px 20px}
     .mega{position:static;opacity:1;visibility:visible;transform:none;min-width:0;width:100%;grid-template-columns:1fr;display:none;box-shadow:none;border-top:none;padding:6px 20px 12px}
     .menu>li.expand .mega{display:grid}.mcards{grid-template-columns:1fr}.mega.feat{grid-template-columns:1fr}
     .burger{display:flex;align-items:center}
+    .navtools{margin-left:auto}
     .navtools .weather,.searchbox{display:none}
-    .breaking .ticker{display:none}.promo .msg .hide{display:none}
+    .breaking .ticker,.sub .arrows{display:none}.promo .msg .hide{display:none}
+    .h-big h2{font-size:22px}.tr-featured h2{font-size:20px}
+  }
+  @media(max-width:600px){
+    .wrap,.container{padding:0 12px}
+    .brand .wrap{padding:16px 12px}
+    .logo-main{font-size:30px}.logo-main .mk{width:30px;height:30px;font-size:17px;margin-right:8px}
+    .sub .wrap{height:auto;padding:8px 0;gap:8px}
+    .sub .socials a:nth-child(n+5){display:none}
+    /* stack the wide "what's new" rows so the 180px thumb can't overflow */
+    .wn-grid .pl{flex-direction:column}
+    .wn-grid .pl .t{width:100%!important;height:180px!important}
+    .pl .t{width:96px;height:70px}
+    .h-big{min-height:300px}.h-big h2{font-size:20px}
+    .fbottom .wrap,.copy .wrap{flex-direction:column;align-items:flex-start;gap:10px}
+    .fsub input{min-width:0;flex:1}
   }
 </style>
 </head>
@@ -355,7 +374,7 @@
         <div class="tabs"><a class="on">Latest</a><a>AI &amp; Tech</a><a>Finance</a><a>Crypto</a></div>
         <div class="nav"><span>‹</span><span>›</span></div></div>
       <div style="background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 4px 4px;padding:16px;margin-bottom:22px">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="split">
           <a class="tr-featured" href="/blog/startup/ep10-z-ai-launches-zcode-to-challenge-cursor-claude-co.html" style="min-height:340px;margin:0;background-image:url('https://loremflickr.com/900/520/startup,office,teamwork?lock=79')">
             <div class="cap"><span class="cat-tag" style="background:#e11d48">Startups</span><h2>Z.ai launches ZCode to challenge Cursor, Claude Co</h2><div class="meta">✍ Mapt Newsroom · ◷ Jul 05, 2026</div></div></a>
           <div class="postlist" style="align-self:stretch"><a class="pl" href="/blog/crypto/ep10-here-s-what-happened-in-crypto-today.html" style="padding-top:0"><div class="t" style="background-image:url('https://loremflickr.com/900/520/cryptocurrency,bitcoin,blockchain?lock=76')"></div><div><h3>Here’s what happened in crypto today</h3><div class="meta">◷ Jul 05, 2026</div></div></a><a class="pl" href="/blog/world-news/ep8-us-marks-250th-birthday-with-fireworks-flyovers-a.html"><div class="t" style="background-image:url('https://loremflickr.com/900/520/city,world,news?lock=68')"></div><div><h3>US marks 250th birthday with fireworks, flyovers a</h3><div class="meta">◷ Jul 05, 2026</div></div></a><a class="pl" href="/blog/true-crime/ep8-akeeley-keshawn-blade-jr-teen-killer.html"><div class="t" style="background-image:url('https://loremflickr.com/900/520/police,night,investigation?lock=66')"></div><div><h3>Akeeley Keshawn Blade Jr Teen Killer</h3><div class="meta">◷ Jul 05, 2026</div></div></a><a class="pl" href="/blog/ai-tech/ep9-anthropic-is-bringing-back-claude-fable-5-globally.html" style="border-bottom:none"><div class="t" style="background-image:url('https://loremflickr.com/900/520/technology,ai,computer?lock=65')"></div><div><h3>Anthropic is bringing back Claude Fable 5 globally</h3><div class="meta">◷ Jul 04, 2026</div></div></a></div>
@@ -404,7 +423,7 @@
     <div class="blk" style="border:none;background:none">
       <div class="bhead" style="padding-left:0;padding-right:0;background:none"><h2>AI & Tech</h2>
         <div class="tabs"><a class="on">All</a></div><div class="nav"><span>‹</span><span>›</span></div></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-top:16px">
+      <div class="split" style="padding-top:16px">
         <a class="colpost" href="/blog/ai-tech/ep10-anthropic-is-bringing-back-claude-fable-5-globally.html" style="display:block">
           <div class="img" style="background-image:url('https://loremflickr.com/900/520/technology,ai,computer?lock=72')"><span class="cat-tag" style="background:#7c3aed">AI & Tech</span></div>
           <h3>Anthropic is bringing back Claude Fable 5 globally</h3><p>Global access to Claude Fable 5 restored after US lifts export control order…</p><span class="btn-more">Read More +</span></a>

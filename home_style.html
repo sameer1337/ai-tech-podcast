@@ -274,18 +274,37 @@
   .copy .fmenu{display:flex;gap:16px}.copy .fmenu a:hover{color:#fff}
   .copy .fsoc2{display:flex;gap:12px}.copy .fsoc2 a:hover{color:#fff}
 
+  html,body{overflow-x:hidden;max-width:100%}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
   @media(max-width:1080px){.adbox{display:none}}
   @media(max-width:900px){
-    .hero,.grid-main,.two,.fbanner,.wn-grid,.fgrid{grid-template-columns:1fr}
+    .hero,.grid-main,.two,.fbanner,.wn-grid,.fgrid,.split{grid-template-columns:1fr}
     .darkblk .body{grid-template-columns:1fr}
     .vid-row{grid-template-columns:1fr}
-    .menu{display:none;position:fixed;inset:0 auto 0 0;width:270px;background:var(--dark);flex-direction:column;padding:16px 0;overflow-y:auto;z-index:300}
+    .menu{display:none;position:fixed;inset:0 auto 0 0;width:270px;max-width:82vw;background:var(--dark);flex-direction:column;padding:16px 0;overflow-y:auto;z-index:300}
     .menu.open{display:flex}
     .menu>li{width:100%}.menu>li>a{width:100%;padding:13px 20px}
     .mega{position:static;opacity:1;visibility:visible;transform:none;min-width:0;width:100%;grid-template-columns:1fr;display:none;box-shadow:none;border-top:none;padding:6px 20px 12px}
     .menu>li.expand .mega{display:grid}.mcards{grid-template-columns:1fr}.mega.feat{grid-template-columns:1fr}
     .burger{display:flex;align-items:center}
+    .navtools{margin-left:auto}
     .navtools .weather,.searchbox{display:none}
-    .breaking .ticker{display:none}.promo .msg .hide{display:none}
+    .breaking .ticker,.sub .arrows{display:none}.promo .msg .hide{display:none}
+    .h-big h2{font-size:22px}.tr-featured h2{font-size:20px}
+  }
+  @media(max-width:600px){
+    .wrap,.container{padding:0 12px}
+    .brand .wrap{padding:16px 12px}
+    .logo-main{font-size:30px}.logo-main .mk{width:30px;height:30px;font-size:17px;margin-right:8px}
+    .sub .wrap{height:auto;padding:8px 0;gap:8px}
+    .sub .socials a:nth-child(n+5){display:none}
+    /* stack the wide "what's new" rows so the 180px thumb can't overflow */
+    .wn-grid .pl{flex-direction:column}
+    .wn-grid .pl .t{width:100%!important;height:180px!important}
+    .pl .t{width:96px;height:70px}
+    .h-big{min-height:300px}.h-big h2{font-size:20px}
+    .fbottom .wrap,.copy .wrap{flex-direction:column;align-items:flex-start;gap:10px}
+    .fsub input{min-width:0;flex:1}
   }
 </style>

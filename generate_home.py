@@ -112,7 +112,7 @@ def trending():
         <div class="tabs"><a class="on">Latest</a><a>AI &amp; Tech</a><a>Finance</a><a>Crypto</a></div>
         <div class="nav"><span>‹</span><span>›</span></div></div>
       <div style="background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 4px 4px;padding:16px;margin-bottom:22px">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="split">
           <a class="tr-featured" href="{feat['link']}" style="min-height:340px;margin:0;background-image:url('{feat['img']}')">
             <div class="cap">{tag(feat)}<h2>{feat['title']}</h2><div class="meta">✍ Mapt Newsroom · ◷ {fdate(feat['date'])}</div></div></a>
           <div class="postlist" style="align-self:stretch">{plist(lst)}</div>
@@ -157,7 +157,7 @@ def tech_block(cat):
     return f'''<div class="blk" style="border:none;background:none">
       <div class="bhead" style="padding-left:0;padding-right:0;background:none"><h2>{LABEL[cat]}</h2>
         <div class="tabs"><a class="on">All</a></div><div class="nav"><span>‹</span><span>›</span></div></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-top:16px">
+      <div class="split" style="padding-top:16px">
         <a class="colpost" href="{big['link']}" style="display:block">
           <div class="img" style="background-image:url('{big['img']}')">{tag(big)}</div>
           <h3>{big['title']}</h3><p>{big['dek'][:120]}…</p><span class="btn-more">Read More +</span></a>
