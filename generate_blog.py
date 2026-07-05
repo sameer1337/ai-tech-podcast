@@ -35,15 +35,17 @@ def generate_article(stories: list[dict], niche: dict) -> dict:
         for i, s in enumerate(stories, 1)
     )
 
-    prompt = f"""You are a journalist writing for "{niche['title']}", a publication covering {niche['hook']}.
-Write an original, well-structured blog article based on today's stories below.
+    prompt = f"""You are a senior journalist writing an in-depth feature for "{niche['title']}", a publication covering {niche['hook']}.
+Write a long, original, well-structured news article based on today's stories below.
 
 Requirements:
-- 700-1000 words of ORIGINAL prose — analyze and explain, don't just restate headlines.
-- Open with a strong lede that states the most important development plainly.
-- One <h2> section per major story; weave in why it matters and what happens next.
-- Neutral, factual, journalistic tone. Attribute facts to their source by name.
-- Do NOT invent facts, quotes, or numbers not present in the summaries.
+- 1200-1600 words of ORIGINAL prose. Depth and analysis, not a rewrite of headlines.
+- Open with a compelling 2-3 sentence introduction (no <h2>) that frames the day's biggest development and why readers should care.
+- Then ONE <h2> section per major story. Each section: 2-4 substantial paragraphs that explain what happened, the context/background, why it matters, and what likely happens next.
+- Include a final <h2>The bottom line</h2> section that ties the stories together, followed by a <ul> of 3-5 concrete key takeaways (<li>).
+- Neutral, factual, journalistic tone. Attribute each fact to its source publication by name.
+- Do NOT invent facts, quotes, statistics, or names not present in the summaries. Where a summary is thin, add general context a knowledgeable reader would expect — clearly framed as context, not fabricated specifics.
+- Use <strong> for key terms and short paragraphs (2-4 sentences) for readability.
 
 Return ONLY a JSON object with these exact keys:
   "title": an SEO headline (max 65 chars, keyword-first, no publication name)
@@ -51,6 +53,7 @@ Return ONLY a JSON object with these exact keys:
   "meta_description": a search snippet (max 155 chars)
   "body_html": the article body using ONLY <h2>, <p>, <ul>, <li>, <strong>, <a> tags
   "tags": array of 4-6 lowercase topic tags
+  "image_query": 2-3 comma-separated simple, concrete visual keywords for a stock photo of the lead story (e.g. "bitcoin, trading, screen" or "hospital, doctor, research")
 
 Today's stories (sources: {sources}):
 {stories_block}
@@ -58,7 +61,7 @@ Today's stories (sources: {sources}):
 
     resp = CLIENT.chat.completions.create(
         model="llama-3.3-70b-versatile",
-        max_tokens=2600,
+        max_tokens=4096,
         temperature=0.6,
         response_format={"type": "json_object"},
         messages=[{"role": "user", "content": prompt}],
@@ -74,9 +77,63 @@ Today's stories (sources: {sources}):
         "meta_description": (data.get("meta_description") or data.get("dek") or "").strip()[:160],
         "body_html":        _sanitize_html(data.get("body_html") or ""),
         "tags":             [str(t).lower().strip() for t in (data.get("tags") or [])][:6],
+        "image_query":      (data.get("image_query") or "").strip()[:60],
     }
+    # Resolve a relevant lead image (Openverse, keyworded LoremFlickr fallback)
+    try:
+        from fetch_image import fetch_image
+        seed = abs(hash(article["title"])) % 9973
+        article["image_url"] = fetch_image(article["image_query"] or article["title"], seed, 900, 520)
+    except Exception as e:
+        article["image_url"] = ""
+        print(f"[blog] image resolve failed: {e}")
     words = len(re.sub(r"<[^>]+>", " ", article["body_html"]).split())
-    print(f"[blog] Article for {niche['title']}: {words} words, {len(article['tags'])} tags")
+    print(f"[blog] Article for {niche['title']}: {words} words, {len(article['tags'])} tags, img={'yes' if article['image_url'] else 'no'}")
+    return article
+
+
+def expand_script_to_article(script: str, niche: dict, fallback_title: str = "") -> dict:
+    """Backfill path: turn an existing 5-min podcast SCRIPT into a long-form article.
+    Same JSON contract + resolved image as generate_article."""
+    prompt = f"""Below is the script of a short daily news briefing from "{niche['title']}" ({niche['hook']}).
+Rewrite and EXPAND it into a long, original, well-structured news article.
+
+Requirements:
+- AT LEAST 1100 words — this is a long feature, do NOT be brief. Add background context and analysis; do NOT invent specific facts, names, quotes or numbers beyond the script.
+- Compelling 2-3 sentence intro (no <h2>), then ONE <h2> per major story with 3-4 full paragraphs each (what happened, the background/context a reader needs, why it matters, and what's likely next). Where a story is thin, add a short "Context" paragraph of widely-known background.
+- End with <h2>The bottom line</h2> and a <ul> of 3-5 key takeaways.
+- Neutral, journalistic tone; short paragraphs; <strong> for key terms.
+
+Return ONLY a JSON object with keys: "title" (<=65 chars, keyword-first, no publication name),
+"dek" (<=140), "meta_description" (<=155), "body_html" (only <h2>,<p>,<ul>,<li>,<strong>,<a>),
+"tags" (4-6 lowercase), "image_query" (2-3 comma-separated concrete visual keywords for the lead story).
+
+Script:
+{script[:4000]}
+"""
+    resp = CLIENT.chat.completions.create(
+        model="llama-3.3-70b-versatile", max_tokens=4096, temperature=0.6,
+        response_format={"type": "json_object"},
+        messages=[{"role": "user", "content": prompt}],
+    )
+    raw = _ALLOWED_FENCE.sub("", resp.choices[0].message.content.strip())
+    data = json.loads(raw)
+    article = {
+        "title":            (data.get("title") or fallback_title or niche["title"]).strip()[:75],
+        "dek":              (data.get("dek") or "").strip()[:160],
+        "meta_description": (data.get("meta_description") or data.get("dek") or "").strip()[:160],
+        "body_html":        _sanitize_html(data.get("body_html") or ""),
+        "tags":             [str(t).lower().strip() for t in (data.get("tags") or [])][:6],
+        "image_query":      (data.get("image_query") or "").strip()[:60],
+    }
+    try:
+        from fetch_image import fetch_image
+        seed = abs(hash(article["title"])) % 9973
+        article["image_url"] = fetch_image(article["image_query"] or article["title"], seed, 900, 520)
+    except Exception:
+        article["image_url"] = ""
+    words = len(re.sub(r"<[^>]+>", " ", article["body_html"]).split())
+    print(f"[backfill] {niche['title']}: {words} words, img={'yes' if article['image_url'] else 'no'}")
     return article
 
 

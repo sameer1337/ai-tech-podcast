@@ -1,0 +1,11 @@
+﻿Welcome to AI Tech Daily. Today is June 29th, and here are the top stories shaping the world of artificial intelligence and technology.
+
+First up, security researchers have uncovered a major vulnerability in enterprise AI systems. Prompt injection attacks are now actively exploiting design flaws in AI agents, RAG pipelines, and model routers. Experts warn that companies deploying large language models in production need to audit their systems immediately.
+
+In our second story, OpenAI has unveiled three new models named Sol, Terra, and Luna under the GPT-5.6 family. However access remains limited to a small group of preview partners vetted by the US government. No public release date has been announced yet.
+
+Moving on, Ford Motor Company has made a surprising move by rehiring a team of veteran engineers it had previously let go. The company admitted that its AI-driven engineering tools failed to meet expectations, and experienced human expertise was needed to fill the gap.
+
+Finally, Wall Street analysts are drawing comparisons between memory chipmaker Micron and Nvidia. With AI data centers demanding massive amounts of high-bandwidth memory, Micron is positioned to become one of the biggest beneficiaries of the AI infrastructure boom.
+
+That wraps up today's AI Tech Daily. Stay curious, stay ahead, and we will see you tomorrow.

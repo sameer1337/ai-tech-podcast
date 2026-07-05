@@ -37,6 +37,11 @@ def img(nid, seed, w=800, h=500):
     return f"https://loremflickr.com/{w}/{h}/{IMG_KW.get(nid,'news')}?lock={seed}"
 
 
+def pimg(p, w=800, h=500):
+    """Prefer the article's resolved relevant image; fall back to keyworded generic."""
+    return p.get("image_url") or img(p["nid"], p["seed"], w, h)
+
+
 # ─────────── data ───────────
 def load_episodes(nid):
     p = f"logs/episodes_{nid}.json"
@@ -92,6 +97,7 @@ def build_posts(niche):
             "dek":(art or {}).get("dek") or ep.get("description","")[:150],
             "meta":(art or {}).get("meta_description") or niche["description"][:155],
             "body_html":(art or {}).get("body_html",""),"tags":(art or {}).get("tags",[]),
+            "image_url":(art or {}).get("image_url") or "",
             "transcript":_load_txt(f"logs/{nid}/{d}_script.txt") if d else "",
             "excerpt":(art or {}).get("dek") or ep.get("description","")[:150],
             "url":f"{SITE_URL}/blog/{nid}/{slug}.html","href":f"/blog/{nid}/{slug}.html",
@@ -120,7 +126,7 @@ def _header(all_posts, active="home"):
         nid = n["id"]
         ps = sorted([p for p in all_posts if p["nid"] == nid], key=lambda x: x["pubDate"], reverse=True)[:4]
         ca[nid] = [{"title": p["headline"], "href": p["href"],
-                    "img": img(nid, p["seed"], 400, 240), "date": p["date"]} for p in ps]
+                    "img": pimg(p, 400, 240), "date": p["date"]} for p in ps]
     breaking = [p["headline"] for p in sorted(all_posts, key=lambda x: x["pubDate"], reverse=True)[:5]] \
         or ["Mapt Daily — fresh news every day"]
     return header_html(ca, active=active, breaking=breaking)
@@ -129,7 +135,7 @@ def _header(all_posts, active="home"):
 def _footer(posts):
     recent = sorted(posts, key=lambda p:p["pubDate"], reverse=True)[:4]
     def fmini(p):
-        return (f'<a class="fmini" href="{p["href"]}"><span class="th"><img loading="lazy" src="{img(p["nid"],p["seed"],120,90)}" alt=""></span>'
+        return (f'<a class="fmini" href="{p["href"]}"><span class="th"><img loading="lazy" src="{pimg(p,120,90)}" alt=""></span>'
                 f'<span><h5>{html.escape(p["headline"][:52])}</h5><span class="date">{p["date"]}</span></span></a>')
     mv = "".join(fmini(p) for p in recent)
     rc = "".join(fmini(p) for p in recent[::-1])
@@ -171,35 +177,35 @@ def _tag(p): return f'<span class="tag" style="background:{COLORS[p["nid"]]}">{L
 
 def tile(p, cls, w, h, exc=False):
     e = f'<p class="exc">{html.escape(p["excerpt"])}</p>' if exc else ""
-    return (f'<a class="tile {cls}" href="{p["href"]}"><img loading="lazy" src="{img(p["nid"],p["seed"],w,h)}" alt="">'
+    return (f'<a class="tile {cls}" href="{p["href"]}"><img loading="lazy" src="{pimg(p,w,h)}" alt="">'
             f'<div class="cap">{_tag(p)}<h3>{html.escape(p["headline"])}</h3>{e}</div></a>')
 
 
 def ncard(p):
-    return (f'<a class="ncard" href="{p["href"]}"><div class="thumb"><img loading="lazy" src="{img(p["nid"],p["seed"],500,320)}" alt="">{_tag(p)}</div>'
+    return (f'<a class="ncard" href="{p["href"]}"><div class="thumb"><img loading="lazy" src="{pimg(p,500,320)}" alt="">{_tag(p)}</div>'
             f'<div class="body"><h3 class="card-title">{html.escape(p["headline"])}</h3>'
             f'<span class="date">🕔 {p["date"]}</span></div></a>')
 
 
 def titem(p, rank=None):
     r = f'<span class="rank">{rank}</span>' if rank else ""
-    return (f'<a class="titem" href="{p["href"]}"><span class="th">{r}<img loading="lazy" src="{img(p["nid"],p["seed"],200,150)}" alt=""></span>'
+    return (f'<a class="titem" href="{p["href"]}"><span class="th">{r}<img loading="lazy" src="{pimg(p,200,150)}" alt=""></span>'
             f'<span><h4 class="card-title">{html.escape(p["headline"])}</h4><span class="date">🕔 {p["date"]}</span></span></a>')
 
 
 def thero(p, dark=False):
-    return (f'<a class="thero" href="{p["href"]}"><img loading="lazy" src="{img(p["nid"],p["seed"],700,460)}" alt="">'
+    return (f'<a class="thero" href="{p["href"]}"><img loading="lazy" src="{pimg(p,700,460)}" alt="">'
             f'<div class="cap">{_tag(p)}<h3 class="card-title">{html.escape(p["headline"])}</h3></div></a>')
 
 
 def vcard(p):
-    return (f'<a class="vcard" href="{p["href"]}"><img loading="lazy" src="{img(p["nid"],p["seed"],400,240)}" alt="">'
+    return (f'<a class="vcard" href="{p["href"]}"><img loading="lazy" src="{pimg(p,400,240)}" alt="">'
             f'<span class="play">▶</span><span class="t">{html.escape(p["headline"][:60])}</span></a>')
 
 
 def hcard(p, hidden=False):
     return (f'<a class="hcard{" more" if hidden else ""}"{" hidden" if hidden else ""} href="{p["href"]}">'
-            f'<span class="th"><img loading="lazy" src="{img(p["nid"],p["seed"],300,210)}" alt=""></span>'
+            f'<span class="th"><img loading="lazy" src="{pimg(p,300,210)}" alt=""></span>'
             f'<span>{_tag(p)}<h3 class="card-title" style="margin-top:8px">{html.escape(p["headline"])}</h3>'
             f'<span class="date" style="display:block;margin-top:6px">🕔 {p["date"]} · {p["niche"]["title"]}</span></span></a>')
 
@@ -282,7 +288,7 @@ def home_page(all_posts, per_niche, counts):
         grid = "".join(vcard(p) for p in vids[1:4])
         vh = vids[0]
         return f"""<section class="section videos-sec"><div class="darksec"><div class="block-head"><h2>Videos</h2></div>
-<a class="vhero" href="{vh['href']}"><img loading="lazy" src="{img(vh['nid'],vh['seed'],800,460)}" alt="">
+<a class="vhero" href="{vh['href']}"><img loading="lazy" src="{pimg(vh,800,460)}" alt="">
 <span class="play">▶</span><div class="cap">{_tag(vh)}<h3 class="card-title">{html.escape(vh['headline'])}</h3></div></a>
 <div class="vgrid">{grid}</div></div></section>"""
 
@@ -322,7 +328,7 @@ def post_page(p, all_posts, counts):
     body = p["body_html"] or f"<p>{html.escape(p['dek'])}</p>"
     lead = (f'<div class="video-embed"><iframe loading="lazy" src="https://www.youtube.com/embed/{p["video_id"]}" '
             f'title="video" allowfullscreen></iframe></div>') if p["video_id"] else \
-           f'<div class="lead-img"><img src="{img(nid,p["seed"],900,520)}" alt="{html.escape(p["headline"])}"></div>'
+           f'<div class="lead-img"><img src="{pimg(p,900,520)}" alt="{html.escape(p["headline"])}"></div>'
     player = (f'<div class="player"><div class="pl">▶ Listen · 5 min</div>'
               f'<audio controls preload="none" src="{html.escape(p["audio_url"])}"></audio></div>') if p["audio_url"] else ""
     tx = ""
@@ -332,7 +338,7 @@ def post_page(p, all_posts, counts):
     tags = ('<div class="tagrow">' + "".join(f'<a href="/blog/{nid}/">#{html.escape(t)}</a>' for t in p["tags"]) + "</div>") if p["tags"] else ""
     ld = {"@context":"https://schema.org","@type":"NewsArticle","headline":p["headline"][:110],
           "description":p["meta"],"datePublished":_iso(p["pubDate"]),"dateModified":_iso(p["pubDate"]),
-          "image":[img(nid,p["seed"],900,520)],"author":{"@type":"Organization","name":niche["title"]},
+          "image":[pimg(p,900,520)],"author":{"@type":"Organization","name":niche["title"]},
           "publisher":{"@type":"Organization","name":BRAND},"mainEntityOfPage":p["url"],"articleSection":LABEL[nid]}
     schema = f'<script type="application/ld+json">{json.dumps(ld)}</script>'
     art = f"""<div class="container"><div class="layout"><div class="maincol"><article class="post">
