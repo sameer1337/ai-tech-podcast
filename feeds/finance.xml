@@ -104,5 +104,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0009_2026-07-04.mp3" type="audio/mpeg" length="994896" />
     </item>
+    <item>
+      <title>Money Minute Daily | Jul 05 — BOK Warns of Risks From Single-Stock Leveraged ETF</title>
+      <pubDate>Sun, 05 Jul 2026 09:17:43 +0000</pubDate>
+      <guid isPermaLink="false">finance-ep10-20260705</guid>
+      <description>Imagine waking up one morning to find your entire investment portfolio has been wiped out, thanks to a single bad bet on a trendy tech stock - that's the nightmare scenario the Bank of Korea is warning about when it comes to single-stock leveraged ETFs tied to giants like Samsung Electronics Co. and SK Hynix Inc. According to a recent report, these funds could amplify market volatility, exacerbate one-way trading flows, and deepen market concentration, making the entire system even more fragile....</description>
+      <itunes:episode>10</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0010_2026-07-05.mp3" type="audio/mpeg" length="1126944" />
+    </item>
   </channel>
 </rss>

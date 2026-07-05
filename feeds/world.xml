@@ -86,5 +86,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/world/ep0007_2026-07-04.mp3" type="audio/mpeg" length="1264464" />
     </item>
+    <item>
+      <title>World In 5 | Jul 05 — US marks 250th birthday with fireworks, flyovers a</title>
+      <pubDate>Sun, 05 Jul 2026 09:18:47 +0000</pubDate>
+      <guid isPermaLink="false">world-news-ep8-20260705</guid>
+      <description>America is celebrating a major milestone today - its 250th birthday - and the festivities are in full swing, with fireworks, flyovers, and even some extreme weather thrown in for good measure. The nation's birthday bash is always a big deal, but this year it's especially significant, as it marks a quarter of a millennium since the country declared its independence from Britain. US President Donald Trump marked the occasion with a speech that, predictably, included some of his signature political...</description>
+      <itunes:episode>8</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/world/ep0008_2026-07-05.mp3" type="audio/mpeg" length="1514304" />
+    </item>
   </channel>
 </rss>

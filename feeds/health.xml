@@ -104,5 +104,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0009_2026-07-04.mp3" type="audio/mpeg" length="1273680" />
     </item>
+    <item>
+      <title>Health Edge Daily | Jul 05 — Scientists discover the deep sleep circuit that bu</title>
+      <pubDate>Sun, 05 Jul 2026 09:17:55 +0000</pubDate>
+      <guid isPermaLink="false">health-ep10-20260705</guid>
+      <description>Imagine waking up one morning to find your body has repaired and rejuvenated itself overnight, your muscles stronger, your fat burned, and your brain sharper than ever before - it sounds like the stuff of dreams, but what if it's not just a fantasy, what if it's actually the result of a good night's sleep? Scientists have just made a groundbreaking discovery that reveals the deep sleep circuit that builds muscle, burns fat, and boosts the brain, and it's a game-changer. Researchers have identifi...</description>
+      <itunes:episode>10</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0010_2026-07-05.mp3" type="audio/mpeg" length="1341360" />
+    </item>
   </channel>
 </rss>

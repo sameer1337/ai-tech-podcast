@@ -104,5 +104,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0009_2026-07-04.mp3" type="audio/mpeg" length="1143360" />
     </item>
+    <item>
+      <title>Crypto Daily Brief | Jul 05 — Here’s what happened in crypto today</title>
+      <pubDate>Sun, 05 Jul 2026 09:18:30 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep10-20260705</guid>
+      <description>Bitcoin is bouncing back, and the crypto world is buzzing - but what does it all mean for your portfolio? The latest news is in, and it's a must-know for anyone invested in the space. Today's headlines are dominated by the resurgence of Bitcoin, with prices trending upwards and experts weighing in on what this could mean for the market. According to the latest reports, the entire crypto ecosystem is experiencing a significant shift, with daily trends and events impacting everything from Bitcoin ...</description>
+      <itunes:episode>10</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0010_2026-07-05.mp3" type="audio/mpeg" length="1165680" />
+    </item>
   </channel>
 </rss>
