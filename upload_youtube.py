@@ -189,6 +189,29 @@ def build_description(niche: dict, episode_number: int, script_excerpt: str = ""
             chunk = chunk[:last_dot + 1]
         script_block = f"\n--- Episode transcript (excerpt) ---\n{chunk}\n\n"
 
+    # Blog site links per niche
+    SITE_BASE = "https://daily.mapt.cloud"
+    niche_slug = {
+        "ai-tech":    "ai-tech",
+        "finance":    "finance",
+        "health":     "health",
+        "startup":    "startup",
+        "crypto":     "crypto",
+        "world-news": "world",
+        "true-crime": "truecrime",
+    }.get(niche["id"], niche["id"])
+    blog_url = f"{SITE_BASE}/{niche_slug}"
+
+    niche_blog_desc = {
+        "ai-tech":    "Read the full written breakdown of today's AI and tech stories, with links, context, and analysis.",
+        "finance":    "Read the full written breakdown of today's finance and market stories, with charts, data, and deeper context.",
+        "health":     "Read the full written breakdown of today's health and medical research, with study links and expert commentary.",
+        "startup":    "Read the full written breakdown of today's startup funding, founder stories, and product launches.",
+        "crypto":     "Read the full written breakdown of today's crypto and Web3 news, with price context and on-chain data.",
+        "world-news": "Read the full written breakdown of today's global news stories, with maps, context, and background.",
+        "true-crime": "Read the full written breakdown of today's true crime story, with case timeline and court documents.",
+    }.get(niche["id"], "Read the full written breakdown of today's stories with links and context.")
+
     niche_tag = niche["title"].replace(" ", "")
     nid_tags = {
         "ai-tech":    "#AI #ArtificialIntelligence #MachineLearning #OpenAI #ChatGPT #Tech #TechNews",
@@ -215,6 +238,12 @@ def build_description(niche: dict, episode_number: int, script_excerpt: str = ""
         f"{niche_intro}\n\n"
         f"{story_bullets}\n"
         f"{script_block}"
+        f"----------------------------------------\n"
+        f"READ THE FULL STORY ON OUR BLOG\n"
+        f"----------------------------------------\n"
+        f"{niche_blog_desc}\n"
+        f"Full episode articles + all 7 niches: {SITE_BASE}\n"
+        f"This niche blog: {blog_url}\n\n"
         f"----------------------------------------\n"
         f"TIMESTAMPS\n"
         f"----------------------------------------\n"
