@@ -425,6 +425,7 @@ def build_tags(niche_id: str, stories: list = None) -> list:
 
 def upload_to_youtube(youtube, video_path: str, title: str, description: str,
                       category_id: str = "25", tags: list = None):
+    import time as _time
     print(f"[youtube] Uploading: {title}")
     body = {
         "snippet": {
@@ -442,11 +443,21 @@ def upload_to_youtube(youtube, video_path: str, title: str, description: str,
     request = youtube.videos().insert(part="snippet,status", body=body, media_body=media)
 
     response = None
+    retry = 0
     while response is None:
-        status, response = request.next_chunk()
-        if status:
-            pct = int(status.progress() * 100)
-            print(f"[youtube] Upload {pct}%", end="\r")
+        try:
+            status, response = request.next_chunk()
+            if status:
+                pct = int(status.progress() * 100)
+                print(f"[youtube] Upload {pct}%", end="\r")
+                retry = 0  # reset on progress
+        except Exception as e:
+            retry += 1
+            if retry > 5:
+                raise
+            wait = min(2 ** retry, 60)
+            print(f"\n[youtube] Network error ({e.__class__.__name__}), retry {retry}/5 in {wait}s...")
+            _time.sleep(wait)
 
     print(f"\n[youtube] Done -> https://youtu.be/{response['id']}")
     return response["id"]
