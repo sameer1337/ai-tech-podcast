@@ -1,5 +1,15 @@
 [
   {
+    "number": 11,
+    "title": "Anthropic is bringing back Claude Fable 5 globally after US \u2014 AI Tech Daily | Jul 06",
+    "pubDate": "Mon, 06 Jul 2026 10:53:00 +0000",
+    "guid": "ai-tech-ep11-20260706",
+    "description": "Two-thirds of enterprises had already built a hedge against AI model uncertainty before the US government's sudden export control order took down Anthropic's Claude Fable 5 model, and it turns out that caution was well-founded. The order, which was issued on June 12, 2026, led Anthropic to suspend all global access to Fable 5, leaving many businesses scrambling to adjust their AI strategies. But now, after the US Department of Commerce withdrew the emergency export controls, Anthropic is restori...",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0011_2026-07-06.mp3",
+    "file_size": 1029744,
+    "duration": 300
+  },
+  {
     "number": 10,
     "title": "AI Tech Daily | Jul 05 \u2014 Anthropic is bringing back Claude Fable 5 globally",
     "pubDate": "Sun, 05 Jul 2026 09:17:25 +0000",

@@ -113,5 +113,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0010_2026-07-05.mp3" type="audio/mpeg" length="1811232" />
     </item>
+    <item>
+      <title>Z.ai launches ZCode to challenge Cursor, Claude Code and — Startup Wire Daily | Jul 06</title>
+      <pubDate>Mon, 06 Jul 2026 10:54:18 +0000</pubDate>
+      <guid isPermaLink="false">startup-ep11-20260706</guid>
+      <description>Z.ai just launched ZCode, a free desktop application that's being billed as an &quot;Agentic Development Environment&quot; and direct challenger to Cursor, Claude Code, and GitHub Copilot in the AI-powered coding tool market. This is huge because it means Z.ai is now going head-to-head with some of the biggest players in the space, and its flagship GLM-5.2 large language model is at the center of it all. The implications are massive, as this could potentially disrupt the entire coding landscape and change...</description>
+      <itunes:episode>11</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0011_2026-07-06.mp3" type="audio/mpeg" length="1155312" />
+    </item>
   </channel>
 </rss>

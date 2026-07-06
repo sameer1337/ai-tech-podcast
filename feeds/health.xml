@@ -113,5 +113,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0010_2026-07-05.mp3" type="audio/mpeg" length="1341360" />
     </item>
+    <item>
+      <title>Millions may be getting the wrong cholesterol test — Health Edge Daily | Jul 06</title>
+      <pubDate>Mon, 06 Jul 2026 10:54:00 +0000</pubDate>
+      <guid isPermaLink="false">health-ep11-20260706</guid>
+      <description>Twenty-five million Americans may be receiving the wrong cholesterol test, a new study suggests, which could lead to unnecessary treatment or, worse, heart attacks and strokes that could have been prevented. The research, published in a recent health journal, reveals that a blood test measuring apoB, a type of harmful cholesterol particle, is better than the standard LDL cholesterol test for determining who needs more intensive treatment. This is a game-changer because apoB testing could help id...</description>
+      <itunes:episode>11</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0011_2026-07-06.mp3" type="audio/mpeg" length="1211904" />
+    </item>
   </channel>
 </rss>
