@@ -159,104 +159,172 @@ def build_description(niche: dict, episode_number: int, script_excerpt: str = ""
                       stories: list = None) -> str:
     spotify_url = niche.get("spotify_url", "")
     today_long  = datetime.utcnow().strftime("%B %d, %Y")
+    nid         = niche["id"]
 
     def clean(text: str, limit: int = 0) -> str:
         t = text.encode("ascii", errors="ignore").decode("ascii").strip()
         return t[:limit] if limit else t
 
-    # Timestamps block — estimate 1 min per story
+    # ── Show intro — unique per show ─────────────────────────────────────────
+    show_intro = {
+        "ai-tech":
+            "AI Tech Daily is your morning briefing for everything happening in artificial "
+            "intelligence and technology. Every day we break down the most important AI "
+            "breakthroughs, model releases, industry moves, and research in plain English — "
+            "no jargon, no hype, no filler. Whether you follow OpenAI, Google DeepMind, "
+            "Meta AI, or the latest open-source models, this is the fastest way to stay "
+            "informed.",
+        "finance":
+            "Money Minute Daily cuts through the noise of global markets every morning. "
+            "We cover stocks, bonds, commodities, economic data, central bank decisions, "
+            "and the personal finance moves that actually matter. In under 10 minutes you "
+            "get everything you need to understand where the money is moving and why.",
+        "health":
+            "Health Edge Daily translates the latest medical research, nutrition science, "
+            "and longevity studies into clear, actionable insights. Every morning we cover "
+            "new clinical findings, public health developments, and the breakthroughs that "
+            "could change how you live and feel — backed by real studies, not trends.",
+        "startup":
+            "Startup Wire Daily tracks the funding rounds, founder pivots, product launches, "
+            "and strategic acquisitions shaping the startup world. From seed stage to IPO, "
+            "we keep you updated on who is building what, who is backing them, and why it "
+            "matters for the future of business and technology.",
+        "crypto":
+            "Crypto Daily Brief is your no-nonsense morning update on Bitcoin, Ethereum, "
+            "DeFi protocols, Web3 infrastructure, and the regulatory moves affecting the "
+            "entire digital asset space. Whether markets are green or red, we keep you "
+            "grounded in the facts that drive price and adoption.",
+        "world-news":
+            "World In 5 gives you the most important global stories every morning in "
+            "under 10 minutes. From geopolitical shifts and election results to climate "
+            "events and international trade — we cover the events shaping the planet, "
+            "told clearly and without political bias.",
+        "true-crime":
+            "True Crime Digest explores real criminal cases — from the investigation and "
+            "arrest to the courtroom and verdict. Each episode dives into one compelling "
+            "story with full context: the evidence, the timeline, the people involved, "
+            "and what the outcome means for justice.",
+    }.get(nid, niche["description"])
+
+    # ── Story bullets ─────────────────────────────────────────────────────────
+    story_bullets = ""
+    if stories:
+        bullets = "\n".join(f"  - {clean(s)}" for s in stories[:5])
+        story_bullets = f"Today's stories:\n{bullets}\n"
+
+    # ── Script excerpt ────────────────────────────────────────────────────────
+    script_block = ""
+    if script_excerpt:
+        raw   = clean(script_excerpt)
+        chunk = raw[:1500]
+        last  = max(chunk.rfind(". "), chunk.rfind("! "), chunk.rfind("? "))
+        if last > 600:
+            chunk = chunk[:last + 1]
+        script_block = f"\n{chunk}\n"
+
+    # ── Timestamps ────────────────────────────────────────────────────────────
     ts_lines = ["00:00 Introduction"]
     if stories:
         for i, s in enumerate(stories[:5]):
-            ts_lines.append(f"0{i+1}:00 {clean(s, 70)}")
-    ts_lines.append(f"0{len(ts_lines)}:30 Subscribe & Follow")
+            ts_lines.append(f"0{i+1}:00 {clean(s, 65)}")
+    ts_lines.append(f"0{len(ts_lines)}:30 Outro")
     timestamps = "\n".join(ts_lines)
 
-    # Story bullet points for the body
-    story_bullets = ""
-    if stories:
-        bullets = "\n".join(f"  * {clean(s)}" for s in stories[:5])
-        story_bullets = f"In this episode we cover:\n{bullets}\n"
-
-    # Script excerpt — first 1200 chars, keep natural sentences
-    script_block = ""
-    if script_excerpt:
-        raw = clean(script_excerpt)
-        # trim to last full sentence within 1200 chars
-        chunk = raw[:1200]
-        last_dot = max(chunk.rfind(". "), chunk.rfind("! "), chunk.rfind("? "))
-        if last_dot > 600:
-            chunk = chunk[:last_dot + 1]
-        script_block = f"\n--- Episode transcript (excerpt) ---\n{chunk}\n\n"
-
-    # Blog site links per niche
+    # ── Blog section — topic-aware ────────────────────────────────────────────
     SITE_BASE = "https://daily.mapt.cloud"
-    niche_slug = {
-        "ai-tech":    "ai-tech",
-        "finance":    "finance",
-        "health":     "health",
-        "startup":    "startup",
-        "crypto":     "crypto",
-        "world-news": "world",
-        "true-crime": "truecrime",
-    }.get(niche["id"], niche["id"])
-    blog_url = f"{SITE_BASE}/{niche_slug}"
+    slug_map  = {
+        "ai-tech": "ai-tech", "finance": "finance", "health": "health",
+        "startup": "startup", "crypto": "crypto",
+        "world-news": "world", "true-crime": "truecrime",
+    }
+    blog_url = f"{SITE_BASE}/{slug_map.get(nid, nid)}"
 
-    niche_blog_desc = {
-        "ai-tech":    "Read the full written breakdown of today's AI and tech stories, with links, context, and analysis.",
-        "finance":    "Read the full written breakdown of today's finance and market stories, with charts, data, and deeper context.",
-        "health":     "Read the full written breakdown of today's health and medical research, with study links and expert commentary.",
-        "startup":    "Read the full written breakdown of today's startup funding, founder stories, and product launches.",
-        "crypto":     "Read the full written breakdown of today's crypto and Web3 news, with price context and on-chain data.",
-        "world-news": "Read the full written breakdown of today's global news stories, with maps, context, and background.",
-        "true-crime": "Read the full written breakdown of today's true crime story, with case timeline and court documents.",
-    }.get(niche["id"], "Read the full written breakdown of today's stories with links and context.")
+    blog_teaser = {
+        "ai-tech":
+            "Prefer reading? Every episode has a full written article on our blog — "
+            "with source links, key quotes, and deeper context on today's AI and tech stories.",
+        "finance":
+            "Prefer reading? Every episode has a full written article with data, charts, "
+            "and source links covering today's market and finance stories.",
+        "health":
+            "Prefer reading? Every episode has a full written article with study references, "
+            "expert quotes, and practical takeaways from today's health research.",
+        "startup":
+            "Prefer reading? Every episode has a full written article with funding details, "
+            "founder backgrounds, and source links from today's startup stories.",
+        "crypto":
+            "Prefer reading? Every episode has a full written article with price context, "
+            "on-chain data, and source links from today's crypto and Web3 stories.",
+        "world-news":
+            "Prefer reading? Every episode has a full written article with background, "
+            "maps, timelines, and source links covering today's global news.",
+        "true-crime":
+            "Prefer reading? Every episode has a full written article with case timeline, "
+            "court documents, and source links for today's true crime story.",
+    }.get(nid, "Prefer reading? Every episode has a full written article with source links and analysis.")
 
-    niche_tag = niche["title"].replace(" ", "")
-    nid_tags = {
-        "ai-tech":    "#AI #ArtificialIntelligence #MachineLearning #OpenAI #ChatGPT #Tech #TechNews",
-        "finance":    "#Finance #Investing #StockMarket #PersonalFinance #Economy #WallStreet #Money",
-        "health":     "#Health #Wellness #Longevity #Nutrition #MedicalNews #Fitness #HealthTips",
-        "startup":    "#Startup #VentureCapital #Founders #Business #Innovation #Entrepreneurship",
+    # ── Vita section — relevant to health show, generic plug elsewhere ────────
+    vita_section = ""
+    if nid == "health":
+        vita_section = (
+            "\n----------------------------------------\n"
+            "TRACK YOUR HEALTH WITH VITA\n"
+            "----------------------------------------\n"
+            "Vita is a free AI-powered wellness app that helps you track nutrition, "
+            "sleep, fitness, and mental wellbeing in one place. Built for people who "
+            "take their health seriously.\n"
+            "Try Vita free: https://mapt.cloud/vita\n"
+        )
+
+    # ── Mapt agency section ───────────────────────────────────────────────────
+    mapt_section = (
+        "\n----------------------------------------\n"
+        "BUILT BY MAPT\n"
+        "----------------------------------------\n"
+        "Velox Daily is produced by Mapt — a digital agency helping businesses grow "
+        "through content, automation, and AI-powered marketing. If you want a podcast, "
+        "blog, or content system like this built for your brand, visit us at mapt.cloud\n"
+        "Website: https://mapt.cloud\n"
+    )
+
+    # ── Hashtags ──────────────────────────────────────────────────────────────
+    show_tag = niche["title"].replace(" ", "")
+    hashtags = {
+        "ai-tech":    "#AI #ArtificialIntelligence #MachineLearning #OpenAI #ChatGPT #TechNews #AINews",
+        "finance":    "#Finance #Investing #StockMarket #PersonalFinance #Economy #WallStreet #MoneyNews",
+        "health":     "#Health #Wellness #Longevity #Nutrition #MedicalResearch #HealthNews #Fitness",
+        "startup":    "#Startup #VentureCapital #Founders #BusinessNews #Innovation #Entrepreneurship",
         "crypto":     "#Crypto #Bitcoin #Ethereum #DeFi #Web3 #Blockchain #CryptoNews #BTC",
-        "world-news": "#WorldNews #BreakingNews #Politics #International #GlobalNews #CurrentEvents",
-        "true-crime": "#TrueCrime #Crime #MurderMystery #Investigation #CrimePodcast #Justice",
-    }.get(niche["id"], "#Podcast #News #Daily")
-
-    niche_intro = {
-        "ai-tech":    "Every morning, AI Tech Daily delivers the 5 most important stories in artificial intelligence and tech - in under 10 minutes. No fluff, no hype - just the news that matters.",
-        "finance":    "Every morning, Money Minute Daily breaks down the biggest moves in markets, investing, and the economy - fast, clear, and free. Your smartest 5 minutes for your money.",
-        "health":     "Every morning, Health Edge Daily brings you the latest science-backed health news, medical breakthroughs, and longevity research - distilled into 5 focused minutes.",
-        "startup":    "Every morning, Startup Wire Daily covers the funding rounds, founder stories, and product launches reshaping the business world - in under 10 minutes.",
-        "crypto":     "Every morning, Crypto Daily Brief covers Bitcoin, Ethereum, DeFi, and the biggest moves in Web3 - fast, factual, and free. Stay ahead of the crypto market.",
-        "world-news": "Every morning, World In 5 covers the top global stories - politics, conflict, climate, and international affairs - clearly and quickly, so you never miss what matters.",
-        "true-crime": "Every morning, True Crime Digest brings you a real case - investigations, courtroom drama, and the pursuit of justice - told in under 10 minutes.",
-    }.get(niche["id"], niche["description"])
+        "world-news": "#WorldNews #BreakingNews #Politics #InternationalNews #GlobalNews #CurrentEvents",
+        "true-crime": "#TrueCrime #CrimePodcast #MurderMystery #CriminalInvestigation #Justice #CrimeNews",
+    }.get(nid, "#Podcast #DailyNews")
 
     return (
         f"{today_long} | {niche['title']} - Episode {episode_number}\n\n"
-        f"{niche_intro}\n\n"
+        f"{show_intro}\n\n"
         f"{story_bullets}\n"
         f"{script_block}"
-        f"----------------------------------------\n"
-        f"READ THE FULL STORY ON OUR BLOG\n"
-        f"----------------------------------------\n"
-        f"{niche_blog_desc}\n"
-        f"Full episode articles + all 7 niches: {SITE_BASE}\n"
-        f"This niche blog: {blog_url}\n\n"
-        f"----------------------------------------\n"
+        f"\n----------------------------------------\n"
         f"TIMESTAMPS\n"
         f"----------------------------------------\n"
-        f"{timestamps}\n\n"
+        f"{timestamps}\n"
+        f"\n----------------------------------------\n"
+        f"READ THE FULL ARTICLE\n"
         f"----------------------------------------\n"
+        f"{blog_teaser}\n"
+        f"Today's article: {blog_url}\n"
+        f"All daily briefings: {SITE_BASE}\n"
+        f"\n----------------------------------------\n"
         f"LISTEN FREE ON ALL PLATFORMS\n"
         f"----------------------------------------\n"
-        f"Spotify  : {spotify_url}\n"
-        f"Also on  : Apple Podcasts, Amazon Music, Pocket Casts\n"
-        f"Search   : \"{niche['title']}\" on any podcast app\n\n"
-        f"New episode every single day. Hit Subscribe so you never miss one.\n\n"
-        f"----------------------------------------\n"
-        f"{nid_tags} #{niche_tag} #DailyPodcast #FreePodcast #DailyNews\n"
+        f"Spotify      : {spotify_url}\n"
+        f"Apple Podcasts, Amazon Music, Pocket Casts\n"
+        f"Search       : \"{niche['title']}\" on any podcast app\n\n"
+        f"New episode every single day. Subscribe and never miss one.\n"
+        f"{vita_section}"
+        f"{mapt_section}"
+        f"\n----------------------------------------\n"
+        f"{hashtags} #{show_tag} #DailyPodcast #FreePodcast #VeloxDaily\n"
     )
 
 
