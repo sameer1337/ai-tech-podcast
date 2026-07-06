@@ -81,9 +81,10 @@ Today's stories (sources: {sources}):
     }
     # Resolve a relevant lead image (Openverse, keyworded LoremFlickr fallback)
     try:
-        from fetch_image import fetch_image
+        from fetch_image import fetch_and_cache_image
         seed = abs(hash(article["title"])) % 9973
-        article["image_url"] = fetch_image(article["image_query"] or article["title"], seed, 900, 520)
+        article["image_url"] = fetch_and_cache_image(
+            article["image_query"] or article["title"], f"blog/{niche['id']}", str(seed), seed, 900, 520)
     except Exception as e:
         article["image_url"] = ""
         print(f"[blog] image resolve failed: {e}")
@@ -127,9 +128,10 @@ Script:
         "image_query":      (data.get("image_query") or "").strip()[:60],
     }
     try:
-        from fetch_image import fetch_image
+        from fetch_image import fetch_and_cache_image
         seed = abs(hash(article["title"])) % 9973
-        article["image_url"] = fetch_image(article["image_query"] or article["title"], seed, 900, 520)
+        article["image_url"] = fetch_and_cache_image(
+            article["image_query"] or article["title"], f"blog/{niche['id']}", str(seed), seed, 900, 520)
     except Exception:
         article["image_url"] = ""
     words = len(re.sub(r"<[^>]+>", " ", article["body_html"]).split())

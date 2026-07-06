@@ -5,7 +5,7 @@ then any commercially-usable), with a keyworded LoremFlickr fallback so we
 always return something. Resolved once at article-build time and cached in the
 article JSON (never called per page render).
 """
-import json, re, urllib.request, urllib.parse
+import json, os, re, urllib.request, urllib.parse
 
 OV = "https://api.openverse.org/v1/images/"
 UA = {"User-Agent": "MaptDaily/1.0 (+https://daily.mapt.cloud)"}
@@ -38,6 +38,34 @@ def fetch_image(query, seed=0, w=900, h=520):
         except Exception:
             pass
     return _loremflickr(q, seed, w, h)
+
+
+def fetch_and_cache_image(query, subdir, name, seed=0, w=900, h=520):
+    """Resolve an image via fetch_image() and download it to assets/<subdir>/<name>.ext so the
+    site serves it same-origin instead of hotlinking a third-party host at render time. Returns
+    the local web path (e.g. "/assets/blog/ai-tech/123.jpg"), or the remote URL as a fallback if
+    the download fails. Never raises. Skips re-downloading if already cached on disk."""
+    remote = fetch_image(query, seed, w, h)
+    if not remote:
+        return ""
+    m = re.search(r"\.(jpe?g|png|webp)(?:$|\?)", remote, re.IGNORECASE)
+    ext = f".{m.group(1).lower()}" if m else ".jpg"
+    dest_dir = os.path.join("assets", *subdir.split("/"))
+    dest_path = os.path.join(dest_dir, f"{name}{ext}")
+    web_path = f"/assets/{subdir}/{name}{ext}"
+    if os.path.exists(dest_path):
+        return web_path
+    try:
+        req = urllib.request.Request(remote, headers=UA)
+        with urllib.request.urlopen(req, timeout=20) as r:
+            data = r.read()
+        os.makedirs(dest_dir, exist_ok=True)
+        with open(dest_path, "wb") as f:
+            f.write(data)
+        return web_path
+    except Exception as e:
+        print(f"[fetch_image] download failed, falling back to remote URL: {e}")
+        return remote
 
 
 if __name__ == "__main__":

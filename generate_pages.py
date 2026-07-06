@@ -33,8 +33,10 @@ SOCIALS = [("Facebook","f-fb","#","1.2K","Fans"),("X","f-x","#","480","Followers
 DATE_RE = re.compile(r"(\d{4}-\d{2}-\d{2})")
 
 
-def img(nid, seed, w=800, h=500):
-    return f"https://loremflickr.com/{w}/{h}/{IMG_KW.get(nid,'news')}?lock={seed}"
+def img(nid, seed=0, w=800, h=500):
+    """Cached local category fallback image (downloaded once, reused across sizes/renders)."""
+    from fetch_image import fetch_and_cache_image
+    return fetch_and_cache_image(IMG_KW.get(nid, "news"), "categories", nid, seed, w, h)
 
 
 def pimg(p, w=800, h=500):

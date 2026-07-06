@@ -28,7 +28,7 @@ RDIR = os.environ.get("FTP_DIR", "daily")   # relative to the FTP login home (/p
 FILES = ["index.html", "mapt.html", "vita.html", "about.html", "privacy.html",
          "sitemap.xml", "robots.txt", "subscribe.php",
          "6f764af03d2542fd8e80365fee476196.txt"]
-DIRS  = ["static", "blog", "podcasts"]
+DIRS  = ["static", "blog", "podcasts", "assets"]
 
 
 def connect() -> ftplib.FTP:
