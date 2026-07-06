@@ -80,15 +80,10 @@ jobs:
       - name: Upload all podcasts to YouTube (morning only)
         if: github.event.schedule != '0 18 * * *' && github.event.inputs.mode != 'pages_only'
         env:
-          GOOGLE_CLIENT_ID:              ${{ secrets.GOOGLE_CLIENT_ID }}
-          GOOGLE_CLIENT_SECRET:          ${{ secrets.GOOGLE_CLIENT_SECRET }}
-          YT_REFRESH_TOKEN_AI_TECH:      ${{ secrets.YT_REFRESH_TOKEN_AI_TECH }}
-          YT_REFRESH_TOKEN_FINANCE:      ${{ secrets.YT_REFRESH_TOKEN_FINANCE }}
-          YT_REFRESH_TOKEN_HEALTH:       ${{ secrets.YT_REFRESH_TOKEN_HEALTH }}
-          YT_REFRESH_TOKEN_STARTUP:      ${{ secrets.YT_REFRESH_TOKEN_STARTUP }}
-          YT_REFRESH_TOKEN_CRYPTO:       ${{ secrets.YT_REFRESH_TOKEN_CRYPTO }}
-          YT_REFRESH_TOKEN_WORLD:        ${{ secrets.YT_REFRESH_TOKEN_WORLD }}
-          YT_REFRESH_TOKEN_TRUECRIME:    ${{ secrets.YT_REFRESH_TOKEN_TRUECRIME }}
+          GOOGLE_CLIENT_ID:     ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN:     ${{ secrets.YT_REFRESH_TOKEN }}
+          YT_CHANNEL_ID:        ${{ secrets.YT_CHANNEL_ID }}
           PYTHONUTF8: "1"
         run: |
           TODAY=$(date +%Y-%m-%d)

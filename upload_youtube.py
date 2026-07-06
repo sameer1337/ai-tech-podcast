@@ -1,7 +1,8 @@
 """
-Upload a podcast episode to YouTube.
-- Creates a video: cover image (static) + MP3 audio via FFmpeg
-- Uploads to YouTube via Data API v3 using a stored refresh token
+Upload all podcast episodes to a single YouTube channel.
+- One channel hosts all 7 niches, organised by playlists
+- One refresh token (YT_REFRESH_TOKEN) in GitHub Secrets
+- Playlist IDs auto-created on first run, stored in logs/yt_playlists.json
 Usage: python upload_youtube.py --niche ai-tech --episode episodes/ep0001_2026-06-29.mp3
 """
 
@@ -20,48 +21,37 @@ from googleapiclient.http import MediaFileUpload
 
 from niches import PODCAST_MAP
 
-# ── Per-channel YouTube config ─────────────────────────────────────────────
-# Add channel ID and refresh token secret name for each niche
-YOUTUBE_CONFIG = {
-    "ai-tech": {
-        "channel_id":    "UCtyXT1jjL0Un-w3Bqo5l68g",
-        "refresh_token": os.environ.get("YT_REFRESH_TOKEN_AI_TECH", ""),
-    },
-    "finance": {
-        "channel_id":    "",
-        "refresh_token": os.environ.get("YT_REFRESH_TOKEN_FINANCE", ""),
-    },
-    "health": {
-        "channel_id":    "",
-        "refresh_token": os.environ.get("YT_REFRESH_TOKEN_HEALTH", ""),
-    },
-    "startup": {
-        "channel_id":    "",
-        "refresh_token": os.environ.get("YT_REFRESH_TOKEN_STARTUP", ""),
-    },
-    "crypto": {
-        "channel_id":    "",
-        "refresh_token": os.environ.get("YT_REFRESH_TOKEN_CRYPTO", ""),
-    },
-    "world-news": {
-        "channel_id":    "",
-        "refresh_token": os.environ.get("YT_REFRESH_TOKEN_WORLD", ""),
-    },
-    "true-crime": {
-        "channel_id":    "",
-        "refresh_token": os.environ.get("YT_REFRESH_TOKEN_TRUECRIME", ""),
-    },
-}
+# ── Single channel config ──────────────────────────────────────────────────
+# Set YT_CHANNEL_ID and YT_REFRESH_TOKEN in GitHub Secrets (one channel for all niches)
+CHANNEL_ID    = os.environ.get("YT_CHANNEL_ID", "")
+REFRESH_TOKEN = os.environ.get("YT_REFRESH_TOKEN", "")
 
 GOOGLE_CLIENT_ID     = os.environ.get("GOOGLE_CLIENT_ID", "")
 GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", "")
-SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
+SCOPES = [
+    "https://www.googleapis.com/auth/youtube.upload",
+    "https://www.googleapis.com/auth/youtube",
+]
+
+PLAYLIST_CACHE = "logs/yt_playlists.json"
+
+# Niche → YouTube category ID
+CATEGORY_IDS = {
+    "ai-tech":    "28",  # Science & Technology
+    "finance":    "25",  # News & Politics
+    "health":     "26",  # Howto & Style
+    "startup":    "25",  # News & Politics
+    "crypto":     "28",  # Science & Technology
+    "world-news": "25",  # News & Politics
+    "true-crime": "25",  # News & Politics
+}
 
 
-def get_youtube_client(refresh_token: str):
+def get_youtube_client(refresh_token: str = None):
+    token = refresh_token or REFRESH_TOKEN
     creds = Credentials(
         token=None,
-        refresh_token=refresh_token,
+        refresh_token=token,
         token_uri="https://oauth2.googleapis.com/token",
         client_id=GOOGLE_CLIENT_ID,
         client_secret=GOOGLE_CLIENT_SECRET,
@@ -69,6 +59,49 @@ def get_youtube_client(refresh_token: str):
     )
     creds.refresh(Request())
     return build("youtube", "v3", credentials=creds)
+
+
+def get_or_create_playlist(youtube, niche: dict) -> str:
+    """Return playlist ID for this niche, creating it if it doesn't exist yet."""
+    os.makedirs("logs", exist_ok=True)
+    cache = {}
+    if os.path.exists(PLAYLIST_CACHE):
+        with open(PLAYLIST_CACHE) as f:
+            cache = json.load(f)
+
+    nid = niche["id"]
+    if nid in cache:
+        return cache[nid]
+
+    print(f"[youtube] Creating playlist: {niche['title']}")
+    resp = youtube.playlists().insert(
+        part="snippet,status",
+        body={
+            "snippet": {
+                "title":       niche["title"],
+                "description": niche["description"][:500],
+            },
+            "status": {"privacyStatus": "public"},
+        },
+    ).execute()
+    playlist_id = resp["id"]
+    cache[nid] = playlist_id
+    with open(PLAYLIST_CACHE, "w") as f:
+        json.dump(cache, f, indent=2)
+    print(f"[youtube] Playlist created: {playlist_id}")
+    return playlist_id
+
+
+def add_to_playlist(youtube, video_id: str, playlist_id: str):
+    youtube.playlistItems().insert(
+        part="snippet",
+        body={
+            "snippet": {
+                "playlistId": playlist_id,
+                "resourceId": {"kind": "youtube#video", "videoId": video_id},
+            }
+        },
+    ).execute()
 
 
 def create_video(audio_path: str, cover_path: str, out_path: str,
@@ -116,6 +149,8 @@ def build_title(niche: dict, episode_number: int) -> str:
 
 
 def build_description(niche: dict, episode_number: int, script_excerpt: str = "") -> str:
+    spotify_url = niche.get("spotify_url", "")
+    spotify_line = f"🎧 Spotify: {spotify_url}" if spotify_url else ""
     return f"""{niche['description']}
 
 {'—' * 40}
@@ -124,15 +159,16 @@ Episode {episode_number} | {datetime.utcnow().strftime('%B %d, %Y')}
 {script_excerpt[:800] if script_excerpt else ''}
 
 {'—' * 40}
-🎙️ Listen on all podcast platforms — search "{niche['title']}"
-📡 RSS Feed: https://sameer1337.github.io/ai-tech-podcast/{niche['rss_file']}
+{spotify_line}
+🎙️ All platforms — search "{niche['title']}"
+📡 RSS: https://sameer1337.github.io/ai-tech-podcast/{niche['rss_file']}
 🌐 Website: https://sameer1337.github.io/ai-tech-podcast/podcasts/{niche['id']}/
 
-#Podcast #Daily #Free #{niche['title'].replace(' ', '')}
+#Podcast #Daily #{niche['title'].replace(' ', '')} #DailyBrief #News
 """
 
 
-def upload_to_youtube(youtube, video_path: str, title: str, description: str, category_id: str = "22"):
+def upload_to_youtube(youtube, video_path: str, title: str, description: str, category_id: str = "25"):
     print(f"[youtube] Uploading: {title}")
     body = {
         "snippet": {
@@ -175,13 +211,10 @@ def main():
         print(f"[error] Unknown niche: {args.niche}")
         sys.exit(1)
 
-    yt_cfg = YOUTUBE_CONFIG.get(args.niche, {})
-    refresh_token = yt_cfg.get("refresh_token", "")
-    if not refresh_token:
-        print(f"[skip] No refresh token for {args.niche} — skipping YouTube upload")
+    if not REFRESH_TOKEN:
+        print(f"[skip] YT_REFRESH_TOKEN not set — skipping YouTube upload")
         sys.exit(0)
 
-    # Cover image path
     cover_map = {
         "ai-tech":    "assets/cover.png",
         "finance":    "assets/cover_finance.png",
@@ -193,11 +226,10 @@ def main():
     }
     cover_path = cover_map.get(args.niche, "assets/cover.png")
 
-    # Create video in temp dir
     with tempfile.TemporaryDirectory() as tmpdir:
         video_path = os.path.join(tmpdir, "episode.mp4")
-        print(f"[ffmpeg] Creating animated video for {args.niche}")
-        ep_title = args.excerpt[:80] if args.excerpt else build_title(niche, args.number)
+        print(f"[video] Building animated video for {args.niche}...")
+        ep_title   = args.excerpt[:80] if args.excerpt else build_title(niche, args.number)
         story_list = [s.strip() for s in args.stories.split("||") if s.strip()] if args.stories else []
         script_text = ""
         if args.script_file and os.path.exists(args.script_file):
@@ -206,13 +238,30 @@ def main():
         if not create_video(args.episode, cover_path, video_path,
                             niche_id=args.niche, episode_title=ep_title,
                             stories=story_list, script=script_text):
-            print("[error] FFmpeg failed")
+            print("[error] Video creation failed")
             sys.exit(1)
 
-        youtube   = get_youtube_client(refresh_token)
-        title     = build_title(niche, args.number)
-        desc      = build_description(niche, args.number, args.excerpt)
-        video_id  = upload_to_youtube(youtube, video_path, title, desc)
+        youtube     = get_youtube_client()
+        title       = build_title(niche, args.number)
+        desc        = build_description(niche, args.number, args.excerpt)
+        category_id = CATEGORY_IDS.get(args.niche, "25")
+        video_id    = upload_to_youtube(youtube, video_path, title, desc, category_id)
+
+        # Add to niche playlist (creates it if missing)
+        try:
+            playlist_id = get_or_create_playlist(youtube, niche)
+            add_to_playlist(youtube, video_id, playlist_id)
+            print(f"[youtube] Added to playlist: {playlist_id}")
+        except Exception as e:
+            print(f"[youtube] Playlist step failed (non-fatal): {e}")
+
+        # Save video ID for website embedding
+        import datetime as _dt
+        today = _dt.datetime.utcnow().strftime("%Y-%m-%d")
+        log_dir = f"logs/{args.niche}"
+        os.makedirs(log_dir, exist_ok=True)
+        with open(f"{log_dir}/{today}_youtube.txt", "w") as f:
+            f.write(video_id)
 
     print(f"[done] https://youtu.be/{video_id}")
 

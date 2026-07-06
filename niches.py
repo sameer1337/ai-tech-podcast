@@ -6,6 +6,7 @@
 PODCASTS = [
     {
         "cover_url":   "https://sameer1337.github.io/ai-tech-podcast/assets/cover.png",
+        "spotify_url": "https://open.spotify.com/show/033GtiveqJ3namuIWD009h",
         "id":          "ai-tech",
         "title":       "AI Tech Daily",
         "description": "AI Tech Daily is your free daily AI news podcast â€” 5 minutes of the biggest artificial intelligence and tech news every morning. Stay ahead of AI, machine learning, ChatGPT, OpenAI, Google, and the tech industry. New episode every day, completely free.",
@@ -27,6 +28,7 @@ PODCASTS = [
     },
     {
         "cover_url":   "https://sameer1337.github.io/ai-tech-podcast/assets/cover_finance.png",
+        "spotify_url": "https://open.spotify.com/show/033GLNkKiAAwbmGsE60q3j",
         "id":          "finance",
         "title":       "Money Minute Daily",
         "description": "Your free daily 5-minute finance podcast. Stock market, investing, personal finance, and economic news every morning. The smartest 5 minutes for your money.",
@@ -48,6 +50,7 @@ PODCASTS = [
     },
     {
         "cover_url":   "https://sameer1337.github.io/ai-tech-podcast/assets/cover_health.png",
+        "spotify_url": "https://open.spotify.com/show/033GLQnAfaU0XNh7X3YGnc",
         "id":          "health",
         "title":       "Health Edge Daily",
         "description": "Daily health and longevity news in 5 minutes. Science-backed health tips, medical breakthroughs, nutrition, fitness, and longevity research every morning.",
@@ -69,6 +72,7 @@ PODCASTS = [
     },
     {
         "cover_url":   "https://sameer1337.github.io/ai-tech-podcast/assets/cover_startup.png",
+        "spotify_url": "https://open.spotify.com/show/033GLTGJK1negHtroqey6L",
         "id":          "startup",
         "title":       "Startup Wire Daily",
         "description": "Daily 5-minute startup and venture capital news. Funding rounds, founder stories, product launches, and the business ideas changing the world.",
@@ -90,6 +94,7 @@ PODCASTS = [
     },
     {
         "cover_url":   "https://sameer1337.github.io/ai-tech-podcast/assets/cover_crypto.png",
+        "spotify_url": "https://open.spotify.com/show/033GLYTHebKZukpcuhbMyr",
         "id":          "crypto",
         "title":       "Crypto Daily Brief",
         "description": "Your free daily 5-minute crypto and Web3 news podcast. Bitcoin, Ethereum, DeFi, NFTs, and blockchain news every morning. Stay ahead of the crypto market.",
@@ -111,6 +116,7 @@ PODCASTS = [
     },
     {
         "cover_url":   "https://sameer1337.github.io/ai-tech-podcast/assets/cover_world.png",
+        "spotify_url": "https://open.spotify.com/show/033GM2aL4HubkizmHcyPFM",
         "id":          "world-news",
         "title":       "World In 5",
         "description": "The world's top news stories in 5 minutes, every morning. Politics, international affairs, climate, and the events shaping our world â€” clear, fast, free.",
@@ -132,6 +138,7 @@ PODCASTS = [
     },
     {
         "cover_url":   "https://sameer1337.github.io/ai-tech-podcast/assets/cover_truecrime.png",
+        "spotify_url": "https://open.spotify.com/show/033GM4g8k8DNyc4KH3R14v",
         "id":          "true-crime",
         "title":       "True Crime Digest",
         "description": "Daily true crime stories in 5 minutes. Real cases, investigations, courtroom drama, and justice served â€” every morning. The most gripping podcast on your commute.",
