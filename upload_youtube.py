@@ -159,54 +159,76 @@ def build_description(niche: dict, episode_number: int, script_excerpt: str = ""
                       stories: list = None) -> str:
     spotify_url = niche.get("spotify_url", "")
     today_long  = datetime.utcnow().strftime("%B %d, %Y")
-    today_short = datetime.utcnow().strftime("%b %d")
 
-    # Build timestamps block from stories (approx 60s each)
-    timestamps = ""
+    def clean(text: str, limit: int = 0) -> str:
+        t = text.encode("ascii", errors="ignore").decode("ascii").strip()
+        return t[:limit] if limit else t
+
+    # Timestamps block — estimate 1 min per story
+    ts_lines = ["00:00 Introduction"]
     if stories:
-        lines = ["00:00 Intro"]
         for i, s in enumerate(stories[:5]):
-            mm = (i + 1) * 1
-            lines.append(f"0{mm}:00 {s[:60].encode('ascii', errors='ignore').decode('ascii')}")
-        timestamps = "\n".join(lines)
+            ts_lines.append(f"0{i+1}:00 {clean(s, 70)}")
+    ts_lines.append(f"0{len(ts_lines)}:30 Subscribe & Follow")
+    timestamps = "\n".join(ts_lines)
 
-    # Hashtags from niche
-    niche_tag = niche["title"].replace(" ", "")
-    nid_tags  = {
-        "ai-tech":    "#AI #ArtificialIntelligence #Tech #MachineLearning #OpenAI",
-        "finance":    "#Finance #Investing #StockMarket #PersonalFinance #Economy",
-        "health":     "#Health #Wellness #Longevity #Nutrition #MedicalNews",
-        "startup":    "#Startup #VentureCapital #Founders #Business #Innovation",
-        "crypto":     "#Crypto #Bitcoin #Ethereum #DeFi #Web3 #Blockchain",
-        "world-news": "#WorldNews #Politics #International #BreakingNews #Global",
-        "true-crime": "#TrueCrime #Crime #Investigation #Murder #TrueCrimePodcast",
-    }.get(niche["id"], "#Podcast #News #Daily")
+    # Story bullet points for the body
+    story_bullets = ""
+    if stories:
+        bullets = "\n".join(f"  * {clean(s)}" for s in stories[:5])
+        story_bullets = f"In this episode we cover:\n{bullets}\n"
 
+    # Script excerpt — first 1200 chars, keep natural sentences
     script_block = ""
     if script_excerpt:
-        clean = script_excerpt[:1000].encode("ascii", errors="ignore").decode("ascii")
-        script_block = f"\n{clean}\n"
+        raw = clean(script_excerpt)
+        # trim to last full sentence within 1200 chars
+        chunk = raw[:1200]
+        last_dot = max(chunk.rfind(". "), chunk.rfind("! "), chunk.rfind("? "))
+        if last_dot > 600:
+            chunk = chunk[:last_dot + 1]
+        script_block = f"\n--- Episode transcript (excerpt) ---\n{chunk}\n\n"
 
-    return f"""Your daily {niche['title']} brief — {today_long}.
+    niche_tag = niche["title"].replace(" ", "")
+    nid_tags = {
+        "ai-tech":    "#AI #ArtificialIntelligence #MachineLearning #OpenAI #ChatGPT #Tech #TechNews",
+        "finance":    "#Finance #Investing #StockMarket #PersonalFinance #Economy #WallStreet #Money",
+        "health":     "#Health #Wellness #Longevity #Nutrition #MedicalNews #Fitness #HealthTips",
+        "startup":    "#Startup #VentureCapital #Founders #Business #Innovation #Entrepreneurship",
+        "crypto":     "#Crypto #Bitcoin #Ethereum #DeFi #Web3 #Blockchain #CryptoNews #BTC",
+        "world-news": "#WorldNews #BreakingNews #Politics #International #GlobalNews #CurrentEvents",
+        "true-crime": "#TrueCrime #Crime #MurderMystery #Investigation #CrimePodcast #Justice",
+    }.get(niche["id"], "#Podcast #News #Daily")
 
-{niche['description']}
-{script_block}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-TIMESTAMPS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-{timestamps if timestamps else "00:00 Full Episode"}
+    niche_intro = {
+        "ai-tech":    "Every morning, AI Tech Daily delivers the 5 most important stories in artificial intelligence and tech - in under 10 minutes. No fluff, no hype - just the news that matters.",
+        "finance":    "Every morning, Money Minute Daily breaks down the biggest moves in markets, investing, and the economy - fast, clear, and free. Your smartest 5 minutes for your money.",
+        "health":     "Every morning, Health Edge Daily brings you the latest science-backed health news, medical breakthroughs, and longevity research - distilled into 5 focused minutes.",
+        "startup":    "Every morning, Startup Wire Daily covers the funding rounds, founder stories, and product launches reshaping the business world - in under 10 minutes.",
+        "crypto":     "Every morning, Crypto Daily Brief covers Bitcoin, Ethereum, DeFi, and the biggest moves in Web3 - fast, factual, and free. Stay ahead of the crypto market.",
+        "world-news": "Every morning, World In 5 covers the top global stories - politics, conflict, climate, and international affairs - clearly and quickly, so you never miss what matters.",
+        "true-crime": "Every morning, True Crime Digest brings you a real case - investigations, courtroom drama, and the pursuit of justice - told in under 10 minutes.",
+    }.get(niche["id"], niche["description"])
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-LISTEN FREE ON ALL PLATFORMS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🎧 Spotify  : {spotify_url}
-🎙️  Search   : "{niche['title']}" on Apple Podcasts, Amazon Music, Pocket Casts
-
-New episode every single day. Subscribe so you never miss one.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-{nid_tags} #{niche_tag} #DailyPodcast #DailyNews #FreeP odcast
-"""
+    return (
+        f"{today_long} | {niche['title']} - Episode {episode_number}\n\n"
+        f"{niche_intro}\n\n"
+        f"{story_bullets}\n"
+        f"{script_block}"
+        f"----------------------------------------\n"
+        f"TIMESTAMPS\n"
+        f"----------------------------------------\n"
+        f"{timestamps}\n\n"
+        f"----------------------------------------\n"
+        f"LISTEN FREE ON ALL PLATFORMS\n"
+        f"----------------------------------------\n"
+        f"Spotify  : {spotify_url}\n"
+        f"Also on  : Apple Podcasts, Amazon Music, Pocket Casts\n"
+        f"Search   : \"{niche['title']}\" on any podcast app\n\n"
+        f"New episode every single day. Hit Subscribe so you never miss one.\n\n"
+        f"----------------------------------------\n"
+        f"{nid_tags} #{niche_tag} #DailyPodcast #FreePodcast #DailyNews\n"
+    )
 
 
 def generate_thumbnail(niche_id: str, top_story: str, out_path: str) -> bool:
@@ -253,14 +275,66 @@ def upload_thumbnail(youtube, video_id: str, thumb_path: str):
     print(f"[thumbnail] Uploaded to video {video_id}")
 
 
-def upload_to_youtube(youtube, video_path: str, title: str, description: str, category_id: str = "25"):
+NICHE_TAGS = {
+    "ai-tech": [
+        "AI news", "artificial intelligence", "machine learning", "OpenAI", "ChatGPT",
+        "tech news", "AI podcast", "daily AI", "deep learning", "AI today",
+        "AI Tech Daily", "Velox Daily", "tech podcast", "AI 2026", "LLM news",
+    ],
+    "finance": [
+        "finance news", "stock market", "investing", "personal finance", "economy",
+        "Wall Street", "daily finance", "money podcast", "stock news", "financial news",
+        "Money Minute Daily", "Velox Daily", "market news", "investing tips", "economy 2026",
+    ],
+    "health": [
+        "health news", "wellness", "longevity", "nutrition", "medical news",
+        "fitness", "health podcast", "daily health", "science health", "mental health",
+        "Health Edge Daily", "Velox Daily", "health tips", "medical research", "diet news",
+    ],
+    "startup": [
+        "startup news", "venture capital", "founders", "business news", "innovation",
+        "entrepreneurship", "funding rounds", "tech startups", "startup podcast", "VC news",
+        "Startup Wire Daily", "Velox Daily", "startup 2026", "business podcast", "product launch",
+    ],
+    "crypto": [
+        "crypto news", "bitcoin", "ethereum", "DeFi", "Web3", "blockchain",
+        "cryptocurrency", "BTC price", "crypto podcast", "crypto today",
+        "Crypto Daily Brief", "Velox Daily", "crypto 2026", "altcoin news", "NFT news",
+    ],
+    "world-news": [
+        "world news", "breaking news", "politics", "international news", "global news",
+        "current events", "news podcast", "daily news", "geopolitics", "news today",
+        "World In 5", "Velox Daily", "news 2026", "world podcast", "news brief",
+    ],
+    "true-crime": [
+        "true crime", "crime podcast", "murder mystery", "investigation", "justice",
+        "criminal cases", "court drama", "true crime daily", "crime news", "unsolved crimes",
+        "True Crime Digest", "Velox Daily", "crime 2026", "criminal investigation", "cold case",
+    ],
+}
+
+
+def build_tags(niche_id: str, stories: list = None) -> list:
+    base = NICHE_TAGS.get(niche_id, ["podcast", "daily news", "Velox Daily"])
+    extra = []
+    if stories:
+        for s in stories[:3]:
+            words = s.encode("ascii", errors="ignore").decode("ascii").split()
+            kw = " ".join(words[:4])
+            if kw and kw not in base:
+                extra.append(kw)
+    return (base + extra)[:30]
+
+
+def upload_to_youtube(youtube, video_path: str, title: str, description: str,
+                      category_id: str = "25", tags: list = None):
     print(f"[youtube] Uploading: {title}")
     body = {
         "snippet": {
             "title":       title[:100],
             "description": description,
             "categoryId":  category_id,
-            "tags":        ["podcast", "daily", "free", "audio"],
+            "tags":        tags or ["podcast", "daily news", "Velox Daily"],
         },
         "status": {
             "privacyStatus":           "public",
@@ -277,7 +351,7 @@ def upload_to_youtube(youtube, video_path: str, title: str, description: str, ca
             pct = int(status.progress() * 100)
             print(f"[youtube] Upload {pct}%", end="\r")
 
-    print(f"\n[youtube] Done → https://youtu.be/{response['id']}")
+    print(f"\n[youtube] Done -> https://youtu.be/{response['id']}")
     return response["id"]
 
 
@@ -331,15 +405,21 @@ def main():
         title       = build_title(niche, args.number, top_story)
         desc        = build_description(niche, args.number, args.excerpt, story_list)
         category_id = CATEGORY_IDS.get(args.niche, "25")
-        video_id    = upload_to_youtube(youtube, video_path, title, desc, category_id)
+        tags        = build_tags(args.niche, story_list)
+        print(f"[tags] {tags[:5]}... ({len(tags)} total)")
+        video_id    = upload_to_youtube(youtube, video_path, title, desc, category_id, tags)
 
         # Upload unique thumbnail
         thumb_path = os.path.join(tmpdir, "thumbnail.jpg")
+        print(f"[thumbnail] Generating for: {top_story[:60]}")
         if generate_thumbnail(args.niche, top_story, thumb_path):
             try:
                 upload_thumbnail(youtube, video_id, thumb_path)
+                print(f"[thumbnail] Done")
             except Exception as e:
-                print(f"[thumbnail] Upload failed (non-fatal): {e}")
+                print(f"[thumbnail] Upload failed: {e}")
+        else:
+            print(f"[thumbnail] Generation failed - video will use default thumbnail")
 
         # Add to niche playlist (creates it if missing)
         try:
