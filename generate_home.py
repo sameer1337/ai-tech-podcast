@@ -8,7 +8,7 @@ Self-contained: CSS comes from home_style.html; article data is parsed from
 blog/<cat>/ep*.html (title / dek / date / image / link).
 """
 import re, glob, os
-from site_header import header_html, HEADER_CSS, HEADER_JS
+from site_header import header_html, HEADER_CSS, HEADER_JS, analytics_head
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 BLOG = os.path.join(ROOT, "blog")
@@ -247,6 +247,7 @@ HTML = f'''<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet" />
 {STYLE}
 {HEADER_CSS}
+{analytics_head()}
 </head>
 <body>
 

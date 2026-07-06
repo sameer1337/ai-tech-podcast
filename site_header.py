@@ -13,7 +13,28 @@ Usage:
 
 cat_arts: {cat_id: [ {"title","href","img","date"}, ... ]}  (4 recent is enough)
 """
+import os
 import html as _html
+
+# ── Analytics / search-console verification ──────────────────────────────
+# Set these as GitHub repo secrets once the GA4 property / GSC verification
+# exist (see project notes). Left blank -> tags simply aren't emitted.
+GA_MEASUREMENT_ID = os.environ.get("GA_MEASUREMENT_ID", "")
+GSC_VERIFICATION  = os.environ.get("GSC_VERIFICATION", "")
+
+
+def analytics_head() -> str:
+    """<head> tags for GA4 + Google Search Console ownership verification."""
+    parts = []
+    if GSC_VERIFICATION:
+        parts.append(f'<meta name="google-site-verification" content="{GSC_VERIFICATION}">')
+    if GA_MEASUREMENT_ID:
+        parts.append(
+            f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>'
+            f'<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}'
+            f"gtag('js',new Date());gtag('config','{GA_MEASUREMENT_ID}');</script>"
+        )
+    return "".join(parts)
 
 CATS  = ["ai-tech","finance","health","startup","crypto","world-news","true-crime"]
 LABEL = {"ai-tech":"AI & Tech","finance":"Finance","health":"Health","startup":"Startups",

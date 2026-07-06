@@ -4,7 +4,13 @@ on:
   schedule:
     - cron: '0 6 * * *'    # MORNING (full): podcast + blog + video + deploy
     - cron: '0 18 * * *'   # EVENING (light): rebuild pages + homepage + deploy only
-  workflow_dispatch:        # manual trigger = full run
+  workflow_dispatch:        # manual trigger
+    inputs:
+      mode:
+        description: 'full = regenerate podcasts + upload to YouTube; pages_only = just rebuild/redeploy the site'
+        type: choice
+        default: full
+        options: [full, pages_only]
 
 jobs:
   generate-episode:
@@ -26,14 +32,14 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Generate all podcast episodes (morning only)
-        if: github.event.schedule != '0 18 * * *'
+        if: github.event.schedule != '0 18 * * *' && github.event.inputs.mode != 'pages_only'
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           PYTHONUTF8: "1"
         run: python run_all.py
 
       - name: Install FFmpeg (morning only)
-        if: github.event.schedule != '0 18 * * *'
+        if: github.event.schedule != '0 18 * * *' && github.event.inputs.mode != 'pages_only'
         run: sudo apt-get install -y ffmpeg
 
       - name: Publish new blog posts (evening only, text-only)
@@ -46,11 +52,15 @@ jobs:
       - name: Generate podcast pages
         env:
           PYTHONUTF8: "1"
+          GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
+          GSC_VERIFICATION: ${{ secrets.GSC_VERIFICATION }}
         run: python generate_pages.py
 
       - name: Build mega-menu homepage (latest blogs + slider)
         env:
           PYTHONUTF8: "1"
+          GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
+          GSC_VERIFICATION: ${{ secrets.GSC_VERIFICATION }}
         run: python generate_home.py
 
       - name: Deploy site to Hostinger (FTP)
@@ -62,8 +72,13 @@ jobs:
           PYTHONUTF8: "1"
         run: python deploy_ftp.py
 
+      - name: Ping IndexNow (Bing/Yandex instant indexing)
+        env:
+          PYTHONUTF8: "1"
+        run: python submit_indexnow.py
+
       - name: Upload all podcasts to YouTube (morning only)
-        if: github.event.schedule != '0 18 * * *'
+        if: github.event.schedule != '0 18 * * *' && github.event.inputs.mode != 'pages_only'
         env:
           GOOGLE_CLIENT_ID:              ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET:          ${{ secrets.GOOGLE_CLIENT_SECRET }}

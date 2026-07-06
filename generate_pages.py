@@ -10,7 +10,7 @@ import html
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from niches import PODCASTS
-from site_header import header_html, HEADER_CSS, HEADER_JS
+from site_header import header_html, HEADER_CSS, HEADER_JS, analytics_head
 
 SITE_URL  = "https://daily.mapt.cloud"
 FEED_BASE = "https://sameer1337.github.io/ai-tech-podcast"
@@ -194,7 +194,7 @@ def _head(title, desc, canonical, extra="", accent="#2b6cff"):
 <meta property="og:type" content="website"><meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{canonical}">
 <meta property="og:site_name" content="{BRAND}"><meta name="twitter:card" content="summary_large_image">
-{FONTS}<link rel="stylesheet" href="/static/site.css"><style>:root{{--accent:{accent}}}</style>{HEADER_CSS}{extra}</head><body>"""
+{FONTS}<link rel="stylesheet" href="/static/site.css"><style>:root{{--accent:{accent}}}</style>{HEADER_CSS}{analytics_head()}{extra}</head><body>"""
 
 
 # ─────────── component builders ───────────
