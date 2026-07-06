@@ -142,11 +142,9 @@ PODCASTS = [
         "output_dir":  "episodes/truecrime",
         "hook":        "true crime and justice",
         "feeds": [
-            "https://feeds.feedburner.com/CrimeLibrary",
             "https://www.crimeonline.com/feed/",
             "https://lawandcrime.com/feed/",
             "https://www.courthousenews.com/feed/",
-            "https://feeds.feedburner.com/thedailybeast/society",
         ],
         "keywords": ["murder", "crime", "arrest", "trial", "verdict", "police", "court",
                      "sentence", "victim", "detective", "suspect", "investigation", "case"],

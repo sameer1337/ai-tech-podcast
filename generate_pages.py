@@ -89,7 +89,7 @@ def build_posts(niche):
         d = _date(ep)
         art = _load_json(f"logs/{nid}/{d}_article.json") if d else None
         vid = _load_txt(f"logs/{nid}/{d}_youtube.txt") if d else ""   # optional YT id
-        head = _topic(ep["title"], niche)
+        head = (art or {}).get("title") or _topic(ep["title"], niche)
         slug = f"ep{ep['number']}-{slugify(head)}"
         out.append({
             "niche":niche,"nid":nid,"number":ep["number"],"seed":ep["number"]*7+hash(nid)%13,
