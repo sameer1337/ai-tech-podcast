@@ -129,7 +129,8 @@ jobs:
         run: |
           git config user.name "Podcast Bot"
           git config user.email "hunk1.on11@gmail.com"
-          git add episodes/ feeds/ feed.xml logs/ index.html podcasts/
+          git add episodes/ feeds/ feed.xml logs/ index.html podcasts/ \
+                  blog/ about.html mapt.html vita.html privacy.html sitemap.xml robots.txt
           git diff --staged --quiet || git commit -m "All episodes + pages $(date +%Y-%m-%d)"
-          git pull --rebase origin master
+          git pull --rebase --autostash origin master
           git push
