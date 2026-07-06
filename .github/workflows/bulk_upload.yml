@@ -1,0 +1,66 @@
+name: Bulk Upload to YouTube
+
+on:
+  workflow_dispatch:
+    inputs:
+      niche:
+        description: 'Upload one show only (leave blank for all 7)'
+        required: false
+        default: ''
+        type: choice
+        options:
+          - ''
+          - ai-tech
+          - finance
+          - health
+          - startup
+          - crypto
+          - world-news
+          - true-crime
+
+jobs:
+  bulk-upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360   # 6 hour cap per GitHub Actions limit
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install FFmpeg
+        run: sudo apt-get install -y ffmpeg
+
+      - name: Run bulk upload
+        env:
+          GOOGLE_CLIENT_ID:     ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN:     ${{ secrets.YT_REFRESH_TOKEN }}
+          YT_CHANNEL_ID:        ${{ secrets.YT_CHANNEL_ID }}
+          PYTHONUTF8:           "1"
+          PYTHONWARNINGS:       "ignore"
+        run: |
+          if [ -n "${{ github.event.inputs.niche }}" ]; then
+            python -u upload_all_episodes.py --niche "${{ github.event.inputs.niche }}"
+          else
+            python -u upload_all_episodes.py
+          fi
+
+      - name: Save upload progress to repo
+        run: |
+          git config user.name "Podcast Bot"
+          git config user.email "hunk1.on11@gmail.com"
+          git add logs/uploaded/ logs/yt_playlists.json || true
+          git diff --staged --quiet || git commit -m "Bulk upload progress $(date +%Y-%m-%d)"
+          git pull --rebase --autostash origin master
+          git push
