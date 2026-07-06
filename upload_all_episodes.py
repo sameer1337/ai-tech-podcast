@@ -58,13 +58,37 @@ def load_stories(niche_id: str, date: str) -> list:
     if os.path.exists(path):
         with open(path, encoding="utf-8") as f:
             return [s.strip() for s in f.read().split("||") if s.strip()]
-    # Fall back to JSON log
     jpath = f"logs/{niche_id}/{date}.json"
     if os.path.exists(jpath):
-        with open(jpath, encoding="utf-8") as f:
-            data = json.load(f)
-        return data.get("stories", [])[:4]
+        try:
+            with open(jpath, encoding="utf-8") as f:
+                data = json.load(f)
+            return data.get("stories", [])[:4]
+        except Exception:
+            pass
     return []
+
+
+def extract_stories_from_script(script: str) -> list:
+    """Pull story headlines out of a script by finding sentence-starting lines."""
+    import re
+    sentences = re.split(r'(?<=[.!?])\s+', script.strip())
+    # Skip intro/outro lines, grab sentences that look like headlines
+    headlines = []
+    skip_phrases = ("welcome to", "that wraps", "stay curious", "see you tomorrow",
+                    "subscribe", "today is", "here are the top")
+    for s in sentences:
+        s = s.strip()
+        if len(s) < 30 or len(s) > 200:
+            continue
+        if any(s.lower().startswith(p) for p in skip_phrases):
+            continue
+        # Prefer sentences that start with a proper noun or key phrase
+        if re.match(r'^[A-Z][a-z]', s):
+            headlines.append(s)
+        if len(headlines) >= 5:
+            break
+    return headlines
 
 
 def load_script(niche_id: str, date: str) -> str:
@@ -75,17 +99,38 @@ def load_script(niche_id: str, date: str) -> str:
     return ""
 
 
-def already_uploaded(niche_id: str, date: str) -> bool:
-    return os.path.exists(f"logs/{niche_id}/{date}_youtube.txt")
+
+def mark_uploaded(niche_id: str, ep_num: int, date: str, video_id: str = ""):
+    os.makedirs("logs/uploaded", exist_ok=True)
+    with open(f"logs/uploaded/ep_{ep_num}_{date}_{niche_id}.txt", "w") as f:
+        f.write(video_id)
 
 
-def upload_episode(niche_id: str, ep_num: int, date: str, mp3: str, dry_run: bool):
+def is_uploaded(niche_id: str, ep_num: int, date: str) -> bool:
+    return (
+        os.path.exists(f"logs/uploaded/ep_{ep_num}_{date}_{niche_id}.txt") or
+        os.path.exists(f"logs/{niche_id}/{date}_youtube.txt")
+    )
+
+
+def upload_episode(niche_id: str, ep_num: int, date: str, mp3: str,
+                   story_offset: int, dry_run: bool):
     stories = load_stories(niche_id, date)
-    script  = load_script(niche_id, date)
+
+    # If no stories file, try extracting from script
+    if not stories:
+        script_text = load_script(niche_id, date)
+        if script_text:
+            stories = extract_stories_from_script(script_text)
+
+    # Rotate stories so each episode on the same day uses a different headline
+    if stories and story_offset > 0:
+        stories = stories[story_offset:] + stories[:story_offset]
+
     stories_arg = "||".join(stories[:4])
     script_file = f"logs/{niche_id}/{date}_script.txt"
-
-    print(f"\n  -> Uploading ep{ep_num:04d} ({date}) — {stories[0][:60] if stories else 'no stories'}")
+    top = stories[0][:60] if stories else "no stories"
+    print(f"\n  -> ep{ep_num:04d} ({date}) [{story_offset}] — {top}")
 
     if dry_run:
         print("  [DRY RUN] Would run upload_youtube.py")
@@ -127,14 +172,23 @@ def main():
         print(f"  {niche['title']} — {len(eps)} episodes found")
         print(f"{'='*55}")
 
+        # Count episodes per date so we can rotate story offsets
+        from collections import defaultdict, Counter
+        date_counter: dict = defaultdict(int)
+
         for ep_num, date, mp3 in eps:
-            if already_uploaded(nid, date):
+            if is_uploaded(nid, ep_num, date):
                 print(f"  [skip] ep{ep_num:04d} ({date}) already uploaded")
                 total_skip += 1
                 continue
 
-            ok = upload_episode(nid, ep_num, date, mp3, args.dry_run)
+            # story_offset: 0 for first ep of the day, 1 for second, etc.
+            story_offset = date_counter[date]
+            date_counter[date] += 1
+
+            ok = upload_episode(nid, ep_num, date, mp3, story_offset, args.dry_run)
             if ok:
+                mark_uploaded(nid, ep_num, date)
                 total_ok += 1
             else:
                 print(f"  [FAIL] ep{ep_num:04d} ({date})")
