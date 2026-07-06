@@ -143,29 +143,114 @@ def create_video(audio_path: str, cover_path: str, out_path: str,
     return True
 
 
-def build_title(niche: dict, episode_number: int) -> str:
-    today = datetime.utcnow().strftime("%b %d")
-    return f"{niche['title']} | {today} — Episode {episode_number}"
+def build_title(niche: dict, episode_number: int, top_story: str = "") -> str:
+    """SEO title: lead with the actual story, end with show name."""
+    if top_story:
+        # Clean up the story headline for a title
+        story = top_story.encode("ascii", errors="ignore").decode("ascii").strip()
+        story = story[:70].rsplit(" ", 1)[0] if len(story) > 70 else story
+        return f"{story} | {niche['title']}"
+    # Fallback if no story
+    today = datetime.utcnow().strftime("%b %d, %Y")
+    return f"{niche['title']} — Daily News Brief {today}"
 
 
-def build_description(niche: dict, episode_number: int, script_excerpt: str = "") -> str:
+def build_description(niche: dict, episode_number: int, script_excerpt: str = "",
+                      stories: list = None) -> str:
     spotify_url = niche.get("spotify_url", "")
-    spotify_line = f"🎧 Spotify: {spotify_url}" if spotify_url else ""
-    return f"""{niche['description']}
+    today_long  = datetime.utcnow().strftime("%B %d, %Y")
+    today_short = datetime.utcnow().strftime("%b %d")
 
-{'—' * 40}
-Episode {episode_number} | {datetime.utcnow().strftime('%B %d, %Y')}
+    # Build timestamps block from stories (approx 60s each)
+    timestamps = ""
+    if stories:
+        lines = ["00:00 Intro"]
+        for i, s in enumerate(stories[:5]):
+            mm = (i + 1) * 1
+            lines.append(f"0{mm}:00 {s[:60].encode('ascii', errors='ignore').decode('ascii')}")
+        timestamps = "\n".join(lines)
 
-{script_excerpt[:800] if script_excerpt else ''}
+    # Hashtags from niche
+    niche_tag = niche["title"].replace(" ", "")
+    nid_tags  = {
+        "ai-tech":    "#AI #ArtificialIntelligence #Tech #MachineLearning #OpenAI",
+        "finance":    "#Finance #Investing #StockMarket #PersonalFinance #Economy",
+        "health":     "#Health #Wellness #Longevity #Nutrition #MedicalNews",
+        "startup":    "#Startup #VentureCapital #Founders #Business #Innovation",
+        "crypto":     "#Crypto #Bitcoin #Ethereum #DeFi #Web3 #Blockchain",
+        "world-news": "#WorldNews #Politics #International #BreakingNews #Global",
+        "true-crime": "#TrueCrime #Crime #Investigation #Murder #TrueCrimePodcast",
+    }.get(niche["id"], "#Podcast #News #Daily")
 
-{'—' * 40}
-{spotify_line}
-🎙️ All platforms — search "{niche['title']}"
-📡 RSS: https://sameer1337.github.io/ai-tech-podcast/{niche['rss_file']}
-🌐 Website: https://sameer1337.github.io/ai-tech-podcast/podcasts/{niche['id']}/
+    script_block = ""
+    if script_excerpt:
+        clean = script_excerpt[:1000].encode("ascii", errors="ignore").decode("ascii")
+        script_block = f"\n{clean}\n"
 
-#Podcast #Daily #{niche['title'].replace(' ', '')} #DailyBrief #News
+    return f"""Your daily {niche['title']} brief — {today_long}.
+
+{niche['description']}
+{script_block}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TIMESTAMPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{timestamps if timestamps else "00:00 Full Episode"}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LISTEN FREE ON ALL PLATFORMS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎧 Spotify  : {spotify_url}
+🎙️  Search   : "{niche['title']}" on Apple Podcasts, Amazon Music, Pocket Casts
+
+New episode every single day. Subscribe so you never miss one.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{nid_tags} #{niche_tag} #DailyPodcast #DailyNews #FreeP odcast
 """
+
+
+def generate_thumbnail(niche_id: str, top_story: str, out_path: str) -> bool:
+    """Generate a unique 1280x720 thumbnail from Pollinations for this episode."""
+    import urllib.request, urllib.parse, time
+    THUMB_STYLE = {
+        "ai-tech":    "bold tech magazine cover style, glowing AI circuit brain, deep blue purple, dramatic lighting",
+        "finance":    "bold financial magazine cover, stock chart arrows, gold coins, dark navy background",
+        "health":     "clean health magazine cover, medical symbols, bright green white, modern minimal",
+        "startup":    "startup pitch deck style, rocket launch, bold typography space, deep purple orange",
+        "crypto":     "crypto news thumbnail, bitcoin logo glow, neon cyan black, cyberpunk dramatic",
+        "world-news": "breaking news broadcast style, globe graphic, bold red white blue, urgent look",
+        "true-crime": "true crime documentary thumbnail, dark shadowy, red spotlight, crime scene tape",
+    }
+    style = THUMB_STYLE.get(niche_id, "bold news thumbnail, dramatic lighting, vibrant colors")
+    topic = top_story[:80].encode("ascii", errors="ignore").decode("ascii")
+    prompt = f"{style}, topic: {topic}, no text, no words, cinematic composition, high contrast"
+    encoded = urllib.parse.quote(prompt)
+    seed = abs(hash(top_story + niche_id)) % 99999
+    url = f"https://image.pollinations.ai/prompt/{encoded}?width=1280&height=720&nologo=true&model=flux&seed={seed}"
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "podcast-bot/1.0"})
+            with urllib.request.urlopen(req, timeout=90) as resp:
+                data = resp.read()
+            if len(data) < 5000:
+                raise ValueError("Image too small")
+            with open(out_path, "wb") as f:
+                f.write(data)
+            print(f"[thumbnail] Generated ({len(data)//1024}KB)")
+            return True
+        except Exception as e:
+            print(f"[thumbnail] Attempt {attempt+1} failed: {e}")
+            if attempt < 2:
+                time.sleep(8)
+    return False
+
+
+def upload_thumbnail(youtube, video_id: str, thumb_path: str):
+    """Upload custom thumbnail to YouTube video."""
+    from googleapiclient.http import MediaFileUpload as MFU
+    media = MFU(thumb_path, mimetype="image/jpeg")
+    youtube.thumbnails().set(videoId=video_id, media_body=media).execute()
+    print(f"[thumbnail] Uploaded to video {video_id}")
 
 
 def upload_to_youtube(youtube, video_path: str, title: str, description: str, category_id: str = "25"):
@@ -242,10 +327,19 @@ def main():
             sys.exit(1)
 
         youtube     = get_youtube_client()
-        title       = build_title(niche, args.number)
-        desc        = build_description(niche, args.number, args.excerpt)
+        top_story   = story_list[0] if story_list else args.excerpt
+        title       = build_title(niche, args.number, top_story)
+        desc        = build_description(niche, args.number, args.excerpt, story_list)
         category_id = CATEGORY_IDS.get(args.niche, "25")
         video_id    = upload_to_youtube(youtube, video_path, title, desc, category_id)
+
+        # Upload unique thumbnail
+        thumb_path = os.path.join(tmpdir, "thumbnail.jpg")
+        if generate_thumbnail(args.niche, top_story, thumb_path):
+            try:
+                upload_thumbnail(youtube, video_id, thumb_path)
+            except Exception as e:
+                print(f"[thumbnail] Upload failed (non-fatal): {e}")
 
         # Add to niche playlist (creates it if missing)
         try:
