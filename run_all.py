@@ -179,6 +179,15 @@ def main():
     except Exception as e:
         print(f"[flash] Warning: {e}")
 
+    # Daily YouTube Community post (one per channel/day; YouTube has no API
+    # for these, so the file is pasted manually into Studio)
+    if not TEST_MODE:
+        try:
+            from generate_community import write_community_post
+            write_community_post()
+        except Exception as e:
+            print(f"[community] Warning: {e}")
+
     # Push to GitHub (skipped inside GitHub Actions — workflow handles it)
     if not os.environ.get("GITHUB_ACTIONS") and not TEST_MODE:
         import subprocess
