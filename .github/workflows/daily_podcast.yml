@@ -36,6 +36,13 @@ jobs:
         if: github.event.schedule != '0 18 * * *'
         run: sudo apt-get install -y ffmpeg
 
+      - name: Publish new blog posts (evening only, text-only)
+        if: github.event.schedule == '0 18 * * *'
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          PYTHONUTF8: "1"
+        run: python run_blog.py
+
       - name: Generate podcast pages
         env:
           PYTHONUTF8: "1"

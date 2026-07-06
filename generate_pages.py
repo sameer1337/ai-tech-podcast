@@ -106,11 +106,37 @@ def build_posts(niche):
     return out
 
 
+def build_web_posts(niche):
+    """Standalone text-only articles (evening run) not tied to a podcast episode.
+    Stored as logs/web/<nid>/<slug>.json. Same post shape as episode posts."""
+    nid = niche["id"]; d = f"logs/web/{nid}"; out = []
+    if not os.path.isdir(d):
+        return out
+    for fn in sorted(os.listdir(d)):
+        if not fn.endswith(".json"):
+            continue
+        a = _load_json(os.path.join(d, fn)) or {}
+        slug = a.get("slug") or fn[:-5]
+        pslug = f"web-{slug}"
+        out.append({
+            "niche": niche, "nid": nid, "number": 0, "seed": abs(hash(slug)) % 9973,
+            "date": a.get("date", ""), "pubDate": a.get("pubDate", ""),
+            "audio_url": "", "video_id": "",
+            "headline": a.get("headline") or a.get("title") or niche["title"],
+            "dek": a.get("dek", ""), "meta": a.get("meta_description") or a.get("dek", ""),
+            "body_html": a.get("body_html", ""), "tags": a.get("tags", []),
+            "image_url": a.get("image_url", ""), "transcript": "", "excerpt": a.get("dek", ""),
+            "url": f"{SITE_URL}/blog/{nid}/{pslug}.html", "href": f"/blog/{nid}/{pslug}.html",
+            "path": f"blog/{nid}/{pslug}.html",
+        })
+    return out
+
+
 def _iso(pd):
     try:
         return parsedate_to_datetime(pd).strftime("%Y-%m-%dT%H:%M:%SZ")
     except Exception:
-        return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        return "1970-01-01T00:00:00Z"
 
 
 # ─────────── shared chrome ───────────
@@ -415,7 +441,8 @@ def _write(path, content):
 def main():
     per_niche, all_posts, counts = {}, [], {}
     for niche in PODCASTS:
-        ps = build_posts(niche)
+        ps = sorted(build_posts(niche) + build_web_posts(niche),
+                    key=lambda p: _iso(p["pubDate"]), reverse=True)
         per_niche[niche["id"]] = ps
         all_posts.extend(ps)
         counts[niche["id"]] = len(ps)

@@ -25,8 +25,8 @@ def parse(cat):
     out=[]
     d=os.path.join(BLOG,cat)
     if not os.path.isdir(d): return out
-    for f in sorted(glob.glob(os.path.join(d,"ep*.html")),
-                    key=lambda p:int(re.search(r'ep(\d+)',os.path.basename(p)).group(1))):
+    files=[p for p in glob.glob(os.path.join(d,"*.html")) if os.path.basename(p)!="index.html"]
+    for f in files:
         t=open(f,encoding="utf-8").read()
         def g(p,dv=""):
             m=re.search(p,t,re.S); return m.group(1).strip() if m else dv
@@ -39,12 +39,13 @@ def parse(cat):
             "img":img.group(1) if img else "",
             "link":"/blog/%s/%s"%(cat,os.path.basename(f)),
         })
+    out.sort(key=lambda a:a["date"], reverse=True)   # newest first (episode + web posts)
     return out
 
 ARTS={c:parse(c) for c in CATS}
 COUNTS={c:len(ARTS[c]) for c in CATS}
 def recent(cat,n=None):
-    r=list(reversed(ARTS[cat])); return r[:n] if n else r
+    r=ARTS[cat]; return r[:n] if n else r
 ALL=sorted([a for c in CATS for a in ARTS[c]], key=lambda x:x["date"], reverse=True)
 
 def fdate(d):

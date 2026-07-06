@@ -39,9 +39,9 @@ def generate_article(stories: list[dict], niche: dict) -> dict:
 Write a long, original, well-structured news article based on today's stories below.
 
 Requirements:
-- 1200-1600 words of ORIGINAL prose. Depth and analysis, not a rewrite of headlines.
+- AT LEAST 1100 words of ORIGINAL prose — this is a long feature, do NOT be brief. Depth and analysis, not a rewrite of headlines.
 - Open with a compelling 2-3 sentence introduction (no <h2>) that frames the day's biggest development and why readers should care.
-- Then ONE <h2> section per major story. Each section: 2-4 substantial paragraphs that explain what happened, the context/background, why it matters, and what likely happens next.
+- Then ONE <h2> section per major story. Each section MUST have 3-4 full paragraphs that explain what happened, the background/context a reader needs, why it matters, and what likely happens next. Where a story is thin, add a short paragraph of widely-known background context (clearly framed as context, never fabricated specifics).
 - Include a final <h2>The bottom line</h2> section that ties the stories together, followed by a <ul> of 3-5 concrete key takeaways (<li>).
 - Neutral, factual, journalistic tone. Attribute each fact to its source publication by name.
 - Do NOT invent facts, quotes, statistics, or names not present in the summaries. Where a summary is thin, add general context a knowledgeable reader would expect — clearly framed as context, not fabricated specifics.
