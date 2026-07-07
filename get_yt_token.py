@@ -10,7 +10,10 @@ Usage:
 import os
 from google_auth_oauthlib.flow import InstalledAppFlow
 
-SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
+SCOPES = [
+    "https://www.googleapis.com/auth/youtube.upload",
+    "https://www.googleapis.com/auth/youtube",          # playlists + thumbnails
+]
 
 CLIENT_ID     = input("Paste your Google Client ID: ").strip()
 CLIENT_SECRET = input("Paste your Google Client Secret: ").strip()
