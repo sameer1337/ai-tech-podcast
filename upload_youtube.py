@@ -452,6 +452,10 @@ def upload_to_youtube(youtube, video_path: str, title: str, description: str,
                 print(f"[youtube] Upload {pct}%", end="\r")
                 retry = 0  # reset on progress
         except Exception as e:
+            msg = str(e)
+            if any(k in msg for k in ("quotaExceeded", "rateLimitExceeded", "uploadLimitExceeded", "Quota exceeded")):
+                print(f"\n[youtube] Daily upload quota exhausted — aborting (no point retrying until quota resets at midnight PT)")
+                sys.exit(3)
             retry += 1
             if retry > 5:
                 raise

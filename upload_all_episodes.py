@@ -147,7 +147,7 @@ def upload_episode(niche_id: str, ep_num: int, date: str, mp3: str,
         cmd += ["--script-file", script_file]
 
     result = subprocess.run(cmd, env=os.environ)
-    return result.returncode == 0
+    return result.returncode
 
 
 def main():
@@ -164,6 +164,7 @@ def main():
     total_ok = 0
     total_skip = 0
     total_fail = 0
+    quota_hit = False
 
     for niche in niches:
         nid = niche["id"]
@@ -186,16 +187,25 @@ def main():
             story_offset = date_counter[date]
             date_counter[date] += 1
 
-            ok = upload_episode(nid, ep_num, date, mp3, story_offset, args.dry_run)
-            if ok:
+            rc = upload_episode(nid, ep_num, date, mp3, story_offset, args.dry_run)
+            if rc is True or rc == 0:
                 mark_uploaded(nid, ep_num, date)
                 total_ok += 1
+            elif rc == 3:
+                print(f"  [QUOTA] YouTube daily upload quota exhausted — stopping run.")
+                print(f"  Re-run after midnight Pacific Time; already-uploaded episodes will be skipped.")
+                quota_hit = True
+                break
             else:
                 print(f"  [FAIL] ep{ep_num:04d} ({date})")
                 total_fail += 1
+        if quota_hit:
+            break
 
     print(f"\n{'='*55}")
     print(f"  DONE — uploaded: {total_ok}  skipped: {total_skip}  failed: {total_fail}")
+    if quota_hit:
+        print(f"  STOPPED EARLY: daily quota exhausted — resume tomorrow")
     print(f"{'='*55}")
 
 
