@@ -178,14 +178,16 @@ def main():
         date_counter: dict = defaultdict(int)
 
         for ep_num, date, mp3 in eps:
+            # story_offset: 0 for first ep of the day, 1 for second, etc.
+            # Count skipped episodes too, so resumed runs don't reuse the
+            # same headline/title as an already-uploaded episode.
+            story_offset = date_counter[date]
+            date_counter[date] += 1
+
             if is_uploaded(nid, ep_num, date):
                 print(f"  [skip] ep{ep_num:04d} ({date}) already uploaded")
                 total_skip += 1
                 continue
-
-            # story_offset: 0 for first ep of the day, 1 for second, etc.
-            story_offset = date_counter[date]
-            date_counter[date] += 1
 
             rc = upload_episode(nid, ep_num, date, mp3, story_offset, args.dry_run)
             if rc is True or rc == 0:
