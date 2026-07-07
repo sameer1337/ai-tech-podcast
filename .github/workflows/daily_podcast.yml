@@ -64,6 +64,7 @@ jobs:
         run: python generate_home.py
 
       - name: Deploy site to Hostinger (FTP)
+        continue-on-error: true   # site deploy failure must not block YouTube uploads + episode push
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_USER: ${{ secrets.FTP_USER }}
@@ -73,6 +74,7 @@ jobs:
         run: python deploy_ftp.py
 
       - name: Ping IndexNow (Bing/Yandex instant indexing)
+        continue-on-error: true
         env:
           PYTHONUTF8: "1"
         run: python submit_indexnow.py

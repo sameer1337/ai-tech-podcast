@@ -1,6 +1,8 @@
 name: Bulk Upload to YouTube
 
 on:
+  schedule:
+    - cron: '45 23 * * *'   # nightly drip: upload until YouTube's rolling channel limit, then stop
   workflow_dispatch:
     inputs:
       niche:
