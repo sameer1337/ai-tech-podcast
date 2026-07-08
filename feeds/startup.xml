@@ -122,5 +122,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0011_2026-07-06.mp3" type="audio/mpeg" length="1155312" />
     </item>
+    <item>
+      <title>AI law startup Norm raises $120M, hits unicorn valuation — Startup Wire Daily | Jul 08</title>
+      <pubDate>Wed, 08 Jul 2026 08:41:08 +0000</pubDate>
+      <guid isPermaLink="false">startup-ep12-20260708</guid>
+      <description>Norm, an AI law startup, just hit a $1.2 billion valuation after raising a whopping $120 million in its Series C round led by Khosla Ventures. This is a massive milestone for the company, and it's a clear indication that investors are confident in the potential of AI to disrupt the legal industry. The fact that Norm has reached unicorn status in such a short amount of time is a testament to the growing demand for AI-powered legal solutions. With this new funding, Norm will likely continue to exp...</description>
+      <itunes:episode>12</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0012_2026-07-08.mp3" type="audio/mpeg" length="1312128" />
+    </item>
   </channel>
 </rss>

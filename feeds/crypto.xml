@@ -122,5 +122,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0011_2026-07-06.mp3" type="audio/mpeg" length="832320" />
     </item>
+    <item>
+      <title>Here’s what happened in crypto today — Crypto Daily Brief | Jul 08</title>
+      <pubDate>Wed, 08 Jul 2026 08:41:45 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep12-20260708</guid>
+      <description>Bitcoin's dominance has just dropped to a staggering one-month low of 54%, down from 58.12%, according to CoinGecko's dominance table, and this sudden shift is sending shockwaves throughout the crypto market. This means that the &quot;Others&quot; bucket, representing everything outside Bitcoin, Ethereum, and stablecoins, has climbed from 19.39% to 24.68% of total crypto market cap, indicating a significant change in the market dynamics. As a result, altcoin winners are starting to break away, and investo...</description>
+      <itunes:episode>12</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0012_2026-07-08.mp3" type="audio/mpeg" length="1123920" />
+    </item>
   </channel>
 </rss>

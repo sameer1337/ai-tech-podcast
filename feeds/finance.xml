@@ -122,5 +122,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0011_2026-07-06.mp3" type="audio/mpeg" length="1091664" />
     </item>
+    <item>
+      <title>Micron’s stock falls as investors wonder if the memory — Money Minute Daily | Jul 08</title>
+      <pubDate>Wed, 08 Jul 2026 08:39:59 +0000</pubDate>
+      <guid isPermaLink="false">finance-ep12-20260708</guid>
+      <description>Micron's stock just plummeted 12% in a single day, leaving investors scrambling to figure out if the memory market has finally reached its peak. This sharp decline has many wondering if the party's over for one of the hottest tech sectors of the past year. The memory market, which has been fueled by the insatiable demand for AI-powered devices, has been on a tear lately, but it seems like investors are getting cold feet. According to one analyst, &quot;Most investor feedback continues to point to a s...</description>
+      <itunes:episode>12</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0012_2026-07-08.mp3" type="audio/mpeg" length="1083456" />
+    </item>
   </channel>
 </rss>

@@ -122,5 +122,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0011_2026-07-06.mp3" type="audio/mpeg" length="1211904" />
     </item>
+    <item>
+      <title>Scientists may have finally found how Alzheimer's spreads — Health Edge Daily | Jul 08</title>
+      <pubDate>Wed, 08 Jul 2026 08:40:29 +0000</pubDate>
+      <guid isPermaLink="false">health-ep12-20260708</guid>
+      <description>Researchers have just made the groundbreaking discovery that a common brain protein may be responsible for spreading Alzheimer's disease throughout the brain, carrying toxic Tau proteins from damaged neurons into healthy ones. This finding is monumental, as it reveals a potential new target for therapy, and by blocking these harmful protein packages before they reach new cells, it may one day be possible to slow the disease's relentless progression. For years, scientists have been searching for ...</description>
+      <itunes:episode>12</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0012_2026-07-08.mp3" type="audio/mpeg" length="996768" />
+    </item>
   </channel>
 </rss>

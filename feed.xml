@@ -122,5 +122,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0011_2026-07-06.mp3" type="audio/mpeg" length="1029744" />
     </item>
+    <item>
+      <title>Hot French startup ZML releases free product to speed — AI Tech Daily | Jul 08</title>
+      <pubDate>Wed, 08 Jul 2026 08:39:40 +0000</pubDate>
+      <guid isPermaLink="false">ai-tech-ep12-20260708</guid>
+      <description>$1 billion is what AI chip maker SambaNova just raised at an $11 billion valuation, a staggering five months after its last mega funding round. This massive investment not only showcases the tremendous growth potential of the AI chip market but also highlights SambaNova's position as a leader in this space. The fact that SambaNova was rumored to be in talks with Intel for a potential acquisition at a much lower valuation just a few months ago makes this fundraising round even more impressive. Th...</description>
+      <itunes:episode>12</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0012_2026-07-08.mp3" type="audio/mpeg" length="1245312" />
+    </item>
   </channel>
 </rss>
