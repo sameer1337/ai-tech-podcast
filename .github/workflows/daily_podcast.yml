@@ -79,6 +79,28 @@ jobs:
           PYTHONUTF8: "1"
         run: python submit_indexnow.py
 
+      # Shorts first: the channel only allows ~3 uploads per rolling 24h,
+      # so the discovery content (vertical Shorts for the two strongest shows)
+      # must claim quota before the long-form episode uploads do.
+      - name: Generate + upload YouTube Shorts for winner shows (morning only)
+        if: github.event.schedule != '0 18 * * *' && github.event.inputs.mode != 'pages_only'
+        continue-on-error: true
+        env:
+          GROQ_API_KEY:         ${{ secrets.GROQ_API_KEY }}
+          GOOGLE_CLIENT_ID:     ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN:     ${{ secrets.YT_REFRESH_TOKEN }}
+          YT_CHANNEL_ID:        ${{ secrets.YT_CHANNEL_ID }}
+          PYTHONUTF8: "1"
+        run: |
+          for NICHE in startup true-crime; do
+            echo "==> Short for $NICHE"
+            python generate_short.py --niche "$NICHE" \
+              || { echo "[warn] Short generation failed for $NICHE"; continue; }
+            python upload_short.py --niche "$NICHE" \
+              || echo "[warn] Short upload failed for $NICHE"
+          done
+
       - name: Upload all podcasts to YouTube (morning only)
         if: github.event.schedule != '0 18 * * *' && github.event.inputs.mode != 'pages_only'
         env:
@@ -98,7 +120,8 @@ jobs:
           EPISODE_DIRS["world-news"]="episodes/world"
           EPISODE_DIRS["true-crime"]="episodes/truecrime"
 
-          for NICHE in ai-tech finance health startup crypto world-news true-crime; do
+          # Winners first - remaining upload quota goes to the shows with traction
+          for NICHE in startup true-crime ai-tech finance health crypto world-news; do
             DIR="${EPISODE_DIRS[$NICHE]}"
             EPISODE=$(ls "${DIR}"/ep*_${TODAY}.mp3 2>/dev/null | tail -1)
             if [ -n "$EPISODE" ]; then
@@ -126,7 +149,7 @@ jobs:
         run: |
           git config user.name "Podcast Bot"
           git config user.email "hunk1.on11@gmail.com"
-          git add episodes/ feeds/ feed.xml logs/ index.html podcasts/ \
+          git add episodes/ feeds/ feed.xml logs/ shorts/ index.html podcasts/ \
                   blog/ about.html mapt.html vita.html privacy.html sitemap.xml robots.txt assets/
           git diff --staged --quiet || git commit -m "All episodes + pages $(date +%Y-%m-%d)"
           git pull --rebase --autostash origin master
