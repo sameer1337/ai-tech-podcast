@@ -131,5 +131,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0012_2026-07-08.mp3" type="audio/mpeg" length="1312128" />
     </item>
+    <item>
+      <title>SpaceX's Grok 4.5 launches at half the price of rivals — Startup Wire Daily | Jul 09</title>
+      <pubDate>Thu, 09 Jul 2026 09:53:54 +0000</pubDate>
+      <guid isPermaLink="false">startup-ep13-20260709</guid>
+      <description>SpaceX just launched Grok 4.5, an artificial intelligence model trained for coding and autonomous agents, at a staggering half the price of its rivals, sending shockwaves through the AI community and putting pressure on Anthropic and OpenAI to reconsider their pricing strategies. This move is a direct result of Elon Musk's $60 billion acquisition of AI coding startup Cursor, completed just weeks ago, and marks a pivotal test of the sprawling AI empire Musk has assembled over the past six months....</description>
+      <itunes:episode>13</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0013_2026-07-09.mp3" type="audio/mpeg" length="1488528" />
+    </item>
   </channel>
 </rss>

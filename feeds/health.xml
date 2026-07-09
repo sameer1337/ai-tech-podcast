@@ -131,5 +131,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0012_2026-07-08.mp3" type="audio/mpeg" length="996768" />
     </item>
+    <item>
+      <title>Scientists finally crack nature's secret for building — Health Edge Daily | Jul 09</title>
+      <pubDate>Thu, 09 Jul 2026 09:53:16 +0000</pubDate>
+      <guid isPermaLink="false">health-ep13-20260709</guid>
+      <description>Seventy-five percent of all cancer drugs are inspired by nature, but until now, scientists have struggled to replicate the complex manufacturing process that bacteria use to produce these powerful compounds, but that's all changed with a groundbreaking discovery that could make it much easier to engineer new cancer treatments. Researchers have cracked the code behind bacteria's ability to naturally manufacture multiple versions of powerful anti-cancer drugs, and this breakthrough could lead to i...</description>
+      <itunes:episode>13</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0013_2026-07-09.mp3" type="audio/mpeg" length="1027152" />
+    </item>
   </channel>
 </rss>
