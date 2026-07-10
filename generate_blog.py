@@ -13,7 +13,7 @@ be dropped straight into a post template.
 import json
 import re
 from groq import Groq
-from config import GROQ_API_KEY
+from config import GROQ_API_KEY, GROQ_MODEL
 
 CLIENT = Groq(api_key=GROQ_API_KEY)
 
@@ -60,7 +60,7 @@ Today's stories (sources: {sources}):
 """
 
     resp = CLIENT.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model=GROQ_MODEL,
         max_tokens=4096,
         temperature=0.6,
         response_format={"type": "json_object"},
@@ -113,7 +113,7 @@ Script:
 {script[:4000]}
 """
     resp = CLIENT.chat.completions.create(
-        model="llama-3.3-70b-versatile", max_tokens=4096, temperature=0.6,
+        model=GROQ_MODEL, max_tokens=4096, temperature=0.6,
         response_format={"type": "json_object"},
         messages=[{"role": "user", "content": prompt}],
     )

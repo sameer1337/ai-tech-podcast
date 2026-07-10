@@ -4,7 +4,7 @@ Saves to logs/{niche}/{date}_social.txt for easy copy-paste.
 """
 
 from groq import Groq
-from config import GROQ_API_KEY
+from config import GROQ_API_KEY, GROQ_MODEL
 
 CLIENT = Groq(api_key=GROQ_API_KEY)
 
@@ -48,7 +48,7 @@ LINKEDIN (professional 3-sentence post about today's episode insight):
 Write exactly in the format above with the labels."""
 
     msg = CLIENT.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model=GROQ_MODEL,
         max_tokens=600,
         messages=[{"role": "user", "content": prompt}],
     )

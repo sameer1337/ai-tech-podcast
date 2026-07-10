@@ -161,9 +161,9 @@ def ask_llm(prompt: str, max_tokens: int = 300) -> str:
     """Groq call; returns '' on any failure so callers fall back to banks."""
     try:
         from groq import Groq
-        from config import GROQ_API_KEY
+        from config import GROQ_API_KEY, GROQ_MODEL
         msg = Groq(api_key=GROQ_API_KEY).chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=GROQ_MODEL,
             max_tokens=max_tokens,
             messages=[{"role": "user", "content": prompt}],
         )

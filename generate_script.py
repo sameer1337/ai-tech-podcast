@@ -4,7 +4,7 @@ Step 2 — Use Claude to write a natural podcast script from the top stories.
 
 from groq import Groq
 from datetime import datetime
-from config import GROQ_API_KEY, PODCAST_TITLE, EPISODE_TARGET_WORDS
+from config import GROQ_API_KEY, PODCAST_TITLE, EPISODE_TARGET_WORDS, GROQ_MODEL
 
 
 CLIENT = Groq(api_key=GROQ_API_KEY)
@@ -66,7 +66,7 @@ Today's top stories:
 Write the script now:"""
 
     message = CLIENT.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model=GROQ_MODEL,
         max_tokens=2000,
         messages=[{"role": "user", "content": prompt}],
     )
@@ -112,7 +112,7 @@ Today's top stories:
 Write the script now:"""
 
     message = CLIENT.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model=GROQ_MODEL,
         max_tokens=2000,
         messages=[{"role": "user", "content": prompt}],
     )

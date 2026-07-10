@@ -39,6 +39,37 @@ from generate_video import get_ffmpeg, get_audio_duration, FALLBACK_COVERS
 
 SHORT_RATE = "+12%"   # slightly faster than episodes - Shorts pacing
 
+# YouTube policy/advertiser red flags - these words in a TITLE or on-screen
+# hook get Shorts age-restricted, demonetized, or removed (spoken script and
+# episode content are judged more leniently than packaging).
+_SENSITIVE = re.compile(
+    r"self.?harm|suicide|rape[sd]?|incest|pedophil|child\s+(?:sex|abuse|porn)"
+    r"|behead(?:ed|ing)?|dismember\w*|molest\w*",
+    re.IGNORECASE,
+)
+_SAFE_SWAPS = [
+    (re.compile(r"self.?harm", re.I),            "tragedy"),
+    (re.compile(r"suicide", re.I),               "tragedy"),
+    (re.compile(r"rape[sd]?", re.I),             "assault"),
+    (re.compile(r"behead(?:ed|ing)?", re.I),     "killing"),
+    (re.compile(r"dismember\w*", re.I),          "gruesome act"),
+    (re.compile(r"molest\w*|pedophil\w*", re.I), "abuse"),
+    (re.compile(r"incest", re.I),                "family abuse"),
+    (re.compile(r"child\s+(?:sex|abuse|porn)\w*", re.I), "crimes against a child"),
+]
+
+
+def _sanitize_packaging(data: dict) -> dict:
+    """Soften policy-flagged words in title/overlay (packaging only)."""
+    for key in ("title", "overlay"):
+        text = data.get(key, "")
+        if text and _SENSITIVE.search(text):
+            for pat, repl in _SAFE_SWAPS:
+                text = pat.sub(repl, text)
+            print(f"[safety] Softened {key}: {data[key][:50]} -> {text[:50]}")
+            data[key] = text
+    return data
+
 # Per-niche vertical background style (distinct from the 16:9 episode style)
 SHORT_STYLE = {
     "ai-tech":    "dramatic vertical poster, glowing AI circuitry, deep blue purple neon, cinematic",
@@ -75,7 +106,7 @@ def write_short_script(niche: dict, stories: list, episode_script: str) -> dict:
     """Ask Groq for a hook-first Shorts script. Falls back to trimming the episode."""
     try:
         from groq import Groq
-        from config import GROQ_API_KEY
+        from config import GROQ_API_KEY, GROQ_MODEL
         client = Groq(api_key=GROQ_API_KEY)
 
         stories_block = "\n".join(f"- {s}" for s in stories[:5])
@@ -104,9 +135,12 @@ a twist) for a 35-second vertical video Short. Return ONLY JSON:
 - "story": the chosen headline, verbatim from the list
 - "overlay": on-screen text hook for frame 1, max 6 punchy words, no period
 - "title": YouTube title, max 80 chars, curiosity-first, no clickbait lies
-- "image_prompt": 10-15 words describing one dramatic scene for this story"""
+- "image_prompt": 10-15 words describing one dramatic scene for this story
+
+"title" and "overlay" must be advertiser-safe: NEVER use words like suicide,
+self-harm, rape, or graphic violence terms in them (imply, don't state)."""
         resp = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=GROQ_MODEL,
             messages=[{"role": "user", "content": pick_prompt}],
             temperature=0.7,
             max_tokens=300,
@@ -138,7 +172,7 @@ Rules:
         messages = [{"role": "user", "content": vo_prompt}]
         for attempt in range(3):
             resp = client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model=GROQ_MODEL,
                 messages=messages,
                 temperature=0.8,
                 max_tokens=400,
@@ -225,7 +259,8 @@ def _ass_time(t: float) -> str:
     return f"{h}:{m:02d}:{s:05.2f}"
 
 
-def build_ass(words: list, duration: float, show_title: str, ass_path: str):
+def build_ass(words: list, duration: float, show_title: str, ass_path: str,
+              overlay: str = ""):
     """Word-chunk captions centered in the safe zone + end CTA.
     Safe zone: top ~20% and bottom ~25% of a Short are covered by YouTube UI,
     so everything sits in the middle third (y ~700-1400 of 1920)."""
@@ -250,6 +285,7 @@ WrapStyle: 0
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Cap,Arial,96,&H00FFFFFF,&H00FFFFFF,&H00000000,&H88000000,-1,0,0,0,100,100,1,0,1,7,2,5,60,60,0,1
 Style: CTA,Arial,52,&H0000E5FF,&H00FFFFFF,&H00000000,&H88000000,-1,0,0,0,100,100,1,0,1,4,1,5,60,60,0,1
+Style: Hook,Arial,72,&H0000E5FF,&H00FFFFFF,&H00000000,&H88000000,-1,0,0,0,100,100,1,0,1,5,2,5,60,60,0,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -264,6 +300,16 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         lines.append(
             f"Dialogue: 0,{_ass_time(start)},{_ass_time(end)},Cap,,0,0,0,,"
             f"{{\\an5\\pos(540,960)\\fad(60,0)}}{text}"
+        )
+
+    # Pinned hook for the first ~2.5s (top of the safe zone) - YouTube grabs
+    # an early frame for the Shorts-tab cover, and without this it shows a
+    # meaningless mid-sentence caption fragment instead of a hook
+    if overlay:
+        text = overlay.upper().replace("\\", "").replace("{", "").replace("}", "")
+        lines.append(
+            f"Dialogue: 1,{_ass_time(0)},{_ass_time(min(2.5, duration))},Hook,,0,0,0,,"
+            f"{{\\an5\\pos(540,700)\\fad(0,150)}}{text}"
         )
 
     # CTA during the last 3s - lower-center but still inside the safe zone
@@ -363,7 +409,7 @@ def create_short(niche_id: str, date: str) -> bool:
         with open(stories_file, encoding="utf-8") as f:
             stories = [s.strip() for s in f.read().split("||") if s.strip()]
 
-    data = write_short_script(niche, stories, episode_script)
+    data = _sanitize_packaging(write_short_script(niche, stories, episode_script))
 
     os.makedirs("shorts", exist_ok=True)
     out_path = f"shorts/{niche_id}_{date}.mp4"
@@ -379,7 +425,7 @@ def create_short(niche_id: str, date: str) -> bool:
             print(f"[warn] Short is {duration:.0f}s - too long, but uploading anyway")
 
         ass = os.path.join(tmpdir, "caps.ass")
-        build_ass(words, duration, niche["title"], ass)
+        build_ass(words, duration, niche["title"], ass, overlay=data.get("overlay", ""))
 
         img = os.path.join(tmpdir, "bg.jpg")
         if not fetch_vertical_image(niche_id, data.get("image_prompt", data["story"]), img):
@@ -432,7 +478,7 @@ def create_topic_short(topic_id: str, date: str) -> bool:
     facts = "\n".join(f"- {i['title']}: {i['summary']}" for i in fresh[:5])
 
     pseudo_niche = {"id": topic_id, "title": topic["title"], "voice": topic["voice"]}
-    data = write_short_script(pseudo_niche, stories, facts)
+    data = _sanitize_packaging(write_short_script(pseudo_niche, stories, facts))
 
     os.makedirs("shorts", exist_ok=True)
     out_path = f"shorts/{topic_id}_{date}.mp4"
@@ -446,7 +492,7 @@ def create_topic_short(topic_id: str, date: str) -> bool:
         duration = get_audio_duration(mp3)
 
         ass = os.path.join(tmpdir, "caps.ass")
-        build_ass(words, duration, topic["cta_show"], ass)
+        build_ass(words, duration, topic["cta_show"], ass, overlay=data.get("overlay", ""))
 
         img = os.path.join(tmpdir, "bg.jpg")
         if not fetch_vertical_image(topic_id, data.get("image_prompt", data["story"]), img):

@@ -6,6 +6,8 @@ import os
 
 # ── Groq API (free) ───────────────────────────
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "YOUR_GROQ_KEY_HERE")
+# One place to swap when Groq deprecates a model (see 2026-07 Scout email)
+GROQ_MODEL   = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
 
 # ── Podcast identity ───────────────────────────
 PODCAST_TITLE       = "AI Tech Daily"
