@@ -3,10 +3,62 @@ Step 1 — Fetch top AI/tech stories from RSS feeds.
 Returns a list of dicts: {title, url, summary, source, published}.
 """
 
+import os
+import json
+import re
 import feedparser
 import httpx
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from config import RSS_FEEDS, MAX_ITEMS_PER_FEED, TOP_STORIES
+
+# ── Cross-day story memory ─────────────────────────────────────────────────
+# Big stories sit at the top of RSS feeds for days. Without memory, the same
+# story leads several consecutive episodes → duplicate titles + repeated
+# content. Selected stories are remembered here (committed via logs/) and
+# blocked for SEEN_DAYS.
+SEEN_FILE = "logs/seen_stories.json"
+SEEN_DAYS = 7
+
+# Recurring meta-digest articles (same headline every day, no specific story)
+DIGEST_PATTERNS = re.compile(
+    r"here'?s what happened|news roundup|daily digest|week in review"
+    r"|everything you need to know|top \d+ stories|weekly recap",
+    re.IGNORECASE,
+)
+
+
+def _story_key(title: str) -> str:
+    return re.sub(r"[^a-z0-9 ]", "", title.lower())[:60].strip()
+
+
+def _load_seen(niche_id: str) -> dict:
+    if not os.path.exists(SEEN_FILE):
+        return {}
+    try:
+        with open(SEEN_FILE, encoding="utf-8") as f:
+            all_seen = json.load(f)
+    except Exception:
+        return {}
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=SEEN_DAYS)).strftime("%Y-%m-%d")
+    return {k: d for k, d in all_seen.get(niche_id, {}).items() if d >= cutoff}
+
+
+def _mark_seen(niche_id: str, stories: list):
+    all_seen = {}
+    if os.path.exists(SEEN_FILE):
+        try:
+            with open(SEEN_FILE, encoding="utf-8") as f:
+                all_seen = json.load(f)
+        except Exception:
+            pass
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    niche_seen = _load_seen(niche_id)  # already pruned to SEEN_DAYS
+    for s in stories:
+        niche_seen[_story_key(s["title"])] = today
+    all_seen[niche_id] = niche_seen
+    os.makedirs("logs", exist_ok=True)
+    with open(SEEN_FILE, "w", encoding="utf-8") as f:
+        json.dump(all_seen, f, indent=1)
 
 
 def _score(entry) -> float:
@@ -38,7 +90,7 @@ REGIONAL_FILTER = {
 }
 
 def _fetch(feeds: list, keywords: list, max_per_feed: int = 8, top_n: int = 5,
-           regional_filter: bool = True) -> list[dict]:
+           regional_filter: bool = True, niche_id: str = None) -> list[dict]:
     kw_set = set(keywords)
     stories = []
 
@@ -53,6 +105,10 @@ def _fetch(feeds: list, keywords: list, max_per_feed: int = 8, top_n: int = 5,
 
                 # Only filter very local Pakistani news
                 if regional_filter and any(region in text for region in REGIONAL_FILTER):
+                    continue
+
+                # Skip recurring meta-digest headlines (recur daily, no story)
+                if DIGEST_PATTERNS.search(entry.get("title", "")):
                     continue
 
                 score   = sum(1 for kw in kw_set if kw in text)
@@ -85,7 +141,24 @@ def _fetch(feeds: list, keywords: list, max_per_feed: int = 8, top_n: int = 5,
             unique.append(s)
 
     unique.sort(key=lambda x: x["_score"], reverse=True)
+
+    # Cross-day dedupe: drop stories already covered in the last SEEN_DAYS
+    if niche_id:
+        seen = _load_seen(niche_id)
+        fresh = [s for s in unique if _story_key(s["title"]) not in seen]
+        skipped = len(unique) - len(fresh)
+        if skipped:
+            print(f"[fetch] Skipped {skipped} stories already covered this week")
+        # Fallback: if feeds are stale and almost nothing is new, top up with
+        # seen stories rather than producing an empty episode
+        if len(fresh) < 2:
+            print("[fetch] WARNING: <2 fresh stories - topping up with covered ones")
+            fresh += [s for s in unique if s not in fresh]
+        unique = fresh
+
     top = unique[:top_n]
+    if niche_id and top:
+        _mark_seen(niche_id, top)
 
     print(f"[fetch] Selected {len(top)} stories from {len(stories)} fetched")
     for i, s in enumerate(top, 1):
@@ -101,7 +174,8 @@ def fetch_stories() -> list[dict]:
 def fetch_stories_for_niche(niche: dict) -> list[dict]:
     """Fetch stories for a specific niche config from niches.py."""
     return _fetch(niche["feeds"], niche.get("keywords", []),
-                  max_per_feed=10, top_n=TOP_STORIES, regional_filter=True)
+                  max_per_feed=10, top_n=TOP_STORIES, regional_filter=True,
+                  niche_id=niche["id"])
 
 
 AI_KEYWORDS = {

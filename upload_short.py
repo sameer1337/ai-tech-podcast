@@ -17,7 +17,8 @@ import argparse
 from datetime import datetime
 
 from niches import PODCAST_MAP
-from upload_youtube import get_youtube_client, upload_to_youtube, CATEGORY_IDS, REFRESH_TOKEN
+from upload_youtube import (get_youtube_client, upload_to_youtube, CATEGORY_IDS,
+                            REFRESH_TOKEN, _load_used_titles, register_title)
 
 
 def build_short_description(niche: dict, meta: dict) -> str:
@@ -69,6 +70,9 @@ def main():
         meta = json.load(f)
 
     title = meta["title"][:88].strip()
+    if title.strip().lower() in _load_used_titles() or \
+       f"{title} #Shorts".strip().lower() in _load_used_titles():
+        title = f"{title} ({datetime.utcnow().strftime('%b %d')})"
     if "#shorts" not in title.lower():
         title = f"{title} #Shorts"
     desc = build_short_description(niche, meta)
@@ -80,6 +84,7 @@ def main():
         CATEGORY_IDS.get(args.niche, "25"), tags,
     )
 
+    register_title(title)
     os.makedirs("logs/uploaded", exist_ok=True)
     with open(marker, "w") as f:
         f.write(video_id)

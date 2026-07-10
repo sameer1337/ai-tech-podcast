@@ -143,6 +143,50 @@ def create_video(audio_path: str, cover_path: str, out_path: str,
     return True
 
 
+# ── Title uniqueness ────────────────────────────────────────────────────────
+# Big stories lead the feeds for days, so different episodes can end up with
+# the same top story and therefore the same title. Every uploaded title is
+# recorded here (committed via logs/); on collision we rotate to the next
+# story, or append the date as a last resort.
+TITLE_REGISTRY = "logs/yt_titles.json"
+
+
+def _load_used_titles() -> set:
+    if os.path.exists(TITLE_REGISTRY):
+        try:
+            with open(TITLE_REGISTRY, encoding="utf-8") as f:
+                return set(json.load(f))
+        except Exception:
+            pass
+    return set()
+
+
+def register_title(title: str):
+    titles = list(_load_used_titles())
+    titles.append(title.strip().lower())
+    os.makedirs("logs", exist_ok=True)
+    with open(TITLE_REGISTRY, "w", encoding="utf-8") as f:
+        json.dump(sorted(titles)[-3000:], f, indent=0)
+
+
+def pick_unused_story(niche: dict, episode_number: int, story_list: list):
+    """Return (title, rotated_stories) where the title hasn't been used before.
+    Rotates the story list so the title/thumbnail/description all lead with
+    the same story. Appends the date if every story's title is taken."""
+    used = _load_used_titles()
+    for i, story in enumerate(story_list):
+        title = build_title(niche, episode_number, story)
+        if title.strip().lower() not in used:
+            if i > 0:
+                print(f"[title] Top {i} story title(s) already used - leading with: {story[:60]}")
+            return title, story_list[i:] + story_list[:i]
+    base = build_title(niche, episode_number, story_list[0] if story_list else "")
+    suffix = datetime.utcnow().strftime(" (%b %d)")
+    title = base[: 100 - len(suffix)].rstrip() + suffix
+    print(f"[title] All story titles used - date-suffixed: {title}")
+    return title, story_list
+
+
 def build_title(niche: dict, episode_number: int, top_story: str = "") -> str:
     """SEO title: lead with the actual story, end with show name."""
     if top_story:
@@ -500,8 +544,16 @@ def main():
     with tempfile.TemporaryDirectory() as tmpdir:
         video_path = os.path.join(tmpdir, "episode.mp4")
         print(f"[video] Building animated video for {args.niche}...")
-        ep_title   = args.excerpt[:80] if args.excerpt else build_title(niche, args.number)
         story_list = [s.strip() for s in args.stories.split("||") if s.strip()] if args.stories else []
+
+        # Pick a lead story whose title hasn't been used on the channel yet;
+        # rotate the list so video scenes, thumbnail and description match it
+        if story_list:
+            title, story_list = pick_unused_story(niche, args.number, story_list)
+        else:
+            title = args.excerpt[:80] if args.excerpt else build_title(niche, args.number)
+
+        ep_title   = args.excerpt[:80] if args.excerpt else title
         script_text = ""
         if args.script_file and os.path.exists(args.script_file):
             with open(args.script_file, encoding="utf-8") as f:
@@ -514,12 +566,12 @@ def main():
 
         youtube     = get_youtube_client()
         top_story   = story_list[0] if story_list else args.excerpt
-        title       = build_title(niche, args.number, top_story)
         desc        = build_description(niche, args.number, args.excerpt, story_list)
         category_id = CATEGORY_IDS.get(args.niche, "25")
         tags        = build_tags(args.niche, story_list)
         print(f"[tags] {tags[:5]}... ({len(tags)} total)")
         video_id    = upload_to_youtube(youtube, video_path, title, desc, category_id, tags)
+        register_title(title)
 
         # Upload unique thumbnail
         thumb_path = os.path.join(tmpdir, "thumbnail.jpg")
