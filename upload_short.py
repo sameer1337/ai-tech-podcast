@@ -47,9 +47,10 @@ def main():
     parser.add_argument("--date", default=datetime.utcnow().strftime("%Y-%m-%d"))
     args = parser.parse_args()
 
+    from generate_short import TOPICS
     niche = PODCAST_MAP.get(args.niche)
-    if not niche:
-        print(f"[error] Unknown niche: {args.niche}")
+    if not niche and args.niche not in TOPICS:
+        print(f"[error] Unknown niche/topic: {args.niche}")
         sys.exit(1)
     if not REFRESH_TOKEN:
         print("[skip] YT_REFRESH_TOKEN not set - skipping Short upload")
@@ -75,14 +76,19 @@ def main():
         title = f"{title} ({datetime.utcnow().strftime('%b %d')})"
     if "#shorts" not in title.lower():
         title = f"{title} #Shorts"
-    desc = build_short_description(niche, meta)
-    tags = [niche["title"], "Velox Daily", "shorts", "news", args.niche][:30]
+
+    # Topic Shorts (e.g. worldcup) carry their own metadata in the json
+    if meta.get("description"):
+        desc = meta["description"]
+        tags = meta.get("tags", ["Velox Daily", "shorts"])
+        category = meta.get("category", "25")
+    else:
+        desc = build_short_description(niche, meta)
+        tags = [niche["title"], "Velox Daily", "shorts", "news", args.niche][:30]
+        category = CATEGORY_IDS.get(args.niche, "25")
 
     youtube = get_youtube_client()
-    video_id = upload_to_youtube(
-        youtube, video_path, title, desc,
-        CATEGORY_IDS.get(args.niche, "25"), tags,
-    )
+    video_id = upload_to_youtube(youtube, video_path, title, desc, category, tags)
 
     register_title(title)
     os.makedirs("logs/uploaded", exist_ok=True)

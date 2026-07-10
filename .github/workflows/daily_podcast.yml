@@ -93,7 +93,8 @@ jobs:
           YT_CHANNEL_ID:        ${{ secrets.YT_CHANNEL_ID }}
           PYTHONUTF8: "1"
         run: |
-          for NICHE in startup true-crime; do
+          # worldcup = event topic Short (auto-expires 2026-07-20, day after the final)
+          for NICHE in worldcup startup true-crime; do
             echo "==> Short for $NICHE"
             python generate_short.py --niche "$NICHE" \
               || { echo "[warn] Short generation failed for $NICHE"; continue; }

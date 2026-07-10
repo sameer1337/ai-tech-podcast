@@ -48,6 +48,24 @@ SHORT_STYLE = {
     "crypto":     "dramatic vertical poster, bitcoin neon glow, cyan black cyberpunk, cinematic",
     "world-news": "dramatic vertical poster, viral trending story, fiery red orange, upward arrow energy, cinematic",
     "true-crime": "dramatic vertical poster, noir crime scene, red spotlight in darkness, moody fog, cinematic",
+    "worldcup":   "dramatic vertical poster, packed soccer stadium under floodlights, world cup trophy glow, green pitch, confetti, cinematic",
+}
+
+# ── Event topics: time-boxed Shorts with no podcast episode behind them ───────
+# Stories come from Google News search; CTA funnels to an existing show.
+# After end_date the topic silently skips - no cleanup needed.
+TOPICS = {
+    "worldcup": {
+        "title":     "World Cup 2026",
+        "query":     "FIFA World Cup 2026",
+        "voice":     "en-GB-RyanNeural",
+        "cta_show":  "Trending Now Daily",     # funnel target (covers WC trends)
+        "end_date":  "2026-07-20",             # day after the July 19 final
+        "category":  "17",                     # YouTube: Sports
+        "hashtags":  "#Shorts #WorldCup #FIFAWorldCup #WorldCup2026 #Soccer #Football",
+        "tags":      ["world cup", "world cup 2026", "FIFA world cup", "soccer",
+                      "football", "world cup today", "Velox Daily", "shorts"],
+    },
 }
 
 
@@ -394,9 +412,88 @@ def create_short(niche_id: str, date: str) -> bool:
     return True
 
 
+def create_topic_short(topic_id: str, date: str) -> bool:
+    """Event Short (e.g. World Cup): no episode behind it - stories come
+    straight from Google News search, dedupe via the shared seen-registry."""
+    topic = TOPICS[topic_id]
+    if date >= topic["end_date"]:
+        print(f"[skip] Topic '{topic_id}' ended on {topic['end_date']}")
+        return True   # not an error - the slot just expires
+
+    from fetch_news import _google_news_search, _load_seen, _mark_seen, _story_key
+
+    items = _google_news_search(topic["query"], max_items=10)
+    seen = _load_seen(f"topic-{topic_id}")
+    fresh = [i for i in items if _story_key(i["title"]) not in seen]
+    if not fresh:
+        print(f"[skip] No fresh {topic_id} stories today")
+        return True
+    stories = [i["title"] for i in fresh[:5]]
+    facts = "\n".join(f"- {i['title']}: {i['summary']}" for i in fresh[:5])
+
+    pseudo_niche = {"id": topic_id, "title": topic["title"], "voice": topic["voice"]}
+    data = write_short_script(pseudo_niche, stories, facts)
+
+    os.makedirs("shorts", exist_ok=True)
+    out_path = f"shorts/{topic_id}_{date}.mp4"
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        mp3 = os.path.join(tmpdir, "voice.mp3")
+        words = synthesize(data["script"], topic["voice"], mp3)
+        if not words:
+            print("[error] TTS produced no word timings")
+            return False
+        duration = get_audio_duration(mp3)
+
+        ass = os.path.join(tmpdir, "caps.ass")
+        build_ass(words, duration, topic["cta_show"], ass)
+
+        img = os.path.join(tmpdir, "bg.jpg")
+        if not fetch_vertical_image(topic_id, data.get("image_prompt", data["story"]), img):
+            img = "assets/cover_trending.png"
+            print(f"[short] Using cover fallback: {img}")
+
+        if not render_short(img, mp3, ass, out_path):
+            return False
+
+    meta = {
+        "niche":    topic_id,
+        "date":     date,
+        "story":    data["story"],
+        "title":    data["title"],
+        "overlay":  data.get("overlay", ""),
+        "script":   data["script"],
+        "duration": round(get_audio_duration(out_path), 1),
+        "video":    out_path,
+        # Topic Shorts carry their own upload metadata (no niche config)
+        "category": topic["category"],
+        "tags":     topic["tags"],
+        "description": (
+            f"{data['story']}\n\n"
+            f"Daily World Cup 2026 updates in under a minute. For everything "
+            f"the world is talking about today, listen to {topic['cta_show']} - "
+            f"free on every podcast app.\n\n"
+            f"All daily briefings: https://daily.mapt.cloud\n\n"
+            f"{topic['hashtags']} #VeloxDaily\n"
+        ),
+        "tiktok_caption": f"{data['title']} - daily on Velox. {topic['hashtags']}",
+    }
+    meta_path = f"logs/{topic_id}/{date}_short.json"
+    os.makedirs(os.path.dirname(meta_path), exist_ok=True)
+    with open(meta_path, "w", encoding="utf-8") as f:
+        json.dump(meta, f, indent=2, ensure_ascii=False)
+
+    _mark_seen(f"topic-{topic_id}", [{"title": data["story"]}])
+    size_mb = os.path.getsize(out_path) / (1024 * 1024)
+    print(f"[done] {out_path} ({size_mb:.1f}MB, {meta['duration']}s) + {meta_path}")
+    return True
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--niche", required=True)
     parser.add_argument("--date", default=datetime.utcnow().strftime("%Y-%m-%d"))
     args = parser.parse_args()
+    if args.niche in TOPICS:
+        sys.exit(0 if create_topic_short(args.niche, args.date) else 1)
     sys.exit(0 if create_short(args.niche, args.date) else 1)
