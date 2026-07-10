@@ -62,10 +62,25 @@ def write_short_script(niche: dict, stories: list, episode_script: str) -> dict:
 
         stories_block = "\n".join(f"- {s}" for s in stories[:5])
 
+        # If a story matches what people are Googling today, feature THAT one
+        trend_hint = ""
+        try:
+            from trends import fetch_trending, trend_boost
+            trending = fetch_trending()
+            for s in stories[:5]:
+                tb, q = trend_boost(s, "", trending)
+                if tb:
+                    trend_hint = (f"\nIMPORTANT: the story matching '{q}' is "
+                                  f"TRENDING on Google search right now - pick it "
+                                  f"unless another story is dramatically stronger.\n")
+                    break
+        except Exception:
+            pass
+
         # Call 1 (JSON): pick the story + packaging
         pick_prompt = f"""Today's "{niche['title']}" episode covered these stories:
 {stories_block}
-
+{trend_hint}
 Pick the ONE story with the most surprising specific fact (a number, a name,
 a twist) for a 35-second vertical video Short. Return ONLY JSON:
 - "story": the chosen headline, verbatim from the list

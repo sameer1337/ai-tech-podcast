@@ -94,6 +94,13 @@ def _fetch(feeds: list, keywords: list, max_per_feed: int = 8, top_n: int = 5,
     kw_set = set(keywords)
     stories = []
 
+    # What is the world searching for today? (fails safe to [])
+    try:
+        from trends import fetch_trending, trend_boost
+        trending = fetch_trending()
+    except Exception:
+        trending = []
+
     for url in feeds:
         try:
             feed = feedparser.parse(url)
@@ -113,6 +120,15 @@ def _fetch(feeds: list, keywords: list, max_per_feed: int = 8, top_n: int = 5,
 
                 score   = sum(1 for kw in kw_set if kw in text)
 
+                # Google Trends boost: stories people are searching for
+                # today outrank everything else
+                trend_q = ""
+                if trending:
+                    tb, trend_q = trend_boost(entry.get("title", ""),
+                                              entry.get("summary", "") or "",
+                                              trending)
+                    score += tb
+
                 published = entry.get("published_parsed")
                 if published:
                     try:
@@ -129,6 +145,7 @@ def _fetch(feeds: list, keywords: list, max_per_feed: int = 8, top_n: int = 5,
                     "source":    source,
                     "published": entry.get("published", ""),
                     "_score":    score,
+                    "_trend":    trend_q,
                 })
         except Exception as e:
             print(f"[fetch] Warning: could not parse {url}: {e}")
@@ -162,7 +179,8 @@ def _fetch(feeds: list, keywords: list, max_per_feed: int = 8, top_n: int = 5,
 
     print(f"[fetch] Selected {len(top)} stories from {len(stories)} fetched")
     for i, s in enumerate(top, 1):
-        print(f"  {i}. {s['title']} [{s['source']}]")
+        flag = f"  ** TRENDING: '{s['_trend']}'" if s.get("_trend") else ""
+        print(f"  {i}. {s['title']} [{s['source']}]{flag}")
     return top
 
 
