@@ -140,5 +140,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0013_2026-07-09.mp3" type="audio/mpeg" length="1430208" />
     </item>
+    <item>
+      <title>Enterprises using multiple AI models are underestimating — AI Tech Daily | Jul 10</title>
+      <pubDate>Fri, 10 Jul 2026 09:48:28 +0000</pubDate>
+      <guid isPermaLink="false">ai-tech-ep14-20260710</guid>
+      <description>Enterprises using multiple AI models are underestimating failure rates by 2.25x, a shocking statistic that has major implications for the future of AI safety. This staggering number comes from a new study evaluating 67 frontier models from 21 providers, which reveals that the assumption that combining multiple models will cover each other's blind spots is mathematically flawed. The concept, known as the co-failure ceiling, shows that the real limit on orchestration is not how often models disagr...</description>
+      <itunes:episode>14</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0014_2026-07-10.mp3" type="audio/mpeg" length="1027584" />
+    </item>
   </channel>
 </rss>

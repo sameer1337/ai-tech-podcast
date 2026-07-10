@@ -140,5 +140,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0013_2026-07-09.mp3" type="audio/mpeg" length="1027152" />
     </item>
+    <item>
+      <title>Scientists found a longevity diet that helped mice eat more — Health Edge Daily | Jul 10</title>
+      <pubDate>Fri, 10 Jul 2026 09:49:20 +0000</pubDate>
+      <guid isPermaLink="false">health-ep14-20260710</guid>
+      <description>Mice on a modified Mediterranean-style diet with low protein and just enough methionine are living healthier lives, eating more, and losing fat, a finding that has significant implications for human health. This discovery, made by a team of scientists, challenges conventional wisdom on the relationship between protein intake and weight loss. The researchers found that the mice on this diet reduced their body fat and frailty, while also improving their overall health. This is exciting news, as hu...</description>
+      <itunes:episode>14</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0014_2026-07-10.mp3" type="audio/mpeg" length="1477008" />
+    </item>
   </channel>
 </rss>

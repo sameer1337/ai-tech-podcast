@@ -122,5 +122,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/world/ep0011_2026-07-09.mp3" type="audio/mpeg" length="1016352" />
     </item>
+    <item>
+      <title>An outbreak of diarrhea caused by a parasite has hit at — Trending Now Daily | Jul 10</title>
+      <pubDate>Fri, 10 Jul 2026 09:51:03 +0000</pubDate>
+      <guid isPermaLink="false">world-news-ep12-20260710</guid>
+      <description>At least 1,400 people have been hit with a parasite that causes diarrhea, and we're seeing over 10,000 searches today for information on how to stay safe. This outbreak is tied to fresh produce, and the Centers for Disease Control and Prevention is working to track down the source of the problem. It's a type of parasite called cyclospora, and it's usually associated with imported produce. The CDC is warning people to be careful when eating fresh fruits and veggies, especially if they're not prop...</description>
+      <itunes:episode>12</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/world/ep0012_2026-07-10.mp3" type="audio/mpeg" length="1020960" />
+    </item>
   </channel>
 </rss>

@@ -1,5 +1,15 @@
 [
   {
+    "number": 14,
+    "title": "Enterprises using multiple AI models are underestimating \u2014 AI Tech Daily | Jul 10",
+    "pubDate": "Fri, 10 Jul 2026 09:48:28 +0000",
+    "guid": "ai-tech-ep14-20260710",
+    "description": "Enterprises using multiple AI models are underestimating failure rates by 2.25x, a shocking statistic that has major implications for the future of AI safety. This staggering number comes from a new study evaluating 67 frontier models from 21 providers, which reveals that the assumption that combining multiple models will cover each other's blind spots is mathematically flawed. The concept, known as the co-failure ceiling, shows that the real limit on orchestration is not how often models disagr...",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0014_2026-07-10.mp3",
+    "file_size": 1027584,
+    "duration": 300
+  },
+  {
     "number": 13,
     "title": "SpaceX's Grok 4.5 launches at half the price of rivals \u2014 AI Tech Daily | Jul 09",
     "pubDate": "Thu, 09 Jul 2026 09:52:34 +0000",

@@ -1,5 +1,15 @@
 [
   {
+    "number": 14,
+    "title": "Shared API keys expose AI agents at 69% of enterprises, new \u2014 Startup Wire Daily | Jul 10",
+    "pubDate": "Fri, 10 Jul 2026 09:49:45 +0000",
+    "guid": "startup-ep14-20260710",
+    "description": "Sixty-nine percent of enterprises are sharing API keys across multiple AI agents, essentially giving attackers a master key to unlock and control entire workflows. This shocking finding comes from VentureBeat's latest research, which surveyed 107 enterprises and found that nearly 7 out of 10 are putting their AI systems at risk by sharing credentials. The implications are staggering - if one agent is compromised, the attacker gains access to all the permissions and workflows associated with that...",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0014_2026-07-10.mp3",
+    "file_size": 1120752,
+    "duration": 300
+  },
+  {
     "number": 13,
     "title": "SpaceX's Grok 4.5 launches at half the price of rivals \u2014 Startup Wire Daily | Jul 09",
     "pubDate": "Thu, 09 Jul 2026 09:53:54 +0000",

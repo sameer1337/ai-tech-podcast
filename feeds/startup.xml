@@ -140,5 +140,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0013_2026-07-09.mp3" type="audio/mpeg" length="1488528" />
     </item>
+    <item>
+      <title>Shared API keys expose AI agents at 69% of enterprises, new — Startup Wire Daily | Jul 10</title>
+      <pubDate>Fri, 10 Jul 2026 09:49:45 +0000</pubDate>
+      <guid isPermaLink="false">startup-ep14-20260710</guid>
+      <description>Sixty-nine percent of enterprises are sharing API keys across multiple AI agents, essentially giving attackers a master key to unlock and control entire workflows. This shocking finding comes from VentureBeat's latest research, which surveyed 107 enterprises and found that nearly 7 out of 10 are putting their AI systems at risk by sharing credentials. The implications are staggering - if one agent is compromised, the attacker gains access to all the permissions and workflows associated with that...</description>
+      <itunes:episode>14</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0014_2026-07-10.mp3" type="audio/mpeg" length="1120752" />
+    </item>
   </channel>
 </rss>

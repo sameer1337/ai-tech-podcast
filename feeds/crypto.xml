@@ -140,5 +140,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0013_2026-07-09.mp3" type="audio/mpeg" length="753552" />
     </item>
+    <item>
+      <title>New Hampshire rejects $100M Bitcoin-backed bond after — Crypto Daily Brief | Jul 10</title>
+      <pubDate>Fri, 10 Jul 2026 09:50:24 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep14-20260710</guid>
+      <description>New Hampshire just rejected a $100 million Bitcoin-backed bond, a decision that could have far-reaching implications for the use of cryptocurrency in government finance. The rejection came after a public finance hearing on July 8, where officials ultimately decided that the risks associated with Bitcoin collateral were too great. This is a significant setback for proponents of Bitcoin-backed bonds, who had hoped that New Hampshire would pave the way for other states to follow suit. The use of Bi...</description>
+      <itunes:episode>14</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0014_2026-07-10.mp3" type="audio/mpeg" length="995472" />
+    </item>
   </channel>
 </rss>
