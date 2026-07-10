@@ -44,7 +44,7 @@ NICHE_STYLE = {
     "health":     "bright cheerful cartoon illustration, clean medical aesthetic, colourful health icons",
     "startup":    "energetic cartoon illustration, modern startup office, warm vibrant colours",
     "crypto":     "neon cyberpunk cartoon illustration, cyan and orange glow, digital blockchain aesthetic",
-    "world-news": "bold editorial cartoon illustration, world map background, strong colours",
+    "world-news": "bold viral-story cartoon illustration, fiery red orange gradient, dramatic energetic",
     "true-crime": "noir cartoon illustration, moody blue-purple shadows, detective mystery aesthetic",
 }
 
@@ -54,7 +54,7 @@ FALLBACK_COVERS = {
     "health":     "assets/cover_health.png",
     "startup":    "assets/cover_startup.png",
     "crypto":     "assets/cover_crypto.png",
-    "world-news": "assets/cover_world.png",
+    "world-news": "assets/cover_trending.png",
     "true-crime": "assets/cover_truecrime.png",
 }
 

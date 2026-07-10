@@ -191,9 +191,93 @@ def fetch_stories() -> list[dict]:
 
 def fetch_stories_for_niche(niche: dict) -> list[dict]:
     """Fetch stories for a specific niche config from niches.py."""
+    if niche.get("mode") == "trends":
+        return fetch_trending_stories(niche)
     return _fetch(niche["feeds"], niche.get("keywords", []),
                   max_per_feed=10, top_n=TOP_STORIES, regional_filter=True,
                   niche_id=niche["id"])
+
+
+def _google_news_search(query: str, max_items: int = 3) -> list[dict]:
+    """Top Google News headlines for a query (free RSS, no key)."""
+    import urllib.parse
+    url = ("https://news.google.com/rss/search?q="
+           f"{urllib.parse.quote(query)}&hl=en-US&gl=US&ceid=US:en")
+    try:
+        feed = feedparser.parse(url)
+        items = []
+        for e in feed.entries[:max_items]:
+            items.append({
+                "title":   e.get("title", ""),
+                "url":     e.get("link", ""),
+                "summary": re.sub(r"<[^>]+>", " ", e.get("summary", "") or "")[:400],
+                "source":  (e.get("source") or {}).get("title", "Google News"),
+            })
+        return items
+    except Exception as ex:
+        print(f"[trends] news search failed for '{query}': {ex}")
+        return []
+
+
+def fetch_trending_stories(niche: dict) -> list[dict]:
+    """Build episode stories from today's Google trending searches.
+    Each story = one trending query, enriched with the news headlines that
+    explain WHY it is trending. Seen-registry keyed on the query, so a trend
+    that spans several days is only covered once."""
+    from trends import fetch_trending
+
+    niche_id = niche["id"]
+    trending = fetch_trending()
+    if not trending:
+        print("[trends] No trends available - falling back to regular feeds")
+        return _fetch(niche["feeds"], niche.get("keywords", []),
+                      max_per_feed=10, top_n=TOP_STORIES, regional_filter=True,
+                      niche_id=niche_id)
+
+    seen = _load_seen(niche_id)
+    stories = []
+    for t in trending:
+        if len(stories) >= TOP_STORIES:
+            break
+        query = t["query"]
+        if not query.isascii():          # skip non-English trends
+            continue
+        if _story_key(query) in seen or _story_key(t["news"]) in seen:
+            continue
+
+        news = _google_news_search(query)
+        lead = news[0] if news else {"title": t["news"] or f"'{query}' is trending",
+                                     "url": "", "summary": "", "source": "Google Trends"}
+        context = " | ".join(n["title"] for n in news[1:])
+        traffic = f"{t['traffic']:,}+" if t["traffic"] else "thousands of"
+        summary = (f"'{query}' has roughly {traffic} Google searches today. "
+                   f"{lead['summary']} "
+                   + (f"Related coverage: {context}" if context else ""))
+
+        stories.append({
+            "title":     lead["title"] or f"'{query}' is suddenly trending",
+            "url":       lead["url"],
+            "summary":   summary.strip(),
+            "source":    lead["source"],
+            "published": "",
+            "_score":    t["traffic"],
+            "_trend":    query,
+        })
+
+    if not stories:
+        print("[trends] All of today's trends already covered - using regular feeds")
+        return _fetch(niche["feeds"], niche.get("keywords", []),
+                      max_per_feed=10, top_n=TOP_STORIES, regional_filter=True,
+                      niche_id=niche_id)
+
+    # Remember both the query and the headline so tomorrow skips this trend
+    _mark_seen(niche_id, [{"title": s["_trend"]} for s in stories]
+                        + [{"title": s["title"]} for s in stories])
+
+    print(f"[trends] Built {len(stories)} stories from trending searches")
+    for i, s in enumerate(stories, 1):
+        print(f"  {i}. [{s['_trend']}] {s['title'][:70]}")
+    return stories
 
 
 AI_KEYWORDS = {

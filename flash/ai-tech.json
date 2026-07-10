@@ -1,37 +1,37 @@
 [
   {
+    "uid": "ai-tech-ep13-20260709",
+    "updateDate": "2026-07-09T09:52:34.0Z",
+    "titleText": "SpaceX's Grok 4.5 launches at half the price of rivals \u2014 AI Tech Daily | Jul 09",
+    "streamUrl": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0013_2026-07-09.mp3",
+    "redirectionUrl": "https://sameer1337.github.io/ai-tech-podcast"
+  },
+  {
+    "uid": "ai-tech-ep12-20260708",
+    "updateDate": "2026-07-08T08:39:40.0Z",
+    "titleText": "Hot French startup ZML releases free product to speed \u2014 AI Tech Daily | Jul 08",
+    "streamUrl": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0012_2026-07-08.mp3",
+    "redirectionUrl": "https://sameer1337.github.io/ai-tech-podcast"
+  },
+  {
+    "uid": "ai-tech-ep11-20260706",
+    "updateDate": "2026-07-06T10:53:00.0Z",
+    "titleText": "Anthropic is bringing back Claude Fable 5 globally after US \u2014 AI Tech Daily | Jul 06",
+    "streamUrl": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0011_2026-07-06.mp3",
+    "redirectionUrl": "https://sameer1337.github.io/ai-tech-podcast"
+  },
+  {
+    "uid": "ai-tech-ep10-20260705",
+    "updateDate": "2026-07-05T09:17:25.0Z",
+    "titleText": "AI Tech Daily | Jul 05 \u2014 Anthropic is bringing back Claude Fable 5 globally",
+    "streamUrl": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0010_2026-07-05.mp3",
+    "redirectionUrl": "https://sameer1337.github.io/ai-tech-podcast"
+  },
+  {
     "uid": "ai-tech-ep9-20260704",
     "updateDate": "2026-07-04T08:47:52.0Z",
     "titleText": "AI Tech Daily | Jul 04 \u2014 Anthropic is bringing back Claude Fable 5 globally",
     "streamUrl": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0009_2026-07-04.mp3",
-    "redirectionUrl": "https://sameer1337.github.io/ai-tech-podcast"
-  },
-  {
-    "uid": "ai-tech-ep8-20260703",
-    "updateDate": "2026-07-03T09:30:56.0Z",
-    "titleText": "AI Tech Daily | Jul 03 \u2014 Enterprises lost Claude Fable 5 for a few weeks. N",
-    "streamUrl": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0008_2026-07-03.mp3",
-    "redirectionUrl": "https://sameer1337.github.io/ai-tech-podcast"
-  },
-  {
-    "uid": "ai-tech-ep7-20260702",
-    "updateDate": "2026-07-02T09:27:13.0Z",
-    "titleText": "AI Tech Daily | Jul 02 \u2014 Anthropic is bringing back Claude Fable 5 globally",
-    "streamUrl": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0007_2026-07-02.mp3",
-    "redirectionUrl": "https://sameer1337.github.io/ai-tech-podcast"
-  },
-  {
-    "uid": "ai-tech-ep6-20260701",
-    "updateDate": "2026-07-01T10:04:20.0Z",
-    "titleText": "AI Tech Daily | Jul 01 \u2014 Anthropic launches Claude Sonnet 5 at a steep disc",
-    "streamUrl": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0006_2026-07-01.mp3",
-    "redirectionUrl": "https://sameer1337.github.io/ai-tech-podcast"
-  },
-  {
-    "uid": "ai-tech-ep5-20260630",
-    "updateDate": "2026-06-30T21:16:22.0Z",
-    "titleText": "AI Tech Daily | Jun 30 \u2014 Meituan open sources LongCat-2.0, the 1.6T, near-f",
-    "streamUrl": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0005_2026-06-30.mp3",
     "redirectionUrl": "https://sameer1337.github.io/ai-tech-podcast"
   }
 ]

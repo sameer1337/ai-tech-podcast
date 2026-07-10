@@ -57,14 +57,15 @@ COVERS = [
         "emoji":    "B",
     },
     {
-        "id":       "world",
-        "filename": "assets/cover_world.png",
-        "title":    "WORLD\nIN 5",
-        "tagline":  "Global News Daily",
-        "bg1":      (5, 5, 30),
-        "bg2":      (0, 40, 80),
-        "accent":   (100, 180, 255),
-        "emoji":    "O",
+        # Rebrand of World In 5 (same feed/id world-news) - trends show
+        "id":       "trending",
+        "filename": "assets/cover_trending.png",
+        "title":    "TRENDING\nNOW\nDAILY",
+        "tagline":  "What The World Is Searching",
+        "bg1":      (30, 0, 10),
+        "bg2":      (120, 20, 0),
+        "accent":   (255, 80, 40),
+        "emoji":    "#",
     },
     {
         "id":       "truecrime",

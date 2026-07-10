@@ -115,17 +115,18 @@ PODCASTS = [
                      "token", "wallet", "exchange", "btc", "eth", "solana", "binance"],
     },
     {
-        "cover_url":   "https://sameer1337.github.io/ai-tech-podcast/assets/cover_world.png",
+        "cover_url":   "https://sameer1337.github.io/ai-tech-podcast/assets/cover_trending.png",
         "spotify_url": "https://open.spotify.com/show/033GM2aL4HubkizmHcyPFM",
-        "id":          "world-news",
-        "title":       "World In 5",
-        "description": "The world's top news stories in 5 minutes, every morning. Politics, international affairs, climate, and the events shaping our world â€” clear, fast, free.",
-        "author":      "World In 5",
+        "id":          "world-news",   # id/feed/dirs unchanged - platform URLs + history stay
+        "title":       "Trending Now Daily",
+        "description": "The stories the whole internet is searching for, explained in 5 minutes. Every day we take Google's top trending searches and tell you what actually happened and why everyone is suddenly talking about it. News, viral moments, and the answers behind the search spikes - clear, fast, free.",
+        "author":      "Trending Now Daily",
         "category":    "News",
         "voice":       "en-GB-SoniaNeural",
         "rss_file":    "feeds/world.xml",
         "output_dir":  "episodes/world",
-        "hook":        "global news and world affairs",
+        "hook":        "the stories everyone is searching for right now",
+        "mode":        "trends",  # stories come from Google Trends, not the feeds below
         "feeds": [
             "https://feeds.bbci.co.uk/news/world/rss.xml",
             "https://rss.reuters.com/reuters/worldNews",
@@ -133,8 +134,8 @@ PODCASTS = [
             "https://feeds.npr.org/1001/rss.xml",
             "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
         ],
-        "keywords": ["war", "election", "president", "government", "climate", "trade",
-                     "crisis", "treaty", "summit", "sanctions", "protest", "leader"],
+        "keywords": ["trending", "viral", "google trends", "why is it trending", "breaking",
+                     "news", "search", "internet", "explained", "today"],
     },
     {
         "cover_url":   "https://sameer1337.github.io/ai-tech-podcast/assets/cover_truecrime.png",

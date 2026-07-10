@@ -11,7 +11,7 @@ COVERS = {
     "health":     "assets/cover_health.png",
     "startup":    "assets/cover_startup.png",
     "crypto":     "assets/cover_crypto.png",
-    "world-news": "assets/cover_world.png",
+    "world-news": "assets/cover_trending.png",
     "true-crime": "assets/cover_truecrime.png",
 }
 

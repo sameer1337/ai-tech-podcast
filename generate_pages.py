@@ -19,12 +19,12 @@ MAPT_URL  = "https://mapt.cloud"
 VITA_URL  = "https://mapt.cloud/vita"
 
 COLORS = {"ai-tech":"#7c3aed","finance":"#16a34a","health":"#0891b2","startup":"#e11d48",
-          "crypto":"#d97706","world-news":"#2563eb","true-crime":"#111827"}
+          "crypto":"#d97706","world-news":"#ea580c","true-crime":"#111827"}
 LABEL  = {"ai-tech":"AI & Tech","finance":"Finance","health":"Health","startup":"Startups",
-          "crypto":"Crypto","world-news":"World","true-crime":"True Crime"}
+          "crypto":"Crypto","world-news":"Trending","true-crime":"True Crime"}
 IMG_KW = {"ai-tech":"technology,ai,computer","finance":"finance,money,business",
           "health":"health,medical,fitness","startup":"startup,office,teamwork",
-          "crypto":"cryptocurrency,bitcoin,blockchain","world-news":"city,world,news",
+          "crypto":"cryptocurrency,bitcoin,blockchain","world-news":"crowd,viral,city,news",
           "true-crime":"police,night,investigation"}
 # Editable: your real social handles + display counts (placeholders shown to match layout)
 SOCIALS = [("Facebook","f-fb","#","1.2K","Fans"),("X","f-x","#","480","Followers"),

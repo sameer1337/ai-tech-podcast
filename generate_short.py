@@ -46,7 +46,7 @@ SHORT_STYLE = {
     "health":     "dramatic vertical poster, human silhouette with glowing anatomy, teal on dark, cinematic",
     "startup":    "dramatic vertical poster, rocket launch over city, warm orange purple, cinematic",
     "crypto":     "dramatic vertical poster, bitcoin neon glow, cyan black cyberpunk, cinematic",
-    "world-news": "dramatic vertical poster, world map with red highlights, breaking news mood, cinematic",
+    "world-news": "dramatic vertical poster, viral trending story, fiery red orange, upward arrow energy, cinematic",
     "true-crime": "dramatic vertical poster, noir crime scene, red spotlight in darkness, moody fog, cinematic",
 }
 

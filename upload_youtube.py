@@ -239,10 +239,10 @@ def build_description(niche: dict, episode_number: int, script_excerpt: str = ""
             "entire digital asset space. Whether markets are green or red, we keep you "
             "grounded in the facts that drive price and adoption.",
         "world-news":
-            "World In 5 gives you the most important global stories every morning in "
-            "under 10 minutes. From geopolitical shifts and election results to climate "
-            "events and international trade — we cover the events shaping the planet, "
-            "told clearly and without political bias.",
+            "Trending Now Daily explains the stories the whole internet is searching "
+            "for. Every day we take Google's top trending searches and break down what "
+            "actually happened and why everyone is suddenly talking about it — news, "
+            "viral moments, and the answers behind the search spikes.",
         "true-crime":
             "True Crime Digest explores real criminal cases — from the investigation and "
             "arrest to the courtroom and verdict. Each episode dives into one compelling "
@@ -300,8 +300,8 @@ def build_description(niche: dict, episode_number: int, script_excerpt: str = ""
             "Prefer reading? Every episode has a full written article with price context, "
             "on-chain data, and source links from today's crypto and Web3 stories.",
         "world-news":
-            "Prefer reading? Every episode has a full written article with background, "
-            "maps, timelines, and source links covering today's global news.",
+            "Prefer reading? Every episode has a full written article explaining each "
+            "trending story with background and source links.",
         "true-crime":
             "Prefer reading? Every episode has a full written article with case timeline, "
             "court documents, and source links for today's true crime story.",
@@ -339,7 +339,7 @@ def build_description(niche: dict, episode_number: int, script_excerpt: str = ""
         "health":     "#Health #Wellness #Longevity #Nutrition #MedicalResearch #HealthNews #Fitness",
         "startup":    "#Startup #VentureCapital #Founders #BusinessNews #Innovation #Entrepreneurship",
         "crypto":     "#Crypto #Bitcoin #Ethereum #DeFi #Web3 #Blockchain #CryptoNews #BTC",
-        "world-news": "#WorldNews #BreakingNews #Politics #InternationalNews #GlobalNews #CurrentEvents",
+        "world-news": "#Trending #TrendingNow #ViralNews #GoogleTrends #WhyIsItTrending #BreakingNews",
         "true-crime": "#TrueCrime #CrimePodcast #MurderMystery #CriminalInvestigation #Justice #CrimeNews",
     }.get(nid, "#Podcast #DailyNews")
 
@@ -381,7 +381,7 @@ def generate_thumbnail(niche_id: str, top_story: str, out_path: str) -> bool:
         "health":     "clean health magazine cover, medical symbols, bright green white, modern minimal",
         "startup":    "startup pitch deck style, rocket launch, bold typography space, deep purple orange",
         "crypto":     "crypto news thumbnail, bitcoin logo glow, neon cyan black, cyberpunk dramatic",
-        "world-news": "breaking news broadcast style, globe graphic, bold red white blue, urgent look",
+        "world-news": "viral trending story thumbnail, fire gradient red orange, upward graph arrow, urgent energetic look",
         "true-crime": "true crime documentary thumbnail, dark shadowy, red spotlight, crime scene tape",
     }
     style = THUMB_STYLE.get(niche_id, "bold news thumbnail, dramatic lighting, vibrant colors")
@@ -443,9 +443,9 @@ NICHE_TAGS = {
         "Crypto Daily Brief", "Velox Daily", "crypto 2026", "altcoin news", "NFT news",
     ],
     "world-news": [
-        "world news", "breaking news", "politics", "international news", "global news",
-        "current events", "news podcast", "daily news", "geopolitics", "news today",
-        "World In 5", "Velox Daily", "news 2026", "world podcast", "news brief",
+        "trending", "trending now", "trending today", "viral news", "google trends",
+        "why is it trending", "breaking news", "news today", "viral moments", "explained",
+        "Trending Now Daily", "Velox Daily", "trending 2026", "internet news", "top searches",
     ],
     "true-crime": [
         "true crime", "crime podcast", "murder mystery", "investigation", "justice",
@@ -536,7 +536,7 @@ def main():
         "health":     "assets/cover_health.png",
         "startup":    "assets/cover_startup.png",
         "crypto":     "assets/cover_crypto.png",
-        "world-news": "assets/cover_world.png",
+        "world-news": "assets/cover_trending.png",
         "true-crime": "assets/cover_truecrime.png",
     }
     cover_path = cover_map.get(args.niche, "assets/cover.png")

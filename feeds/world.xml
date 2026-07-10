@@ -3,23 +3,23 @@
      xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
      xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>World In 5</title>
-    <description>The world's top news stories in 5 minutes, every morning. Politics, international affairs, climate, and the events shaping our world â€” clear, fast, free.</description>
+    <title>Trending Now Daily</title>
+    <description>The stories the whole internet is searching for, explained in 5 minutes. Every day we take Google's top trending searches and tell you what actually happened and why everyone is suddenly talking about it. News, viral moments, and the answers behind the search spikes - clear, fast, free.</description>
     <language>en</language>
     <link>https://sameer1337.github.io/ai-tech-podcast</link>
-    <managingEditor>hunk1.on11@gmail.com (World In 5)</managingEditor>
-    <itunes:author>World In 5</itunes:author>
+    <managingEditor>hunk1.on11@gmail.com (Trending Now Daily)</managingEditor>
+    <itunes:author>Trending Now Daily</itunes:author>
     <itunes:email>hunk1.on11@gmail.com</itunes:email>
     <itunes:category text="News" />
     <itunes:owner>
-      <itunes:name>World In 5</itunes:name>
+      <itunes:name>Trending Now Daily</itunes:name>
       <itunes:email>hunk1.on11@gmail.com</itunes:email>
     </itunes:owner>
     <itunes:explicit>false</itunes:explicit>
-    <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover_world.png" />
+    <itunes:image href="https://sameer1337.github.io/ai-tech-podcast/assets/cover_trending.png" />
     <image>
-      <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover_world.png</url>
-      <title>World In 5</title>
+      <url>https://sameer1337.github.io/ai-tech-podcast/assets/cover_trending.png</url>
+      <title>Trending Now Daily</title>
       <link>https://sameer1337.github.io/ai-tech-podcast</link>
     </image>
 
