@@ -149,5 +149,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0014_2026-07-10.mp3" type="audio/mpeg" length="995472" />
     </item>
+    <item>
+      <title>U.S. Representatives Urge Senate to Vote on CLARITY Act in — Crypto Daily Brief | Jul 11</title>
+      <pubDate>Sat, 11 Jul 2026 08:08:05 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep15-20260711</guid>
+      <description>One thousand four hundred Bitcoin, worth a staggering $87 million, were just dumped by Empery Digital, a Nasdaq-listed Bitcoin treasury firm, in a move that has left many in the crypto community wondering what's behind this massive sale. According to reports, the firm has been selling off its Bitcoin holdings since May to fuel an AI data center deal, pay off legal bills, and cover other expenses. This news is significant because it shows that even major players in the crypto space are not immune...</description>
+      <itunes:episode>15</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0015_2026-07-11.mp3" type="audio/mpeg" length="911808" />
+    </item>
   </channel>
 </rss>

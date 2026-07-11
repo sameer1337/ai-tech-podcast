@@ -1,105 +1,100 @@
 {
- "date": "2026-07-10",
+ "date": "2026-07-11",
  "trends": [
   {
-   "query": "vegetable parasite outbreak",
-   "traffic": 10000,
-   "news": "An outbreak of diarrhea caused by a parasite has hit at least 1,400 people. Here\u2019s how to stay safe"
+   "query": "guinness world record bald caps",
+   "traffic": 5000,
+   "news": "Pop icon Pitbull is playing London\u2019s BST Hyde Park on Friday"
   },
   {
-   "query": "brady singer",
-   "traffic": 2000,
-   "news": "Philadelphia Phillies vs Cincinnati Reds \u2013 July 9, 2026"
-  },
-  {
-   "query": "real housewives of orange county",
+   "query": "olivia dean",
    "traffic": 1000,
-   "news": "\u2018Rhoc\u2019 Star Jennifer Pedranti Reveals Son Started Brush Fire in California\u2019s Ladera Ranch"
+   "news": "Sam Fender & Olivia Dean\u2019s \u2018Rein Me In\u2019 Becomes Longest-Running British No. 1 Single in U.K. Chart History"
   },
   {
-   "query": "jake rogers",
+   "query": "rugby today",
    "traffic": 1000,
-   "news": "Troy Melton deals, Jake Rogers homers off bench for streaking Tigers"
+   "news": "\u2018Curse of the 10 jersey\u2019: The Wallaby considered for surprise recall"
   },
   {
-   "query": "m\u00e9xico",
+   "query": "kick argentina out",
    "traffic": 1000,
-   "news": "Reportero ingl\u00e9s se rinde ante M\u00e9xico y se une a Henry Winter a la petici\u00f3n de un amistoso con M\u00e9xico en Wembl"
+   "news": "Argentina 3-2 Egypt: FIFA receive complaint from Egypt about the refereeing decisions in last-16 defeat"
   },
   {
-   "query": "tornado",
-   "traffic": 500,
-   "news": "Alberta tornadoes spur evacuations, three hospitalized"
-  },
-  {
-   "query": "cbs",
-   "traffic": 500,
-   "news": "Alibaba to pay $600m to settle illegal drug sales allegations in US probe"
-  },
-  {
-   "query": "bobby flay",
-   "traffic": 500,
-   "news": "Bobby Flay Reveals the One Thing Colin Jost Always Brings to Their Friendship: \u2018At the Very Least\u2019 (Exclusive)"
-  },
-  {
-   "query": "edgware road",
-   "traffic": 500,
-   "news": "Smoke fills the air as dozens of officers in riot gear descend on London street"
-  },
-  {
-   "query": "london news",
-   "traffic": 500,
-   "news": "Man stabbed to death in fight in London street"
-  },
-  {
-   "query": "london",
-   "traffic": 500,
-   "news": "King Charles and Queen Camilla perform health check on penguin during special visit to London Zoo"
-  },
-  {
-   "query": "ac unit",
-   "traffic": 500,
-   "news": "I bought \u00a3229 air conditioner unit and this is my honest review"
-  },
-  {
-   "query": "ricky schroder",
+   "query": "moon",
    "traffic": 200,
-   "news": "Child Star Ricky Schroder Urges Charlie Kirk\u2019s Alleged Shooter to Confess After Attending Hearing"
+   "news": "The Spiritual Meaning Of July's New Moon Will Make You Manifest Your Goals"
   },
   {
-   "query": "tigers game",
+   "query": "home prices",
    "traffic": 200,
-   "news": "Kurtz the 3rd sidelined as stomach bug moves through A's clubhouse"
+   "news": "US existing home sales unexpectedly fall in June"
   },
   {
-   "query": "prime",
+   "query": "zim vs ban",
    "traffic": 200,
-   "news": "Andy Burnham's path to becoming prime minister"
+   "news": "\u2018One of us had to bat till the last ball\u2019 - Tanzid Hasan on Bangladesh's defeat to Zimbabwe"
   },
   {
-   "query": "paddy pimblett",
+   "query": "damian pinas",
    "traffic": 200,
-   "news": "Paddy Pimblett questions Arman Tsarukyan\u2019s UFC title shot case"
+   "news": "Sky Mercury Basketball"
   },
   {
-   "query": "fast and furious",
-   "traffic": 100,
-   "news": "\u2018Fast Forever\u2019 Is Finally Back on Track"
+   "query": "chris hemsworth",
+   "traffic": 200,
+   "news": "AVENGERS: DOOMSDAY Marketing Display Offers Sneak Peek at Doctor Doom's Throne & the X-Mansion"
   },
   {
-   "query": "austin butler",
-   "traffic": 100,
-   "news": "\"A work ethic I\u2019d never seen\": Denzel Washington on Austin Butler as Elvis"
+   "query": "cod black ops 2 ps5",
+   "traffic": 200,
+   "news": "Call of Duty: Black Ops 1 and 2 Ports Out Now on PS5, But They Come at a High Price That Fans Were Bracing For"
   },
   {
-   "query": "palworld 1.0 release time",
-   "traffic": 100,
-   "news": "Should You Start a New Save or Keep Your Old One in Palworld 1.0?"
+   "query": "new zealand v italy",
+   "traffic": 200,
+   "news": "New Zealand v Italy: Anton Segner to be first German-born All Black"
   },
   {
-   "query": "gakuran codes",
+   "query": "glasgow",
+   "traffic": 200,
+   "news": "Man charged after police called to disturbance at protest in Glasgow"
+  },
+  {
+   "query": "rugby fixtures",
+   "traffic": 200,
+   "news": "RUGBY UNION - Coventry Rugby to start season with trip to newly-promoted Rotherham Titans as 2026/27 Champ fixtures released"
+  },
+  {
+   "query": "raspberries",
    "traffic": 100,
-   "news": "Gakuran codes (July 2026): Full list of codes and how to redeem"
+   "news": "Looking to buy local berries in Whatcom County? Check out these farms, open now"
+  },
+  {
+   "query": "railway",
+   "traffic": 100,
+   "news": "Kavach 4.0 to be installed on Rewari-Delhi, Shakurbasti-Bathinda sections"
+  },
+  {
+   "query": "rush hour",
+   "traffic": 100,
+   "news": "United States National Parks Under Summer Tourism Shock as Yosemite, Glacier and Arches Battle Record Visitor Surge, Massive Crowds, Traffic Gridlock and Growing Pressure to Protect America\u2019s Natural Treasures"
+  },
+  {
+   "query": "avril lavigne",
+   "traffic": 100,
+   "news": "Chiefs wife wins $6,700 Chanel purse at Taylor Swift and Travis Kelce's wedding"
+  },
+  {
+   "query": "trump fires election commission",
+   "traffic": 100,
+   "news": "Trump officials sought ways to sidestep election agency before firings, sources say"
+  },
+  {
+   "query": "garrucha",
+   "traffic": 100,
+   "news": "Pron\u00f3stico de AEMET para Garrucha hoy, martes 7 de julio: \u00bfqu\u00e9 tiempo har\u00e1?"
   }
  ]
 }

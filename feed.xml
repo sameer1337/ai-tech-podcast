@@ -149,5 +149,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0014_2026-07-10.mp3" type="audio/mpeg" length="1027584" />
     </item>
+    <item>
+      <title>Wall Street is debating the AI buildout. Enterprises just — AI Tech Daily | Jul 11</title>
+      <pubDate>Sat, 11 Jul 2026 08:06:20 +0000</pubDate>
+      <guid isPermaLink="false">ai-tech-ep15-20260711</guid>
+      <description>86% of enterprises are running their GPUs at half capacity or less, a staggering statistic that reveals a major inefficiency in the way companies are utilizing their AI capabilities. This finding, from a recent survey of 573 technical leaders, suggests that enterprises are deploying AI agents ahead of the controls needed to manage them, and they're doing so knowingly. This means that companies are essentially retrofitting their systems to catch up with their own standards, and they're budgeting ...</description>
+      <itunes:episode>15</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0015_2026-07-11.mp3" type="audio/mpeg" length="1147104" />
+    </item>
   </channel>
 </rss>

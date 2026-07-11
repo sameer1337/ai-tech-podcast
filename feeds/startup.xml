@@ -149,5 +149,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0014_2026-07-10.mp3" type="audio/mpeg" length="1120752" />
     </item>
+    <item>
+      <title>OpenAI introduces ChatGPT Work, a cloud-based AI agent that — Startup Wire Daily | Jul 11</title>
+      <pubDate>Sat, 11 Jul 2026 08:07:34 +0000</pubDate>
+      <guid isPermaLink="false">startup-ep15-20260711</guid>
+      <description>ChatGPT just got a massive upgrade with ChatGPT Work, a cloud-based AI agent that manages tasks across email, Slack, and calendars, basically turning the chatbot into a full-fledged work platform. This new AI agent is powered by OpenAI's latest flagship model, GPT-5.6, and is designed to go far beyond generating text, actually executing complex, multi-step tasks for users. This is huge because it has the potential to transform the way we work, automating a lot of tedious tasks and freeing up tim...</description>
+      <itunes:episode>15</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0015_2026-07-11.mp3" type="audio/mpeg" length="1304496" />
+    </item>
   </channel>
 </rss>

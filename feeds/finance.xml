@@ -149,5 +149,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0014_2026-07-10.mp3" type="audio/mpeg" length="1308384" />
     </item>
+    <item>
+      <title>SK Hynix Rises After Record US Offering — Money Minute Daily | Jul 11</title>
+      <pubDate>Sat, 11 Jul 2026 08:06:36 +0000</pubDate>
+      <guid isPermaLink="false">finance-ep15-20260711</guid>
+      <description>SK Hynix just raised a whopping 2.5 billion dollars in its US debt offering, marking the largest deal of its kind for a South Korean company, and its stock is surging as a result. This massive influx of capital is a major coup for the memory chip giant, and it's likely to have significant implications for the global tech industry. The fact that SK Hynix was able to secure such a large offering is a testament to its strong financials and the continued demand for its products, despite the current ...</description>
+      <itunes:episode>15</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0015_2026-07-11.mp3" type="audio/mpeg" length="1181664" />
+    </item>
   </channel>
 </rss>
