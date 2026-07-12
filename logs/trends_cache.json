@@ -1,100 +1,105 @@
 {
- "date": "2026-07-11",
+ "date": "2026-07-12",
  "trends": [
   {
-   "query": "guinness world record bald caps",
-   "traffic": 5000,
-   "news": "Pop icon Pitbull is playing London\u2019s BST Hyde Park on Friday"
+   "query": "best shows to watch",
+   "traffic": 2000,
+   "news": "What's new to streaming this week? (July 10, 2026)"
   },
   {
-   "query": "olivia dean",
-   "traffic": 1000,
-   "news": "Sam Fender & Olivia Dean\u2019s \u2018Rein Me In\u2019 Becomes Longest-Running British No. 1 Single in U.K. Chart History"
+   "query": "rachel reeves",
+   "traffic": 2000,
+   "news": "Ann Widdecombe latest: Man, 28, arrested in South Yorkshire on suspicion of murder"
   },
   {
-   "query": "rugby today",
-   "traffic": 1000,
-   "news": "\u2018Curse of the 10 jersey\u2019: The Wallaby considered for surprise recall"
+   "query": "pip",
+   "traffic": 2000,
+   "news": "I lost my Motability car despite being disabled \u2013 I had to fight to get it back"
   },
   {
-   "query": "kick argentina out",
-   "traffic": 1000,
-   "news": "Argentina 3-2 Egypt: FIFA receive complaint from Egypt about the refereeing decisions in last-16 defeat"
+   "query": "league of legends",
+   "traffic": 500,
+   "news": "League of Legends Teases Old-School Skins for League Classic"
   },
   {
-   "query": "moon",
+   "query": "apple tv plus",
    "traffic": 200,
-   "news": "The Spiritual Meaning Of July's New Moon Will Make You Manifest Your Goals"
+   "news": "\u2018Trying\u2019 Season 4 Showed Nikki and Jason Facing Their Toughest Parenting Test Yet"
   },
   {
-   "query": "home prices",
+   "query": "what to watch tonight",
    "traffic": 200,
-   "news": "US existing home sales unexpectedly fall in June"
+   "news": "From 'Project Hail Mary' to 'The Long Walk,' 10 movies to stream now"
   },
   {
-   "query": "zim vs ban",
+   "query": "what time is wimbledon final 2026",
    "traffic": 200,
-   "news": "\u2018One of us had to bat till the last ball\u2019 - Tanzid Hasan on Bangladesh's defeat to Zimbabwe"
+   "news": "Wimbledon start times changed as singles finals put back by two hours"
   },
   {
-   "query": "damian pinas",
+   "query": "iran qatar",
    "traffic": 200,
-   "news": "Sky Mercury Basketball"
+   "news": "UAE intercepts Iranian missiles, drones as IRGC claims strike on US bases in Jordan, Kuwait, Qatar"
   },
   {
-   "query": "chris hemsworth",
+   "query": "jamie carragher",
    "traffic": 200,
-   "news": "AVENGERS: DOOMSDAY Marketing Display Offers Sneak Peek at Doctor Doom's Throne & the X-Mansion"
+   "news": "Jamie Carragher is right about Liverpool as Andoni Iraola has impossible task"
   },
   {
-   "query": "cod black ops 2 ps5",
-   "traffic": 200,
-   "news": "Call of Duty: Black Ops 1 and 2 Ports Out Now on PS5, But They Come at a High Price That Fans Were Bracing For"
-  },
-  {
-   "query": "new zealand v italy",
-   "traffic": 200,
-   "news": "New Zealand v Italy: Anton Segner to be first German-born All Black"
-  },
-  {
-   "query": "glasgow",
-   "traffic": 200,
-   "news": "Man charged after police called to disturbance at protest in Glasgow"
-  },
-  {
-   "query": "rugby fixtures",
-   "traffic": 200,
-   "news": "RUGBY UNION - Coventry Rugby to start season with trip to newly-promoted Rotherham Titans as 2026/27 Champ fixtures released"
-  },
-  {
-   "query": "raspberries",
+   "query": "\u529f\u592b\u5973\u8db3",
    "traffic": 100,
-   "news": "Looking to buy local berries in Whatcom County? Check out these farms, open now"
+   "news": "\u592a\u201c\u5468\u661f\u9a70\u201d\u4e86\uff01\u300a\u529f\u592b\u5973\u8db3\u300b\u8981\u7206"
   },
   {
-   "query": "railway",
+   "query": "the westies",
    "traffic": 100,
-   "news": "Kavach 4.0 to be installed on Rewari-Delhi, Shakurbasti-Bathinda sections"
+   "news": "\u2018The Westies\u2019 Review: Craic and Crime on MGM+"
   },
   {
-   "query": "rush hour",
+   "query": "nachrichten heute",
    "traffic": 100,
-   "news": "United States National Parks Under Summer Tourism Shock as Yosemite, Glacier and Arches Battle Record Visitor Surge, Massive Crowds, Traffic Gridlock and Growing Pressure to Protect America\u2019s Natural Treasures"
+   "news": "ZDF-Fernsehgarten am 12.7.2026: Livestream, G\u00e4ste und Mediathek-Infos"
   },
   {
-   "query": "avril lavigne",
+   "query": "noticias de hoje",
    "traffic": 100,
-   "news": "Chiefs wife wins $6,700 Chanel purse at Taylor Swift and Travis Kelce's wedding"
+   "news": "Quem \u00e9 Thomas Tuchel? Conhe\u00e7a t\u00e9cnico da Inglaterra na Copa do Mundo 2026"
   },
   {
-   "query": "trump fires election commission",
+   "query": "airmail",
    "traffic": 100,
-   "news": "Trump officials sought ways to sidestep election agency before firings, sources say"
+   "news": "World Cup diary: Airport troubles, Starbucks struggles and memories of Ballymena in LA"
   },
   {
-   "query": "garrucha",
+   "query": "what is the news today",
    "traffic": 100,
-   "news": "Pron\u00f3stico de AEMET para Garrucha hoy, martes 7 de julio: \u00bfqu\u00e9 tiempo har\u00e1?"
+   "news": "Vasseur shuts down Hamilton contract extension chatter"
+  },
+  {
+   "query": "west ham united f.c.",
+   "traffic": 100,
+   "news": "West Ham sign England U20 defender Niamh Peacock from Arsenal"
+  },
+  {
+   "query": "when do france play spain",
+   "traffic": 100,
+   "news": "Merino puts Spain into World Cup semi-finals as Belgium rue costly Courtois injury"
+  },
+  {
+   "query": "bankruptcy",
+   "traffic": 100,
+   "news": "Atmore Community Hospital Files for Chapter 11 Bankruptcy, Vows to Keep Doors Open"
+  },
+  {
+   "query": "argentina elvetia",
+   "traffic": 100,
+   "news": "VAR-ul a salvat-o pe Argentina"
+  },
+  {
+   "query": "john mulaney",
+   "traffic": 100,
+   "news": "Video: Mick Jagger: How Fame Damages Your State of Mind"
   }
  ]
 }

@@ -158,5 +158,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0015_2026-07-11.mp3" type="audio/mpeg" length="932976" />
     </item>
+    <item>
+      <title>Columbia scientists discover surprising link between — Health Edge Daily | Jul 12</title>
+      <pubDate>Sun, 12 Jul 2026 08:28:42 +0000</pubDate>
+      <guid isPermaLink="false">health-ep16-20260712</guid>
+      <description>Scientists at Columbia University have just made a groundbreaking discovery that could change the way we think about heart health: people taking SSRI antidepressants who have a specific genetic variant are at risk of developing severe heart valve damage up to ten years earlier than expected. This shocking finding has major implications for the millions of people around the world who take SSRIs to manage their mood, as it suggests that the very same medication that's helping to regulate their ser...</description>
+      <itunes:episode>16</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0016_2026-07-12.mp3" type="audio/mpeg" length="1084752" />
+    </item>
   </channel>
 </rss>

@@ -158,5 +158,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0015_2026-07-11.mp3" type="audio/mpeg" length="911808" />
     </item>
+    <item>
+      <title>Bitcoin Slips to $62,000, Paring Rebound as CryptoQuant — Crypto Daily Brief | Jul 12</title>
+      <pubDate>Sun, 12 Jul 2026 08:29:41 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep16-20260712</guid>
+      <description>Bitcoin just slipped to $62,000, paring its recent rebound as CryptoQuant suggests there's still room for the cryptocurrency to move higher. This sudden drop is particularly noteworthy given that Bitcoin had been on a tear, rebounding from last week's $57,700 low. According to CryptoQuant, improving demand and seasonal trends could be the driving forces behind this potential upward movement. This is significant because it indicates that despite the volatility, there are still underlying factors ...</description>
+      <itunes:episode>16</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0016_2026-07-12.mp3" type="audio/mpeg" length="991872" />
+    </item>
   </channel>
 </rss>
