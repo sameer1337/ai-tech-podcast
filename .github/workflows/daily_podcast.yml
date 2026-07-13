@@ -101,8 +101,10 @@ jobs:
           YT_CHANNEL_ID:        ${{ secrets.YT_CHANNEL_ID }}
           PYTHONUTF8: "1"
         run: |
+          # Football-first: the channel's daily YouTube upload limit is scarce, so it
+          # goes to the football (worldcup) Short, not the low-view startup/true-crime ones.
           # worldcup = event topic Short (auto-expires 2026-07-20, day after the final)
-          for NICHE in worldcup startup true-crime; do
+          for NICHE in worldcup; do
             echo "==> Short for $NICHE"
             python generate_short.py --niche "$NICHE" \
               || { echo "[warn] Short generation failed for $NICHE"; continue; }
@@ -110,8 +112,12 @@ jobs:
               || echo "[warn] Short upload failed for $NICHE"
           done
 
-      - name: Upload all podcasts to YouTube (morning only)
-        if: github.event.schedule != '0 18 * * *' && github.event.inputs.mode != 'pages_only'
+      # DISABLED 2026-07-13: podcast videos got ~0 views but ate the channel's scarce
+      # daily YouTube upload limit (uploadLimitExceeded), blocking the football Shorts
+      # that actually perform. Podcasts still generate audio/RSS/blog (Spotify + site);
+      # only the YouTube video upload is off. Re-enable by restoring the original `if:`.
+      - name: Upload all podcasts to YouTube (DISABLED — quota reserved for football)
+        if: false  # was: github.event.schedule != '0 18 * * *' && github.event.inputs.mode != 'pages_only'
         env:
           GROQ_API_KEY:         ${{ secrets.GROQ_API_KEY }}   # needed for the AI thumbnail hook
           GOOGLE_CLIENT_ID:     ${{ secrets.GOOGLE_CLIENT_ID }}
