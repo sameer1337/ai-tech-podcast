@@ -7,6 +7,7 @@ Usage: python upload_youtube.py --niche ai-tech --episode episodes/ep0001_2026-0
 """
 
 import os
+import re
 import sys
 import json
 import argparse
@@ -188,13 +189,15 @@ def pick_unused_story(niche: dict, episode_number: int, story_list: list):
 
 
 def build_title(niche: dict, episode_number: int, top_story: str = "") -> str:
-    """SEO title: lead with the actual story, end with show name."""
+    """SEO title: lead with the full story hook (the part that earns the click);
+    append the show name only if it still fits in YouTube's 100-char limit,
+    so a long headline is never truncated mid-hook by the '| Show' suffix."""
     if top_story:
-        # Clean up the story headline for a title
         story = top_story.encode("ascii", errors="ignore").decode("ascii").strip()
-        story = story[:70].rsplit(" ", 1)[0] if len(story) > 70 else story
-        return f"{story} | {niche['title']}"
-    # Fallback if no story
+        if len(story) > 90:                       # keep more of the headline than before
+            story = story[:90].rsplit(" ", 1)[0].rstrip(" ,-—:|")
+        suffix = f" | {niche['title']}"
+        return story + suffix if len(story) + len(suffix) <= 100 else story
     today = datetime.utcnow().strftime("%b %d, %Y")
     return f"{niche['title']} — Daily News Brief {today}"
 
@@ -372,8 +375,97 @@ def build_description(niche: dict, episode_number: int, script_excerpt: str = ""
     )
 
 
+def _load_font(size: int):
+    """Bold TTF that exists on both Windows (local) and Ubuntu (CI)."""
+    from PIL import ImageFont
+    for p in ("C:/Windows/Fonts/arialbd.ttf",
+              "C:/Windows/Fonts/ARIALBD.TTF",
+              "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+              "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"):
+        try:
+            return ImageFont.truetype(p, size)
+        except Exception:
+            continue
+    return ImageFont.load_default()
+
+
+def _thumb_hook(top_story: str, niche_id: str) -> str:
+    """A punchy 2-4 word ALL-CAPS thumbnail hook from the story (Groq, with a
+    plain-extraction fallback). Text on the thumbnail is the #1 CTR lever."""
+    try:
+        from groq import Groq
+        from config import GROQ_API_KEY, GROQ_MODEL
+        r = Groq(api_key=GROQ_API_KEY).chat.completions.create(
+            model=GROQ_MODEL, max_tokens=30, temperature=0.7,
+            messages=[{"role": "user", "content":
+                "Write a 2 to 4 word ALL-CAPS thumbnail hook that creates curiosity "
+                "for this news headline. Punchy but ACCURATE — do NOT exaggerate or "
+                "claim anything the headline does not actually say (no 'COLLAPSE', "
+                "'BANNED', 'DEAD' unless the headline states it). No punctuation, no "
+                "quotes, no hashtags, just the words.\nHeadline: " + top_story[:160]}])
+        hook = r.choices[0].message.content.strip().strip('"').upper()
+        hook = re.sub(r"[^A-Z0-9 &%$]", "", hook).strip()
+        words = hook.split()
+        if 1 <= len(words) <= 5 and len(hook) <= 26:
+            return " ".join(words)
+    except Exception as e:
+        print(f"[thumbnail] hook gen failed ({e}) - using extraction")
+    stop = {"the","a","an","of","to","in","on","for","and","as","is","are",
+            "with","by","from","its","after","over","amid","says","will"}
+    words = [w for w in re.sub(r"[^A-Za-z0-9 ]", " ", top_story).split()
+             if w.lower() not in stop]
+    return " ".join(words[:3]).upper() or "TODAY'S TOP STORY"
+
+
+def _wrap(draw, text: str, font, max_w: int) -> list:
+    lines, cur = [], ""
+    for word in text.split():
+        trial = (cur + " " + word).strip()
+        if draw.textlength(trial, font=font) <= max_w or not cur:
+            cur = trial
+        else:
+            lines.append(cur); cur = word
+    if cur:
+        lines.append(cur)
+    return lines
+
+
+def _overlay_hook(path: str, hook: str, accent: str = "#FFE000"):
+    """Burn a bold, wrapped, high-contrast hook onto the lower area of the
+    thumbnail with a dark scrim + heavy stroke so it reads at phone size."""
+    from PIL import Image, ImageDraw
+    img = Image.open(path).convert("RGB")
+    W, H = img.size
+    draw = ImageDraw.Draw(img, "RGBA")
+
+    # Shrink font until the hook fits in <=2 lines within the safe width.
+    max_w = int(W * 0.90)
+    size = 168
+    while size > 70:
+        font = _load_font(size)
+        lines = _wrap(draw, hook, font, max_w)
+        if len(lines) <= 2 and max((draw.textlength(l, font=font) for l in lines), default=0) <= max_w:
+            break
+        size -= 8
+    line_h = size + 14
+    block_h = line_h * len(lines)
+    y0 = int(H * 0.97) - block_h            # sit near the bottom
+
+    # Dark scrim behind the text for legibility on any background.
+    draw.rectangle([0, y0 - 24, W, H], fill=(0, 0, 0, 150))
+    for i, ln in enumerate(lines):
+        w = draw.textlength(ln, font=font)
+        x = (W - w) / 2
+        y = y0 + i * line_h
+        draw.text((x, y), ln, font=font, fill=accent,
+                  stroke_width=max(6, size // 16), stroke_fill=(0, 0, 0))
+    img.save(path, "JPEG", quality=90)
+    print(f"[thumbnail] overlaid hook: '{hook}' ({size}px, {len(lines)} line(s))")
+
+
 def generate_thumbnail(niche_id: str, top_story: str, out_path: str) -> bool:
-    """Generate a unique 1280x720 thumbnail from Pollinations for this episode."""
+    """Generate a unique 1280x720 thumbnail from Pollinations for this episode,
+    then burn on a bold text hook (Pollinations art alone = no CTR hook)."""
     import urllib.request, urllib.parse, time
     THUMB_STYLE = {
         "ai-tech":    "bold tech magazine cover style, glowing AI circuit brain, deep blue purple, dramatic lighting",
@@ -384,9 +476,17 @@ def generate_thumbnail(niche_id: str, top_story: str, out_path: str) -> bool:
         "world-news": "viral trending story thumbnail, fire gradient red orange, upward graph arrow, urgent energetic look",
         "true-crime": "true crime documentary thumbnail, dark shadowy, red spotlight, crime scene tape",
     }
+    # Accent colour per niche for the burned-on text hook.
+    THUMB_ACCENT = {
+        "ai-tech": "#3AD1FF", "finance": "#FFD700", "health": "#8CFF6B",
+        "startup": "#FF8A3D", "crypto": "#2BE6C8", "world-news": "#FFE000",
+        "true-crime": "#FF4040",
+    }
     style = THUMB_STYLE.get(niche_id, "bold news thumbnail, dramatic lighting, vibrant colors")
     topic = top_story[:80].encode("ascii", errors="ignore").decode("ascii")
-    prompt = f"{style}, topic: {topic}, no text, no words, cinematic composition, high contrast"
+    # Keep the AI art clean (no garbled AI text) — we burn crisp real text on top.
+    prompt = (f"{style}, topic: {topic}, absolutely no text no letters no numbers no captions, "
+              "empty lower third, cinematic composition, high contrast")
     encoded = urllib.parse.quote(prompt)
     seed = abs(hash(top_story + niche_id)) % 99999
     url = f"https://image.pollinations.ai/prompt/{encoded}?width=1280&height=720&nologo=true&model=flux&seed={seed}"
@@ -400,6 +500,11 @@ def generate_thumbnail(niche_id: str, top_story: str, out_path: str) -> bool:
             with open(out_path, "wb") as f:
                 f.write(data)
             print(f"[thumbnail] Generated ({len(data)//1024}KB)")
+            try:
+                hook = _thumb_hook(top_story, niche_id)
+                _overlay_hook(out_path, hook, THUMB_ACCENT.get(niche_id, "#FFE000"))
+            except Exception as e:
+                print(f"[thumbnail] text overlay failed ({e}) - using plain art")
             return True
         except Exception as e:
             print(f"[thumbnail] Attempt {attempt+1} failed: {e}")

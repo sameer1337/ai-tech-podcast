@@ -93,6 +93,68 @@ Today's stories (sources: {sources}):
     return article
 
 
+def generate_keyword_article(trend: dict, stories: list[dict]) -> dict:
+    """One standalone SEO post targeting ONE trending Google search query.
+    Unlike generate_article (multi-story daily digest), this page exists to
+    rank for the exact query people are typing today — keyword-first title,
+    direct answer up top, question-style H2s, FAQ block."""
+    query = trend["query"]
+    traffic = f"{trend['traffic']:,}+" if trend.get("traffic") else "thousands of"
+    stories_block = "\n\n".join(
+        f"Headline {i}: {s['title']}\nSource: {s.get('source','')}\nSummary: {s.get('summary','')[:600]}"
+        for i, s in enumerate(stories, 1)
+    )
+
+    prompt = f"""You are an SEO editor. "{query}" is one of Google's top trending searches right now ({traffic} searches today). Write ONE article whose entire job is to rank for that exact query and win the click.
+
+Requirements:
+- "title": MUST contain the exact phrase "{query}" as early as possible. Max 60 chars. Make it click-worthy the way news CTR winners are: a specific detail, a number, or "Explained" / "What Happened" framing. No clickbait lies.
+- "meta_description": max 155 chars, contains "{query}", promises the answer the searcher wants plus one detail the title didn't give.
+- "body_html": AT LEAST 900 words of ORIGINAL prose using ONLY <h2>, <p>, <ul>, <li>, <strong>, <a> tags.
+  * FIRST paragraph (before any <h2>): directly answer why "{query}" is trending in 2-3 sentences — this is the featured-snippet bid. Bold the key fact with <strong>.
+  * Then <h2> sections phrased as the real questions people search around this topic (e.g. "What happened to {query}?", "Why is {query} trending?") — 2-4 paragraphs each covering what happened, background context, why it matters, what happens next.
+  * One <h2>{query}: Frequently Asked Questions</h2> section near the end with 3-4 short Q&A pairs (question as <strong> inside a <p>, answer in the following <p>).
+  * Naturally repeat "{query}" and close variants throughout — headings and body — without keyword stuffing.
+- Neutral, factual, journalistic. Attribute facts to their source publication by name. Do NOT invent facts, quotes, numbers, or names not in the headlines below; where coverage is thin, add clearly-framed general background context only.
+- "tags": 4-6 lowercase tags, first one MUST be the query itself (lowercased).
+- "image_query": 2-3 comma-separated concrete visual keywords for the topic.
+
+Return ONLY a JSON object with keys: "title", "dek" (one-sentence standfirst, max 140 chars), "meta_description", "body_html", "tags", "image_query".
+
+Today's news coverage for "{query}":
+{stories_block}
+"""
+
+    resp = CLIENT.chat.completions.create(
+        model=GROQ_MODEL, max_tokens=4096, temperature=0.6,
+        response_format={"type": "json_object"},
+        messages=[{"role": "user", "content": prompt}],
+    )
+    raw = _ALLOWED_FENCE.sub("", resp.choices[0].message.content.strip())
+    data = json.loads(raw)
+    article = {
+        "title":            (data.get("title") or query).strip()[:75],
+        "dek":              (data.get("dek") or "").strip()[:160],
+        "meta_description": (data.get("meta_description") or data.get("dek") or "").strip()[:160],
+        "body_html":        _sanitize_html(data.get("body_html") or ""),
+        "tags":             [str(t).lower().strip() for t in (data.get("tags") or [])][:6],
+        "image_query":      (data.get("image_query") or "").strip()[:60],
+    }
+    if query.lower() not in article["tags"]:
+        article["tags"] = [query.lower()] + article["tags"][:5]
+    try:
+        from fetch_image import fetch_and_cache_image
+        seed = abs(hash(article["title"])) % 9973
+        article["image_url"] = fetch_and_cache_image(
+            article["image_query"] or query, "blog/world-news", str(seed), seed, 900, 520)
+    except Exception as e:
+        article["image_url"] = ""
+        print(f"[trending] image resolve failed: {e}")
+    words = len(re.sub(r"<[^>]+>", " ", article["body_html"]).split())
+    print(f"[trending] '{query}': {words} words, title='{article['title']}'")
+    return article
+
+
 def expand_script_to_article(script: str, niche: dict, fallback_title: str = "") -> dict:
     """Backfill path: turn an existing 5-min podcast SCRIPT into a long-form article.
     Same JSON contract + resolved image as generate_article."""
