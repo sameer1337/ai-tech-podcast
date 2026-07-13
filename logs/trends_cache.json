@@ -1,105 +1,105 @@
 {
- "date": "2026-07-12",
+ "date": "2026-07-13",
  "trends": [
   {
-   "query": "best shows to watch",
-   "traffic": 2000,
-   "news": "What's new to streaming this week? (July 10, 2026)"
+   "query": "concerts",
+   "traffic": 20000,
+   "news": "Fans holding concert tickets report gate closures outside Jay-Z's final Yankee Stadium show"
   },
   {
-   "query": "rachel reeves",
-   "traffic": 2000,
-   "news": "Ann Widdecombe latest: Man, 28, arrested in South Yorkshire on suspicion of murder"
+   "query": "heat advisory",
+   "traffic": 5000,
+   "news": "Sunshine, dry weather and building heat this week"
   },
   {
-   "query": "pip",
-   "traffic": 2000,
-   "news": "I lost my Motability car despite being disabled \u2013 I had to fight to get it back"
+   "query": "united",
+   "traffic": 1000,
+   "news": "Liverpool make contact to sign Brazilian star"
   },
   {
-   "query": "league of legends",
+   "query": "apple iphone 18 pro",
    "traffic": 500,
-   "news": "League of Legends Teases Old-School Skins for League Classic"
+   "news": "Apple's plan to escape the iPhone 18 Pro price hike apparently just got sabotaged"
   },
   {
-   "query": "apple tv plus",
+   "query": "lewis dobbin",
+   "traffic": 500,
+   "news": "Lewis Dobbin: Wolves eye Aston Villa attacker - gossip"
+  },
+  {
+   "query": "claire sweeney",
+   "traffic": 500,
+   "news": "Amazing! Good luck Claire \u2764\ufe0f"
+  },
+  {
+   "query": "heather knight",
+   "traffic": 500,
+   "news": "England vs India, Women's Test, day three: Cricket score, updates, video and analysis from game at Lord's"
+  },
+  {
+   "query": "meningitis b vaccine",
+   "traffic": 500,
+   "news": "Meningitis B: Teenagers warned to get jab after deadly university outbreaks"
+  },
+  {
+   "query": "lorenzo sonego",
    "traffic": 200,
-   "news": "\u2018Trying\u2019 Season 4 Showed Nikki and Jason Facing Their Toughest Parenting Test Yet"
+   "news": "'Flawless' Zverev has Fritz's number at last"
   },
   {
-   "query": "what to watch tonight",
+   "query": "us embassy",
    "traffic": 200,
-   "news": "From 'Project Hail Mary' to 'The Long Walk,' 10 movies to stream now"
+   "news": ""
   },
   {
-   "query": "what time is wimbledon final 2026",
+   "query": "just fontaine",
    "traffic": 200,
-   "news": "Wimbledon start times changed as singles finals put back by two hours"
+   "news": "How wingers are the driving force behind record-breaking goals in ongoing WC"
   },
   {
-   "query": "iran qatar",
+   "query": "bastille day",
    "traffic": 200,
-   "news": "UAE intercepts Iranian missiles, drones as IRGC claims strike on US bases in Jordan, Kuwait, Qatar"
+   "news": "With silent march French Nice marks tenth anniversary of Islamic State terrorist attack"
   },
   {
-   "query": "jamie carragher",
+   "query": "otto rosengren",
    "traffic": 200,
-   "news": "Jamie Carragher is right about Liverpool as Andoni Iraola has impossible task"
+   "news": "Uppgifter: K\u00f6ln och Middlesbrough vill v\u00e4rva Rosengren"
   },
   {
-   "query": "\u529f\u592b\u5973\u8db3",
+   "query": "daycare",
    "traffic": 100,
-   "news": "\u592a\u201c\u5468\u661f\u9a70\u201d\u4e86\uff01\u300a\u529f\u592b\u5973\u8db3\u300b\u8981\u7206"
+   "news": "Parents sue fitness club daycare after video appears to show worker throwing child"
   },
   {
-   "query": "the westies",
+   "query": "home prices",
    "traffic": 100,
-   "news": "\u2018The Westies\u2019 Review: Craic and Crime on MGM+"
+   "news": "Hamptons home prices surge to record highs thanks to Wall Street and shrinking supply: \u2018No end in sight\u2019"
   },
   {
-   "query": "nachrichten heute",
+   "query": "housing market",
    "traffic": 100,
-   "news": "ZDF-Fernsehgarten am 12.7.2026: Livestream, G\u00e4ste und Mediathek-Infos"
+   "news": "Mortgage Rate Dip Fuels Pending Sales Surge, Redfin Reports"
   },
   {
-   "query": "noticias de hoje",
+   "query": "billboard",
    "traffic": 100,
-   "news": "Quem \u00e9 Thomas Tuchel? Conhe\u00e7a t\u00e9cnico da Inglaterra na Copa do Mundo 2026"
+   "news": "Chart Final UPDATE: Bump 'n' Grindr"
   },
   {
-   "query": "airmail",
+   "query": "the open last chance qualifier",
    "traffic": 100,
-   "news": "World Cup diary: Airport troubles, Starbucks struggles and memories of Ballymena in LA"
+   "news": "The Open: England's Andrew Wilson out to make most of 'Last-Chance'"
   },
   {
-   "query": "what is the news today",
+   "query": "aol",
    "traffic": 100,
-   "news": "Vasseur shuts down Hamilton contract extension chatter"
+   "news": "Italian CEO Of Bending Spoons, Owner Of AOL And Evernote, Is Worth $2.4 Billion After IPO"
   },
   {
-   "query": "west ham united f.c.",
+   "query": "west midlands police",
    "traffic": 100,
-   "news": "West Ham sign England U20 defender Niamh Peacock from Arsenal"
-  },
-  {
-   "query": "when do france play spain",
-   "traffic": 100,
-   "news": "Merino puts Spain into World Cup semi-finals as Belgium rue costly Courtois injury"
-  },
-  {
-   "query": "bankruptcy",
-   "traffic": 100,
-   "news": "Atmore Community Hospital Files for Chapter 11 Bankruptcy, Vows to Keep Doors Open"
-  },
-  {
-   "query": "argentina elvetia",
-   "traffic": 100,
-   "news": "VAR-ul a salvat-o pe Argentina"
-  },
-  {
-   "query": "john mulaney",
-   "traffic": 100,
-   "news": "Video: Mick Jagger: How Fame Damages Your State of Mind"
+   "news": "'Call 999' - Police searching for missing boy, 13"
   }
  ]
 }

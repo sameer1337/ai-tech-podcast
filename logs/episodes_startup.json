@@ -1,5 +1,15 @@
 [
   {
+    "number": 17,
+    "title": "DeepSeek cut prices 75%. The 100x problem remains \u2014 Startup Wire Daily | Jul 13",
+    "pubDate": "Mon, 13 Jul 2026 09:41:59 +0000",
+    "guid": "startup-ep17-20260713",
+    "description": "DeepSeek just slashed prices on its V4-Pro model by a whopping 75%, a move that should have been a major win for enterprise AI vendors and developers, but it's turning out to be a mixed bag. The reason is that while inference costs are plummeting, agent systems are consuming tokens at an insane rate, faster than prices are declining. This is a big deal because it means that cheaper models don't automatically translate into healthier margins for these companies. It's like they're running on a tre...",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0017_2026-07-13.mp3",
+    "file_size": 929664,
+    "duration": 300
+  },
+  {
     "number": 16,
     "title": "Show HN: Mindwalk \u2013 Replay coding-agent sessions on a 3D \u2014 Startup Wire Daily | Jul 12",
     "pubDate": "Sun, 12 Jul 2026 08:29:06 +0000",

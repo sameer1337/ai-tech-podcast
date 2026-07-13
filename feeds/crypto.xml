@@ -167,5 +167,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0016_2026-07-12.mp3" type="audio/mpeg" length="991872" />
     </item>
+    <item>
+      <title>After MiCA deadline, majority of Binance users sent funds — Crypto Daily Brief | Jul 13</title>
+      <pubDate>Mon, 13 Jul 2026 09:42:29 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep17-20260713</guid>
+      <description>Seventy percent of Binance's European users yanked their funds out of the exchange and into self-custody wallets, rather than moving them to compliant rivals, after the MiCA deadline hit. This is a staggering number, especially considering the regulatory uncertainty that's been plaguing the crypto space. What's even more surprising is that this move suggests European users are more interested in taking control of their own assets, rather than relying on supervised exchanges. This could be a majo...</description>
+      <itunes:episode>17</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0017_2026-07-13.mp3" type="audio/mpeg" length="1095264" />
+    </item>
   </channel>
 </rss>

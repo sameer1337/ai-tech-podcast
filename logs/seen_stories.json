@@ -1,9 +1,7 @@
 {
  "ai-tech": {
   "anthropic is bringing back claude fable 5 globally after us": "2026-07-06",
-  "trunk tools stack cut document review from 60 days to 10 by": "2026-07-05",
   "enterprises lost claude fable 5 for a few weeks new data sho": "2026-07-06",
-  "what is mistral ai everything to know about the openai compe": "2026-07-05",
   "zai launches zcode to challenge cursor claude code and githu": "2026-07-06",
   "the control gap enterprise ai organizations have an ownershi": "2026-07-06",
   "hot french startup zml releases free product to speed infere": "2026-07-08",
@@ -43,13 +41,14 @@
   "apples failed selfdriving car program left a legacy of power": "2026-07-12",
   "the real mystery behind moana after 1700 years why did polyn": "2026-07-12",
   "one of steelseries8217 best gaming headsets is over 100 off": "2026-07-12",
-  "blue prince became a bonding  and learning  experience for m": "2026-07-12"
+  "blue prince became a bonding  and learning  experience for m": "2026-07-12",
+  "deepseek cut prices 75 the 100x problem remains": "2026-07-13",
+  "waze is getting a bunch of new aipowered features": "2026-07-13",
+  "social media limits are coming for teens across europe": "2026-07-13",
+  "lorde says rayban meta ai glasses are not sexy": "2026-07-13",
+  "the fight against ai data centers is just beginning": "2026-07-13"
  },
  "finance": {
-  "bok warns of risks from singlestock leveraged etfs yonhap": "2026-07-05",
-  "wang yi says china welcomes stronger european business relat": "2026-07-05",
-  "investors looking for shelter from ai storm are turning to i": "2026-07-05",
-  "where can i invest my kids trump account money the treasury": "2026-07-05",
   "carry traders shift away from dollar in emergingmarket bets": "2026-07-06",
   "the investors scrambling to keep spacex  and elon musk  out": "2026-07-06",
   "tech lifts us stock futures after holiday break markets wrap": "2026-07-06",
@@ -91,13 +90,15 @@
   "markets watch walshs first testimony": "2026-07-12",
   "the stockmarket rally now hinges more on ai than oil": "2026-07-12",
   "stanton warns hormuz closure hurts economy": "2026-07-12",
-  "oil market prices in hormuz resilience": "2026-07-12"
+  "oil market prices in hormuz resilience": "2026-07-12",
+  "gold and silver drop as mideast strikes heighten ratehike ri": "2026-07-13",
+  "chinas oil imports poised to recover as stockpiling returns": "2026-07-13",
+  "theres good and bad news if you want to copy jpmorgans new a": "2026-07-13",
+  "european stocks steady as energy gains offset tech weakness": "2026-07-13",
+  "feds bowman urges global financial watchdog to be flexible": "2026-07-13"
  },
  "health": {
   "scientists discover the deep sleep circuit that builds muscl": "2026-07-08",
-  "a hidden weakness in deadly cancers could lead to powerful n": "2026-07-05",
-  "the secret to healthy aging may be hidden in your blood": "2026-07-05",
-  "scientists discover a surprising link between vitamin c and": "2026-07-05",
   "millions may be getting the wrong cholesterol test": "2026-07-08",
   "scientists may have finally found how alzheimers kills brain": "2026-07-08",
   "scientists may have finally found how alzheimers spreads thr": "2026-07-09",
@@ -112,21 +113,20 @@
   "this frog bacterium wiped out cancer tumors in mice with a s": "2026-07-10",
   "new weight loss pill beats oral ozempic in major trial": "2026-07-10",
   "harvard scientists turn a silicon chip into a dna writing ma": "2026-07-10",
-  "second pregnancy changes the brain in surprising new ways": "2026-07-11",
-  "experimental drug reverses severe fatty liver disease by rep": "2026-07-11",
+  "second pregnancy changes the brain in surprising new ways": "2026-07-13",
+  "experimental drug reverses severe fatty liver disease by rep": "2026-07-13",
   "heavy marijuana smoking may increase cancer risk researchers": "2026-07-11",
   "why the human body has so many design flaws": "2026-07-11",
   "columbia scientists discover surprising link between seroton": "2026-07-12",
   "common blood pressure drug could make cancer therapy far mor": "2026-07-12",
   "yale scientists may have found how parkinsons disease spread": "2026-07-12",
-  "alzheimers tau protein has a surprising secret role in memor": "2026-07-12",
-  "this ultrasound treatment may help stop arthritis before it": "2026-07-12"
+  "alzheimers tau protein has a surprising secret role in memor": "2026-07-13",
+  "this ultrasound treatment may help stop arthritis before it": "2026-07-13",
+  "scientists discover a hidden heart valve risk linked to gum": "2026-07-13"
  },
  "startup": {
   "zai launches zcode to challenge cursor claude code and githu": "2026-07-06",
-  "trunk tools stack cut document review from 60 days to 10 by": "2026-07-05",
   "anthropic is bringing back claude fable 5 globally after us": "2026-07-06",
-  "what is mistral ai everything to know about the openai compe": "2026-07-05",
   "smart glasses maker even realities hits 1b valuation with 15": "2026-07-06",
   "ubers european expansion plans may have hit a speed bump": "2026-07-06",
   "ai law startup norm raises 120m hits unicorn valuation": "2026-07-08",
@@ -165,13 +165,15 @@
   "against usefulness": "2026-07-12",
   "show hn shirei crossplatform gui framework in native go": "2026-07-12",
   "automation without understanding": "2026-07-12",
-  "theo de raadt youve been smoking something mind altering 200": "2026-07-12"
+  "theo de raadt youve been smoking something mind altering 200": "2026-07-12",
+  "deepseek cut prices 75 the 100x problem remains": "2026-07-13",
+  "berkshires 397b bet against an overheated market": "2026-07-13",
+  "helsing raises 18bn backed by goldman and lightspeed": "2026-07-13",
+  "zig creator calls spade a spade anthropic blows smoke": "2026-07-13",
+  "interrail 6379km and 13 countries over 7 weeks": "2026-07-13"
  },
  "crypto": {
   "heres what happened in crypto today": "2026-07-09",
-  "bollinger bands creator eyes bitcoin bearmarket end wshaped": "2026-07-05",
-  "bitcoins bip110 fork fight gives exchanges an august deadlin": "2026-07-05",
-  "trumps crypto token buyers are down 38 billion blockchain da": "2026-07-05",
   "ether leads cryptos hold above key levels as bitcoin steadie": "2026-07-06",
   "dormant 19m bitcoin tied to new york lawsuit moves after nea": "2026-07-06",
   "thousands of crypto wallets at risk from ill bloom vulnerabi": "2026-07-06",
@@ -210,13 +212,14 @@
   "eric trumps american bitcoin forces 115 reverse split to avo": "2026-07-12",
   "cambridge study puts ethereum near the lower end of pos ener": "2026-07-12",
   "xrp loses 700 million in futures bets while xrpl builds a 4": "2026-07-12",
-  "bitcoins 64000 rebound is outrunning etf demand despite a 19": "2026-07-12"
+  "bitcoins 64000 rebound is outrunning etf demand despite a 19": "2026-07-12",
+  "after mica deadline majority of binance users sent funds to": "2026-07-13",
+  "robinhood l2 sparks eth optimism saylor muddies waters hodle": "2026-07-13",
+  "bitcoins 60k price floor is back in play as hormuz oil shock": "2026-07-13",
+  "one crypto wallet tied to a 20yearold fraudster processed ov": "2026-07-13",
+  "bitcoin holds near 63800 as wardriven selloff hits everythin": "2026-07-13"
  },
  "world-news": {
-  "us marks 250th birthday with fireworks flyovers and extreme": "2026-07-05",
-  "ukraine hits major oil terminal in russias st petersburg": "2026-07-05",
-  "moment of destiny for frances le pen in verdict to decide he": "2026-07-05",
-  "pastor freed from prison in china weeks after trump requeste": "2026-07-05",
   "marine le pen appeal verdict why this moment matters for fra": "2026-07-06",
   "ukraine warns of interceptor missile shortage as 15 killed i": "2026-07-06",
   "rodrguez defends venezuelas emergency earthquake response as": "2026-07-06",
@@ -288,7 +291,17 @@
   "wimbledon 2026 live updates latest with jannik sinner and al": "2026-07-12",
   "missiles and drones fired at gulf states after night of us s": "2026-07-12",
   "jamie carragher is right about liverpool as andoni iraola ha": "2026-07-12",
-  "the westies 2026  imdb": "2026-07-12"
+  "the westies 2026  imdb": "2026-07-12",
+  "concerts": "2026-07-13",
+  "heat advisory": "2026-07-13",
+  "united": "2026-07-13",
+  "apple iphone 18 pro": "2026-07-13",
+  "lewis dobbin": "2026-07-13",
+  "this is an industrywide problem country singer cancels conce": "2026-07-13",
+  "california is about to get hit with rain heat thunderstorms": "2026-07-13",
+  "united airlines removes thousands of flights from its summer": "2026-07-13",
+  "iphone 18 pro release date apples strategic decision to defe": "2026-07-13",
+  "gossip southampton close on lewis dobbin signing  bbc": "2026-07-13"
  },
  "true-crime": {
   "akeeley keshawn blade jr teen killer": "2026-07-06",
@@ -332,12 +345,18 @@
   "i accidentally shot my friend man killed buddy during new ye": "2026-07-12",
   "it was her time i guess nurse mom who spent just 49 seconds": "2026-07-12",
   "man preparing to retire gets shot dead after eating lunch at": "2026-07-12",
-  "mansqueezed baby harder and harder to get the child to pass": "2026-07-12"
+  "mansqueezed baby harder and harder to get the child to pass": "2026-07-12",
+  "man calmly shoots his moms boyfriend dead after he started c": "2026-07-13",
+  "man says he went to starbucks to find rape victim because th": "2026-07-13",
+  "baby squeezed over and over by frustrated caregiver who then": "2026-07-13",
+  "i told you not to come woman 12yearold nonverbal son bludgeo": "2026-07-13",
+  "bellingham scores twice to lift england past haaland and nor": "2026-07-13"
  },
  "topic-worldcup": {
   "fifa gives jarell quansah twogame ban for red card would mis": "2026-07-10",
   "world cup 2026 england defender marc guehi a serious doubt f": "2026-07-10",
   "world cup 2026 belgium lose to spain and exit world cup  bbc": "2026-07-11",
-  "world cup 2026 breel embolo sent off as result of mistaken i": "2026-07-12"
+  "world cup 2026 breel embolo sent off as result of mistaken i": "2026-07-12",
+  "neymar participates in world series of poker tournament in l": "2026-07-13"
  }
 }

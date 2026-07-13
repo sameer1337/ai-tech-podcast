@@ -167,5 +167,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0016_2026-07-12.mp3" type="audio/mpeg" length="1183536" />
     </item>
+    <item>
+      <title>DeepSeek cut prices 75%. The 100x problem remains — Startup Wire Daily | Jul 13</title>
+      <pubDate>Mon, 13 Jul 2026 09:41:59 +0000</pubDate>
+      <guid isPermaLink="false">startup-ep17-20260713</guid>
+      <description>DeepSeek just slashed prices on its V4-Pro model by a whopping 75%, a move that should have been a major win for enterprise AI vendors and developers, but it's turning out to be a mixed bag. The reason is that while inference costs are plummeting, agent systems are consuming tokens at an insane rate, faster than prices are declining. This is a big deal because it means that cheaper models don't automatically translate into healthier margins for these companies. It's like they're running on a tre...</description>
+      <itunes:episode>17</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0017_2026-07-13.mp3" type="audio/mpeg" length="929664" />
+    </item>
   </channel>
 </rss>

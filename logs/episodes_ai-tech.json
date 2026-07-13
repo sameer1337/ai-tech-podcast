@@ -1,5 +1,15 @@
 [
   {
+    "number": 17,
+    "title": "DeepSeek cut prices 75%. The 100x problem remains \u2014 AI Tech Daily | Jul 13",
+    "pubDate": "Mon, 13 Jul 2026 09:40:44 +0000",
+    "guid": "ai-tech-ep17-20260713",
+    "description": "$12 billion in annual savings is what DeepSeek's 75% price cut on its V4-Pro model could bring to enterprise AI vendors and developers, but many are discovering that cheaper models don\u2019t automatically translate into healthier margins. The reason is simple: while inference costs plummet, agent systems are voraciously consuming tokens faster than prices are declining. For the last two decades, software economics was dictated by a straightforward relationship between computing power and cost, but t...",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0017_2026-07-13.mp3",
+    "file_size": 1163664,
+    "duration": 300
+  },
+  {
     "number": 16,
     "title": "Reed Jobs would rather talk about curing cancer than his \u2014 AI Tech Daily | Jul 12",
     "pubDate": "Sun, 12 Jul 2026 08:27:33 +0000",
