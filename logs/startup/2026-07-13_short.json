@@ -1,11 +1,11 @@
 {
   "niche": "startup",
   "date": "2026-07-13",
-  "story": "Berkshire's $397B Bet Against an Overheated Market",
-  "title": "Buffett's $397B Market Gamble",
-  "overlay": "Warren Buffett Bets Big",
-  "script": "Berkshire bets 397 billion against the market. This massive hedge signals even the biggest players are nervous about an overheated market. Cheaper AI models are not translating to healthier margins due to insane token consumption rates. The industry is facing a major hurdle that requires creative problem-solving. Companies must rethink their business models to stay competitive. What will be the outcome of Berkshire's huge bet against the market and how will it impact the industry's future?",
-  "duration": 27.8,
+  "story": "DeepSeek cut prices 75%. The 100x problem remains",
+  "title": "DeepSeek cut prices 75%. The 100x problem remains",
+  "overlay": "DeepSeek cut prices 75%. The 100x",
+  "script": "DeepSeek just slashed prices on its V4-Pro model by a whopping 75%, a move that should have been a major win for enterprise AI vendors and developers, but it's turning out to be a mixed bag. The reason is that while inference costs are plummeting, agent systems are consuming tokens at an insane rate, faster than prices are declining. This is a big deal because it means that cheaper models don't automatically translate into healthier margins for these companies.",
+  "duration": 24.4,
   "video": "shorts/startup_2026-07-13.mp4",
-  "tiktok_caption": "Buffett's $397B Market Gamble - full story on Startup Wire Daily, free on all podcast apps. #news #startup"
+  "tiktok_caption": "DeepSeek cut prices 75%. The 100x problem remains - full story on Startup Wire Daily, free on all podcast apps. #news #startup"
 }
