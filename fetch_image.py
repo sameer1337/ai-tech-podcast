@@ -5,7 +5,7 @@ then any commercially-usable), with a keyworded LoremFlickr fallback so we
 always return something. Resolved once at article-build time and cached in the
 article JSON (never called per page render).
 """
-import json, os, re, urllib.request, urllib.parse
+import json, os, re, time, urllib.request, urllib.parse
 
 OV = "https://api.openverse.org/v1/images/"
 UA = {"User-Agent": "MaptDaily/1.0 (+https://daily.mapt.cloud)"}
@@ -55,30 +55,64 @@ def _cover_resize(data: bytes, w: int, h: int):
     return im.crop((left, top, left + w, top + h))
 
 
+def _pollinations_url(query, seed, w, h):
+    """On-topic AI image GENERATED from the article's keywords (same engine as the
+    YouTube thumbnails) — far more relevant than free stock, which matches abstract
+    news topics poorly."""
+    prompt = (f"editorial news photograph, {(query or 'breaking news')[:120]}, "
+              "realistic, natural lighting, high detail, no text, no words, no watermark")
+    return (f"https://image.pollinations.ai/prompt/{urllib.parse.quote(prompt)}"
+            f"?width={w}&height={h}&nologo=true&model=flux&seed={seed % 99999}")
+
+
+def _download(url, timeout=90):
+    req = urllib.request.Request(url, headers=UA)
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read()
+
+
+def _save_resized(data, dest_path, w, h):
+    try:
+        _cover_resize(data, w, h).save(dest_path, "JPEG", quality=82, optimize=True)
+    except Exception as e:                              # PIL missing/decode fail: save raw
+        print(f"[fetch_image] resize failed ({e}); saving original bytes")
+        with open(dest_path, "wb") as f:
+            f.write(data)
+
+
 def fetch_and_cache_image(query, subdir, name, seed=0, w=900, h=520):
-    """Resolve an image via fetch_image() and download it to assets/<subdir>/<name>.jpg so the
-    site serves it same-origin instead of hotlinking a third-party host at render time. The image
-    is re-encoded to a web-sized w×h JPEG (never the multi-MB original). Returns the local web
-    path, or the remote URL as a fallback if the download fails. Never raises. Skips if cached."""
-    remote = fetch_image(query, seed, w, h)
-    if not remote:
-        return ""
+    """Download an on-topic image to assets/<subdir>/<name>.jpg (served same-origin,
+    re-encoded to a web-sized w×h JPEG). Primary source = Pollinations (generated
+    FROM the query, so always relevant); falls back to Openverse/LoremFlickr stock
+    if generation fails. Returns the local web path. Never raises. Skips if cached."""
     dest_dir = os.path.join("assets", *subdir.split("/"))
-    dest_path = os.path.join(dest_dir, f"{name}.jpg")   # always re-encoded to jpg
+    dest_path = os.path.join(dest_dir, f"{name}.jpg")
     web_path = f"/assets/{subdir}/{name}.jpg"
     if os.path.exists(dest_path):
         return web_path
+    os.makedirs(dest_dir, exist_ok=True)
+
+    q = (query or "").strip()
+    # 1) On-topic generated image.
+    if q:
+        for attempt in range(2):
+            try:
+                data = _download(_pollinations_url(q, seed, w, h))
+                if len(data) > 5000:
+                    _save_resized(data, dest_path, w, h)
+                    return web_path
+                raise ValueError(f"too small ({len(data)} bytes)")
+            except Exception as e:
+                print(f"[fetch_image] pollinations attempt {attempt+1} failed: {e}")
+                if attempt == 0:
+                    time.sleep(6)
+
+    # 2) Fallback: free stock photo (Openverse / LoremFlickr).
+    remote = fetch_image(q, seed, w, h)
+    if not remote:
+        return ""
     try:
-        req = urllib.request.Request(remote, headers=UA)
-        with urllib.request.urlopen(req, timeout=20) as r:
-            data = r.read()
-        os.makedirs(dest_dir, exist_ok=True)
-        try:
-            _cover_resize(data, w, h).save(dest_path, "JPEG", quality=82, optimize=True)
-        except Exception as e:                          # PIL missing/decoding fail: save raw
-            print(f"[fetch_image] resize failed ({e}); saving original bytes")
-            with open(dest_path, "wb") as f:
-                f.write(data)
+        _save_resized(_download(remote, timeout=20), dest_path, w, h)
         return web_path
     except Exception as e:
         print(f"[fetch_image] download failed, falling back to remote URL: {e}")
