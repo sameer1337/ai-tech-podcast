@@ -14,7 +14,10 @@ import json
 import urllib.request
 
 SITE_URL = "https://daily.mapt.cloud"
-INDEXNOW_KEY = "6f764af03d2542fd8e80365fee476196"
+# Fresh key (2026-07-13): the old 6f764... was registered to a different host
+# (the old github.io domain), so IndexNow returned 403 UserForbiddedToAccessSite.
+# A brand-new key binds to daily.mapt.cloud on first verification.
+INDEXNOW_KEY = "f2cd6c0eed254e85cb117777e649e630"
 ENDPOINT = "https://api.indexnow.org/indexnow"
 
 
