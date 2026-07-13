@@ -113,6 +113,7 @@ jobs:
       - name: Upload all podcasts to YouTube (morning only)
         if: github.event.schedule != '0 18 * * *' && github.event.inputs.mode != 'pages_only'
         env:
+          GROQ_API_KEY:         ${{ secrets.GROQ_API_KEY }}   # needed for the AI thumbnail hook
           GOOGLE_CLIENT_ID:     ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           YT_REFRESH_TOKEN:     ${{ secrets.YT_REFRESH_TOKEN }}
