@@ -26,7 +26,7 @@ RDIR = os.environ.get("FTP_DIR", "daily")   # relative to the FTP login home (/p
 
 # What to publish (files + directories), relative to the repo root.
 FILES = ["index.html", "mapt.html", "vita.html", "about.html", "privacy.html",
-         "sitemap.xml", "robots.txt", "subscribe.php",
+         "sitemap.xml", "robots.txt", "llms.txt", "subscribe.php",
          "f2cd6c0eed254e85cb117777e649e630.txt"]   # IndexNow key file (fresh key)
 DIRS  = ["static", "blog", "podcasts", "assets"]
 

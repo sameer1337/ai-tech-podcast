@@ -44,6 +44,58 @@ def pimg(p, w=800, h=500):
     return p.get("image_url") or img(p["nid"], p["seed"], w, h)
 
 
+_STRIP_TAGS = re.compile(r"<[^>]+>")
+
+
+def _faq_ld(body_html):
+    """Extract Q&A pairs from an article's FAQ section into FAQPage JSON-LD.
+    Trending/keyword posts render FAQs as <p><strong>Question?</strong></p><p>Answer</p>
+    (or <p><strong>Question?</strong> Answer</p>). This makes the page eligible for
+    Google FAQ rich results and gives ChatGPT/Perplexity/Claude clean Q&A to extract.
+    Returns a schema dict, or None when fewer than 2 well-formed pairs are found."""
+    m = re.search(r"(?:frequently asked questions|faqs?)\s*</h2>(.*)$", body_html, re.I | re.S)
+    section = m.group(1) if m else body_html
+    paras = re.findall(r"<p>(.*?)</p>", section, re.S)
+    qa, i = [], 0
+    while i < len(paras):
+        sm = re.match(r"\s*<strong>(.*?)</strong>\s*(.*)", paras[i], re.S)
+        if sm and "?" in sm.group(1):
+            q = _STRIP_TAGS.sub("", sm.group(1)).strip()
+            rest = _STRIP_TAGS.sub("", sm.group(2)).strip()
+            if rest:
+                a = rest
+            elif i + 1 < len(paras):
+                a = _STRIP_TAGS.sub("", paras[i + 1]).strip()
+                i += 1
+            else:
+                a = ""
+            if q and len(a) > 10:
+                qa.append((q, a))
+        i += 1
+    if len(qa) < 2:
+        return None
+    return {"@context": "https://schema.org", "@type": "FAQPage",
+            "mainEntity": [{"@type": "Question", "name": q,
+                            "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qa[:8]]}
+
+
+def _llms_txt(all_posts):
+    """Machine-readable site guide (llmstxt.org) so AI engines get a clean overview
+    and links without scraping. Regenerated on every build; deployed by deploy_ftp."""
+    L = [f"# {BRAND}", "",
+         f"> {BRAND} publishes daily news and analysis across seven beats — AI & tech, finance, "
+         "health, startups, crypto, world/trending and true crime — each paired with a five-minute "
+         "audio brief. Summaries are AI-assisted from public news sources and refreshed twice daily.",
+         "", f"Site: {SITE_URL}", f"Publisher: Mapt ({MAPT_URL})", "", "## Sections"]
+    for niche in PODCASTS:
+        nid = niche["id"]
+        L.append(f"- [{LABEL.get(nid, nid)}]({SITE_URL}/blog/{nid}/): {niche['description'][:110]}")
+    L += ["", "## Latest articles"]
+    for p in sorted(all_posts, key=lambda p: _iso(p["pubDate"]), reverse=True)[:30]:
+        L.append(f"- [{p['headline']}]({p['url']})")
+    return "\n".join(L) + "\n"
+
+
 # ─────────── data ───────────
 def load_episodes(nid):
     p = f"logs/episodes_{nid}.json"
@@ -369,6 +421,9 @@ def post_page(p, all_posts, counts):
           "image":[pimg(p,900,520)],"author":{"@type":"Organization","name":niche["title"]},
           "publisher":{"@type":"Organization","name":BRAND},"mainEntityOfPage":p["url"],"articleSection":LABEL[nid]}
     schema = f'<script type="application/ld+json">{json.dumps(ld)}</script>'
+    faq = _faq_ld(body)
+    if faq:
+        schema += f'<script type="application/ld+json">{json.dumps(faq)}</script>'
     art = f"""<div class="container"><div class="layout"><div class="maincol"><article class="post">
 <div class="breadcrumb"><a href="/">Home</a> › <a href="/blog/{nid}/">{LABEL[nid]}</a></div>
 {_tag(p)}<h1>{html.escape(p['headline'])}</h1><p class="dek">{html.escape(p['dek'])}</p>
@@ -480,6 +535,7 @@ def main():
     _write("about.html", static_page("About Mapt Daily", f"{SITE_URL}/about.html", about, all_posts))
     _write("privacy.html", static_page("Privacy Policy", f"{SITE_URL}/privacy.html", privacy, all_posts))
     _write("sitemap.xml", sitemap(urls))
+    _write("llms.txt", _llms_txt(all_posts))
     _write("robots.txt", f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n")
     print(f"[page] home + mapt + vita + about + privacy + sitemap ({len(urls)} urls)")
 
