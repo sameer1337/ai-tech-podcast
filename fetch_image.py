@@ -40,19 +40,32 @@ def fetch_image(query, seed=0, w=900, h=520):
     return _loremflickr(q, seed, w, h)
 
 
+def _cover_resize(data: bytes, w: int, h: int):
+    """Cover-crop the raw image bytes to exactly w×h (uniform card size). Openverse
+    returns full-res originals (some 6000px / 13 MB), which make cards render blank
+    while they slowly download — so every cached image is normalised to ~900×520."""
+    import io
+    from PIL import Image
+    im = Image.open(io.BytesIO(data)).convert("RGB")
+    sw, sh = im.size
+    scale = max(w / sw, h / sh)
+    nw, nh = max(w, int(sw * scale + 0.5)), max(h, int(sh * scale + 0.5))
+    im = im.resize((nw, nh), Image.LANCZOS)
+    left, top = (nw - w) // 2, (nh - h) // 2
+    return im.crop((left, top, left + w, top + h))
+
+
 def fetch_and_cache_image(query, subdir, name, seed=0, w=900, h=520):
-    """Resolve an image via fetch_image() and download it to assets/<subdir>/<name>.ext so the
-    site serves it same-origin instead of hotlinking a third-party host at render time. Returns
-    the local web path (e.g. "/assets/blog/ai-tech/123.jpg"), or the remote URL as a fallback if
-    the download fails. Never raises. Skips re-downloading if already cached on disk."""
+    """Resolve an image via fetch_image() and download it to assets/<subdir>/<name>.jpg so the
+    site serves it same-origin instead of hotlinking a third-party host at render time. The image
+    is re-encoded to a web-sized w×h JPEG (never the multi-MB original). Returns the local web
+    path, or the remote URL as a fallback if the download fails. Never raises. Skips if cached."""
     remote = fetch_image(query, seed, w, h)
     if not remote:
         return ""
-    m = re.search(r"\.(jpe?g|png|webp)(?:$|\?)", remote, re.IGNORECASE)
-    ext = f".{m.group(1).lower()}" if m else ".jpg"
     dest_dir = os.path.join("assets", *subdir.split("/"))
-    dest_path = os.path.join(dest_dir, f"{name}{ext}")
-    web_path = f"/assets/{subdir}/{name}{ext}"
+    dest_path = os.path.join(dest_dir, f"{name}.jpg")   # always re-encoded to jpg
+    web_path = f"/assets/{subdir}/{name}.jpg"
     if os.path.exists(dest_path):
         return web_path
     try:
@@ -60,8 +73,12 @@ def fetch_and_cache_image(query, subdir, name, seed=0, w=900, h=520):
         with urllib.request.urlopen(req, timeout=20) as r:
             data = r.read()
         os.makedirs(dest_dir, exist_ok=True)
-        with open(dest_path, "wb") as f:
-            f.write(data)
+        try:
+            _cover_resize(data, w, h).save(dest_path, "JPEG", quality=82, optimize=True)
+        except Exception as e:                          # PIL missing/decoding fail: save raw
+            print(f"[fetch_image] resize failed ({e}); saving original bytes")
+            with open(dest_path, "wb") as f:
+                f.write(data)
         return web_path
     except Exception as e:
         print(f"[fetch_image] download failed, falling back to remote URL: {e}")
