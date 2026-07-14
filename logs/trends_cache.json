@@ -1,105 +1,105 @@
 {
- "date": "2026-07-13",
+ "date": "2026-07-14",
  "trends": [
   {
-   "query": "concerts",
-   "traffic": 20000,
-   "news": "Fans holding concert tickets report gate closures outside Jay-Z's final Yankee Stadium show"
+   "query": "5",
+   "traffic": 10000,
+   "news": "'New twist in killer hunt' and 'One of a kind Ann'"
   },
   {
-   "query": "heat advisory",
-   "traffic": 5000,
-   "news": "Sunshine, dry weather and building heat this week"
+   "query": "stock market news today",
+   "traffic": 2000,
+   "news": "Stock market today: Dow, S&P 500, Nasdaq futures slip as US and Iran exchange fire, oil jumps"
   },
   {
-   "query": "united",
+   "query": "what is new on netflix",
+   "traffic": 2000,
+   "news": "What To Watch This Weekend: New Shows And Movies To Stream On Netflix, Hulu, Prime Video, Apple TV And More"
+  },
+  {
+   "query": "alison hammond",
+   "traffic": 2000,
+   "news": "Alison Hammond, 51, opens up on 22-year age gap relationship & if she'll marry"
+  },
+  {
+   "query": "h&m",
    "traffic": 1000,
-   "news": "Liverpool make contact to sign Brazilian star"
-  },
-  {
-   "query": "apple iphone 18 pro",
-   "traffic": 500,
-   "news": "Apple's plan to escape the iPhone 18 Pro price hike apparently just got sabotaged"
-  },
-  {
-   "query": "lewis dobbin",
-   "traffic": 500,
-   "news": "Lewis Dobbin: Wolves eye Aston Villa attacker - gossip"
-  },
-  {
-   "query": "claire sweeney",
-   "traffic": 500,
-   "news": "Amazing! Good luck Claire \u2764\ufe0f"
-  },
-  {
-   "query": "heather knight",
-   "traffic": 500,
-   "news": "England vs India, Women's Test, day three: Cricket score, updates, video and analysis from game at Lord's"
-  },
-  {
-   "query": "meningitis b vaccine",
-   "traffic": 500,
-   "news": "Meningitis B: Teenagers warned to get jab after deadly university outbreaks"
-  },
-  {
-   "query": "lorenzo sonego",
-   "traffic": 200,
-   "news": "'Flawless' Zverev has Fritz's number at last"
-  },
-  {
-   "query": "us embassy",
-   "traffic": 200,
    "news": ""
   },
   {
-   "query": "just fontaine",
+   "query": "notizie del mondo",
+   "traffic": 1000,
+   "news": "Peppino Di Capri, a chi va l\u2019eredit\u00e0 e a quanto ammonta"
+  },
+  {
+   "query": "tennis scores today",
+   "traffic": 1000,
+   "news": "Can Alexander Zverev really undermine Jannik Sinner and Carlos Alcaraz?"
+  },
+  {
+   "query": "influencer marketing",
+   "traffic": 1000,
+   "news": "How to Tell Whether an Influencer Will Actually Perform"
+  },
+  {
+   "query": "m\u00e9t\u00e9o demain",
+   "traffic": 1000,
+   "news": "M\u00e9t\u00e9o : la Loire maintenue en vigilance orange canicule, risque d\u2019orages localis\u00e9"
+  },
+  {
+   "query": "nachrichten heute",
+   "traffic": 1000,
+   "news": "Wolkenbruch \u00fcber Heilbronn: Starkregen und Gewitterwarnung am Morgen"
+  },
+  {
+   "query": "charity dingle emmerdale spoilers",
+   "traffic": 1000,
+   "news": "Vanessa and Mack unite to take down Dr Todd for Charity in Emmerdale"
+  },
+  {
+   "query": "netflix top movies right now",
+   "traffic": 500,
+   "news": "New Releases on Netflix This Week and Top 10 Movies & Series: July 11, 2026"
+  },
+  {
+   "query": "what is a heat dome",
+   "traffic": 500,
+   "news": "Record heat is shifting east, spreading to Midwest and Northeast"
+  },
+  {
+   "query": "bp share price",
+   "traffic": 500,
+   "news": "RBC Capital Keeps Their Buy Rating on BP p.l.c. (BP)"
+  },
+  {
+   "query": "edward miliband",
+   "traffic": 500,
+   "news": "Miliband bids to prove his No 11 mettle with green light for Aberdeen gasfield"
+  },
+  {
+   "query": "sir nick faldo bryson dechambeau",
    "traffic": 200,
-   "news": "How wingers are the driving force behind record-breaking goals in ongoing WC"
+   "news": "Bryson DeChambeau says anything but victory at The Open Championship 'will be a loss'"
   },
   {
-   "query": "bastille day",
+   "query": "ricky alvarez",
    "traffic": 200,
-   "news": "With silent march French Nice marks tenth anniversary of Islamic State terrorist attack"
+   "news": "Ariana Grande Changes Lyrics About Ricky Alvarez for Third Time, Hinting at Reignited Romance"
   },
   {
-   "query": "otto rosengren",
+   "query": "robert downey jr new marvel role",
    "traffic": 200,
-   "news": "Uppgifter: K\u00f6ln och Middlesbrough vill v\u00e4rva Rosengren"
+   "news": "The First Official \u2018Avengers: Doomsday\u2019 Cast Photo Is A Nightmare"
   },
   {
-   "query": "daycare",
+   "query": "howard lutnick",
    "traffic": 100,
-   "news": "Parents sue fitness club daycare after video appears to show worker throwing child"
+   "news": "Howard Lutnick Tells Samsung and SK Hynix They Have 'No Choice' but to Build US AI Memory Fabs\u2014 and Micron's CEO May Not Be Happy"
   },
   {
-   "query": "home prices",
+   "query": "jacob elordi",
    "traffic": 100,
-   "news": "Hamptons home prices surge to record highs thanks to Wall Street and shrinking supply: \u2018No end in sight\u2019"
-  },
-  {
-   "query": "housing market",
-   "traffic": 100,
-   "news": "Mortgage Rate Dip Fuels Pending Sales Surge, Redfin Reports"
-  },
-  {
-   "query": "billboard",
-   "traffic": 100,
-   "news": "Chart Final UPDATE: Bump 'n' Grindr"
-  },
-  {
-   "query": "the open last chance qualifier",
-   "traffic": 100,
-   "news": "The Open: England's Andrew Wilson out to make most of 'Last-Chance'"
-  },
-  {
-   "query": "aol",
-   "traffic": 100,
-   "news": "Italian CEO Of Bending Spoons, Owner Of AOL And Evernote, Is Worth $2.4 Billion After IPO"
-  },
-  {
-   "query": "west midlands police",
-   "traffic": 100,
-   "news": "'Call 999' - Police searching for missing boy, 13"
+   "news": "\u2018Wuthering Heights\u2019 OTT release: When and where to watch Margot Robbie, Jacob Elordi-starrer"
   }
  ]
 }

@@ -185,5 +185,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0018_2026-07-13.mp3" type="audio/mpeg" length="1009728" />
     </item>
+    <item>
+      <title>Video-generation startup PixVerse raises $439M, valuation — AI Tech Daily | Jul 14</title>
+      <pubDate>Tue, 14 Jul 2026 08:20:54 +0000</pubDate>
+      <guid isPermaLink="false">ai-tech-ep19-20260714</guid>
+      <description>PixVerse just raised a staggering $439 million, catapulting its valuation to a whopping $2.1 billion, and this massive influx of cash is about to change the video-generation game. This startup has been making waves in the industry with its innovative approach to video production, and with this new funding, it's aiming to expand its world model offering to customers across the globe. The implications are huge - we're talking about a potential revolution in the way we create and consume video cont...</description>
+      <itunes:episode>19</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0019_2026-07-14.mp3" type="audio/mpeg" length="1359936" />
+    </item>
   </channel>
 </rss>

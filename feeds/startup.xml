@@ -176,5 +176,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0017_2026-07-13.mp3" type="audio/mpeg" length="929664" />
     </item>
+    <item>
+      <title>Hermes agent maker Nous Research in talks for new funding — Startup Wire Daily | Jul 14</title>
+      <pubDate>Tue, 14 Jul 2026 08:22:47 +0000</pubDate>
+      <guid isPermaLink="false">startup-ep18-20260714</guid>
+      <description>Nous Research, the company behind the cutting-edge Hermes agent maker, is in talks for a massive new funding round at a whopping $1.5 billion valuation, with the company raising at least $75 million, led by Robot Ventures, and significant participation from USV and other prominent investors. This is a staggering development, especially considering the current state of the venture capital market, where investors are becoming increasingly cautious with their investments. The fact that Nous Researc...</description>
+      <itunes:episode>18</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0018_2026-07-14.mp3" type="audio/mpeg" length="1151136" />
+    </item>
   </channel>
 </rss>
