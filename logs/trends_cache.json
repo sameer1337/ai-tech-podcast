@@ -1,105 +1,105 @@
 {
- "date": "2026-07-14",
+ "date": "2026-07-15",
  "trends": [
   {
-   "query": "5",
-   "traffic": 10000,
-   "news": "'New twist in killer hunt' and 'One of a kind Ann'"
-  },
-  {
-   "query": "stock market news today",
-   "traffic": 2000,
-   "news": "Stock market today: Dow, S&P 500, Nasdaq futures slip as US and Iran exchange fire, oil jumps"
-  },
-  {
-   "query": "what is new on netflix",
-   "traffic": 2000,
-   "news": "What To Watch This Weekend: New Shows And Movies To Stream On Netflix, Hulu, Prime Video, Apple TV And More"
-  },
-  {
-   "query": "alison hammond",
-   "traffic": 2000,
-   "news": "Alison Hammond, 51, opens up on 22-year age gap relationship & if she'll marry"
-  },
-  {
-   "query": "h&m",
-   "traffic": 1000,
-   "news": ""
-  },
-  {
-   "query": "notizie del mondo",
-   "traffic": 1000,
-   "news": "Peppino Di Capri, a chi va l\u2019eredit\u00e0 e a quanto ammonta"
-  },
-  {
-   "query": "tennis scores today",
-   "traffic": 1000,
-   "news": "Can Alexander Zverev really undermine Jannik Sinner and Carlos Alcaraz?"
-  },
-  {
-   "query": "influencer marketing",
-   "traffic": 1000,
-   "news": "How to Tell Whether an Influencer Will Actually Perform"
+   "query": "space exploration",
+   "traffic": 500,
+   "news": "SpaceX Stock Falls. It Is Too Much For Just One Analyst."
   },
   {
    "query": "m\u00e9t\u00e9o demain",
-   "traffic": 1000,
-   "news": "M\u00e9t\u00e9o : la Loire maintenue en vigilance orange canicule, risque d\u2019orages localis\u00e9"
-  },
-  {
-   "query": "nachrichten heute",
-   "traffic": 1000,
-   "news": "Wolkenbruch \u00fcber Heilbronn: Starkregen und Gewitterwarnung am Morgen"
-  },
-  {
-   "query": "charity dingle emmerdale spoilers",
-   "traffic": 1000,
-   "news": "Vanessa and Mack unite to take down Dr Todd for Charity in Emmerdale"
-  },
-  {
-   "query": "netflix top movies right now",
    "traffic": 500,
-   "news": "New Releases on Netflix This Week and Top 10 Movies & Series: July 11, 2026"
+   "news": "Apr\u00e8s la canicule, le retour de la pluie attendu en Maine-et-Loire : des orages sous surveillance d\u00e8s mercredi"
   },
   {
-   "query": "what is a heat dome",
+   "query": "disneyland ticket prices",
    "traffic": 500,
-   "news": "Record heat is shifting east, spreading to Midwest and Northeast"
+   "news": "My Favorite Sit-Down Dining Deal at Disney World Costs Under $10"
+  },
+  {
+   "query": "cryptocurrency trading",
+   "traffic": 500,
+   "news": "Tax Rules Push 80% of India\u2019s Crypto Trading Into Unregulated Futures"
+  },
+  {
+   "query": "xero",
+   "traffic": 500,
+   "news": "Why Are Xero Shares Under Pressure Following Another Insider Share Sale?"
+  },
+  {
+   "query": "best movies on netflix",
+   "traffic": 500,
+   "news": "\u2018Enola Holmes 3\u2019 Opens To 20.3M Views, \u2018I Will Find You\u2019 Takes Aim At Netflix Most Popular Series List"
+  },
+  {
+   "query": "nba standings",
+   "traffic": 500,
+   "news": "Heat\u2019s Micky Arison unanimously elected chairman of the NBA Board of Governors"
+  },
+  {
+   "query": "showdown",
+   "traffic": 500,
+   "news": "Why Netflix and MLB are rolling out a back-to-basics Home Run Derby - The Athletic"
+  },
+  {
+   "query": "falklands",
+   "traffic": 500,
+   "news": "For Argentina, a World Cup Semifinal Against England Isn\u2019t Just Soccer"
+  },
+  {
+   "query": "asml share price",
+   "traffic": 500,
+   "news": "Dutch tech giant ASML posts gain in second-quarter profits"
+  },
+  {
+   "query": "michail antonio",
+   "traffic": 500,
+   "news": "\u201cKarren Brady offered me a \u00a35k a week deal with the U21s, I said, 'The U21s are on more than that' Her response was, 'Well, they haven\u2019t been in a car crash and shattered their leg' \u2013 I didn\u2019t sign the contract\u201d Michail Antonio on his West Ham rejection"
+  },
+  {
+   "query": "elsa aguirre",
+   "traffic": 200,
+   "news": "Fallece Elsa Aguirre: Adi\u00f3s a la diva de mirada magn\u00e9tica"
+  },
+  {
+   "query": "home prices",
+   "traffic": 200,
+   "news": "\u2018Hysteria\u2019 Grips San Francisco\u2019s Housing Market as A.I. Wealth Pours In"
+  },
+  {
+   "query": "ship",
+   "traffic": 200,
+   "news": "Princess cruise ship worker dead after going overboard near Canc\u00fan"
+  },
+  {
+   "query": "travis",
+   "traffic": 200,
+   "news": "Taylor Swift and Travis Kelce Jet Off on Their Honeymoon\u2014and Bring Along Their Tiny Dog"
   },
   {
    "query": "bp share price",
-   "traffic": 500,
-   "news": "RBC Capital Keeps Their Buy Rating on BP p.l.c. (BP)"
-  },
-  {
-   "query": "edward miliband",
-   "traffic": 500,
-   "news": "Miliband bids to prove his No 11 mettle with green light for Aberdeen gasfield"
-  },
-  {
-   "query": "sir nick faldo bryson dechambeau",
    "traffic": 200,
-   "news": "Bryson DeChambeau says anything but victory at The Open Championship 'will be a loss'"
+   "news": "COLUMN | BP: beyond petroleum, beyond perdition or just bad performance? (part two of two) [Offshore Accounts]"
   },
   {
-   "query": "ricky alvarez",
+   "query": "m27 traffic",
    "traffic": 200,
-   "news": "Ariana Grande Changes Lyrics About Ricky Alvarez for Third Time, Hinting at Reignited Romance"
+   "news": "Traffic being held on M27 with reports of multi-vehicle crash - live updates"
   },
   {
-   "query": "robert downey jr new marvel role",
+   "query": "antonio silva",
    "traffic": 200,
-   "news": "The First Official \u2018Avengers: Doomsday\u2019 Cast Photo Is A Nightmare"
+   "news": "Bournemouth close to signing Antonio Silva from Benfica"
   },
   {
-   "query": "howard lutnick",
+   "query": "princess anne south korea tour",
+   "traffic": 200,
+   "news": "King Charles Has Placed \"Immense Trust\" in One Member of the Royal Family"
+  },
+  {
+   "query": "noe lebreton",
    "traffic": 100,
-   "news": "Howard Lutnick Tells Samsung and SK Hynix They Have 'No Choice' but to Build US AI Memory Fabs\u2014 and Micron's CEO May Not Be Happy"
-  },
-  {
-   "query": "jacob elordi",
-   "traffic": 100,
-   "news": "\u2018Wuthering Heights\u2019 OTT release: When and where to watch Margot Robbie, Jacob Elordi-starrer"
+   "news": "Thomas Meunier set to join Sunderland on free transfer after turning down another Premier League club"
   }
  ]
 }

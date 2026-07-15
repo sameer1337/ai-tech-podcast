@@ -185,5 +185,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0018_2026-07-14.mp3" type="audio/mpeg" length="1282320" />
     </item>
+    <item>
+      <title>Bitmine generated $46M from Ethereum staking last quarter — Crypto Daily Brief | Jul 15</title>
+      <pubDate>Wed, 15 Jul 2026 08:29:10 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep19-20260715</guid>
+      <description>Bitmine just raked in $46 million from Ethereum staking last quarter, a staggering 98% of their total revenue, and it's clear that their pivot from Bitcoin mining is paying off in a big way. This is a huge deal because it shows that Ethereum staking is becoming a major player in the crypto space, and companies like Bitmine are positioning themselves to take advantage of this trend. The fact that they launched their validator just a few months ago in March and are already seeing such significant ...</description>
+      <itunes:episode>19</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0019_2026-07-15.mp3" type="audio/mpeg" length="1179648" />
+    </item>
   </channel>
 </rss>

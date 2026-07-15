@@ -185,5 +185,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0018_2026-07-14.mp3" type="audio/mpeg" length="861264" />
     </item>
+    <item>
+      <title>Wall Street has set a sky-high bar for companies to clear — Money Minute Daily | Jul 15</title>
+      <pubDate>Wed, 15 Jul 2026 08:26:58 +0000</pubDate>
+      <guid isPermaLink="false">finance-ep19-20260715</guid>
+      <description>$1.48 trillion is the staggering amount of earnings Wall Street expects companies to rake in this quarter, setting a sky-high bar that seems nearly impossible to clear. Yet, analysts at Piper Sandler think corporate America just might be able to pull it off. This is largely due to the impressive performance of the tech and finance sectors, which have been driving growth and innovation in recent months. If companies can indeed meet these lofty expectations, it would be a significant boost to the ...</description>
+      <itunes:episode>19</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0019_2026-07-15.mp3" type="audio/mpeg" length="1220256" />
+    </item>
   </channel>
 </rss>

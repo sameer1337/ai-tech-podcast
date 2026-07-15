@@ -185,5 +185,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0018_2026-07-14.mp3" type="audio/mpeg" length="1151136" />
     </item>
+    <item>
+      <title>The ex-Palantir and Dropbox duo helping the likes of — Startup Wire Daily | Jul 15</title>
+      <pubDate>Wed, 15 Jul 2026 08:28:30 +0000</pubDate>
+      <guid isPermaLink="false">startup-ep19-20260715</guid>
+      <description>ElevenLabs, Notion, and Wiz are now shipping AI-generated code faster than ever, thanks to a duo of ex-Palantir and Dropbox engineers who are helping these companies streamline their development processes. This is a game-changer for the tech industry, as AI-generated code has the potential to revolutionize the way software is developed, making it faster, cheaper, and more efficient. The fact that these top companies are already seeing results is a testament to the power of this technology, and i...</description>
+      <itunes:episode>19</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0019_2026-07-15.mp3" type="audio/mpeg" length="1453248" />
+    </item>
   </channel>
 </rss>
