@@ -194,5 +194,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0019_2026-07-15.mp3" type="audio/mpeg" length="1453248" />
     </item>
+    <item>
+      <title>Thinking Machines open sources first multimodal language — Startup Wire Daily | Jul 16</title>
+      <pubDate>Thu, 16 Jul 2026 08:27:19 +0000</pubDate>
+      <guid isPermaLink="false">startup-ep20-20260716</guid>
+      <description>Thinking Machines just open sourced its first multimodal language model, Inkling, under an enterprise-friendly Apache 2.0 license, and it's already being hailed as a game-changer for companies looking to move their AI workloads to open weights models. This matters because it gives enterprises the ability to customize, control, and run their AI models on-premises or in virtual private clouds, which is a big deal for companies that want to avoid relying on third-party platforms. Inkling is also de...</description>
+      <itunes:episode>20</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0020_2026-07-16.mp3" type="audio/mpeg" length="1006560" />
+    </item>
   </channel>
 </rss>

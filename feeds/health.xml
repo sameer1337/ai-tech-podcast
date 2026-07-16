@@ -194,5 +194,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0019_2026-07-15.mp3" type="audio/mpeg" length="1123632" />
     </item>
+    <item>
+      <title>More than 400 sick as CDC searches for the source of a — Health Edge Daily | Jul 16</title>
+      <pubDate>Thu, 16 Jul 2026 08:26:34 +0000</pubDate>
+      <guid isPermaLink="false">health-ep20-20260716</guid>
+      <description>More than 400 people have fallen ill in a growing Cyclospora outbreak that's spreading across four states, and the CDC is still scrambling to pinpoint the source of the contamination. The outbreak, which has been reported in several regions, has left health officials racing to identify the tainted food responsible, and they're warning that the actual number of cases is likely much higher than what's been reported so far. The CDC is urging anyone with symptoms, which can include diarrhea, weight ...</description>
+      <itunes:episode>20</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0020_2026-07-16.mp3" type="audio/mpeg" length="809712" />
+    </item>
   </channel>
 </rss>

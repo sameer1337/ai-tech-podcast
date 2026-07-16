@@ -1,9 +1,5 @@
 {
  "ai-tech": {
-  "hot french startup zml releases free product to speed infere": "2026-07-08",
-  "anthropic brings claude cowork to mobile and web as usage da": "2026-07-08",
-  "microsoft joins ai costcutting trend by relying more on its": "2026-07-08",
-  "ai chip maker sambanova raises 1b at 11b valuation 5 months": "2026-07-08",
   "spacexs grok 45 launches at half the price of rivals  heres": "2026-07-09",
   "slacks slackbot can now pull your crm data generate charts a": "2026-07-09",
   "openai launches gptlive a fullduplex voice upgrade that lets": "2026-07-09",
@@ -72,13 +68,14 @@
   "googles biggest clean power project is 40 miles north of xai": "2026-07-15",
   "whatnot acquires shaped to power realtime live shopping reco": "2026-07-15",
   "microsoft patches record number of security vulnerabilities": "2026-07-15",
-  "openai finally launches hardware for codex": "2026-07-15"
+  "openai finally launches hardware for codex": "2026-07-15",
+  "thinking machines open sources first multimodal language mod": "2026-07-16",
+  "agentic orchestration enterprise ai organizations have a dep": "2026-07-16",
+  "fcc to repeal 39 tv ownership cap in boost for trumpfriendly": "2026-07-16",
+  "we have maybe 20 months to rebuild for ai agents metas infra": "2026-07-16",
+  "the lost joy of music piracy": "2026-07-16"
  },
  "finance": {
-  "microns stock falls as investors wonder if the memory market": "2026-07-08",
-  "stocks fall as trump says iran truce is over markets wrap": "2026-07-08",
-  "adobes stock is temptingly cheap should investors bite": "2026-07-08",
-  "think the us stock market is too heavily exposed to ai its e": "2026-07-08",
   "investors havent been this bullish on the dollar in a decade": "2026-07-09",
   "michael burry bets on sportsbooks draftkings and flutter see": "2026-07-09",
   "stocks bounce as oil caps mideastdriven gains markets wrap": "2026-07-09",
@@ -147,12 +144,14 @@
   "warren buffett on the market today its tough to find values": "2026-07-15",
   "new york fed president williams says inflation has peaked ra": "2026-07-15",
   "anthropic moves closer to megaipo as bankers line up investo": "2026-07-15",
-  "spacexs stock breaks below its ipo price for the first time": "2026-07-15"
+  "spacexs stock breaks below its ipo price for the first time": "2026-07-15",
+  "arsenal of democracy jamie dimon announces 24 million effort": "2026-07-16",
+  "warren buffett calls bill gates actions with epstein distast": "2026-07-16",
+  "you are missing the bond deal of the decade  and it is guara": "2026-07-16",
+  "dcc gets sweetened bid from kkr ecp after drawnout talks": "2026-07-16",
+  "i dont want to sound callous why base your social security c": "2026-07-16"
  },
  "health": {
-  "scientists discover the deep sleep circuit that builds muscl": "2026-07-08",
-  "millions may be getting the wrong cholesterol test": "2026-07-08",
-  "scientists may have finally found how alzheimers kills brain": "2026-07-08",
   "scientists may have finally found how alzheimers spreads thr": "2026-07-09",
   "scientists finally crack natures secret for building better": "2026-07-11",
   "the ozempic and wegovy mistake sending thousands to poison c": "2026-07-11",
@@ -187,13 +186,12 @@
   "going to museums movies and theater may help your body stay": "2026-07-15",
   "scientists finally solved why some frogs survive a deadly fu": "2026-07-15",
   "this pet gecko could help scientists unlock the secrets of c": "2026-07-15",
-  "the hidden skeleton gatekeeper inside brain cells could help": "2026-07-15"
+  "the hidden skeleton gatekeeper inside brain cells could help": "2026-07-15",
+  "more than 400 sick as cdc searches for the source of a myste": "2026-07-16",
+  "scientists finally solved how a common gut bacterium trigger": "2026-07-16"
  },
  "startup": {
-  "ai law startup norm raises 120m hits unicorn valuation": "2026-07-08",
   "anthropic brings claude cowork to mobile and web as usage da": "2026-07-09",
-  "digitalnative startups are ditching rigid databases for thei": "2026-07-08",
-  "savis app aims to protect consumers from realistic ai scams": "2026-07-08",
   "spacexs grok 45 launches at half the price of rivals  heres": "2026-07-09",
   "slacks slackbot can now pull your crm data generate charts a": "2026-07-09",
   "openai launches gptlive a fullduplex voice upgrade that lets": "2026-07-09",
@@ -261,13 +259,15 @@
   "we have maybe 20 months to rebuild for ai agents metas infra": "2026-07-15",
   "robotics startup monumental raises 32m backed by khosla vent": "2026-07-15",
   "whatnot acquires shaped to power realtime live shopping reco": "2026-07-15",
-  "inside ode with anthropic the startup betting ai services ar": "2026-07-15"
+  "inside ode with anthropic the startup betting ai services ar": "2026-07-15",
+  "thinking machines open sources first multimodal language mod": "2026-07-16",
+  "agentic orchestration enterprise ai organizations have a dep": "2026-07-16",
+  "netstrings 1997": "2026-07-16",
+  "the lost joy of music piracy": "2026-07-16",
+  "reynard a real firefox web browser for ios 13 or later": "2026-07-16"
  },
  "crypto": {
   "heres what happened in crypto today": "2026-07-09",
-  "bitcoin dominance hits onemonth low as altcoin winners start": "2026-07-08",
-  "tether invests 20 million in mercado bitcoin to fuel expansi": "2026-07-08",
-  "tether invests 20 million in brazils mercado bitcoin": "2026-07-08",
   "bitcoin stalls as ethereum flashes worst weekly signal in ye": "2026-07-09",
   "cftc chair says clarity act is so close as august deadline n": "2026-07-09",
   "pump fun to release 127m of insider tokens worth double pump": "2026-07-09",
@@ -335,13 +335,14 @@
   "aave launches v4 on avalanche laying groundwork for tokenize": "2026-07-15",
   "us treasury freezes 131 million in iranlinked crypto wallets": "2026-07-15",
   "bitmine made 46 million staking ethereum then lost twice tha": "2026-07-15",
-  "dtcc moves tokenized securities into live trading marking a": "2026-07-15"
+  "dtcc moves tokenized securities into live trading marking a": "2026-07-15",
+  "president trump to meet senators on clarity acts ethics figh": "2026-07-16",
+  "japans landmark vote reclassifies bitcoin and crypto as fina": "2026-07-16",
+  "traders took 82 million from polymarkets fiveminute bitcoin": "2026-07-16",
+  "keel infrastructure to consolidate three bitcoin sites into": "2026-07-16",
+  "sonys stablecoin plan sends playstation crypto rumors racing": "2026-07-16"
  },
  "world-news": {
-  "in natos next act can europe lead": "2026-07-08",
-  "will le pen rise again french nationalist leader defiant aft": "2026-07-08",
-  "farage resigns and says he will run again in special electio": "2026-07-08",
-  "le pen says she will run for presidency after court lifts ba": "2026-07-08",
   "morning news brief": "2026-07-09",
   "trump flies partway home from turkey in an old air force one": "2026-07-09",
   "trump wraps nato summit on a positive note  after meeting ze": "2026-07-09",
@@ -475,13 +476,19 @@
   "shutdown fears rise as trump democrats gird for september sh": "2026-07-15",
   "world cup 2026 why do argentina sing about the england and t": "2026-07-15",
   "stocks gain on drop in us inflation rate asml tops forecasts": "2026-07-15",
-  "karren brady offered me a 5k a week deal with the u21s i sai": "2026-07-15"
+  "karren brady offered me a 5k a week deal with the u21s i sai": "2026-07-15",
+  "salad": "2026-07-16",
+  "games": "2026-07-16",
+  "news": "2026-07-16",
+  "peter reid": "2026-07-16",
+  "swimming": "2026-07-16",
+  "lettuce or salad greens may be culprit in cyclosporiasis out": "2026-07-16",
+  "19 unmissable ps5 games still releasing in 2026  playstation": "2026-07-16",
+  "blanche faces questions on doj fund epstein files at attorne": "2026-07-16",
+  "peter reid on why msq is betting on ai agility and the chall": "2026-07-16",
+  "baby seal gets a swimming lesson  popular science": "2026-07-16"
  },
  "true-crime": {
-  "i overkilled him right man blew away roommate who moved in a": "2026-07-08",
-  "im going to kill your friend man searching for his sister in": "2026-07-08",
-  "passenger used a handful of pens to try to take out dad trav": "2026-07-08",
-  "boyfriend tells pregnant girlfriend he wants to kill the bab": "2026-07-08",
   "parks director accused of leaving 5yearold in van overnight": "2026-07-09",
   "charlie kirk shooting suspect smirks widow sobs 2nd gun defe": "2026-07-09",
   "man threw molotov cocktail at stranger in wheelchair then ti": "2026-07-09",
@@ -550,7 +557,12 @@
   "i did what i did 20yearold fired several rounds into his fat": "2026-07-15",
   "woman hiding from her boyfriend in the woods gets shot and w": "2026-07-15",
   "best friends holding hands while crossing street mowed down": "2026-07-15",
-  "israel court halts law blocking ultraorthodox draft dodger a": "2026-07-15"
+  "israel court halts law blocking ultraorthodox draft dodger a": "2026-07-15",
+  "attorneys in california murder case argue intent cannabisind": "2026-07-16",
+  "kevin oleary fox news sued over claims data center critics h": "2026-07-16",
+  "crime victims advocacy organizations petition for removal of": "2026-07-16",
+  "minnesota county sues over feds stonewalling investigation i": "2026-07-16",
+  "witness identities in first amendment case over propalestine": "2026-07-16"
  },
  "topic-worldcup": {
   "fifa gives jarell quansah twogame ban for red card would mis": "2026-07-10",
