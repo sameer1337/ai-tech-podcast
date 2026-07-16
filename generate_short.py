@@ -192,19 +192,46 @@ Rules:
     except Exception as e:
         print(f"[short] Groq failed ({e}) - falling back to episode opening")
 
-    # Fallback: first sentences of the episode script, capped ~85 words
+    # Fallback 1: first sentences of the episode prose, capped ~85 words.
     sents = re.split(r"(?<=[.!?])\s+", episode_script.strip())
     script, words = [], 0
     for s in sents:
-        if words + len(s.split()) > 100:
+        s = s.strip()
+        if not s:
+            continue
+        # only stop once we already have something - a single long first
+        # chunk must not leave the script empty
+        if script and words + len(s.split()) > 100:
             break
         script.append(s)
         words += len(s.split())
+    script_text = " ".join(script).strip()
+
+    # Fallback 2 (event topics like worldcup): there's no prose episode - the
+    # text above is a raw "- headline: summary" bullet dump (TTS would read the
+    # dashes and colons aloud) or empty. Rebuild clean spoken lines from the
+    # headlines so a Groq outage degrades quality but never kills the Short
+    # (empty script -> 0 TTS words -> generation fails).
+    looks_bulleted = episode_script.lstrip().startswith("-")
+    if stories and (looks_bulleted or len(script_text.split()) < 20):
+        bits = []
+        for s in stories[:4]:
+            # drop only a trailing " - Publisher" / " | Publisher" tail;
+            # the spaces around the separator keep scorelines like "2-1" intact
+            s = re.sub(r"\s+[-|]\s+[^-|]+$", "", s).strip()
+            if not s:
+                continue
+            bits.append(s if s.endswith((".", "!", "?")) else s + ".")
+            if len(" ".join(bits).split()) >= 55:
+                break
+        if bits:
+            script_text = "Here are today's biggest stories. " + " ".join(bits)
+
     top = stories[0] if stories else niche["title"]
     return {
         "story":        top,
         "overlay":      " ".join(top.split()[:6]),
-        "script":       " ".join(script),
+        "script":       script_text,
         "title":        top[:80],
         "image_prompt": top[:90],
     }
