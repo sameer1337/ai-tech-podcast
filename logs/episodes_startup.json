@@ -1,5 +1,15 @@
 [
   {
+    "number": 21,
+    "title": "Microsoft Comic Chat is now open source \u2014 Startup Wire Daily | Jul 16",
+    "pubDate": "Thu, 16 Jul 2026 16:35:04 +0000",
+    "guid": "startup-ep21-20260716",
+    "description": "Microsoft just made its 90s-era Comic Chat platform open source, and that's a pretty big deal, because this is a piece of internet history that's now available for anyone to tinker with and build upon. For those who may not remember, Comic Chat was a precursor to modern chat platforms, allowing users to communicate with each other using comic book-style avatars and speech bubbles. By open-sourcing this technology, Microsoft is essentially handing over the reins to the developer community, allowi...",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0021_2026-07-16.mp3",
+    "file_size": 1480320,
+    "duration": 300
+  },
+  {
     "number": 20,
     "title": "Thinking Machines open sources first multimodal language \u2014 Startup Wire Daily | Jul 16",
     "pubDate": "Thu, 16 Jul 2026 08:27:19 +0000",

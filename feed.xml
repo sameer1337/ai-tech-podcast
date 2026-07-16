@@ -212,5 +212,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0021_2026-07-16.mp3" type="audio/mpeg" length="1303632" />
     </item>
+    <item>
+      <title>How to Train a Gen AI Kick Drum Model on Your Old Linux — AI Tech Daily | Jul 16</title>
+      <pubDate>Thu, 16 Jul 2026 16:32:57 +0000</pubDate>
+      <guid isPermaLink="false">ai-tech-ep22-20260716</guid>
+      <description>281 people are already testing Kimi K3, the latest AI release that's blowing up on Hacker News, with over 155 comments pouring in just hours after launch. This is a massive deal because Kimi K3 is being touted as a game-changer in the world of AI development, with many experts predicting it will revolutionize the way we interact with artificial intelligence. So, what makes Kimi K3 so special? According to the developers, it's the ability to learn and adapt at an unprecedented scale, making it a ...</description>
+      <itunes:episode>22</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0022_2026-07-16.mp3" type="audio/mpeg" length="880560" />
+    </item>
   </channel>
 </rss>

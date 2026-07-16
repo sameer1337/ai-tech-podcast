@@ -1,12 +1,12 @@
 {
   "date": "2026-07-16",
-  "episode": 20,
-  "title": "Thinking Machines open sources first multimodal language \u2014 Startup Wire Daily | Jul 16",
+  "episode": 21,
+  "title": "Microsoft Comic Chat is now open source \u2014 Startup Wire Daily | Jul 16",
   "stories": [
-    "Thinking Machines open sources first multimodal language model, Inkling, focused on low cost and 'resistance to censorship'",
-    "Agentic orchestration: Enterprise AI organizations have a deployment problem, not a platform problem \u2014 and most are calling chatbots agents",
-    "Netstrings (1997)",
-    "The lost joy of music piracy",
-    "Reynard: A real Firefox web browser for iOS 13 or later"
+    "Microsoft Comic Chat is now open source",
+    "How to Train a Gen AI Kick Drum Model on Your Old Linux Desktop with 6GB VRAM",
+    "Guide to data tools landscape for developers",
+    "Kimi K3 is now live",
+    "My Homepage Has a Pulse"
   ]
 }

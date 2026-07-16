@@ -203,5 +203,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0020_2026-07-16.mp3" type="audio/mpeg" length="1006560" />
     </item>
+    <item>
+      <title>Microsoft Comic Chat is now open source — Startup Wire Daily | Jul 16</title>
+      <pubDate>Thu, 16 Jul 2026 16:35:04 +0000</pubDate>
+      <guid isPermaLink="false">startup-ep21-20260716</guid>
+      <description>Microsoft just made its 90s-era Comic Chat platform open source, and that's a pretty big deal, because this is a piece of internet history that's now available for anyone to tinker with and build upon. For those who may not remember, Comic Chat was a precursor to modern chat platforms, allowing users to communicate with each other using comic book-style avatars and speech bubbles. By open-sourcing this technology, Microsoft is essentially handing over the reins to the developer community, allowi...</description>
+      <itunes:episode>21</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0021_2026-07-16.mp3" type="audio/mpeg" length="1480320" />
+    </item>
   </channel>
 </rss>
