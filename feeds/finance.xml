@@ -212,5 +212,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0021_2026-07-16.mp3" type="audio/mpeg" length="1020816" />
     </item>
+    <item>
+      <title>Netflix is getting stingier about its viewing data, and — Money Minute Daily | Jul 17</title>
+      <pubDate>Fri, 17 Jul 2026 08:21:55 +0000</pubDate>
+      <guid isPermaLink="false">finance-ep22-20260717</guid>
+      <description>Netflix's stock just plummeted 8% in a single day, and Wall Street is scrambling to understand the reasons behind this sudden drop. The main culprit seems to be the company's mixed earnings report, which failed to impress investors. But what's really got analysts worried is Netflix's new plan to cut back on the publication of its 'What We Watched' reports, which provide valuable insights into viewer behavior and content performance. This move has sparked concerns that the company is becoming mor...</description>
+      <itunes:episode>22</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0022_2026-07-17.mp3" type="audio/mpeg" length="1092816" />
+    </item>
   </channel>
 </rss>

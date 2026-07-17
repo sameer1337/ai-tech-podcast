@@ -203,5 +203,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0020_2026-07-16.mp3" type="audio/mpeg" length="1241424" />
     </item>
+    <item>
+      <title>Here’s what happened in crypto today — Crypto Daily Brief | Jul 17</title>
+      <pubDate>Fri, 17 Jul 2026 08:24:06 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep21-20260717</guid>
+      <description>$383 million in dormant Bitcoin just moved for the first time in over eight years, sparking a flurry of speculation about the potential impact on the market. The wallet in question, which has been holding nearly 5,908 BTC since 2017, transferred its entire balance to a new address, leaving many to wonder what prompted this sudden activity. This massive movement of coins has significant implications for the Bitcoin ecosystem, as it could potentially disrupt the market's delicate balance and influ...</description>
+      <itunes:episode>21</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0021_2026-07-17.mp3" type="audio/mpeg" length="1039248" />
+    </item>
   </channel>
 </rss>

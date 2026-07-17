@@ -212,5 +212,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0021_2026-07-16.mp3" type="audio/mpeg" length="1480320" />
     </item>
+    <item>
+      <title>The agent security gap: 54% of enterprises have already had — Startup Wire Daily | Jul 17</title>
+      <pubDate>Fri, 17 Jul 2026 08:23:23 +0000</pubDate>
+      <guid isPermaLink="false">startup-ep22-20260717</guid>
+      <description>54% of enterprises have already had an AI agent incident, and most still let agents share credentials, according to a recent study, which is a staggering number considering the potential risks involved. This statistic is particularly alarming because it highlights the agent security gap that exists in many organizations. The study, which surveyed 107 enterprises, found that AI agents are being given real access to systems and data, but the controls meant to contain them are lagging behind. As a ...</description>
+      <itunes:episode>22</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0022_2026-07-17.mp3" type="audio/mpeg" length="1180512" />
+    </item>
   </channel>
 </rss>

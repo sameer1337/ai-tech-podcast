@@ -1,5 +1,15 @@
 [
   {
+    "number": 22,
+    "title": "The agent security gap: 54% of enterprises have already had \u2014 Startup Wire Daily | Jul 17",
+    "pubDate": "Fri, 17 Jul 2026 08:23:23 +0000",
+    "guid": "startup-ep22-20260717",
+    "description": "54% of enterprises have already had an AI agent incident, and most still let agents share credentials, according to a recent study, which is a staggering number considering the potential risks involved. This statistic is particularly alarming because it highlights the agent security gap that exists in many organizations. The study, which surveyed 107 enterprises, found that AI agents are being given real access to systems and data, but the controls meant to contain them are lagging behind. As a ...",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0022_2026-07-17.mp3",
+    "file_size": 1180512,
+    "duration": 300
+  },
+  {
     "number": 21,
     "title": "Microsoft Comic Chat is now open source \u2014 Startup Wire Daily | Jul 16",
     "pubDate": "Thu, 16 Jul 2026 16:35:04 +0000",

@@ -1,105 +1,105 @@
 {
- "date": "2026-07-16",
+ "date": "2026-07-17",
  "trends": [
   {
-   "query": "salad",
+   "query": "texas flooding flash flood",
    "traffic": 20000,
-   "news": "Four states linked to cyclosporiasis outbreak, CDC warns more could be involved"
+   "news": "Live updates: Two deaths confirmed as Flash Flood Emergency continues in Central Texas"
   },
   {
-   "query": "games",
+   "query": "veterans benefits bill",
    "traffic": 10000,
-   "news": "PlayStation Plus Game Catalog for July 2026 Confirmed"
+   "news": "House GOP pulls military benefits bill that has divided veterans groups"
   },
   {
-   "query": "news",
-   "traffic": 10000,
-   "news": "US resumes blockade on Iran, launches strikes after attacks in Strait of Hormuz"
-  },
-  {
-   "query": "peter reid",
-   "traffic": 10000,
-   "news": "\u2018The Hand of God is a beautiful way of cheating. It\u2019s poetry.\u2019"
-  },
-  {
-   "query": "swimming",
+   "query": "netflix",
    "traffic": 5000,
-   "news": "Sojourner Truth State Park swimming area in Kingston to open Friday"
+   "news": "Heartstopper Forever Preview: Watch the First 3 Minutes of the Film Early"
   },
   {
-   "query": "time",
-   "traffic": 5000,
-   "news": "AASM celebrates introduction of the Sunshine for Our Kids Act to establish permanent standard time"
-  },
-  {
-   "query": "events",
-   "traffic": 5000,
-   "news": "CarMax Park is becoming a winter wonderland this holiday season"
-  },
-  {
-   "query": "maps",
-   "traffic": 5000,
-   "news": "Apple's rules for Maps ads diverge from Google as it prohibits home services"
-  },
-  {
-   "query": "shedeur sanders",
+   "query": "disney plus",
    "traffic": 2000,
-   "news": "Shedeur Sanders catches shade from Joe Flacco for visor choice"
+   "news": "Malia Baker - Disneys Descendants Wicked - 4"
   },
   {
-   "query": "national lottery",
-   "traffic": 2000,
-   "news": "Winning Lotto and Thunderball numbers for Wednesday's \u00a37.6m lottery jackpot"
+   "query": "gold price",
+   "traffic": 1000,
+   "news": "Gold prices can go lower, but Bank of America suggests buying the dip and averaging down"
   },
   {
-   "query": "sue johnston",
-   "traffic": 2000,
-   "news": "Need a home help? Meet ROBO-NURSE"
-  },
-  {
-   "query": "is fortnite down",
+   "query": "oc fair",
    "traffic": 500,
-   "news": "When Will Fortnite Servers Be Back Up? Fortnite July 16 Downtime, Explained"
+   "news": "Fried Tiramisu to Street Corn Baked Potatoes: Find fantastical foods at OC Fair"
   },
   {
-   "query": "monkey with orange lips",
+   "query": "max verstappen",
    "traffic": 500,
-   "news": "Mysterious new monkey species with orange lips discovered in the Congo rainforest"
+   "news": "Piastri changes everything with one word"
   },
   {
-   "query": "labour ev road tax plans",
-   "traffic": 500,
-   "news": "'Prepare for more work', fleet bosses told as eVED is confirmed"
-  },
-  {
-   "query": "fortnite",
+   "query": "earthquake near me",
    "traffic": 200,
-   "news": "Has \u2018Fortnite\u2019 Even Read \u2018The Odyssey\u2019?"
+   "news": "5.6-magnitude earthquake hits central Peru"
   },
   {
-   "query": "florian wirtz",
+   "query": "kamar williams",
    "traffic": 200,
-   "news": "Florian Wirtz und das Risiko im Sportmarketing"
+   "news": "What happened to Kamar Williams? Search continues for missing one-half of the '80K Twins'"
   },
   {
-   "query": "submarine",
+   "query": "money",
    "traffic": 200,
-   "news": "Record \u00a326 billion investment to transform UK naval bases' docking facilities and waterfront infrastructure"
+   "news": "The mystery money powering Trump\u2019s second term"
   },
   {
-   "query": "ocado share price",
+   "query": "r",
    "traffic": 200,
-   "news": "Ocado in talks with potential new partners after warehouse closures"
+   "news": "R. Kelly asks President Donald Trump to commute 30-year sentence for sex abuse of minors"
   },
   {
-   "query": "rotork",
+   "query": "robert englund",
    "traffic": 200,
-   "news": "ABB: Q2 Earnings Snapshot"
+   "news": "'A Nightmare On Elm Street' Reboot Heads To Paramount: Here's Why"
   },
   {
-   "query": "local government reorganisation",
+   "query": "vegetables",
+   "traffic": 200,
+   "news": "Domestically Acquired Cyclosporiasis Cases in Multiple U.S. States, 2026 | HAN"
+  },
+  {
+   "query": "aviva share price",
+   "traffic": 200,
+   "news": "Aviva stock holds steady as diversified insurance and savings business supports long-term outlook"
+  },
+  {
+   "query": "budget",
    "traffic": 100,
-   "news": "Why is Hertfordshire preparing to bin its councils?"
+   "news": "Senate GOP isn\u2019t sold on Mike Johnson\u2019s budget blueprint"
+  },
+  {
+   "query": "cpac",
+   "traffic": 100,
+   "news": "What is the CPAC right-wing event happening in London - and who are the speakers?"
+  },
+  {
+   "query": "melissa hoskins",
+   "traffic": 100,
+   "news": "Rohan Dennis pleads guilty to driving while disqualified"
+  },
+  {
+   "query": "cargo ship",
+   "traffic": 100,
+   "news": "Drone strikes ship off southern Iraqi port: Official"
+  },
+  {
+   "query": "george clooney",
+   "traffic": 100,
+   "news": "Amal Clooney Goes Full Boho Chic in a Suede Fringe Set for Romantic Yacht Day With George Clooney"
+  },
+  {
+   "query": "zack polanski",
+   "traffic": 100,
+   "news": "Herefordshire MP says constituents are worried by workplace heat"
   }
  ]
 }

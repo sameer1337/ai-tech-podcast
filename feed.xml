@@ -221,5 +221,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0022_2026-07-16.mp3" type="audio/mpeg" length="880560" />
     </item>
+    <item>
+      <title>The agent security gap: 54% of enterprises have already had — AI Tech Daily | Jul 17</title>
+      <pubDate>Fri, 17 Jul 2026 08:21:26 +0000</pubDate>
+      <guid isPermaLink="false">ai-tech-ep23-20260717</guid>
+      <description>54% of enterprises have already had an AI agent incident, with most still allowing these agents to share sensitive credentials, a staggering statistic that highlights the glaring security gap in the AI industry. This is according to a recent report that surveyed 107 enterprises, which found that more than half have experienced a confirmed AI agent security incident or a near-miss. The sheer scale of this problem is alarming, and it's clear that many companies are still playing catch-up when it c...</description>
+      <itunes:episode>23</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0023_2026-07-17.mp3" type="audio/mpeg" length="1067904" />
+    </item>
   </channel>
 </rss>
