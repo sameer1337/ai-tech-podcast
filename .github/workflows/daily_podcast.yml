@@ -102,9 +102,10 @@ jobs:
           PYTHONUTF8: "1"
         run: |
           # Football-first: the channel's daily YouTube upload limit is scarce, so it
-          # goes to the football (worldcup) Short, not the low-view startup/true-crime ones.
-          # worldcup = event topic Short (auto-expires 2026-07-20, day after the final)
-          for NICHE in worldcup; do
+          # goes to the football Short. "football" is the EVERGREEN lane (rotating
+          # league/player queries) so the channel never goes dark after the World Cup.
+          # (worldcup topic still exists but auto-expired 2026-07-20 after the final.)
+          for NICHE in football; do
             echo "==> Short for $NICHE"
             python generate_short.py --niche "$NICHE" \
               || { echo "[warn] Short generation failed for $NICHE"; continue; }

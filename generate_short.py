@@ -80,6 +80,7 @@ SHORT_STYLE = {
     "world-news": "dramatic vertical poster, viral trending story, fiery red orange, upward arrow energy, cinematic",
     "true-crime": "dramatic vertical poster, noir crime scene, red spotlight in darkness, moody fog, cinematic",
     "worldcup":   "dramatic vertical poster, packed soccer stadium under floodlights, world cup trophy glow, green pitch, confetti, cinematic",
+    "football":   "dramatic vertical poster, floodlit soccer stadium at night, green pitch, roaring crowd, motion blur action, cinematic sports poster",
 }
 
 # ── Event topics: time-boxed Shorts with no podcast episode behind them ───────
@@ -96,6 +97,25 @@ TOPICS = {
         "hashtags":  "#Shorts #WorldCup #FIFAWorldCup #WorldCup2026 #Soccer #Football",
         "tags":      ["world cup", "world cup 2026", "FIFA world cup", "soccer",
                       "football", "world cup today", "Velox Daily", "shorts"],
+    },
+    # Evergreen football lane — replaces worldcup after the July 19 final so the
+    # channel never goes dark. "query" is a LIST: create_topic_short rotates by
+    # day-of-year, so the Short stays fresh AND every term is unambiguously SOCCER
+    # (bare "football" in US Google News returns NFL, so we never use it alone).
+    "football": {
+        "title":     "Football Daily",
+        "query":     ["Premier League", "Champions League", "La Liga football",
+                      "Lionel Messi", "Cristiano Ronaldo", "UEFA football",
+                      "football transfer news", "Serie A football",
+                      "Bundesliga football", "soccer match result"],
+        "voice":     "en-GB-RyanNeural",
+        "cta_show":  "Trending Now Daily",
+        "end_date":  "2035-01-01",             # evergreen
+        "category":  "17",                     # YouTube: Sports
+        "blurb":     "Daily football news in under a minute.",
+        "hashtags":  "#Shorts #Football #Soccer #PremierLeague #ChampionsLeague #Futbol",
+        "tags":      ["football", "soccer", "premier league", "champions league",
+                      "football news", "football shorts", "Velox Daily", "shorts"],
     },
 }
 
@@ -495,7 +515,14 @@ def create_topic_short(topic_id: str, date: str) -> bool:
 
     from fetch_news import _google_news_search, _load_seen, _mark_seen, _story_key
 
-    items = _google_news_search(topic["query"], max_items=10)
+    # query may be a single string or a rotating list (evergreen lanes) — rotate
+    # by day-of-year so each day pulls a different, always-on-topic search.
+    query = topic["query"]
+    if isinstance(query, list):
+        doy = datetime.strptime(date, "%Y-%m-%d").timetuple().tm_yday
+        query = query[doy % len(query)]
+    print(f"[topic] {topic_id} query: {query!r}")
+    items = _google_news_search(query, max_items=10)
     seen = _load_seen(f"topic-{topic_id}")
     fresh = [i for i in items if _story_key(i["title"]) not in seen]
     if not fresh:
@@ -529,6 +556,7 @@ def create_topic_short(topic_id: str, date: str) -> bool:
         if not render_short(img, mp3, ass, out_path):
             return False
 
+    blurb = topic.get("blurb") or f"Daily {topic['title']} in under a minute."
     meta = {
         "niche":    topic_id,
         "date":     date,
@@ -543,9 +571,9 @@ def create_topic_short(topic_id: str, date: str) -> bool:
         "tags":     topic["tags"],
         "description": (
             f"{data['story']}\n\n"
-            f"Daily World Cup 2026 updates in under a minute. For everything "
-            f"the world is talking about today, listen to {topic['cta_show']} - "
-            f"free on every podcast app.\n\n"
+            f"{blurb} "
+            f"For everything the world is talking about today, listen to "
+            f"{topic['cta_show']} - free on every podcast app.\n\n"
             f"All daily briefings: https://daily.mapt.cloud\n\n"
             f"{topic['hashtags']} #VeloxDaily\n"
         ),
