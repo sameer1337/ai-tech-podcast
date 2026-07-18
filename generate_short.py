@@ -81,6 +81,7 @@ SHORT_STYLE = {
     "true-crime": "dramatic vertical poster, noir crime scene, red spotlight in darkness, moody fog, cinematic",
     "worldcup":   "dramatic vertical poster, packed soccer stadium under floodlights, world cup trophy glow, green pitch, confetti, cinematic",
     "football":   "dramatic vertical poster, floodlit soccer stadium at night, green pitch, roaring crowd, motion blur action, cinematic sports poster",
+    "combat":     "dramatic vertical poster, boxing ring under harsh spotlights, two silhouetted fighters, sweat and motion blur, intense crowd, cinematic fight poster",
 }
 
 # ── Event topics: time-boxed Shorts with no podcast episode behind them ───────
@@ -116,6 +117,23 @@ TOPICS = {
         "hashtags":  "#Shorts #Football #Soccer #PremierLeague #ChampionsLeague #Futbol",
         "tags":      ["football", "soccer", "premier league", "champions league",
                       "football news", "football shorts", "Velox Daily", "shorts"],
+    },
+    # Combat-sports test lane — knockouts/fights are a proven faceless-Shorts
+    # goldmine (one 22s KO short = 1.4M views), same "shocking moment" DNA as the
+    # true-crime + football-drama winners. Evergreen rotating query.
+    "combat": {
+        "title":     "Combat Daily",
+        "query":     ["UFC", "boxing knockout", "MMA fight", "UFC results",
+                      "boxing fight", "UFC knockout", "heavyweight boxing",
+                      "MMA knockout", "boxing news", "UFC news"],
+        "voice":     "en-US-GuyNeural",
+        "cta_show":  "Trending Now Daily",
+        "end_date":  "2035-01-01",             # evergreen
+        "category":  "17",                     # YouTube: Sports
+        "blurb":     "Daily combat sports news in under a minute.",
+        "hashtags":  "#Shorts #UFC #Boxing #MMA #Knockout #CombatSports",
+        "tags":      ["ufc", "boxing", "mma", "knockout", "combat sports",
+                      "fight", "Velox Daily", "shorts"],
     },
 }
 

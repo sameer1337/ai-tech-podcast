@@ -101,11 +101,12 @@ jobs:
           YT_CHANNEL_ID:        ${{ secrets.YT_CHANNEL_ID }}
           PYTHONUTF8: "1"
         run: |
-          # Football-first: the channel's daily YouTube upload limit is scarce, so it
-          # goes to the football Short. "football" is the EVERGREEN lane (rotating
-          # league/player queries) so the channel never goes dark after the World Cup.
-          # (worldcup topic still exists but auto-expired 2026-07-20 after the final.)
-          for NICHE in football; do
+          # Three Shorts lanes (channel cap is ~3 uploads/24h), proven winners first:
+          #   football   = evergreen TOPIC, rotating league/player queries (never dark)
+          #   true-crime = NICHE Short off the day's true-crime episode (top performer)
+          #   combat     = evergreen TOPIC, UFC/boxing/MMA test lane (KO shorts scale big)
+          # Order = priority: if the cap is hit, the test lane (combat) is dropped first.
+          for NICHE in football true-crime combat; do
             echo "==> Short for $NICHE"
             python generate_short.py --niche "$NICHE" \
               || { echo "[warn] Short generation failed for $NICHE"; continue; }
