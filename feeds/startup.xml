@@ -221,5 +221,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0022_2026-07-17.mp3" type="audio/mpeg" length="1180512" />
     </item>
+    <item>
+      <title>Applied Computing wants to give oil and gas operators an AI — Startup Wire Daily | Jul 18</title>
+      <pubDate>Sat, 18 Jul 2026 08:05:30 +0000</pubDate>
+      <guid isPermaLink="false">startup-ep23-20260718</guid>
+      <description>Applied Computing just raised a whopping $20M Series A to build a foundation AI model for the entire oil, gas, and petrochemical industry, which could revolutionize the way these plants operate. This investment is a game-changer because the oil and gas industry has been slow to adopt AI, and having a comprehensive model that can be applied across the entire plant could significantly improve efficiency, reduce costs, and enhance safety. The potential impact is enormous, considering the trillions ...</description>
+      <itunes:episode>23</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0023_2026-07-18.mp3" type="audio/mpeg" length="1518336" />
+    </item>
   </channel>
 </rss>

@@ -1,105 +1,105 @@
 {
- "date": "2026-07-17",
+ "date": "2026-07-18",
  "trends": [
   {
-   "query": "texas flooding flash flood",
-   "traffic": 20000,
-   "news": "Live updates: Two deaths confirmed as Flash Flood Emergency continues in Central Texas"
-  },
-  {
-   "query": "veterans benefits bill",
-   "traffic": 10000,
-   "news": "House GOP pulls military benefits bill that has divided veterans groups"
-  },
-  {
-   "query": "netflix",
-   "traffic": 5000,
-   "news": "Heartstopper Forever Preview: Watch the First 3 Minutes of the Film Early"
-  },
-  {
-   "query": "disney plus",
+   "query": "gas",
    "traffic": 2000,
-   "news": "Malia Baker - Disneys Descendants Wicked - 4"
+   "news": "US Drivers Are Again Paying More Than $5 a Gallon for Diesel"
   },
   {
-   "query": "gold price",
+   "query": "newcastle united",
+   "traffic": 2000,
+   "news": "Nottingham Forest launch \u00a345m bid for Lucas Bergvall from Spurs"
+  },
+  {
+   "query": "hunger games",
    "traffic": 1000,
-   "news": "Gold prices can go lower, but Bank of America suggests buying the dip and averaging down"
+   "news": "Lionsgate Shares Surge Amid Reports \u2018Hunger Games\u2019 Studio Is Courting Euro Buyers"
   },
   {
-   "query": "oc fair",
+   "query": "playstation plus",
+   "traffic": 1000,
+   "news": "PlayStation Plus games for July have been announced"
+  },
+  {
+   "query": "ireland vs new zealand",
+   "traffic": 1000,
+   "news": "Eden Park record on the line as All Blacks host Ireland"
+  },
+  {
+   "query": "emily willis now",
    "traffic": 500,
-   "news": "Fried Tiramisu to Street Corn Baked Potatoes: Find fantastical foods at OC Fair"
+   "news": "Judge Grants $3M to Incapacitated Adult Film Actress\u2019 Mom"
   },
   {
-   "query": "max verstappen",
+   "query": "jason momoa",
    "traffic": 500,
-   "news": "Piastri changes everything with one word"
+   "news": "Netflix\u2019s Brutal 3-Season Jason Momoa Series Is Officially More Timely Than Ever"
   },
   {
-   "query": "earthquake near me",
+   "query": "andrew truelove",
    "traffic": 200,
-   "news": "5.6-magnitude earthquake hits central Peru"
+   "news": "\u2018TODAY\u2019 show intruder arraigned on hate crime charges"
   },
   {
-   "query": "kamar williams",
+   "query": "allen iverson",
    "traffic": 200,
-   "news": "What happened to Kamar Williams? Search continues for missing one-half of the '80K Twins'"
+   "news": "Video - Allen Iverson Sends Heartfelt Message to Denver Nuggets"
   },
   {
-   "query": "money",
+   "query": "earthquake now",
    "traffic": 200,
-   "news": "The mystery money powering Trump\u2019s second term"
+   "news": "Tsunami threat canceled for Mexico, Guatemala after magnitude 7.3 earthquake along the Pacific Ring of Fire"
   },
   {
-   "query": "r",
+   "query": "earthquake los angeles",
    "traffic": 200,
-   "news": "R. Kelly asks President Donald Trump to commute 30-year sentence for sex abuse of minors"
+   "news": "San Andreas Fault's Silence Raises Earthquake Concerns"
   },
   {
-   "query": "robert englund",
+   "query": "tsarukyan vs covington raf 11",
    "traffic": 200,
-   "news": "'A Nightmare On Elm Street' Reboot Heads To Paramount: Here's Why"
+   "news": "RAF 11 Results: Tsarukyan vs. Covington"
   },
   {
-   "query": "vegetables",
+   "query": "fc ju\u00e1rez vs club puebla standings",
    "traffic": 200,
-   "news": "Domestically Acquired Cyclosporiasis Cases in Multiple U.S. States, 2026 | HAN"
+   "news": "FC Juarez vs Club Puebla Live Stream: How to Watch Liga MX"
   },
   {
-   "query": "aviva share price",
+   "query": "idaho bear home break in",
    "traffic": 200,
-   "news": "Aviva stock holds steady as diversified insurance and savings business supports long-term outlook"
+   "news": "Bear that broke into Swan Valley home for pumpkin pie euthanized after second incident"
   },
   {
-   "query": "budget",
+   "query": "elijah upson",
+   "traffic": 200,
+   "news": "Sky Sports report Arsenal have signed two players"
+  },
+  {
+   "query": "park run",
+   "traffic": 200,
+   "news": "Study reveals 76 per cent of children feel happier after this exercise each week"
+  },
+  {
+   "query": "liverpool weather",
+   "traffic": 200,
+   "news": "Wirral line faces all out shutdown this weekend as Merseyrail scrambles to save Open"
+  },
+  {
+   "query": "man u",
    "traffic": 100,
-   "news": "Senate GOP isn\u2019t sold on Mike Johnson\u2019s budget blueprint"
+   "news": "Man Utd 'deal to be done' for \u00a345m third midfielder; move for PL striker set to 'intensify'"
   },
   {
-   "query": "cpac",
+   "query": "diamond league london 2026",
    "traffic": 100,
-   "news": "What is the CPAC right-wing event happening in London - and who are the speakers?"
+   "news": "Josh Kerr exclusive ahead of men's mile world record attempt: \"I'm here to do the big things\""
   },
   {
-   "query": "melissa hoskins",
+   "query": "zoo",
    "traffic": 100,
-   "news": "Rohan Dennis pleads guilty to driving while disqualified"
-  },
-  {
-   "query": "cargo ship",
-   "traffic": 100,
-   "news": "Drone strikes ship off southern Iraqi port: Official"
-  },
-  {
-   "query": "george clooney",
-   "traffic": 100,
-   "news": "Amal Clooney Goes Full Boho Chic in a Suede Fringe Set for Romantic Yacht Day With George Clooney"
-  },
-  {
-   "query": "zack polanski",
-   "traffic": 100,
-   "news": "Herefordshire MP says constituents are worried by workplace heat"
+   "news": "Parents of boy hurt in crocodile attack feared he 'wasn't going to make it' | ITV News"
   }
  ]
 }

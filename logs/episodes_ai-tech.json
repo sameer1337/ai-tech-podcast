@@ -1,5 +1,15 @@
 [
   {
+    "number": 24,
+    "title": "Brex built its AI agent policy by watching what agents \u2014 AI Tech Daily | Jul 18",
+    "pubDate": "Sat, 18 Jul 2026 08:03:33 +0000",
+    "guid": "ai-tech-ep24-20260718",
+    "description": "Brex just built an AI agent policy by watching what agents actually do, not by writing rules first, and it's a game-changer for enterprise security. This approach is significant because traditional guardrails couldn't contain what those agents were doing with real credentials like API keys, OAuth tokens, and service accounts. Brex set out to overcome these limitations by building an internal platform it calls CrabTrap, which learns from the agents themselves. By doing so, Brex has been able to c...",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0024_2026-07-18.mp3",
+    "file_size": 1315728,
+    "duration": 300
+  },
+  {
     "number": 23,
     "title": "The agent security gap: 54% of enterprises have already had \u2014 AI Tech Daily | Jul 17",
     "pubDate": "Fri, 17 Jul 2026 08:21:26 +0000",

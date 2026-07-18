@@ -212,5 +212,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0021_2026-07-17.mp3" type="audio/mpeg" length="1039248" />
     </item>
+    <item>
+      <title>Citadel backs two rival crypto exchanges with $600 million — Crypto Daily Brief | Jul 18</title>
+      <pubDate>Sat, 18 Jul 2026 08:06:11 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep22-20260718</guid>
+      <description>Citadel just invested a whopping $600 million in two rival crypto exchanges, Crypto.com and Kraken, as they both aggressively pursue the same tokenized-market expansion, with only one of them having disclosed Citadel's operational role so far. This is a bold move, especially considering the two exchanges are essentially competing for the same prize: a significant foothold in the Wall Street market. The fact that Citadel is backing both of them with such a massive investment suggests that they be...</description>
+      <itunes:episode>22</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0022_2026-07-18.mp3" type="audio/mpeg" length="1325808" />
+    </item>
   </channel>
 </rss>
