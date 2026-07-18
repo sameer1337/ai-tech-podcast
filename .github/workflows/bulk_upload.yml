@@ -1,8 +1,12 @@
 name: Bulk Upload to YouTube
 
 on:
-  schedule:
-    - cron: '45 23 * * *'   # nightly drip: upload until YouTube's rolling channel limit, then stop
+  # DISABLED 2026-07-18: long-form podcast videos get impressions but ~0 views and
+  # burn the channel's scarce daily YouTube upload quota, starving the football Shorts
+  # that actually perform. Channel is Shorts-only now. Podcasts still ship as
+  # audio/RSS/blog (Spotify + site). Re-enable by uncommenting the cron below.
+  # schedule:
+  #   - cron: '45 23 * * *'   # nightly drip: upload until YouTube's rolling channel limit, then stop
   workflow_dispatch:
     inputs:
       niche:
