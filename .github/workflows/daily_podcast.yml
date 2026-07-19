@@ -94,6 +94,22 @@ jobs:
           python growth_agent.py strategy             # prepend ranked "DO FIRST" block to TODAY.md
           python growth_agent.py scout                # append newsletter-swap targets
 
+      - name: Auto-post to social channels (morning only) — posts only to configured channels
+        if: github.event.schedule != '0 18 * * *' && github.event.inputs.mode != 'pages_only'
+        continue-on-error: true   # a failed post must never block the deploy
+        env:
+          TELEGRAM_BOT_TOKEN:  ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          BLUESKY_HANDLE:       ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          FB_PAGE_ID:    ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_TOKEN:   ${{ secrets.IG_TOKEN }}
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+          PYTHONUTF8: "1"
+        run: python auto_poster.py   # skips any channel whose secrets are absent
+
       - name: Deploy site to Hostinger (FTP)
         continue-on-error: true   # site deploy failure must not block YouTube uploads + episode push
         env:

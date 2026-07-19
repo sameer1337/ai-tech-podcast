@@ -157,6 +157,30 @@ def main():
         else:
             out = write_today_md(brief, ops, date_str)
             print(f"  [ops] today's action sheet → {out}")
+            write_today_json(brief, ops, date_str)
+
+
+def write_today_json(brief, ops, date_str):
+    """Machine-readable snapshot of today's issue for auto_poster.py."""
+    top = brief["items"][0] if brief.get("items") else {}
+    data = {
+        "date": date_str,
+        "subject": brief.get("subject", ""),
+        "preview": brief.get("preview", ""),
+        "intro": brief.get("intro", ""),
+        "archive_url": ops.get("archive_url", ""),
+        "sub_url": ops.get("sub_url", ""),
+        "top_headline": top.get("headline", ""),
+        "top_url": top.get("url", ""),
+        "tweet": ops.get("tweet", ""),
+        "hashtags": ops.get("hashtags", ""),
+        "linkedin": ops.get("linkedin", ""),
+        "items": brief.get("items", []),
+    }
+    p = nl.NEWS_DIR / "today.json"
+    nl.NEWS_DIR.mkdir(exist_ok=True)
+    p.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    print(f"  [ops] machine snapshot → {p}")
 
     print("\nDone. beehiiv will send from newsletter.xml on its next RSS check.")
 
