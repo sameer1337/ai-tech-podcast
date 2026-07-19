@@ -239,5 +239,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0024_2026-07-18.mp3" type="audio/mpeg" length="1315728" />
     </item>
+    <item>
+      <title>Google might not kneecap the Pixel 11a with an old processor — AI Tech Daily | Jul 19</title>
+      <pubDate>Sun, 19 Jul 2026 08:28:55 +0000</pubDate>
+      <guid isPermaLink="false">ai-tech-ep25-20260719</guid>
+      <description>Google is reportedly ditching the outdated processor plan for the Pixel 11a, with Mystic Leaks suggesting the new phone will feature a flagship-grade Tensor G6 processor. This is a huge deal, as the previous generation Pixel 10a shipped with the older Tensor G4, which was a major disappointment for fans of the lineup. Typically, the Pixel a series has kept pace with the latest and greatest processors, so this move would be a return to form for Google. The use of a flagship-grade processor in the...</description>
+      <itunes:episode>25</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0025_2026-07-19.mp3" type="audio/mpeg" length="1368576" />
+    </item>
   </channel>
 </rss>

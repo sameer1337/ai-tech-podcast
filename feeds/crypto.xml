@@ -221,5 +221,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0022_2026-07-18.mp3" type="audio/mpeg" length="1325808" />
     </item>
+    <item>
+      <title>Crypto executives say digital native generations may never — Crypto Daily Brief | Jul 19</title>
+      <pubDate>Sun, 19 Jul 2026 08:34:29 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep23-20260719</guid>
+      <description>Eighty-four percent of financial firms now consider tokenization a strategic priority, which is a staggering shift in just a few years. This drastic change in attitude indicates that traditional financial institutions are finally taking notice of the potential of blockchain technology and its ability to transform the way we think about ownership and value. Tokenization, which is the process of converting traditional assets into digital tokens, has been gaining traction in recent years, and it se...</description>
+      <itunes:episode>23</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0023_2026-07-19.mp3" type="audio/mpeg" length="1376064" />
+    </item>
   </channel>
 </rss>

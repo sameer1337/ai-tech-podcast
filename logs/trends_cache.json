@@ -1,105 +1,105 @@
 {
- "date": "2026-07-18",
+ "date": "2026-07-19",
  "trends": [
   {
-   "query": "gas",
+   "query": "latest news",
+   "traffic": 50000,
+   "news": "Two US service members killed, one missing following Iranian strikes in Jordan"
+  },
+  {
+   "query": "weather today",
    "traffic": 2000,
-   "news": "US Drivers Are Again Paying More Than $5 a Gallon for Diesel"
+   "news": "Spain forced to cancel pre-World Cup final training due to adverse weather - The Athletic"
   },
   {
-   "query": "newcastle united",
+   "query": "facebook",
    "traffic": 2000,
-   "news": "Nottingham Forest launch \u00a345m bid for Lucas Bergvall from Spurs"
+   "news": "Facebook down with users hit with 'account unavailable' warning at login"
   },
   {
-   "query": "hunger games",
+   "query": "facebook down",
    "traffic": 1000,
-   "news": "Lionsgate Shares Surge Amid Reports \u2018Hunger Games\u2019 Studio Is Courting Euro Buyers"
+   "news": "Facebook down for users worldwide, Downdetector reports spike"
   },
   {
-   "query": "playstation plus",
-   "traffic": 1000,
-   "news": "PlayStation Plus games for July have been announced"
-  },
-  {
-   "query": "ireland vs new zealand",
-   "traffic": 1000,
-   "news": "Eden Park record on the line as All Blacks host Ireland"
-  },
-  {
-   "query": "emily willis now",
+   "query": "tacoma narrows bridge closure",
    "traffic": 500,
-   "news": "Judge Grants $3M to Incapacitated Adult Film Actress\u2019 Mom"
+   "news": "Expect Friday lane closure on SR-16 near Tacoma Narrows Bridge"
   },
   {
-   "query": "jason momoa",
+   "query": "liverpool transfer news",
    "traffic": 500,
-   "news": "Netflix\u2019s Brutal 3-Season Jason Momoa Series Is Officially More Timely Than Ever"
+   "news": "Andoni Iraola says Liverpool need to sign more players as he addresses questions over his style in first press conference"
   },
   {
-   "query": "andrew truelove",
+   "query": "prince george prince william eton",
    "traffic": 200,
-   "news": "\u2018TODAY\u2019 show intruder arraigned on hate crime charges"
+   "news": "Why Prince George\u2019s royal childhood has been \u2018dramatically different\u2019 to William\u2019s"
   },
   {
-   "query": "allen iverson",
+   "query": "cloud",
    "traffic": 200,
-   "news": "Video - Allen Iverson Sends Heartfelt Message to Denver Nuggets"
+   "news": "Nvidia Gpus \u2014 Software & Technology Articles"
   },
   {
-   "query": "earthquake now",
+   "query": "fidelity funds",
    "traffic": 200,
-   "news": "Tsunami threat canceled for Mexico, Guatemala after magnitude 7.3 earthquake along the Pacific Ring of Fire"
+   "news": "The New ETF Transaction Fee Popping Up in Some Brokerage Accounts"
   },
   {
-   "query": "earthquake los angeles",
+   "query": "lucy powell",
    "traffic": 200,
-   "news": "San Andreas Fault's Silence Raises Earthquake Concerns"
+   "news": "Starmer: I saved Labour"
   },
   {
-   "query": "tsarukyan vs covington raf 11",
+   "query": "laporte comments argentina world cup",
    "traffic": 200,
-   "news": "RAF 11 Results: Tsarukyan vs. Covington"
+   "news": "Aymeric Laporte: Referee must be strong, Argentina like to leave a mark"
   },
   {
-   "query": "fc ju\u00e1rez vs club puebla standings",
+   "query": "google pixel 11",
    "traffic": 200,
-   "news": "FC Juarez vs Club Puebla Live Stream: How to Watch Liga MX"
+   "news": "Google releases first Pixel 11 teaser and shows Pixel Glow [Video]"
   },
   {
-   "query": "idaho bear home break in",
+   "query": "felipe contepomi press exit",
    "traffic": 200,
-   "news": "Bear that broke into Swan Valley home for pumpkin pie euthanized after second incident"
+   "news": "Argentina boss storms out of press conference overnight accusing England"
   },
   {
-   "query": "elijah upson",
-   "traffic": 200,
-   "news": "Sky Sports report Arsenal have signed two players"
-  },
-  {
-   "query": "park run",
-   "traffic": 200,
-   "news": "Study reveals 76 per cent of children feel happier after this exercise each week"
-  },
-  {
-   "query": "liverpool weather",
-   "traffic": 200,
-   "news": "Wirral line faces all out shutdown this weekend as Merseyrail scrambles to save Open"
-  },
-  {
-   "query": "man u",
+   "query": "fidelity etf",
    "traffic": 100,
-   "news": "Man Utd 'deal to be done' for \u00a345m third midfielder; move for PL striker set to 'intensify'"
+   "news": "Fidelity will charge up to $100 on certain ETF purchases"
   },
   {
-   "query": "diamond league london 2026",
+   "query": "fidelity investments",
    "traffic": 100,
-   "news": "Josh Kerr exclusive ahead of men's mile world record attempt: \"I'm here to do the big things\""
+   "news": "Fidelity customers could get $5K from a settlement, but should act soon"
   },
   {
-   "query": "zoo",
+   "query": "fidelity bitcoin",
    "traffic": 100,
-   "news": "Parents of boy hurt in crocodile attack feared he 'wasn't going to make it' | ITV News"
+   "news": "3 reasons Bitcoin is stuck in a bear market\u2014and why one analyst predicts a rebound to $100,000 by year-end"
+  },
+  {
+   "query": "boris johnson",
+   "traffic": 100,
+   "news": "Former PMs Boris Johnson and Rishi Sunak offer advice to incoming Andy Burnham"
+  },
+  {
+   "query": "kevin durant",
+   "traffic": 100,
+   "news": "NBA superstar Kevin Durant asked Argentina goalkeeper Emi Mart\u00ednez what Sunday's Final means to him"
+  },
+  {
+   "query": "robert peston predictions",
+   "traffic": 100,
+   "news": "Robert Peston launches thriller inspired by fears over Britain\u2019s AI future"
+  },
+  {
+   "query": "wales online",
+   "traffic": 100,
+   "news": "ITV News Wales at Six; Weather on ITV1 Wales +1: full details and when it's on"
   }
  ]
 }

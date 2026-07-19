@@ -230,5 +230,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0023_2026-07-18.mp3" type="audio/mpeg" length="1518336" />
     </item>
+    <item>
+      <title>Scrying the AMD GFX1250 LLVM Tea Leaves — Startup Wire Daily | Jul 19</title>
+      <pubDate>Sun, 19 Jul 2026 08:32:58 +0000</pubDate>
+      <guid isPermaLink="false">startup-ep24-20260719</guid>
+      <description>Eighteen points on Hacker News aren't usually a big deal, but when it's for a story about someone scrying the AMD GFX1250 LLVM tea leaves, you've got to wonder what's brewing. This article on Chips and Cheese has sparked zero comments so far, which is almost as intriguing as the topic itself. For those who may not be familiar, scrying refers to the process of reading and interpreting clues, like tea leaves, to predict the future. In this case, the author is trying to decipher the implications of...</description>
+      <itunes:episode>24</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0024_2026-07-19.mp3" type="audio/mpeg" length="1144368" />
+    </item>
   </channel>
 </rss>
