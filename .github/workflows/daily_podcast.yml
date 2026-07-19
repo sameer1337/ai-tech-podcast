@@ -57,6 +57,16 @@ jobs:
           PYTHONUTF8: "1"
         run: python run_trending.py --max 3
 
+      - name: Generate email newsletter (morning only) → HTML archive + RSS for beehiiv
+        if: github.event.schedule != '0 18 * * *' && github.event.inputs.mode != 'pages_only'
+        continue-on-error: true   # a bad newsletter day must never block the site deploy
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          NEWSLETTER_GROQ_MODEL: llama-3.1-8b-instant   # separate token pool from the 70B podcasts
+          BEEHIIV_SUB_URL: ${{ secrets.BEEHIIV_SUB_URL }}
+          PYTHONUTF8: "1"
+        run: python run_newsletter.py
+
       - name: Generate podcast pages
         env:
           PYTHONUTF8: "1"
@@ -70,6 +80,19 @@ jobs:
           GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
           GSC_VERIFICATION: ${{ secrets.GSC_VERIFICATION }}
         run: python generate_home.py
+
+      - name: Growth agent — SEO fixes + daily strategy (morning only)
+        if: github.event.schedule != '0 18 * * *' && github.event.inputs.mode != 'pages_only'
+        continue-on-error: true   # never block the deploy
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROWTH_GROQ_MODEL: llama-3.1-8b-instant   # separate token pool from the 70B podcasts
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}    # optional: enables live scout discovery
+          PYTHONUTF8: "1"
+        run: |
+          python growth_agent.py seo --fix --max 20   # rewrite 20 weak/duplicate meta descriptions/day
+          python growth_agent.py strategy             # prepend ranked "DO FIRST" block to TODAY.md
+          python growth_agent.py scout                # append newsletter-swap targets
 
       - name: Deploy site to Hostinger (FTP)
         continue-on-error: true   # site deploy failure must not block YouTube uploads + episode push
@@ -168,7 +191,8 @@ jobs:
           git config user.name "Podcast Bot"
           git config user.email "hunk1.on11@gmail.com"
           git add episodes/ feeds/ feed.xml logs/ shorts/ index.html podcasts/ \
-                  blog/ about.html mapt.html vita.html privacy.html sitemap.xml robots.txt assets/
+                  blog/ about.html mapt.html vita.html privacy.html sitemap.xml robots.txt assets/ \
+                  newsletter/ newsletter.xml
           git diff --staged --quiet || git commit -m "All episodes + pages $(date +%Y-%m-%d)"
           git pull --rebase --autostash origin master
           git push

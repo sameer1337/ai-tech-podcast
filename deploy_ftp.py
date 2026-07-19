@@ -27,8 +27,10 @@ RDIR = os.environ.get("FTP_DIR", "daily")   # relative to the FTP login home (/p
 # What to publish (files + directories), relative to the repo root.
 FILES = ["index.html", "mapt.html", "vita.html", "about.html", "privacy.html",
          "sitemap.xml", "robots.txt", "llms.txt", "subscribe.php",
+         "newsletter.xml",                          # RSS feed beehiiv reads to auto-send
          "f2cd6c0eed254e85cb117777e649e630.txt"]   # IndexNow key file (fresh key)
-DIRS  = ["static", "blog", "podcasts", "assets"]
+DIRS  = ["static", "blog", "podcasts", "assets",
+         "newsletter"]                              # daily email archive pages
 
 
 def connect() -> ftplib.FTP:

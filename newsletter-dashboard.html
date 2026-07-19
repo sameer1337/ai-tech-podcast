@@ -1,0 +1,542 @@
+<title>AI Tech Daily — Growth Console</title>
+<style>
+  :root{
+    --bg:#0d1311; --surface:#131c18; --surface2:#1a2620; --border:#26352e;
+    --text:#e9f0eb; --muted:#8ba398; --faint:#5f7268;
+    --accent:#22c58a; --accent-dim:#12855c; --accent-soft:#22c58a22;
+    --amber:#f0b23e; --amber-soft:#f0b23e1f;
+    --red:#f0654a; --blue:#5ea3f0;
+    --radius:12px; --gap:16px;
+    --mono:ui-monospace,"Cascadia Code","SF Mono",Consolas,"Liberation Mono",monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#eef3f0; --surface:#ffffff; --surface2:#f2f7f4; --border:#dbe5df;
+      --text:#0f2019; --muted:#5a6e64; --faint:#93a69c;
+      --accent:#0e9d6c; --accent-dim:#0b7c55; --accent-soft:#0e9d6c14;
+      --amber:#b9791a; --amber-soft:#b9791a14; --red:#cf462c; --blue:#2f6fc0;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0d1311; --surface:#131c18; --surface2:#1a2620; --border:#26352e;
+    --text:#e9f0eb; --muted:#8ba398; --faint:#5f7268;
+    --accent:#22c58a; --accent-dim:#12855c; --accent-soft:#22c58a22;
+    --amber:#f0b23e; --amber-soft:#f0b23e1f; --red:#f0654a; --blue:#5ea3f0;
+  }
+  :root[data-theme="light"]{
+    --bg:#eef3f0; --surface:#ffffff; --surface2:#f2f7f4; --border:#dbe5df;
+    --text:#0f2019; --muted:#5a6e64; --faint:#93a69c;
+    --accent:#0e9d6c; --accent-dim:#0b7c55; --accent-soft:#0e9d6c14;
+    --amber:#b9791a; --amber-soft:#b9791a14; --red:#cf462c; --blue:#2f6fc0;
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);
+    line-height:1.55;-webkit-font-smoothing:antialiased;margin:0}
+  .wrap{max-width:1120px;margin:0 auto;padding:22px 18px 80px}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--faint)}
+  h1,h2,h3{margin:0;text-wrap:balance;line-height:1.2}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  button{font-family:var(--sans);cursor:pointer}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+  /* ── Top status bar ───────────────────────────── */
+  .top{display:flex;flex-wrap:wrap;align-items:center;gap:14px;
+    justify-content:space-between;margin-bottom:20px}
+  .brand{display:flex;align-items:baseline;gap:12px}
+  .brand h1{font-size:22px;letter-spacing:-.01em}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 0 3px var(--accent-soft);display:inline-block}
+  .themebtn{background:var(--surface);border:1px solid var(--border);color:var(--muted);
+    border-radius:20px;padding:6px 14px;font-size:12px;font-family:var(--mono)}
+
+  .statusbar{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin-bottom:22px}
+  .stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:14px 16px;position:relative;overflow:hidden}
+  .stat .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted)}
+  .stat .v{font-family:var(--mono);font-size:26px;font-weight:600;margin-top:4px;
+    letter-spacing:-.01em}
+  .stat .sub{font-size:12px;color:var(--faint);margin-top:2px}
+  .stat.accent{border-color:var(--accent-dim)}
+  .stat.accent::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+
+  /* ── Layout ───────────────────────────── */
+  .cols{display:grid;grid-template-columns:1.35fr .9fr;gap:var(--gap);align-items:start}
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:18px}
+  .panel + .panel{margin-top:var(--gap)}
+  .phead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+  .phead h2{font-size:15px;letter-spacing:.01em}
+  .phead .meta{font-family:var(--mono);font-size:11px;color:var(--faint)}
+  .lead{color:var(--muted);font-size:13px;margin:2px 0 14px}
+
+  /* ── Tasks ───────────────────────────── */
+  .task{display:flex;gap:12px;padding:11px 0;border-top:1px solid var(--border);align-items:flex-start}
+  .task:first-of-type{border-top:none}
+  .task .box{margin-top:2px;flex:0 0 auto}
+  .task input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent);cursor:pointer}
+  .task .body{flex:1;min-width:0}
+  .task .title{font-size:14.5px;font-weight:500}
+  .task.done .title{color:var(--faint);text-decoration:line-through}
+  .task .desc{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .task .desc a{font-size:12.5px}
+  .tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+    padding:2px 7px;border-radius:20px;white-space:nowrap;font-weight:600;flex:0 0 auto}
+  .tag.auto{color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-dim)}
+  .tag.you{color:var(--amber);background:var(--amber-soft);border:1px solid var(--amber)}
+  .tag.time{color:var(--muted);background:transparent;border:1px solid var(--border)}
+  .autorow{display:flex;gap:9px;align-items:center;padding:8px 0;border-top:1px solid var(--border);
+    font-size:13px;color:var(--muted)}
+  .autorow:first-of-type{border-top:none}
+  .autorow .ok{color:var(--accent);font-family:var(--mono);font-size:12px}
+
+  /* ── Copy blocks ───────────────────────────── */
+  .copywrap{margin-top:8px}
+  .copywrap textarea{width:100%;background:var(--surface2);color:var(--text);
+    border:1px solid var(--border);border-radius:8px;padding:10px 11px;font-size:12.5px;
+    font-family:var(--sans);resize:vertical;min-height:64px;line-height:1.5}
+  .copybtn{margin-top:6px;background:var(--accent);color:#04140d;border:none;border-radius:7px;
+    padding:6px 13px;font-size:12px;font-weight:700;font-family:var(--mono);letter-spacing:.03em}
+  .copybtn:hover{background:var(--accent-dim);color:#fff}
+  .copybtn.copied{background:var(--accent-dim);color:#fff}
+  .hint{font-size:11.5px;color:var(--faint);margin-top:7px;font-style:italic}
+
+  /* ── Metrics ───────────────────────────── */
+  .mform{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+  .field{display:flex;flex-direction:column;gap:3px}
+  .field label{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .field input{background:var(--surface2);border:1px solid var(--border);color:var(--text);
+    border-radius:7px;padding:8px 10px;font-family:var(--mono);font-size:14px;width:100%}
+  .savebtn{grid-column:1/-1;background:var(--accent);color:#04140d;border:none;border-radius:8px;
+    padding:9px;font-weight:700;font-family:var(--mono);letter-spacing:.04em;margin-top:2px}
+  .savebtn:hover{background:var(--accent-dim);color:#fff}
+  .mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 6px}
+  .mcell{background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:10px}
+  .mcell .k{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .mcell .v{font-family:var(--mono);font-size:19px;font-weight:600;margin-top:3px}
+  .mcell .d{font-family:var(--mono);font-size:11px;margin-top:1px}
+  .up{color:var(--accent)} .down{color:var(--red)} .flat{color:var(--faint)}
+  canvas{width:100%;height:64px;display:block;margin-top:4px}
+
+  /* ── Meters ───────────────────────────── */
+  .meter{margin-top:6px}
+  .meter .lab{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;
+    color:var(--muted);margin-bottom:5px}
+  .track{height:12px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+  .fill{height:100%;background:linear-gradient(90deg,var(--accent-dim),var(--accent));border-radius:20px;
+    transition:width .5s ease;min-width:2px}
+  .fill.gold{background:linear-gradient(90deg,#b9791a,var(--amber))}
+
+  /* ── Monetization ladder ───────────────────────────── */
+  .tier{display:flex;gap:11px;padding:10px 12px;border:1px solid var(--border);border-radius:9px;
+    margin-top:9px;background:var(--surface2);opacity:.55;transition:.3s}
+  .tier.active{opacity:1;border-color:var(--accent-dim);background:var(--accent-soft)}
+  .tier.reached{opacity:1}
+  .tier .gate{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--muted);flex:0 0 74px}
+  .tier.active .gate{color:var(--accent)}
+  .tier .what{font-size:13px}
+  .tier .what b{font-size:13px}
+
+  /* ── Roadmap ───────────────────────────── */
+  .road{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-top:4px}
+  .month{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:15px}
+  .month.current{border-color:var(--accent-dim);box-shadow:0 0 0 1px var(--accent-dim)}
+  .month .mh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px}
+  .month .mh .m{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+  .month .mh .goal{font-family:var(--mono);font-size:11px;color:var(--faint)}
+  .month h3{font-size:14px;margin-bottom:9px}
+  .month label{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--muted);
+    padding:4px 0;cursor:pointer}
+  .month label input{accent-color:var(--accent);margin-top:2px}
+  .month label.on{color:var(--text)}
+  .month label.on span{text-decoration:line-through;text-decoration-color:var(--faint)}
+
+  /* ── Links ───────────────────────────── */
+  .links{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:9px;margin-top:4px}
+  .link{display:flex;flex-direction:column;gap:1px;padding:10px 12px;background:var(--surface2);
+    border:1px solid var(--border);border-radius:9px}
+  .link:hover{border-color:var(--accent-dim);text-decoration:none}
+  .link .n{font-size:13px;font-weight:600;color:var(--text)}
+  .link .u{font-family:var(--mono);font-size:11px;color:var(--faint)}
+
+  .sectitle{margin:30px 0 12px;display:flex;align-items:center;gap:12px}
+  .sectitle h2{font-size:16px}
+  .sectitle .rule{height:1px;background:var(--border);flex:1}
+
+  footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--border);
+    font-size:12px;color:var(--faint);font-family:var(--mono);text-align:center}
+
+  @media (max-width:820px){
+    .statusbar{grid-template-columns:repeat(2,1fr)}
+    .cols{grid-template-columns:1fr}
+    .road{grid-template-columns:1fr}
+  }
+</style>
+
+<div class="wrap">
+
+  <div class="top">
+    <div class="brand">
+      <span class="dot"></span>
+      <h1>AI Tech Daily <span style="color:var(--faint);font-weight:400">/ Growth Console</span></h1>
+    </div>
+    <button class="themebtn" id="themebtn" aria-label="Toggle theme">◐ theme</button>
+  </div>
+
+  <!-- STATUS BAR -->
+  <div class="statusbar">
+    <div class="stat accent">
+      <div class="k">Subscribers</div>
+      <div class="v num" id="s-subs">—</div>
+      <div class="sub">goal 28,000 by month 6</div>
+    </div>
+    <div class="stat">
+      <div class="k">Est. MRR</div>
+      <div class="v num" id="s-mrr">—</div>
+      <div class="sub">target $10,000 / mo</div>
+    </div>
+    <div class="stat">
+      <div class="k">Open rate</div>
+      <div class="v num" id="s-open">—</div>
+      <div class="sub">healthy &gt; 35%</div>
+    </div>
+    <div class="stat">
+      <div class="k">Day streak</div>
+      <div class="v num" id="s-streak">0</div>
+      <div class="sub">manual block completed</div>
+    </div>
+  </div>
+
+  <div class="cols">
+    <!-- ═══ LEFT: TODAY ═══ -->
+    <div>
+      <div class="panel">
+        <div class="phead">
+          <h2>☀️ Today's mission</h2>
+          <span class="meta" id="today-date"></span>
+        </div>
+        <p class="lead">The machine already shipped the newsletter. Your job is the ~15-min growth block below. Boxes reset every morning.</p>
+
+        <div class="eyebrow" style="margin:6px 0 4px">Ran automatically — nothing to do</div>
+        <div class="autorow"><span class="ok">✓</span><span>Fetched today's AI stories &amp; wrote the 5-story brief <span class="tag auto">auto</span></span></div>
+        <div class="autorow"><span class="ok">✓</span><span>Built the email + <a href="https://daily.mapt.cloud/newsletter/latest.html" target="_blank" rel="noopener">archive page</a>, sent via beehiiv (RSS) <span class="tag auto">auto</span></span></div>
+        <div class="autorow"><span class="ok">✓</span><span>Drafted your X / LinkedIn / Reddit posts → <code style="font-family:var(--mono);font-size:12px;color:var(--muted)">newsletter/TODAY.md</code> <span class="tag auto">auto</span></span></div>
+
+        <div class="eyebrow" style="margin:16px 0 2px">Your block — check off as you go</div>
+        <div id="tasklist"></div>
+      </div>
+
+      <!-- POST TEMPLATES -->
+      <div class="panel">
+        <div class="phead"><h2>📋 Post templates</h2><span class="meta">edit freely — saved locally</span></div>
+        <p class="lead">Your <b>specific</b> AI-written posts for today are in <code style="font-family:var(--mono);font-size:12px">newsletter/TODAY.md</code>. Paste those. These are the reusable structures for when you write your own.</p>
+        <div id="templates"></div>
+      </div>
+    </div>
+
+    <!-- ═══ RIGHT: METRICS + MONEY ═══ -->
+    <div>
+      <div class="panel">
+        <div class="phead"><h2>📈 Log yesterday</h2><span class="meta">1 min · daily</span></div>
+        <div class="mform">
+          <div class="field"><label for="i-subs">Subscribers</label><input id="i-subs" class="num" type="number" min="0" placeholder="0"></div>
+          <div class="field"><label for="i-mrr">MRR ($)</label><input id="i-mrr" class="num" type="number" min="0" placeholder="0"></div>
+          <div class="field"><label for="i-open">Open %</label><input id="i-open" class="num" type="number" min="0" max="100" step="0.1" placeholder="0"></div>
+          <div class="field"><label for="i-click">Click %</label><input id="i-click" class="num" type="number" min="0" max="100" step="0.1" placeholder="0"></div>
+          <button class="savebtn" id="savebtn">Save today's numbers</button>
+        </div>
+        <div class="mgrid">
+          <div class="mcell"><div class="k">Subs</div><div class="v num" id="m-subs">0</div><div class="d num" id="m-subs-d">—</div></div>
+          <div class="mcell"><div class="k">Open</div><div class="v num" id="m-open">0%</div><div class="d num" id="m-open-d">—</div></div>
+          <div class="mcell"><div class="k">Click</div><div class="v num" id="m-click">0%</div><div class="d num" id="m-click-d">—</div></div>
+        </div>
+        <div class="eyebrow" style="margin:6px 0 2px">Subscriber growth</div>
+        <canvas id="spark" width="600" height="128" aria-label="Subscriber growth sparkline"></canvas>
+      </div>
+
+      <div class="panel">
+        <div class="phead"><h2>🎯 Progress to goal</h2></div>
+        <div class="meter">
+          <div class="lab"><span>Revenue → $10k/mo</span><span class="num" id="rev-pct">0%</span></div>
+          <div class="track"><div class="fill gold" id="rev-fill" style="width:0%"></div></div>
+        </div>
+        <div class="meter" style="margin-top:14px">
+          <div class="lab"><span>Subscribers → 28k</span><span class="num" id="sub-pct">0%</span></div>
+          <div class="track"><div class="fill" id="sub-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="phead"><h2>💰 Monetization ladder</h2><span class="meta">unlocks by subs</span></div>
+        <div id="ladder"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ ROADMAP ═══ -->
+  <div class="sectitle"><h2>🗺️ 6-month roadmap</h2><span class="rule"></span></div>
+  <div class="road" id="roadmap"></div>
+
+  <!-- ═══ LINKS ═══ -->
+  <div class="sectitle"><h2>🔗 Command links</h2><span class="rule"></span></div>
+  <div class="links" id="links"></div>
+
+  <footer id="footer">Local, private, yours. All data saved in this browser only.</footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var LS="aitd_console_v1";
+  var todayStr=new Date().toISOString().slice(0,10);
+
+  // ── State ──
+  var state=load();
+  function load(){try{return JSON.parse(localStorage.getItem(LS))||{}}catch(e){return{}}}
+  function save(){localStorage.setItem(LS,JSON.stringify(state))}
+  state.roadmap=state.roadmap||{};
+  state.metrics=state.metrics||[];
+  state.templates=state.templates||{};
+  state.streak=state.streak||0;
+  state.lastStreakDate=state.lastStreakDate||"";
+  if(state.dailyDate!==todayStr){state.dailyDate=todayStr;state.daily={};save();}
+  state.daily=state.daily||{};
+
+  // ── Theme ──
+  var root=document.documentElement;
+  if(state.theme)root.setAttribute("data-theme",state.theme);
+  document.getElementById("themebtn").onclick=function(){
+    var cur=root.getAttribute("data-theme");
+    if(!cur)cur=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+    var next=cur==="dark"?"light":"dark";
+    root.setAttribute("data-theme",next);state.theme=next;save();drawSpark();
+  };
+
+  // ── Daily tasks ──
+  var TASKS=[
+    {id:"x",tag:"you",time:"2 min",title:"Post to X / Twitter",
+     desc:'Paste today\'s tweet from TODAY.md. Then reply to your own post with the <a href="https://daily.mapt.cloud/newsletter/latest.html" target="_blank" rel="noopener">archive link</a>. → <a href="https://x.com/compose/post" target="_blank" rel="noopener">Compose</a>'},
+    {id:"li",tag:"you",time:"2 min",title:"Post to LinkedIn",
+     desc:'Paste the LinkedIn draft. One concrete takeaway + free subscribe CTA. → <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener">LinkedIn</a>'},
+    {id:"rd",tag:"you",time:"5 min",title:"Reddit — value-first comment",
+     desc:'Find a live thread on today\'s top story, add genuine analysis, soft-mention the newsletter once. → <a href="https://www.reddit.com/r/artificial/" target="_blank" rel="noopener">r/artificial</a> · <a href="https://www.reddit.com/r/OpenAI/" target="_blank" rel="noopener">r/OpenAI</a> · <a href="https://news.ycombinator.com/" target="_blank" rel="noopener">HN</a>'},
+    {id:"eng",tag:"you",time:"5 min",title:"Engage",
+     desc:"Reply to every comment/DM from yesterday. Answer 2 AI questions with real value (link only in your profile)."},
+    {id:"grow",tag:"you",time:"5 min",title:"Growth op of the day — pick ONE",
+     desc:"1 beehiiv Recommendation-swap DM · OR pitch 1 sponsor/affiliate (month 3+) · OR add the subscribe CTA to one more surface (a Spotify note, a YouTube Short description)."},
+    {id:"log",tag:"you",time:"1 min",title:"Log yesterday's numbers",
+     desc:"Enter subs / open % / click % / MRR in the panel on the right. This drives every meter."}
+  ];
+  var tl=document.getElementById("tasklist");
+  TASKS.forEach(function(t){
+    var row=document.createElement("div");row.className="task";
+    row.innerHTML='<span class="box"><input type="checkbox"></span>'+
+      '<div class="body"><div class="title">'+t.title+'</div><div class="desc">'+t.desc+'</div></div>'+
+      '<span class="tag '+t.tag+'">'+t.tag+'</span><span class="tag time">'+t.time+'</span>';
+    var cb=row.querySelector("input");
+    cb.checked=!!state.daily[t.id];
+    if(cb.checked)row.classList.add("done");
+    cb.onchange=function(){state.daily[t.id]=cb.checked;row.classList.toggle("done",cb.checked);save();checkStreak();};
+    tl.appendChild(row);
+  });
+  function checkStreak(){
+    var allDone=TASKS.every(function(t){return state.daily[t.id]});
+    if(allDone&&state.lastStreakDate!==todayStr){
+      state.streak=(state.streak||0)+1;state.lastStreakDate=todayStr;save();
+    }
+    document.getElementById("s-streak").textContent=state.streak||0;
+  }
+
+  // ── Templates ──
+  var TPL=[
+    {id:"tx",label:"X / Twitter",v:"[Biggest story today], in one line.\n\nWhy it matters: [1 sharp insight].\n\nI break down the day's AI news in a free 5-min email 👇\nhttps://daily.mapt.cloud/#subscribe"},
+    {id:"tli",label:"LinkedIn",v:"Today in AI: [top story].\n\n[2 sentences of context + why professionals should care.]\n\nMy one takeaway: [concrete point].\n\nI send a free 5-minute AI brief every morning — you can also listen to it. Subscribe: https://daily.mapt.cloud/#subscribe"},
+    {id:"trd",label:"Reddit comment (value-first)",v:"[Genuine 3-4 sentence take on the story — real analysis, no pitch.]\n\n(I write a free daily AI brief if anyone wants the 5-min version — happy to share.)"}
+  ];
+  var tw=document.getElementById("templates");
+  TPL.forEach(function(t){
+    var wrap=document.createElement("div");wrap.className="copywrap";
+    wrap.innerHTML='<div class="eyebrow" style="margin:10px 0 4px">'+t.label+'</div>'+
+      '<textarea></textarea><br><button class="copybtn">Copy</button>';
+    var ta=wrap.querySelector("textarea");
+    ta.value=state.templates[t.id]!=null?state.templates[t.id]:t.v;
+    ta.oninput=function(){state.templates[t.id]=ta.value;save();};
+    var btn=wrap.querySelector("button");
+    btn.onclick=function(){
+      navigator.clipboard.writeText(ta.value).then(function(){
+        btn.textContent="Copied ✓";btn.classList.add("copied");
+        setTimeout(function(){btn.textContent="Copy";btn.classList.remove("copied")},1400);
+      });
+    };
+    tw.appendChild(wrap);
+  });
+  var hint=document.createElement("p");hint.className="hint";
+  hint.textContent="Tip: on a normal morning, TODAY.md already contains today's version of all three, written to match the day's stories.";
+  tw.appendChild(hint);
+
+  // ── Monetization ladder ──
+  var TIERS=[
+    {gate:"0+",html:"<b>Affiliate links</b> in the brief + turn on beehiiv <b>referral program</b>"},
+    {gate:"1,000+",html:"Apply to the <b>beehiiv Ad Network</b> — it auto-fills the sponsor slot"},
+    {gate:"2,500+",html:"Launch the <b>premium tier</b> ($6–8/mo): weekend deep-dive, ad-free, full archive"},
+    {gate:"6,000+",html:"Pitch <b>direct sponsors</b> (higher CPM) + add a <b>job board</b> ($99–299/listing)"},
+    {gate:"15,000+",html:"<b>Stack &amp; renew</b>: multiple sponsor slots/week, classifieds, scale premium"}
+  ];
+  var gates=[0,1000,2500,6000,15000];
+  var ladder=document.getElementById("ladder");
+  function renderLadder(subs){
+    ladder.innerHTML="";
+    var activeIdx=0;for(var i=0;i<gates.length;i++){if(subs>=gates[i])activeIdx=i;}
+    TIERS.forEach(function(t,i){
+      var d=document.createElement("div");d.className="tier";
+      if(i<activeIdx)d.classList.add("reached");
+      if(i===activeIdx)d.classList.add("active");
+      d.innerHTML='<div class="gate">'+t.gate+'</div><div class="what">'+t.html+'</div>';
+      ladder.appendChild(d);
+    });
+  }
+
+  // ── Roadmap ──
+  var MONTHS=[
+    {m:"Month 1",goal:"500 subs",h:"Foundation",items:["beehiiv publication live","Migrate subscribers.csv","Daily send running","Subscribe CTA on Spotify + blog + YouTube"]},
+    {m:"Month 2",goal:"2,500 subs",h:"Growth systems",items:["Recommendations + Boosts on","Referral program live","Lead magnet published","Daily social posting habit"]},
+    {m:"Month 3",goal:"6,000 subs",h:"First revenue",items:["Ad Network approved","Affiliate section added","First direct sponsor pitch","First $500–1k month"]},
+    {m:"Month 4",goal:"12,000 subs",h:"Premium",items:["Premium tier launched","Media kit built","Direct sponsors booked","~$3k/mo"]},
+    {m:"Month 5",goal:"20,000 subs",h:"Scale",items:["A/B test subject lines","Job board live","Multiple sponsors/week","~$6k/mo"]},
+    {m:"Month 6",goal:"28,000 subs",h:"Stack it",items:["All streams running","Renew sponsors","Push premium conversions","~$9–11k/mo"]}
+  ];
+  var rm=document.getElementById("roadmap");
+  function renderRoadmap(subs){
+    rm.innerHTML="";
+    var curIdx=0;for(var i=0;i<gates.length;i++){}
+    var subGoals=[0,500,2500,6000,12000,20000];
+    var ci=0;for(var j=0;j<subGoals.length;j++){if(subs>=subGoals[j])ci=j;}
+    MONTHS.forEach(function(mo,idx){
+      var c=document.createElement("div");c.className="month"+(idx===ci?" current":"");
+      var inner='<div class="mh"><span class="m">'+mo.m+'</span><span class="goal">'+mo.goal+'</span></div><h3>'+mo.h+'</h3>';
+      c.innerHTML=inner;
+      mo.items.forEach(function(it,k){
+        var key="m"+idx+"_"+k;
+        var lab=document.createElement("label");
+        var on=!!state.roadmap[key];if(on)lab.className="on";
+        lab.innerHTML='<input type="checkbox"'+(on?" checked":"")+'><span>'+it+'</span>';
+        var cb=lab.querySelector("input");
+        cb.onchange=function(){state.roadmap[key]=cb.checked;lab.classList.toggle("on",cb.checked);save();};
+        c.appendChild(lab);
+      });
+      rm.appendChild(c);
+    });
+  }
+
+  // ── Links ──
+  var LINKS=[
+    {n:"beehiiv dashboard",u:"app.beehiiv.com",h:"https://app.beehiiv.com"},
+    {n:"Newsletter archive",u:"daily.mapt.cloud",h:"https://daily.mapt.cloud/newsletter/latest.html"},
+    {n:"Spotify show",u:"AI Tech Daily",h:"https://open.spotify.com/show/033GtiveqJ3namuIWD009h"},
+    {n:"Groq console",u:"console.groq.com",h:"https://console.groq.com"},
+    {n:"Compose X post",u:"x.com",h:"https://x.com/compose/post"},
+    {n:"LinkedIn",u:"linkedin.com",h:"https://www.linkedin.com/feed/"},
+    {n:"r/artificial",u:"reddit.com",h:"https://www.reddit.com/r/artificial/"},
+    {n:"r/OpenAI",u:"reddit.com",h:"https://www.reddit.com/r/OpenAI/"},
+    {n:"Hacker News",u:"news.ycombinator.com",h:"https://news.ycombinator.com/"},
+    {n:"Canva (design)",u:"canva.com",h:"https://www.canva.com"},
+    {n:"Product Hunt",u:"producthunt.com",h:"https://www.producthunt.com"},
+    {n:"Setup guide",u:"NEWSLETTER_SETUP.md",h:"#"}
+  ];
+  var lc=document.getElementById("links");
+  LINKS.forEach(function(l){
+    var a=document.createElement("a");a.className="link";a.href=l.h;
+    if(l.h!=="#"){a.target="_blank";a.rel="noopener";}
+    a.innerHTML='<span class="n">'+l.n+'</span><span class="u">'+l.u+' ↗</span>';
+    lc.appendChild(a);
+  });
+
+  // ── Metrics render ──
+  function latest(){return state.metrics[state.metrics.length-1]}
+  function prev(){return state.metrics[state.metrics.length-2]}
+  function fmt(n){return (n||0).toLocaleString("en-US")}
+  function delta(cur,old,suffix){
+    if(old==null||old===cur)return['—',"flat"];
+    var diff=cur-old;var cls=diff>0?"up":"down";
+    var s=(diff>0?"▲ ":"▼ ")+Math.abs(diff).toLocaleString("en-US")+(suffix||"");
+    return[s,cls];
+  }
+  function renderMetrics(){
+    var L=latest(),P=prev();
+    var subs=L?L.subs:0, mrr=L?L.mrr:0, open=L?L.open:0, click=L?L.click:0;
+    document.getElementById("s-subs").textContent=fmt(subs);
+    document.getElementById("s-mrr").textContent="$"+fmt(mrr);
+    document.getElementById("s-open").textContent=(open||0)+"%";
+    document.getElementById("s-streak").textContent=state.streak||0;
+
+    document.getElementById("m-subs").textContent=fmt(subs);
+    document.getElementById("m-open").textContent=(open||0)+"%";
+    document.getElementById("m-click").textContent=(click||0)+"%";
+    var ds=delta(subs,P?P.subs:null,""),dop=delta(open,P?P.open:null,"%"),dcl=delta(click,P?P.click:null,"%");
+    setD("m-subs-d",ds);setD("m-open-d",dop);setD("m-click-d",dcl);
+
+    var rp=Math.min(100,Math.round(mrr/10000*100));
+    document.getElementById("rev-pct").textContent=rp+"%";
+    document.getElementById("rev-fill").style.width=rp+"%";
+    var sp=Math.min(100,Math.round(subs/28000*100));
+    document.getElementById("sub-pct").textContent=sp+"%";
+    document.getElementById("sub-fill").style.width=sp+"%";
+
+    renderLadder(subs);renderRoadmap(subs);drawSpark();
+  }
+  function setD(id,arr){var el=document.getElementById(id);el.textContent=arr[0];el.className="d num "+arr[1];}
+
+  // ── Sparkline (canvas) ──
+  function cssVar(n){return getComputedStyle(root).getPropertyValue(n).trim()}
+  function drawSpark(){
+    var cv=document.getElementById("spark");var ctx=cv.getContext("2d");
+    var dpr=window.devicePixelRatio||1;var w=cv.clientWidth||300,h=64;
+    cv.width=w*dpr;cv.height=h*dpr;ctx.scale(dpr,dpr);
+    ctx.clearRect(0,0,w,h);
+    var pts=state.metrics.map(function(m){return m.subs||0});
+    if(pts.length<1){ctx.fillStyle=cssVar("--faint");ctx.font="12px ui-monospace,monospace";
+      ctx.fillText("Log a few days to see growth",8,h/2+4);return;}
+    if(pts.length===1)pts=[0,pts[0]];
+    var max=Math.max.apply(null,pts),min=Math.min.apply(null,pts);
+    var range=max-min||1;var pad=6;
+    function X(i){return pad+i*(w-2*pad)/(pts.length-1)}
+    function Y(v){return h-pad-(v-min)/range*(h-2*pad)}
+    var acc=cssVar("--accent");
+    // area
+    ctx.beginPath();ctx.moveTo(X(0),Y(pts[0]));
+    for(var i=1;i<pts.length;i++)ctx.lineTo(X(i),Y(pts[i]));
+    ctx.lineTo(X(pts.length-1),h);ctx.lineTo(X(0),h);ctx.closePath();
+    ctx.fillStyle=acc+"22";ctx.fill();
+    // line
+    ctx.beginPath();ctx.moveTo(X(0),Y(pts[0]));
+    for(i=1;i<pts.length;i++)ctx.lineTo(X(i),Y(pts[i]));
+    ctx.strokeStyle=acc;ctx.lineWidth=2;ctx.lineJoin="round";ctx.stroke();
+    // endpoint
+    ctx.beginPath();ctx.arc(X(pts.length-1),Y(pts[pts.length-1]),3.2,0,7);ctx.fillStyle=acc;ctx.fill();
+  }
+
+  // ── Save handler ──
+  document.getElementById("savebtn").onclick=function(){
+    var g=function(id){var v=parseFloat(document.getElementById(id).value);return isNaN(v)?0:v;};
+    var entry={date:todayStr,subs:g("i-subs"),mrr:g("i-mrr"),open:g("i-open"),click:g("i-click")};
+    var last=latest();
+    if(last&&last.date===todayStr){state.metrics[state.metrics.length-1]=entry;}
+    else{state.metrics.push(entry);}
+    save();renderMetrics();
+    var b=document.getElementById("savebtn");b.textContent="Saved ✓";
+    setTimeout(function(){b.textContent="Save today's numbers"},1400);
+  };
+  // Prefill inputs from latest
+  (function(){var L=latest();if(L){["subs","mrr","open","click"].forEach(function(k){
+    document.getElementById("i-"+k).value=L[k]||"";});}})();
+
+  document.getElementById("today-date").textContent=new Date().toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"});
+  renderMetrics();
+  window.addEventListener("resize",drawSpark);
+})();
+</script>
