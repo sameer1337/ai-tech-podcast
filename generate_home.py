@@ -7,7 +7,7 @@ homepage slider + latest-blog blocks always reflect the newest episodes.
 Self-contained: CSS comes from home_style.html; article data is parsed from
 blog/<cat>/ep*.html (title / dek / date / image / link).
 """
-import re, glob, os
+import re, glob, os, json
 from site_header import header_html, HEADER_CSS, HEADER_JS, analytics_head
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -84,6 +84,30 @@ def menu():
         mk = megas.get(c, mega_cards)
         items.append(f'<li><a href="/blog/{c}/">{LABEL[c]} <span class="car">▾</span></a>{mk(c,r0)}</li>')
     return "".join(items)
+
+# ---------- structured data ----------
+SITE = "https://daily.mapt.cloud/"
+
+def home_ld():
+    """WebSite + Organization + an ItemList of the lead stories for the home page.
+
+    Post pages get NewsArticle/FAQPage from generate_pages.py; the home page had
+    no structured data at all, so search engines saw no site-level entity.
+    """
+    org = {"@type": "Organization", "@id": SITE + "#org", "name": "Mapt Daily",
+           "url": SITE, "description": "Daily brief on AI & tech, finance, health, "
+           "startups, crypto, world news and true crime."}
+    site = {"@type": "WebSite", "@id": SITE + "#website", "url": SITE,
+            "name": "Mapt Daily", "inLanguage": "en",
+            "publisher": {"@id": SITE + "#org"}}
+    items = [{"@type": "ListItem", "position": i + 1, "url": a["link"], "name": a["title"]}
+             for i, a in enumerate(ALL[:10])]
+    page = {"@type": "CollectionPage", "@id": SITE + "#webpage", "url": SITE,
+            "name": "Mapt Daily", "isPartOf": {"@id": SITE + "#website"},
+            "about": {"@id": SITE + "#org"},
+            "mainEntity": {"@type": "ItemList", "itemListElement": items}}
+    graph = {"@context": "https://schema.org", "@graph": [org, site, page]}
+    return f'<script type="application/ld+json">{json.dumps(graph)}</script>'
 
 # ---------- sections ----------
 def hero():
@@ -247,13 +271,16 @@ HTML = f'''<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet" />
 {STYLE}
 {HEADER_CSS}
+<style>.sronly{{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}}</style>
 {analytics_head()}
+{home_ld()}
 </head>
 <body>
 
 {HEADER}
 
 <div class="container">
+  <h1 class="sronly">Mapt Daily — daily AI, tech, finance, health, startup, crypto, world and true crime news</h1>
   {hero()}
   <div class="grid-main">
     <div>
