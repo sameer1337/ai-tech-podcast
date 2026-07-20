@@ -239,5 +239,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0024_2026-07-19.mp3" type="audio/mpeg" length="1248768" />
     </item>
+    <item>
+      <title>The mysterious hum heard around the world may finally have — Health Edge Daily | Jul 20</title>
+      <pubDate>Mon, 20 Jul 2026 09:30:04 +0000</pubDate>
+      <guid isPermaLink="false">health-ep25-20260720</guid>
+      <description>Sixty percent of people who report hearing the mysterious sound known as The Hum have a condition that's often misdiagnosed as an external noise, when in fact it may be a type of internal tinnitus. This bizarre phenomenon has been reported worldwide for decades, with people describing it as a persistent low-frequency humming noise that seems to come from outside their bodies, but often can't be traced to any specific source. Researchers have been trying to get to the bottom of The Hum, and their...</description>
+      <itunes:episode>25</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0025_2026-07-20.mp3" type="audio/mpeg" length="1432080" />
+    </item>
   </channel>
 </rss>

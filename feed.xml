@@ -248,5 +248,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0025_2026-07-19.mp3" type="audio/mpeg" length="1368576" />
     </item>
+    <item>
+      <title>Netflix paid $587M for Ben Affleck’s AI filmmaking startup — AI Tech Daily | Jul 20</title>
+      <pubDate>Mon, 20 Jul 2026 09:28:53 +0000</pubDate>
+      <guid isPermaLink="false">ai-tech-ep26-20260720</guid>
+      <description>Netflix just paid $587 million in cash for InterPositive, a startup co-founded by Ben Affleck that's been making waves in the AI filmmaking space. This stunning acquisition has left many in the tech world wondering what Netflix plans to do with this new technology. InterPositive has been working on using AI to help with everything from scriptwriting to editing, and it's not hard to see how this could be a game-changer for the streaming giant. With the rise of AI-generated content, Netflix is cle...</description>
+      <itunes:episode>26</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0026_2026-07-20.mp3" type="audio/mpeg" length="1243008" />
+    </item>
   </channel>
 </rss>

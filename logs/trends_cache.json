@@ -1,105 +1,100 @@
 {
- "date": "2026-07-19",
+ "date": "2026-07-20",
  "trends": [
   {
+   "query": "movies",
+   "traffic": 20000,
+   "news": "'The Odyssey' Is Just Another Reason for Despair"
+  },
+  {
    "query": "latest news",
-   "traffic": 50000,
-   "news": "Two US service members killed, one missing following Iranian strikes in Jordan"
+   "traffic": 10000,
+   "news": "U.S. strikes Iran again after troop deaths"
   },
   {
-   "query": "weather today",
+   "query": "pasta",
+   "traffic": 5000,
+   "news": "Easy spaghetti recipe is an Italian classic with 6 ingredients and ready in 10 minutes"
+  },
+  {
+   "query": "nyt strands hints",
+   "traffic": 5000,
+   "news": "NYT Strands Answers Today: Hints & Clues For Sunday, July 19 (Big Talk)"
+  },
+  {
+   "query": "ftse",
    "traffic": 2000,
-   "news": "Spain forced to cancel pre-World Cup final training due to adverse weather - The Athletic"
+   "news": "London pre-open: Stocks to fall as US-Iran tensions escalate; Burnham to become PM"
   },
   {
-   "query": "facebook",
-   "traffic": 2000,
-   "news": "Facebook down with users hit with 'account unavailable' warning at login"
-  },
-  {
-   "query": "facebook down",
+   "query": "\u8c22\u8d24",
    "traffic": 1000,
-   "news": "Facebook down for users worldwide, Downdetector reports spike"
+   "news": "89\u5c81\u201c\u56db\u54e5\u201d\u8c22\u8d24\u79bb\u4e16\uff0c\u9999\u6e2f\u5f71\u89c6\u9ec4\u91d1\u65f6\u4ee3\u518d\u522b\u4e00\u4f4d\u89c1\u8bc1\u8005"
   },
   {
-   "query": "tacoma narrows bridge closure",
+   "query": "2026 \u5e74 fifa \u4e16\u754c\u676f",
+   "traffic": 1000,
+   "news": "\u4e16\u754c\u676f\u5404\u5927\u5956\u9879\u5c18\u57c3\u843d\u5b9a\uff1a\u59c6\u5df4\u4f69\u62ff\u5230\u91d1\u9774\u5956\uff0c\u897f\u73ed\u7259\u7403\u5458\u83b7\u9881\u4e09\u9879\u4e2a\u4eba\u5956\uff0c\u8377\u5170\u961f\u56e0\u201c\u6700\u5e72\u51c0\u201d\u9996\u83b7\u516c\u5e73\u7ade\u8d5b\u5956"
+  },
+  {
+   "query": "bbc sounds",
+   "traffic": 1000,
+   "news": "'It\u2019s more than a party\u2019: Notting Hill Carnival organisers call for better understanding its real meaning"
+  },
+  {
+   "query": "daycare",
    "traffic": 500,
-   "news": "Expect Friday lane closure on SR-16 near Tacoma Narrows Bridge"
+   "news": "Dog Drowning Forces Camp Canine to Temporarily Shut Down, Community Outraged | News Channel 3-12"
   },
   {
-   "query": "liverpool transfer news",
+   "query": "moscow",
    "traffic": 500,
-   "news": "Andoni Iraola says Liverpool need to sign more players as he addresses questions over his style in first press conference"
+   "news": "Ukrainian Attacks Across Russia Kill At Least 4"
   },
   {
-   "query": "prince george prince william eton",
+   "query": "south east water",
+   "traffic": 500,
+   "news": "South East Water supply disruption hits thousands of properties in Kent"
+  },
+  {
+   "query": "paula badosa",
    "traffic": 200,
-   "news": "Why Prince George\u2019s royal childhood has been \u2018dramatically different\u2019 to William\u2019s"
+   "news": "Tenis en directo: Badosa disputar\u00e1 la final de Iasi el lunes"
   },
   {
-   "query": "cloud",
+   "query": "google play",
    "traffic": 200,
-   "news": "Nvidia Gpus \u2014 Software & Technology Articles"
+   "news": "Pixelated 108: Rerun of a rerun"
   },
   {
-   "query": "fidelity funds",
+   "query": "cyril blais",
    "traffic": 200,
-   "news": "The New ETF Transaction Fee Popping Up in Some Brokerage Accounts"
+   "news": "FIA president pays tribute after death of Formula E team principal Cyril Blais"
   },
   {
-   "query": "lucy powell",
+   "query": "\u8b1d\u8ce2",
    "traffic": 200,
-   "news": "Starmer: I saved Labour"
+   "news": ""
   },
   {
-   "query": "laporte comments argentina world cup",
-   "traffic": 200,
-   "news": "Aymeric Laporte: Referee must be strong, Argentina like to leave a mark"
-  },
-  {
-   "query": "google pixel 11",
-   "traffic": 200,
-   "news": "Google releases first Pixel 11 teaser and shows Pixel Glow [Video]"
-  },
-  {
-   "query": "felipe contepomi press exit",
-   "traffic": 200,
-   "news": "Argentina boss storms out of press conference overnight accusing England"
-  },
-  {
-   "query": "fidelity etf",
+   "query": "mayar sherif",
    "traffic": 100,
-   "news": "Fidelity will charge up to $100 on certain ETF purchases"
+   "news": "Rain chaos in Ia\u0219i: Paula Badosa's final postponed as Hamburg schedule comes under threat"
   },
   {
-   "query": "fidelity investments",
+   "query": "dsit",
    "traffic": 100,
-   "news": "Fidelity customers could get $5K from a settlement, but should act soon"
+   "news": ""
   },
   {
-   "query": "fidelity bitcoin",
+   "query": "larry the cat",
    "traffic": 100,
-   "news": "3 reasons Bitcoin is stuck in a bear market\u2014and why one analyst predicts a rebound to $100,000 by year-end"
+   "news": "14 ideas Andy Burnham definitely \u2013 definitely \u2013 won\u2019t have thought of"
   },
   {
-   "query": "boris johnson",
+   "query": "bbc football gossip",
    "traffic": 100,
-   "news": "Former PMs Boris Johnson and Rishi Sunak offer advice to incoming Andy Burnham"
-  },
-  {
-   "query": "kevin durant",
-   "traffic": 100,
-   "news": "NBA superstar Kevin Durant asked Argentina goalkeeper Emi Mart\u00ednez what Sunday's Final means to him"
-  },
-  {
-   "query": "robert peston predictions",
-   "traffic": 100,
-   "news": "Robert Peston launches thriller inspired by fears over Britain\u2019s AI future"
-  },
-  {
-   "query": "wales online",
-   "traffic": 100,
-   "news": "ITV News Wales at Six; Weather on ITV1 Wales +1: full details and when it's on"
+   "news": "Arsenal lining up shock free transfer for England World Cup star John Stones as William Saliba injury replacement"
   }
  ]
 }

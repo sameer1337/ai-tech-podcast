@@ -239,5 +239,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0024_2026-07-19.mp3" type="audio/mpeg" length="1082736" />
     </item>
+    <item>
+      <title>Latest Oil Market News and Analysis for July 20 — Money Minute Daily | Jul 20</title>
+      <pubDate>Mon, 20 Jul 2026 09:29:13 +0000</pubDate>
+      <guid isPermaLink="false">finance-ep25-20260720</guid>
+      <description>Iran's Foreign Ministry just announced it's received proposals from mediators to end the war with the US, and oil prices are already feeling the impact, erasing an earlier increase as investors weigh the potential for a ceasefire. This is huge news, as it could significantly alter the current oil market landscape, which has been heavily influenced by the ongoing tensions between the two nations. If a resolution is reached, it could lead to increased oil production, potentially driving down price...</description>
+      <itunes:episode>25</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0025_2026-07-20.mp3" type="audio/mpeg" length="1043136" />
+    </item>
   </channel>
 </rss>
