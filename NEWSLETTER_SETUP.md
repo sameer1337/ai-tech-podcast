@@ -29,6 +29,14 @@ never competes for tokens). If Groq is ever down, a clean template fallback ship
 4. Settings → **API** → create an **API key** — copy it.
 5. Grab your public subscribe URL (Settings → your `*.beehiiv.com` or custom domain).
 
+### Publication IDs (recorded 2026-07-19)
+- **API V2 (use this one):** `pub_d898927b-2405-4391-9836-a3aae47553d8` — already wired into `subscribe.php`
+- API V1 (legacy): `d898927b-2405-4391-9836-a3aae47553d8`
+
+> ⚠️ The **API key** is NOT stored here and must never be committed — this repo is
+> public. Put it in an env var / GitHub Secret only. Creating one requires Stripe
+> Identity verification, which is optional: the embed-form path below needs no API.
+
 ## Step 2 — Feed signups into beehiiv (5 min)
 
 `subscribe.php` already forwards new signups to beehiiv. Just add credentials.

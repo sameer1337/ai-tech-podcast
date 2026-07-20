@@ -13,8 +13,11 @@ header('Content-Type: text/plain; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
 
 // ── beehiiv config (fill these once) ───────────────────────────────
-$BEEHIIV_API_KEY = getenv('BEEHIIV_API_KEY') ?: '';        // e.g. "xxxxxxxx..."
-$BEEHIIV_PUB_ID  = getenv('BEEHIIV_PUB_ID')  ?: '';        // e.g. "pub_xxxxxxxx-xxxx-..."
+// API KEY: keep this in an env var only — NEVER commit it (this repo is public).
+$BEEHIIV_API_KEY = getenv('BEEHIIV_API_KEY') ?: '';
+// Publication ID is a public identifier (it appears in beehiiv embed URLs), so
+// it's safe to keep here. Env var still wins if set.
+$BEEHIIV_PUB_ID  = getenv('BEEHIIV_PUB_ID')  ?: 'pub_d898927b-2405-4391-9836-a3aae47553d8';
 // ───────────────────────────────────────────────────────────────────
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') { http_response_code(405); echo 'method'; exit; }
