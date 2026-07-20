@@ -282,7 +282,7 @@ HTML = f'''<!DOCTYPE html>
     {videos_block("crypto")}
     <aside>
       <div class="subs"><h3>Get the Mapt Daily brief</h3><p>The day's top stories across every topic — free, every morning.</p>
-        <form id="subForm"><input type="email" placeholder="Your email address" required /><button>Subscribe</button></form></div>
+        <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="46b33759-8343-44e1-a56b-5bc50a830c66"></script></div>
       {categories_widget()}
     </aside>
   </div>
@@ -317,7 +317,7 @@ HTML = f'''<!DOCTYPE html>
 
 <script>
   document.getElementById('yr').textContent=new Date().getFullYear();
-  ['subForm','subForm2'].forEach(function(id){{
+  ['subForm2'].forEach(function(id){{
     var f=document.getElementById(id); if(!f) return;
     f.addEventListener('submit',function(ev){{
       ev.preventDefault();
