@@ -1,3 +1,55 @@
+<!-- growth_agent:priority -->
+## 🎯 DO THIS FIRST TODAY  ·  2026-07-20
+
+1. **Setup:** beehiiv isn't live yet — finish NEWSLETTER_SETUP.md so subscriber growth actually starts compounding.
+2. **Consistency:** post today's auto-drafted X + LinkedIn (below) and leave 2 genuine Reddit comments.
+
+_Subscribers: n/a · SEO issues: 1 · agent ran 19:44_
+
+---
+<!-- scout:live -->
+## 🔭 Live Scout (cloud agent, 2026-07-20)
+
+**Reality check first:** growth_agent flagged beehiiv still isn't live (NEWSLETTER_SETUP.md unfinished). With ~0 live subscribers today, a genuine beehiiv Recommendation *swap* isn't actionable yet — swap partners want reciprocal audience, not a one-way plug. Treat the list below as a **launch-week outreach queue**: send once beehiiv is live and you have even a few hundred subs, starting with the smallest/most peer-tier names first.
+
+### Beehiiv swap / Boost targets
+
+| Newsletter | Subscribe | Audience | Tier | Recent detail to reference |
+|---|---|---|---|---|
+| **Bot Eat Brain** | https://www.boteatbrain.com/subscribe | ~20-22k daily readers | Peer-swap (closest size match once you're a few months in) | Daily AI news + memes, run solo by Anthony Castrio — "drunk uncle with a PhD in machine learning" voice |
+| **AI For Humans** | https://aiforhumans.beehiiv.com/subscribe | Mid-size, beehiiv-native, paired with a weekly podcast | Peer-swap | Hosted by Kevin Pereira & Gavin Purcell, tagline "Where AI Gets Creative" — weekly AI news/tools/trends podcast+newsletter combo |
+| **Daily Zaps** | https://join.dailyzaps.com | 70k+ subs (OpenAI/Apple/Adobe readers cited) | Boost target | May 2026 issues covered AI agents reshaping work, new OpenAI models, and Grok integrations |
+| **Not a Bot** | https://www.notabot.tech/subscribe | 50k+ subs incl. Fortune 50 execs | Boost target | Rebranded from "All About AI" to "Not a Bot" — human-written (not AI-written) angle is their hook |
+| **AI Breakfast** | https://aibreakfast.beehiiv.com/subscribe | 100k+ subs, beehiiv-native, 3x/week | Boost target | Recent issues: "Google rolls out new protocol letting AI find, pay, and deliver for you" and "OpenAI's 'Gumdrop' could be an AI that lives in a pen-sized device" |
+| **The Neuron Daily** | https://www.theneurondaily.com/ | 700k+ readers (grew fast — was ~60-28k in older rankings) | Aspirational Boost target | July 17 issue: "Apple gets into China, AI CEOs want rules, and xAI open-sources after a leak" |
+
+### Draft outreach (beehiiv Recommendation swap) — DRAFTS ONLY, not sent
+
+**Bot Eat Brain**
+> Hey Anthony — been reading Bot Eat Brain, and the "drunk uncle with a PhD in ML" framing is exactly the tone I wish more AI newsletters had. I'm building AI Tech Daily (5-min daily AI brief) and would love to set up a beehiiv Recommendation swap — happy to feature you first and send readers your way this week. Any interest in swapping once you've had a look at what we're putting out?
+
+**AI For Humans**
+> Hi Kevin/Gavin — really liked how you two paired the podcast breakdown with the newsletter for "Where AI Gets Creative," it's a format I don't see many others doing well. I run AI Tech Daily, a 5-minute daily AI brief, and wanted to see if you'd be open to a beehiiv Recommendation swap — I'd feature you first so your readers see the value before I ask for anything back.
+
+**Daily Zaps**
+> Hey team — your May issues on AI agents reshaping work and the Grok integration coverage were genuinely useful, exactly the "3 minutes a day" density I'm aiming for with AI Tech Daily. Would you be open to a beehiiv Recommendation swap? I'm happy to go first and feature Daily Zaps to my list before asking you to reciprocate.
+
+**Not a Bot**
+> Hi Haroon — the "Not a Bot" rebrand and the human-written angle really stands out in a category full of AI-generated newsletters. I write AI Tech Daily, a 5-minute daily AI brief, and would love to explore a beehiiv Recommendation swap — I'll feature you first so it's zero-risk on your end to see if the fit works.
+
+**AI Breakfast**
+> Hey team — the "OpenAI's Gumdrop" and "Google's AI agent payment protocol" pieces this month were sharp, good mix of speed and depth. I run AI Tech Daily and would like to propose a beehiiv Recommendation swap; I'm glad to feature AI Breakfast first to my subscribers so you can see the traffic before committing to anything on your side.
+
+**The Neuron Daily**
+> Hi team — your July 17 roundup on Apple's China move, AI CEOs pushing for rules, and the xAI open-source leak was a great single-issue summary of a chaotic week. I'm building AI Tech Daily and know we're a smaller list right now, but wanted to flag interest in a beehiiv Recommendation swap or Boost placement once we've got more traction — happy to start by featuring The Neuron to our readers regardless.
+
+### Trending SEO angles (last 24-48h) — for daily.mapt.cloud
+
+1. **"Kimi K3 Explained: Moonshot AI's 2.8-Trillion-Parameter Model That Just Topped the Coding Leaderboards"** — Moonshot AI's Kimi K3 hit #1 on a major coding leaderboard July 20, with open weights promised July 27. High-intent search topic (devs will search "Kimi K3" heavily once weights drop).
+2. **"EU Orders Google to Open Android to Rival AI Assistants: What It Means for Gemini, Siri, and Alexa"** — European Commission ruling forcing Android interoperability with competing AI assistants, breaking today. Strong AI-policy search volume expected.
+3. **"What Is the World AI Cooperation Organization? Inside the New 29-Country AI Alliance Launched at WAIC 2026"** — Shanghai's World AI Conference closed today with the launch of a new international AI body (29 founding countries incl. Russia, Pakistan, Kazakhstan) — timely explainer keyword with low current competition.
+
+---
 # ☀️ AI Tech Daily — TODAY (2026-07-20)
 
 **Newsletter status:** ✅ auto-generated & queued (beehiiv sends from RSS).

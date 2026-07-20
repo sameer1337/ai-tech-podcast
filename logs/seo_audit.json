@@ -1,0 +1,20 @@
+{
+  "generated": "2026-07-20T19:44:33",
+  "pages_scanned": 252,
+  "pages_with_issues": 1,
+  "duplicate_description_groups": 0,
+  "duplicate_pages": 0,
+  "issue_counts": {
+    "boilerplate_description": 1
+  },
+  "problems": [
+    {
+      "file": "index.html",
+      "title": "Mapt Daily \u2014 AI, Finance, Health, Startups, Crypto, World &amp; True C",
+      "desc": "Mapt Daily \u2014 your free daily brief on AI &amp; tech, finance, health, startups, ",
+      "issues": [
+        "boilerplate_description"
+      ]
+    }
+  ]
+}

@@ -1,105 +1,105 @@
 {
- "date": "2026-07-18",
+ "date": "2026-07-20",
  "trends": [
   {
-   "query": "gas",
-   "traffic": 2000,
-   "news": "US Drivers Are Again Paying More Than $5 a Gallon for Diesel"
+   "query": "facebook",
+   "traffic": 5000,
+   "news": "Facebook and Instagram down as Meta hit by major outage with both 'unavailable'"
   },
   {
-   "query": "newcastle united",
-   "traffic": 2000,
-   "news": "Nottingham Forest launch \u00a345m bid for Lucas Bergvall from Spurs"
+   "query": "ftse 100",
+   "traffic": 5000,
+   "news": "European shares pare losses to trade flat as Iran diplomatic hopes cool oil"
   },
   {
-   "query": "hunger games",
+   "query": "marcello hernandez",
    "traffic": 1000,
-   "news": "Lionsgate Shares Surge Amid Reports \u2018Hunger Games\u2019 Studio Is Courting Euro Buyers"
+   "news": "How to score tickets to Marcello Hern\u00e1ndez\u2019s Thanksgiving weekend shows in South Florida"
   },
   {
-   "query": "playstation plus",
+   "query": "farnborough air show",
    "traffic": 1000,
-   "news": "PlayStation Plus games for July have been announced"
+   "news": "Farnborough International Airshow 2026 Day One flying display: Times and aircraft"
   },
   {
-   "query": "ireland vs new zealand",
+   "query": "dale vince",
    "traffic": 1000,
-   "news": "Eden Park record on the line as All Blacks host Ireland"
+   "news": "English ruling gives rare guidance on GDPR processing fairness"
   },
   {
-   "query": "emily willis now",
+   "query": "perseids",
    "traffic": 500,
-   "news": "Judge Grants $3M to Incapacitated Adult Film Actress\u2019 Mom"
+   "news": "The Perseid meteor shower is here! How to see the best shooting stars this summer"
   },
   {
-   "query": "jason momoa",
+   "query": "kevin hart",
    "traffic": 500,
-   "news": "Netflix\u2019s Brutal 3-Season Jason Momoa Series Is Officially More Timely Than Ever"
+   "news": "Messi received like royalty in New York ahead of World Cup final"
   },
   {
-   "query": "andrew truelove",
+   "query": "david hearn trump pool case",
    "traffic": 200,
-   "news": "\u2018TODAY\u2019 show intruder arraigned on hate crime charges"
+   "news": "Statement From Counsel on Davey Hearn Arraignment"
   },
   {
-   "query": "allen iverson",
+   "query": "andy burnham wife",
    "traffic": 200,
-   "news": "Video - Allen Iverson Sends Heartfelt Message to Denver Nuggets"
+   "news": "Andy Burnham Family Tree: Who Is the UK PM-in-Waiting\u2019s Family? A Look At His Parents, Wife, Children And Relatives"
   },
   {
-   "query": "earthquake now",
+   "query": "usa today",
    "traffic": 200,
-   "news": "Tsunami threat canceled for Mexico, Guatemala after magnitude 7.3 earthquake along the Pacific Ring of Fire"
+   "news": "USA TODAY reveals all-time power ranking of SEC programs"
   },
   {
-   "query": "earthquake los angeles",
+   "query": "oil futures",
    "traffic": 200,
-   "news": "San Andreas Fault's Silence Raises Earthquake Concerns"
+   "news": "Stock Market Today: Oil Ticks Up After Weekend of Fighting in Mideast \u2014 Live Updates"
   },
   {
-   "query": "tsarukyan vs covington raf 11",
+   "query": "alejandro rosalen",
    "traffic": 200,
-   "news": "RAF 11 Results: Tsarukyan vs. Covington"
+   "news": "Liverpool confirm new Iraola backroom staffer"
   },
   {
-   "query": "fc ju\u00e1rez vs club puebla standings",
+   "query": "afner ca",
    "traffic": 200,
-   "news": "FC Juarez vs Club Puebla Live Stream: How to Watch Liga MX"
+   "news": "Newcastle United announce 'exciting' signing as 6ft 4in striker unveiled in club statement"
   },
   {
-   "query": "idaho bear home break in",
+   "query": "celtic f.c.",
    "traffic": 200,
-   "news": "Bear that broke into Swan Valley home for pumpkin pie euthanized after second incident"
+   "news": "Celtic Closing in on \u00a37m Signing after Public Exit Admission"
   },
   {
-   "query": "elijah upson",
+   "query": "red bull rear wing issue",
    "traffic": 200,
-   "news": "Sky Sports report Arsenal have signed two players"
+   "news": "Red Bull confirms findings after 'super dangerous' Verstappen situation"
   },
   {
-   "query": "park run",
+   "query": "liverpool transfer news",
    "traffic": 200,
-   "news": "Study reveals 76 per cent of children feel happier after this exercise each week"
+   "news": "Stephen Warnock highlights four-man Liverpool problem \u2013 & Andoni Iraola agrees"
   },
   {
-   "query": "liverpool weather",
+   "query": "ed miliband",
    "traffic": 200,
-   "news": "Wirral line faces all out shutdown this weekend as Merseyrail scrambles to save Open"
+   "news": "Speculation about Cabinet positions has been 'horrible and unedifying', says Labour deputy leader"
   },
   {
-   "query": "man u",
+   "query": "steelers",
    "traffic": 100,
-   "news": "Man Utd 'deal to be done' for \u00a345m third midfielder; move for PL striker set to 'intensify'"
+   "news": "Ray Fittipaldo's Steelers chat transcript: 07.14.26"
   },
   {
-   "query": "diamond league london 2026",
+   "query": "%s",
    "traffic": 100,
-   "news": "Josh Kerr exclusive ahead of men's mile world record attempt: \"I'm here to do the big things\""
+   "news": "U.A.E. Rewarded With Coveted AI Chips for Supporting U.S. War in Iran"
   },
   {
-   "query": "zoo",
+   "query": "orcl stock",
    "traffic": 100,
-   "news": "Parents of boy hurt in crocodile attack feared he 'wasn't going to make it' | ITV News"
+   "news": "Oracle Risks Falling Behind in AI Race as Spending Binge Bites"
   }
  ]
 }
