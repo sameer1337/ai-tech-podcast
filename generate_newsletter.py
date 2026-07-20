@@ -270,6 +270,36 @@ def append_to_rss(brief: dict, inner_html: str, date_str: str) -> None:
     RSS_PATH.write_text(xml, encoding="utf-8")
 
 
+def render_paste_html(brief: dict) -> str:
+    """Simplified semantic HTML for PASTING into beehiiv's post builder.
+
+    beehiiv can't send fully custom HTML (its wrapper is fixed) and its block
+    editor mangles the table-based layout used for real email clients. Plain
+    h2/p/a converts cleanly into beehiiv blocks, so this is what you copy.
+    """
+    parts = [f"<p>{_esc(brief.get('intro',''))}</p>"]
+    for it in brief["items"]:
+        src = f" — {_esc(it['source'])}" if it.get("source") else ""
+        parts.append(f"<h2>{_esc(it['headline'])}</h2>")
+        parts.append(f"<p>{_esc(it['blurb'])}</p>")
+        if it.get("url"):
+            parts.append(f'<p><a href="{_esc(it["url"])}">Read more{src}</a></p>')
+    parts.append(f'<p><a href="{SPOTIFY_URL}">🎧 Prefer to listen? Play today\'s 5-min episode</a></p>')
+    return "\n".join(parts)
+
+
+def write_paste_file(brief: dict, date_str: str) -> Path:
+    """Write the copy-paste file + the subject line, ready for beehiiv."""
+    NEWS_DIR.mkdir(exist_ok=True)
+    out = NEWS_DIR / "paste.html"
+    out.write_text(
+        f"<!-- SUBJECT: {brief.get('subject','')} -->\n"
+        f"<!-- PREVIEW: {brief.get('preview','')} -->\n"
+        f"<!-- Copy everything BELOW this line into the beehiiv post editor -->\n"
+        + render_paste_html(brief), encoding="utf-8")
+    return out
+
+
 def write_archive_page(inner_html: str, brief: dict, date_str: str) -> Path:
     """Standalone archive page (also deployed to the blog for SEO + social share)."""
     NEWS_DIR.mkdir(exist_ok=True)
@@ -304,8 +334,10 @@ def generate(stories: list[dict], date_str: str | None = None, *, test: bool = F
     inner = render_email_html(brief, date_str)
     page = write_archive_page(inner, brief, date_str)
     append_to_rss(brief, inner, date_str)
+    paste = write_paste_file(brief, date_str)
     print(f"  [newsletter] archive → {page}")
     print(f"  [newsletter] rss     → {RSS_PATH}")
+    print(f"  [newsletter] PASTE THIS into beehiiv → {paste}")
     brief["_archive_path"] = str(page)
     brief["_inner_html"] = inner
     return brief

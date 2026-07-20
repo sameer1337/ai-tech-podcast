@@ -1,8 +1,8 @@
-# ☀️ AI Tech Daily — TODAY (2026-07-19)
+# ☀️ AI Tech Daily — TODAY (2026-07-20)
 
 **Newsletter status:** ✅ auto-generated & queued (beehiiv sends from RSS).
-**Subject line going out:** Robotaxis, AI Ethics, and the Future of Web 3.0
-**Archive / share link:** https://daily.mapt.cloud/newsletter/2026-07-19.html
+**Subject line going out:** China Challenges AI Dominance as Netflix Buys AI Filmmaking 
+**Archive / share link:** https://daily.mapt.cloud/newsletter/2026-07-20.html
 
 Everything above happened automatically. Below is your ~15-minute manual growth block.
 Paste each post, then log numbers in the dashboard.
@@ -11,22 +11,22 @@ Paste each post, then log numbers in the dashboard.
 
 ## 1) Post to X / Twitter  (2 min)
 ```
-Christopher Nolan warns AI could be a hidden threat, sparking debate over AI ethics and regulation. How far will we push the boundaries of AI innovation before addressing potential risks? Subscribe to AI Tech Daily for free to stay informed.
+China's top AI companies release open-source models rivaling OpenAI and Anthropic at lower costs, challenging America's AI lead. Get the 5-minute AI brief, subscribe for free!
 
-#AIEthics #AIRegulation #ChristopherNolan #Odyssey #TrojanHorse
+#china #AI #tech #innovation #machinelearning
 ```
-Then: reply to your own tweet with the archive link: https://daily.mapt.cloud/newsletter/2026-07-19.html
+Then: reply to your own tweet with the archive link: https://daily.mapt.cloud/newsletter/2026-07-20.html
 
 ## 2) Post to LinkedIn  (2 min)
 ```
-The film industry's Odyssey Director, Christopher Nolan, has sparked debate by comparing AI to a Trojan Horse. This analogy highlights the need for careful consideration of AI's potential risks and consequences. To stay up-to-date on the latest developments and insights, consider subscribing to AI Tech Daily's free daily newsletter.
+China's leading AI companies are making waves with open-source models that can rival the best from OpenAI and Anthropic. This shift could potentially narrow America's AI lead. Today, we saw Netflix acquire an AI filmmaking startup and a lawsuit against OpenAI. Don't miss out on the latest AI news, subscribe to our free daily newsletter.
 ```
 
 ## 3) Reddit — value-first comment  (5 min)
 Find/scan a live thread about today's top story in one of: r/artificial, r/technology, r/OpenAI, r/MachineLearning
-**Suggested post title (only if starting a thread):** Christopher Nolan compares AI to a Trojan Horse
+**Suggested post title (only if starting a thread):** China's AI powerhouses release open-source models to rival OpenAI and Anthropic
 ```
-This analogy really gets to the heart of the issue - we're introducing a new technology with potentially devastating consequences without fully understanding its implications. It's a sobering reminder that we need to prioritize responsible AI development. Anyone else concerned about the long-term effects of AI on society? I've been following the space closely and recommend checking out AI Tech Daily's free daily brief for in-depth analysis and insights.
+This could be a turning point in the AI landscape. China's willingness to release open-source models at lower costs may level the playing field. It's exciting to see the pace of innovation in AI, and we'll be keeping a close eye on how this develops. If you want to stay up-to-date on the latest AI news, our free daily brief is a great resource.
 ```
 ⚠️ Reddit rule: give value first. Only mention the newsletter once, softly, if it fits.
 

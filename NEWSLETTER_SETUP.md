@@ -52,17 +52,33 @@ Until filled, signups still save to `subscribers.csv` — nothing is lost.
 
 **Import your existing list:** beehiiv → Subscribers → Import → upload `subscribers.csv`.
 
-## Step 3 — Turn on automated sending from the RSS feed (10 min)
+## Step 3 — The daily send (~60 seconds/day)
 
-The daily email is published to `https://daily.mapt.cloud/newsletter.xml`.
-In beehiiv, point an automation at it so each new issue sends itself:
+**Verified 2026-07-19: beehiiv has NO RSS-to-send.** Its RSS settings page only
+publishes beehiiv posts *outward*. Programmatic sending needs the **Create Post /
+Send API, which is Enterprise-only (beta, by request)** — not available on Max or
+the free Launch plan. beehiiv also cannot send 100% custom HTML; its email
+wrapper is fixed for CAN-SPAM/GDPR compliance.
 
-- beehiiv → **Automations / RSS-to-Send** (a.k.a. "Auto-send from RSS") →
-  add feed URL `https://daily.mapt.cloud/newsletter.xml` → send as soon as a new item appears.
+So the last step stays manual. Everything before it is automated:
 
-> If your beehiiv plan doesn't expose RSS-to-send, fallback is 30 seconds/day:
-> open `newsletter/latest.html`, copy it into a new beehiiv post, hit send. Or
-> upgrade later — direct sponsors will more than cover it.
+1. Open **`newsletter/paste.html`** (regenerated every morning).
+2. The first two comment lines contain the **subject** and **preview text** — copy them into beehiiv's fields.
+3. Copy everything below the marker line → paste into a **new beehiiv post**.
+4. Hit **Send**.
+
+`paste.html` is deliberately simple semantic HTML (`h2`/`p`/`a`) because beehiiv's
+block editor mangles the table-based layout used in the real email file. Don't
+paste `latest.html` — that one is for the web archive.
+
+> Why stay on beehiiv anyway? The value is the **Recommendations network, Boosts,
+> and Ad Network** — the growth + monetization engine. No self-hosted tool gives
+> you those, and they're worth far more than saving 60 seconds a day.
+
+**Alternative if you ever want true zero-touch sending:** self-host
+[listmonk](https://listmonk.app) with Amazon SES (~$0.10 per 1,000 emails, full
+API). You'd gain automation but lose beehiiv's growth network — not a good trade
+until you're well past 10k subscribers.
 
 ## Step 4 — Add the GitHub secret (2 min)
 
