@@ -248,5 +248,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0025_2026-07-20.mp3" type="audio/mpeg" length="1172160" />
     </item>
+    <item>
+      <title>Writer's AI harness cuts token spend nearly 40% — Startup Wire Daily | Jul 21</title>
+      <pubDate>Tue, 21 Jul 2026 08:41:53 +0000</pubDate>
+      <guid isPermaLink="false">startup-ep26-20260721</guid>
+      <description>Researchers at Writer just slashed token spend by nearly 40% without sacrificing accuracy, a game-changer for enterprise AI that's been grappling with an ROI paradox. While throwing more compute at the strongest foundation model works well in product experiments, the costs become unbearable when the product is deployed in production. This new development is huge because it means companies can finally start to see a return on their AI investments without breaking the bank. The study takes a syste...</description>
+      <itunes:episode>26</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0026_2026-07-21.mp3" type="audio/mpeg" length="1038816" />
+    </item>
   </channel>
 </rss>

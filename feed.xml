@@ -257,5 +257,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0026_2026-07-20.mp3" type="audio/mpeg" length="1243008" />
     </item>
+    <item>
+      <title>Writer's AI harness cuts token spend nearly 40% — AI Tech Daily | Jul 21</title>
+      <pubDate>Tue, 21 Jul 2026 08:40:00 +0000</pubDate>
+      <guid isPermaLink="false">ai-tech-ep27-20260721</guid>
+      <description>Forty percent of token spend can just disappear without hurting AI accuracy, thanks to a new solution from Writer that optimizes the AI harness. This is huge, because enterprise AI has been facing a major ROI paradox - throwing more compute at a strong foundation model works great in experiments, but becomes ridiculously expensive when deployed in production. The researchers at Writer took a systematic look at the different components of the orchestration layer, aka the AI harness, and found tha...</description>
+      <itunes:episode>27</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0027_2026-07-21.mp3" type="audio/mpeg" length="909216" />
+    </item>
   </channel>
 </rss>

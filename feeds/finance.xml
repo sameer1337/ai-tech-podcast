@@ -248,5 +248,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0025_2026-07-20.mp3" type="audio/mpeg" length="1043136" />
     </item>
+    <item>
+      <title>Short sellers load up against SpaceX as stock drops below — Money Minute Daily | Jul 21</title>
+      <pubDate>Tue, 21 Jul 2026 08:40:24 +0000</pubDate>
+      <guid isPermaLink="false">finance-ep26-20260721</guid>
+      <description>185 million SpaceX shares are now sold short, representing roughly 29% of the company's publicly tradable float, a staggering number that's got everyone on Wall Street talking. This massive short position against Elon Musk's space exploration company is a huge bet against its future success, and it's not hard to see why - SpaceX's stock has been struggling lately, dropping below its IPO price in a significant reversal of fortunes. As a result, investors are starting to lose faith in the company'...</description>
+      <itunes:episode>26</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/finance/ep0026_2026-07-21.mp3" type="audio/mpeg" length="1256112" />
+    </item>
   </channel>
 </rss>

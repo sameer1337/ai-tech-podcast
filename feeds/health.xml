@@ -248,5 +248,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0025_2026-07-20.mp3" type="audio/mpeg" length="1432080" />
     </item>
+    <item>
+      <title>Alzheimer’s breakthrough: Scientists restore two hours of — Health Edge Daily | Jul 21</title>
+      <pubDate>Tue, 21 Jul 2026 08:41:04 +0000</pubDate>
+      <guid isPermaLink="false">health-ep26-20260721</guid>
+      <description>Scientists have just restored a whopping two hours of sleep in mice with Alzheimer's disease without even touching the notorious brain plaques that are typically blamed for the condition. This breakthrough is massive, because for years, researchers have been trying to tackle Alzheimer's by focusing on clearing out these plaques, but it seems they may have been barking up the wrong tree. As it turns out, the real culprit behind sleep loss in Alzheimer's might be the brain's own immune cells, whic...</description>
+      <itunes:episode>26</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0026_2026-07-21.mp3" type="audio/mpeg" length="990720" />
+    </item>
   </channel>
 </rss>

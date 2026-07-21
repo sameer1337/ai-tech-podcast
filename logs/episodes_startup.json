@@ -1,5 +1,15 @@
 [
   {
+    "number": 26,
+    "title": "Writer's AI harness cuts token spend nearly 40% \u2014 Startup Wire Daily | Jul 21",
+    "pubDate": "Tue, 21 Jul 2026 08:41:53 +0000",
+    "guid": "startup-ep26-20260721",
+    "description": "Researchers at Writer just slashed token spend by nearly 40% without sacrificing accuracy, a game-changer for enterprise AI that's been grappling with an ROI paradox. While throwing more compute at the strongest foundation model works well in product experiments, the costs become unbearable when the product is deployed in production. This new development is huge because it means companies can finally start to see a return on their AI investments without breaking the bank. The study takes a syste...",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0026_2026-07-21.mp3",
+    "file_size": 1038816,
+    "duration": 300
+  },
+  {
     "number": 25,
     "title": "Burnham sparks backlash over reported plans to ditch DSIT \u2014 Startup Wire Daily | Jul 20",
     "pubDate": "Mon, 20 Jul 2026 09:31:08 +0000",

@@ -1,5 +1,15 @@
 [
   {
+    "number": 27,
+    "title": "Writer's AI harness cuts token spend nearly 40% \u2014 AI Tech Daily | Jul 21",
+    "pubDate": "Tue, 21 Jul 2026 08:40:00 +0000",
+    "guid": "ai-tech-ep27-20260721",
+    "description": "Forty percent of token spend can just disappear without hurting AI accuracy, thanks to a new solution from Writer that optimizes the AI harness. This is huge, because enterprise AI has been facing a major ROI paradox - throwing more compute at a strong foundation model works great in experiments, but becomes ridiculously expensive when deployed in production. The researchers at Writer took a systematic look at the different components of the orchestration layer, aka the AI harness, and found tha...",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0027_2026-07-21.mp3",
+    "file_size": 909216,
+    "duration": 300
+  },
+  {
     "number": 26,
     "title": "Netflix paid $587M for Ben Affleck\u2019s AI filmmaking startup \u2014 AI Tech Daily | Jul 20",
     "pubDate": "Mon, 20 Jul 2026 09:28:53 +0000",
