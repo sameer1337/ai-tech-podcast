@@ -95,6 +95,7 @@ jobs:
         continue-on-error: true
         env:
           GROQ_API_KEY:         ${{ secrets.GROQ_API_KEY }}
+          SHORT_GROQ_MODEL:     llama-3.1-8b-instant   # separate token pool from the 70B podcasts
           GOOGLE_CLIENT_ID:     ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           YT_REFRESH_TOKEN:     ${{ secrets.YT_REFRESH_TOKEN }}

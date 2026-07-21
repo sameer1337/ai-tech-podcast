@@ -38,6 +38,7 @@ from niches import PODCAST_MAP
 from generate_video import get_ffmpeg, get_audio_duration, FALLBACK_COVERS
 
 SHORT_RATE = "+12%"   # slightly faster than episodes - Shorts pacing
+SHORT_MODEL = os.environ.get("SHORT_GROQ_MODEL", "llama-3.1-8b-instant")  # separate pool from the 70B podcasts
 
 # YouTube policy/advertiser red flags - these words in a TITLE or on-screen
 # hook get Shorts age-restricted, demonetized, or removed (spoken script and
@@ -144,7 +145,7 @@ def write_short_script(niche: dict, stories: list, episode_script: str) -> dict:
     """Ask Groq for a hook-first Shorts script. Falls back to trimming the episode."""
     try:
         from groq import Groq
-        from config import GROQ_API_KEY, GROQ_MODEL
+        from config import GROQ_API_KEY
         client = Groq(api_key=GROQ_API_KEY)
 
         stories_block = "\n".join(f"- {s}" for s in stories[:5])
@@ -178,7 +179,7 @@ a twist) for a 35-second vertical video Short. Return ONLY JSON:
 "title" and "overlay" must be advertiser-safe: NEVER use words like suicide,
 self-harm, rape, or graphic violence terms in them (imply, don't state)."""
         resp = client.chat.completions.create(
-            model=GROQ_MODEL,
+            model=SHORT_MODEL,
             messages=[{"role": "user", "content": pick_prompt}],
             temperature=0.7,
             max_tokens=300,
@@ -210,7 +211,7 @@ Rules:
         messages = [{"role": "user", "content": vo_prompt}]
         for attempt in range(3):
             resp = client.chat.completions.create(
-                model=GROQ_MODEL,
+                model=SHORT_MODEL,
                 messages=messages,
                 temperature=0.8,
                 max_tokens=400,
