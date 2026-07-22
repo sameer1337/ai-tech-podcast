@@ -87,6 +87,15 @@ jobs:
           PYTHONUTF8: "1"
         run: python submit_indexnow.py
 
+      - name: SEO health check across all 3 sites (morning only)
+        if: github.event.schedule != '0 18 * * *'
+        continue-on-error: true
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          PYTHONUTF8: "1"
+        run: python seo_health_check.py --notify
+
       # Shorts first: the channel only allows ~3 uploads per rolling 24h,
       # so the discovery content (vertical Shorts for the two strongest shows)
       # must claim quota before the long-form episode uploads do.
