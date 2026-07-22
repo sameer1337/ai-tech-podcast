@@ -257,5 +257,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0026_2026-07-21.mp3" type="audio/mpeg" length="990720" />
     </item>
+    <item>
+      <title>Coffee may protect your heart but energy drinks could harm — Health Edge Daily | Jul 22</title>
+      <pubDate>Wed, 22 Jul 2026 08:40:12 +0000</pubDate>
+      <guid isPermaLink="false">health-ep27-20260722</guid>
+      <description>Four hundred milligrams of caffeine, the amount found in just three to five cups of regular black coffee, may be the magic number for a healthier heart. That's according to a new review from the American Heart Association, which found that moderate caffeine consumption is not only safe for most adults, but it may even lower the risk of heart disease, stroke, heart failure, and Type 2 diabetes. This is a game-changer for coffee lovers, as it suggests that their daily habit could be having a posit...</description>
+      <itunes:episode>27</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0027_2026-07-22.mp3" type="audio/mpeg" length="815328" />
+    </item>
   </channel>
 </rss>

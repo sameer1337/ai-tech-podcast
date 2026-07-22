@@ -1,5 +1,15 @@
 [
   {
+    "number": 28,
+    "title": "Poolside drops Laguna S 2.1, an open-weight coding model \u2014 AI Tech Daily | Jul 22",
+    "pubDate": "Wed, 22 Jul 2026 08:39:11 +0000",
+    "guid": "ai-tech-ep28-20260722",
+    "description": "Poolside just dropped Laguna S 2.1, an open-weight coding model that beats rivals 10 times its size, and this changes everything. The model is a 118-billion-parameter Mixture-of-Experts system, but what's really interesting is that it activates only 8 billion parameters at a time, making it far more efficient than its competitors. This is a big deal because it shows that smaller labs like Poolside can compete with the big players in the AI world, not by trying to build the biggest models, but by...",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/ep0028_2026-07-22.mp3",
+    "file_size": 985968,
+    "duration": 300
+  },
+  {
     "number": 27,
     "title": "Writer's AI harness cuts token spend nearly 40% \u2014 AI Tech Daily | Jul 21",
     "pubDate": "Tue, 21 Jul 2026 08:40:00 +0000",
