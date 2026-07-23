@@ -1,0 +1,97 @@
+name: Post Shorts Batch to YouTube
+
+# Uploads a batch of finished vertical Shorts (+ custom thumbnails) to YouTube.
+# The mp4s/jpgs are too big to live in the repo, so they're staged as assets on a
+# DRAFT release and downloaded here. Create the release first:
+#
+#   gh release create shorts-YYYY-MM-DD --draft --title "..." <files...>
+#
+# Upload markers are committed back to logs/shorts_posted/ so a re-run never
+# double-posts the same video.
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Draft release tag holding the mp4s + thumbnails'
+        required: true
+        type: string
+      channel:
+        description: 'Target channel'
+        required: true
+        default: velox-daily
+        type: choice
+        options:
+          - velox-daily
+          - america-unveiled
+      privacy:
+        description: 'Privacy status for the uploads'
+        required: true
+        default: public
+        type: choice
+        options:
+          - public
+          - unlisted
+          - private
+      only:
+        description: 'Space-separated metadata ids (blank = all for the channel)'
+        required: false
+        default: ''
+        type: string
+      dry_run:
+        description: 'Validate only — do not upload'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install google-api-python-client google-auth google-auth-oauthlib google-auth-httplib2
+
+      - name: Download batch media from release
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          mkdir -p media
+          gh release download "${{ inputs.release_tag }}" --dir media --pattern '*'
+          ls -lh media
+
+      - name: Post to YouTube
+        env:
+          GOOGLE_CLIENT_ID:         ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET:     ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN:         ${{ secrets.YT_REFRESH_TOKEN }}
+          YT_REFRESH_TOKEN_AMERICA: ${{ secrets.YT_REFRESH_TOKEN_AMERICA }}
+          MEDIA_DIR:                ${{ github.workspace }}/media
+          MARKER_DIR:               ${{ github.workspace }}/logs/shorts_posted
+          PYTHONUTF8:               '1'
+        run: |
+          ARGS="--channel ${{ inputs.channel }} --privacy ${{ inputs.privacy }}"
+          if [ "${{ inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run"; fi
+          if [ -n "${{ inputs.only }}" ]; then ARGS="$ARGS --only ${{ inputs.only }}"; fi
+          python -u shorts_post/post_shorts.py $ARGS
+
+      - name: Commit upload markers
+        if: always()
+        run: |
+          git config user.name "Shorts Bot"
+          git config user.email "hunk1.on11@gmail.com"
+          git add logs/shorts_posted/ || true
+          git diff --staged --quiet || git commit -m "Shorts posted: ${{ inputs.release_tag }} -> ${{ inputs.channel }}"
+          git pull --rebase --autostash origin master || true
+          git push || true
