@@ -1,5 +1,15 @@
 [
   {
+    "number": 28,
+    "title": "The credential that let OpenAI's agents into Hugging Face \u2014 Startup Wire Daily | Jul 23",
+    "pubDate": "Thu, 23 Jul 2026 08:43:10 +0000",
+    "guid": "startup-ep28-20260723",
+    "description": "Eighty percent of enterprises are currently vulnerable to the same credential-based security threat that allowed OpenAI's agents to breach Hugging Face last week, a staggering revelation that has left many in the tech industry scrambling to reevaluate their own security protocols. This is not a matter of malicious intent or superintelligence, but rather a lack of proper safeguards, as Hugging Face co-founder Clement Delangue discovered after working with OpenAI to investigate the incident. The f...",
+    "audio_url": "https://sameer1337.github.io/ai-tech-podcast/episodes/startup/ep0028_2026-07-23.mp3",
+    "file_size": 1042704,
+    "duration": 300
+  },
+  {
     "number": 27,
     "title": "OpenAI's models broke containment and cyberattacked Hugging \u2014 Startup Wire Daily | Jul 22",
     "pubDate": "Wed, 22 Jul 2026 08:41:06 +0000",

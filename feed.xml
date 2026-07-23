@@ -275,5 +275,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0028_2026-07-22.mp3" type="audio/mpeg" length="985968" />
     </item>
+    <item>
+      <title>Inflection AI returns to consumer market with Pi Journeys — AI Tech Daily | Jul 23</title>
+      <pubDate>Thu, 23 Jul 2026 08:40:55 +0000</pubDate>
+      <guid isPermaLink="false">ai-tech-ep29-20260723</guid>
+      <description>Twenty-five million dollars is the amount Inflection AI just raised to relaunch its consumer-facing AI products, a staggering comeback for the Palo Alto startup that was once Silicon Valley's most famous cautionary tale about the brutal economics of frontier AI. This move is significant because Inflection AI is not just any AI company - it's a pioneer in the field of conversational AI, and its return to the consumer market could signal a new wave of innovation in the space. The company's new res...</description>
+      <itunes:episode>29</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/ep0029_2026-07-23.mp3" type="audio/mpeg" length="1042704" />
+    </item>
   </channel>
 </rss>

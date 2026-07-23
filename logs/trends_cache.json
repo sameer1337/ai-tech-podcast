@@ -1,105 +1,100 @@
 {
- "date": "2026-07-22",
+ "date": "2026-07-23",
  "trends": [
   {
-   "query": "rebel wilson",
+   "query": "meteorite crater",
    "traffic": 2000,
-   "news": "Actor Rebel Wilson did not defame colleague in social media posts, Australian court finds"
+   "news": "An Amateur Astronomer Using Google Maps Spotted a Strange Indentation. It Turned Out to Be a Meteorite Crater From 390 Million Years Ago"
   },
   {
-   "query": "what is imax",
+   "query": "nintendo palworld lawsuit",
    "traffic": 2000,
-   "news": "How IMAX made 'The Odyssey' an 'event': IMAX CEO explains"
+   "news": "\"You saved the entire industry\": The 13-year-old video of a Pokemon fan game now cited in the rejection of a Nintendo patent is being celebrated by fans happy to see creative freedom win"
   },
   {
-   "query": "ben affleck",
+   "query": "att com",
+   "traffic": 2000,
+   "news": "AT&T Reports Greater-than-Expected Mobile Subscriber Gains"
+  },
+  {
+   "query": "halo campaign evolved",
+   "traffic": 2000,
+   "news": "Here's How To Play Halo: Campaign Evolved With Your Friends Across Xbox, PlayStation, And PC"
+  },
+  {
+   "query": "portland timbers",
+   "traffic": 2000,
+   "news": "Felipe Mora scores in stoppage time to help Timbers escape with 2-2 draw against Dallas"
+  },
+  {
+   "query": "long john silvers closing",
    "traffic": 1000,
-   "news": "Netflix (NFLX) Is Buying Ben Affleck's AI Film Startup For $587 Million"
+   "news": "Long John Silver's is closing stores: See a list of locations where the seafood restaurants have shuttered"
   },
   {
-   "query": "bus fares",
+   "query": "john leguizamo",
    "traffic": 1000,
-   "news": "Andy Burnham pledges to cap bus fares... but funding descends into farce"
+   "news": "Why John Leguizamo needed a bathroom escort on the set of \u2018The Odyssey\u2019"
   },
   {
-   "query": "masters of the universe",
+   "query": "jana nayagan",
    "traffic": 500,
-   "news": "\u2018Masters Of The Universe\u2019 Streaming Debut This Week Set For Prime Video"
+   "news": "'Jana Nayagan' promotions go airborne as CM Vijay's film unveils stunning flying LED display ahead of Jul"
   },
   {
-   "query": "jason alexander",
+   "query": "andy peters",
    "traffic": 500,
-   "news": "Seinfeld star accused of on-set act with minor"
+   "news": "GMB: Andi Peters reveals it's his final day working with colleague"
   },
   {
-   "query": "charles manson",
-   "traffic": 500,
-   "news": "Film Review: \"My Grandfather Charles Manson\" \u2014 Nature, Nurture, and a Complicated Legacy"
-  },
-  {
-   "query": "uk inflation",
-   "traffic": 500,
-   "news": "Inflation falls to 2.6% as food and fuel prices drop in 15-month low"
-  },
-  {
-   "query": "cleo fields louisiana congressional exit",
+   "query": "ned vs nep",
    "traffic": 200,
-   "news": "Louisiana Rep. Cleo Fields won\u2019t seek reelection after Democrat\u2019s seat was redrawn"
+   "news": "Nepal slump to 8-wicket defeat against Namibia"
   },
   {
-   "query": "power outage near me",
+   "query": "other mommy horror movie trailer",
    "traffic": 200,
-   "news": "Storms cause severe damage, power outages in central Ohio"
+   "news": "Interview: Producer James Wan and director Rob Savage on their new psychological horror movie Other Mommy"
   },
   {
-   "query": "memphis weather",
+   "query": "lewis hamilton untelevised team radio",
    "traffic": 200,
-   "news": "First Alert Weather Day: Severe thunderstorms moving through on the heels of extreme heat, humidity"
+   "news": "Belgian GP: Martin Brundle on George Russell's problems and Lewis Hamilton clash, Kimi Antonelli's win in Spa race verdict"
   },
   {
-   "query": "seth meyers",
+   "query": "matt targett",
    "traffic": 200,
-   "news": "FIFA Crops Trump Out Of World Cup Photo\u2014White House Adds Him Back In"
+   "news": "Hull sign ex-Newcastle star who lost Championship Play-Off final against them"
   },
   {
-   "query": "ricki lake facelift photos",
+   "query": "fans petition fifa to replay the world cup final match",
    "traffic": 200,
-   "news": "Ricki Lake shares unseen before-and-after photos to mark 2 years since facelift"
+   "news": "Sore losers? Argentina fans cry foul, demand FIFA replay World Cup final"
   },
   {
-   "query": "luis represas",
+   "query": "defence",
    "traffic": 200,
-   "news": "Morreu Lu\u00eds Represas, aos 69 anos"
+   "news": "'Significant benefits for the South West': Andy Burnham on new defence plan | ITV News"
   },
   {
-   "query": "jennifer garner",
-   "traffic": 200,
-   "news": "Jennifer Garner Details 'Stockholm Syndrome Thing' With Longtime Paparazzo: 'Have an Odd Respect for Each Other'"
-  },
-  {
-   "query": "hsbc share price",
-   "traffic": 200,
-   "news": "Nomura Adjusts ICICI Bank's Price Target to INR1,700 from INR1,620, Keeps at Buy"
-  },
-  {
-   "query": "ants",
-   "traffic": 200,
-   "news": "Edible-ineligible 'ants' sold to customers for four years... 'Black and White Chef Lisa 1' Michelin 2-star restaurant controversy [Star Issue]"
-  },
-  {
-   "query": "topps",
-   "traffic": 200,
-   "news": "Topps turning iconic Lionel Messi-Lamine Yamal picture into 1-of-1 trading card"
-  },
-  {
-   "query": "latitude festival",
-   "traffic": 200,
-   "news": "Klarna presents Latitude Festival: the complete line-up deep dive"
-  },
-  {
-   "query": "ministerial appointments",
+   "query": "irena dudzi\u0144ska",
    "traffic": 100,
-   "news": "Round up of Burnham\u2019s ministerial appointments"
+   "news": "Nie \u017cyje wieloletnia aktorka. Teatr Nowy \u017cegna artystk\u0119"
+  },
+  {
+   "query": "\u80e1\u5fd7\u5049",
+   "traffic": 100,
+   "news": "\u80e1\u5fd7\u5049\u88ab\u82f1\u653f\u5e9c\u62d2\u5165\u5883\u517c\u6c92\u6536BNO \u7db2\u6c11\uff1a\u5169\u9762\u4e0d\u662f\u4eba\uff01"
+  },
+  {
+   "query": "trainspotting the musical review",
+   "traffic": 100,
+   "news": "Trainspotting with jazz hands and hoedowns? This musical is a muddle"
+  },
+  {
+   "query": "jimothy raccoon",
+   "traffic": 100,
+   "news": "Viral raccoon 'Jimothy' inspires mural, tattoos and Seattle proclamation"
   }
  ]
 }

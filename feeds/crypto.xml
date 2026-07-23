@@ -257,5 +257,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0026_2026-07-22.mp3" type="audio/mpeg" length="1380384" />
     </item>
+    <item>
+      <title>Hackers steal $31.6M in 2 crypto bridge attacks within 7 — Crypto Daily Brief | Jul 23</title>
+      <pubDate>Thu, 23 Jul 2026 08:43:48 +0000</pubDate>
+      <guid isPermaLink="false">crypto-ep27-20260723</guid>
+      <description>Hackers just made off with $31.6 million in a brazen double heist, targeting two crypto bridges in a span of just seven hours. The first attack hit AFX, a decentralized perpetual exchange operating on Arbitrum, and resulted in a loss of $24.15 million. Just hours later, the Verus Ethereum bridge was attacked, with the thieves making away with an additional $7.45 million. These kinds of attacks are a stark reminder of the risks inherent in the crypto space, where security vulnerabilities can be e...</description>
+      <itunes:episode>27</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/crypto/ep0027_2026-07-23.mp3" type="audio/mpeg" length="1052352" />
+    </item>
   </channel>
 </rss>

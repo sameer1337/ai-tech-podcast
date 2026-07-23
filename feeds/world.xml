@@ -239,5 +239,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/world/ep0024_2026-07-22.mp3" type="audio/mpeg" length="1477152" />
     </item>
+    <item>
+      <title>An Amateur Astronomer Using Google Maps Spotted a Strange — Trending Now Daily | Jul 23</title>
+      <pubDate>Thu, 23 Jul 2026 08:44:33 +0000</pubDate>
+      <guid isPermaLink="false">world-news-ep25-20260723</guid>
+      <description>A 390-million-year-old meteorite crater has just been confirmed in Quebec, Canada, thanks to an amateur astronomer who spotted a strange indentation on Google Maps. The crater, which is estimated to be around 2 kilometers in diameter, is a massive scar from an ancient meteorite impact that occurred during the Devonian period. What's fascinating about this discovery is that it was made possible by a citizen scientist using publicly available tools, highlighting the power of crowdsourced research ...</description>
+      <itunes:episode>25</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/world/ep0025_2026-07-23.mp3" type="audio/mpeg" length="1259136" />
+    </item>
   </channel>
 </rss>

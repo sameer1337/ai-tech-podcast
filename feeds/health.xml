@@ -266,5 +266,14 @@
       <itunes:duration>300</itunes:duration>
       <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0027_2026-07-22.mp3" type="audio/mpeg" length="815328" />
     </item>
+    <item>
+      <title>Lab-grown mini brains may predict which Alzheimer’s — Health Edge Daily | Jul 23</title>
+      <pubDate>Thu, 23 Jul 2026 08:42:27 +0000</pubDate>
+      <guid isPermaLink="false">health-ep28-20260723</guid>
+      <description>Ninety-five percent of Alzheimer's disease treatments have failed in clinical trials, but lab-grown mini brains may finally give us a way to predict which ones will work. These miniature brain models, grown from patients' cells, have revealed striking differences in how Alzheimer's-related tissue responds to an antidepressant. For example, researchers found that the organoids, or mini brains, and the particles they release could eventually guide more personalized treatments and provide new clues...</description>
+      <itunes:episode>28</itunes:episode>
+      <itunes:duration>300</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/sameer1337.github.io/ai-tech-podcast/episodes/health/ep0028_2026-07-23.mp3" type="audio/mpeg" length="1288080" />
+    </item>
   </channel>
 </rss>

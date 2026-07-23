@@ -1,0 +1,1 @@
+The credential that let OpenAI's agents into Hugging Face exists in most enterprises right now||Inflection AI returns to consumer market with Pi Journeys after Microsoft upheaval||UK defence tech has ‘high hopes’ for new finance minister John Healey||AI agents aren't confidently wrong because of bad context — they're wrong because of bad data engineering

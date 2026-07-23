@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-07-23T08:57:42.982205+00:00",
+  "sites": {
+    "daily.mapt.cloud": {
+      "sitemap": "https://daily.mapt.cloud/sitemap.xml",
+      "url_count": 200,
+      "links_checked": 40,
+      "broken_links": [],
+      "slow_links": [],
+      "onpage_checked": 8,
+      "onpage_problems": [
+        {
+          "url": "https://daily.mapt.cloud/",
+          "issues": [
+            "missing_h1"
+          ]
+        }
+      ]
+    },
+    "rovexlube.com": {
+      "sitemap": "https://rovexlube.com/sitemap.xml",
+      "url_count": 34,
+      "links_checked": 34,
+      "broken_links": [],
+      "slow_links": [],
+      "onpage_checked": 8,
+      "onpage_problems": []
+    },
+    "mapt.cloud": {
+      "sitemap": "https://mapt.cloud/sitemap.xml",
+      "url_count": 4,
+      "links_checked": 4,
+      "broken_links": [],
+      "slow_links": [],
+      "onpage_checked": 4,
+      "onpage_problems": [
+        {
+          "url": "https://mapt.cloud/pricing.md",
+          "issues": [
+            "missing_title",
+            "missing_meta_description",
+            "missing_h1"
+          ]
+        },
+        {
+          "url": "https://mapt.cloud/blog.html",
+          "issues": [
+            "multiple_h1(4)"
+          ]
+        }
+      ]
+    }
+  }
+}
