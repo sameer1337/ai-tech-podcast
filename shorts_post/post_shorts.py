@@ -24,9 +24,13 @@ import os
 import sys
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-PODCAST = os.path.join(os.path.dirname(ROOT), "ai-tech-podcast")
-if os.path.isdir(PODCAST):
-    sys.path.insert(0, PODCAST)
+# upload_youtube.py lives in the podcast repo. Locally that's a sibling folder;
+# in CI this script sits inside that repo, so its parent is the repo root.
+for cand in (os.path.join(os.path.dirname(ROOT), "ai-tech-podcast"),
+             os.path.dirname(ROOT)):
+    if os.path.exists(os.path.join(cand, "upload_youtube.py")):
+        sys.path.insert(0, cand)
+        break
 
 META = os.path.join(ROOT, "shorts_metadata.json")
 MARKERS = os.environ.get("MARKER_DIR") or os.path.join(ROOT, "uploaded")
