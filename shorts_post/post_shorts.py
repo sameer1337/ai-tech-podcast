@@ -1,9 +1,13 @@
 """
-Post the ready Shorts batch to YouTube, with thumbnails.
+Post the ready Shorts batch to YouTube.
 
-Reads shorts_metadata.json, uploads each video via the resumable uploader in
-ai-tech-podcast/upload_youtube.py, then sets the matching custom thumbnail.
-Already-uploaded videos are skipped via markers in uploaded/.
+Reads shorts_metadata.json and uploads each video via the resumable uploader in
+ai-tech-podcast/upload_youtube.py. Already-uploaded videos are skipped via
+markers in uploaded/.
+
+Custom thumbnails are OFF by default — these are Shorts and the Shorts feed
+never shows one. Pass --thumbnails to set them anyway (they still appear on the
+channel grid, in search, and on the subscriptions page).
 
 Credentials (env vars — same ones the GitHub Actions pipeline uses):
     GOOGLE_CLIENT_ID
@@ -16,6 +20,7 @@ Usage:
     python post_shorts.py --channel velox-daily
     python post_shorts.py --channel velox-daily --only football_01
     python post_shorts.py --channel velox-daily --privacy private
+    python post_shorts.py --channel velox-daily --thumbnails
 """
 
 import argparse
@@ -86,6 +91,9 @@ def main():
     ap.add_argument("--only", nargs="*", help="Upload only these metadata ids")
     ap.add_argument("--privacy", default="public",
                     choices=["public", "private", "unlisted"])
+    ap.add_argument("--thumbnails", action="store_true",
+                    help="Also set a custom thumbnail per video. Off by default: "
+                         "these are Shorts, and the Shorts feed never shows one.")
     ap.add_argument("--dry-run", action="store_true",
                     help="Validate files, metadata and credentials without uploading")
     args = ap.parse_args()
@@ -96,8 +104,9 @@ def main():
 
     # Validate every file and thumbnail up front — never half-post a batch.
     problems = []
+    keys = ("file", "thumbnail") if args.thumbnails else ("file",)
     for it in items:
-        for key in ("file", "thumbnail"):
+        for key in keys:
             p = resolve(it, key)
             if not os.path.exists(p):
                 problems.append(f"missing {key}: {it[key]}")
@@ -144,7 +153,6 @@ def main():
             continue
 
         video = resolve(it, "file")
-        thumb = resolve(it, "thumbnail")
 
         body_privacy = args.privacy
         vid = upload_to_youtube(
@@ -159,10 +167,11 @@ def main():
             ).execute()
             print(f"[privacy] set to {body_privacy}")
 
-        try:
-            set_thumbnail(youtube, vid, thumb)
-        except Exception as e:
-            print(f"[warn] thumbnail failed for {it['id']}: {e}")
+        if args.thumbnails:
+            try:
+                set_thumbnail(youtube, vid, resolve(it, "thumbnail"))
+            except Exception as e:
+                print(f"[warn] thumbnail failed for {it['id']}: {e}")
 
         url = f"https://youtu.be/{vid}"
         with open(marker, "w") as f:

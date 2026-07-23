@@ -1,10 +1,13 @@
 name: Post Shorts Batch to YouTube
 
-# Uploads a batch of finished vertical Shorts (+ custom thumbnails) to YouTube.
-# The mp4s/jpgs are too big to live in the repo, so they're staged as assets on a
+# Uploads a batch of finished vertical Shorts to YouTube.
+# The mp4s are too big to live in the repo, so they're staged as assets on a
 # DRAFT release and downloaded here. Create the release first:
 #
-#   gh release create shorts-YYYY-MM-DD --draft --title "..." <files...>
+#   gh release create shorts-YYYY-MM-DD --draft --title "..." <mp4s...>
+#
+# Custom thumbnails are off by default (the Shorts feed never shows one). Set the
+# thumbnails input to true and include the .jpgs in the release to use them.
 #
 # Upload markers are committed back to logs/shorts_posted/ so a re-run never
 # double-posts the same video.
@@ -38,6 +41,11 @@ on:
         required: false
         default: ''
         type: string
+      thumbnails:
+        description: 'Set custom thumbnails (Shorts feed never shows one)'
+        required: false
+        default: false
+        type: boolean
       dry_run:
         description: 'Validate only — do not upload'
         required: false
@@ -82,6 +90,7 @@ jobs:
           PYTHONUTF8:               '1'
         run: |
           ARGS="--channel ${{ inputs.channel }} --privacy ${{ inputs.privacy }}"
+          if [ "${{ inputs.thumbnails }}" = "true" ]; then ARGS="$ARGS --thumbnails"; fi
           if [ "${{ inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run"; fi
           if [ -n "${{ inputs.only }}" ]; then ARGS="$ARGS --only ${{ inputs.only }}"; fi
           python -u shorts_post/post_shorts.py $ARGS
